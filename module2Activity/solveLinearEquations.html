@@ -1,0 +1,315 @@
+<!DOCTYPE html><html lang="en"><head> <title>Objective 4 - Solve Linear Equations</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<!-- charset=utf-8,-css,html,htex4ht,xhtml --> 
+<meta name="src" content="solveLinearEquations.tex"/> 
+<meta name="author" content="Darryl Chamberlain
+Jr."/> 
+<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"/> 
+<meta name="ximera" content="version 0.0.1"/> 
+<link href="https://ximera.osu.edu/public/stylesheets/standalone.css" rel="stylesheet" media="screen"/> 
+<script type="text/javascript" async="" src="https://ximera.osu.edu/public/javascripts/standalone.min.js"></script> 
+<meta name="learning-outcome" content="Recognize and construct linear functions as well as solve linear equations."/> 
+<meta name="dependency" content="932dc370121d9c8682828373ca92bd4095993ca1 preamble.tex"/><meta name="dependency" content="ac67e19567ae17d4e2fd8e72e372da4bc2709be1 module2Activity/solveLinearEquations.tex"/></head><body> 
+<div class="preamble"><script type="math/tex">\newenvironment {prompt}{}{}
+\newcommand {\ungraded }[0]{}
+\newcommand {\npnoround }[0]{\nprounddigits {-1}}
+\newcommand {\npnoroundexp }[0]{\nproundexpdigits {-1}}
+\newcommand {\npunitcommand }[1]{\ensuremath {\mathrm {#1}}}
+\newcommand {\HyperFirstAtBeginDocument }[0]{\AtBeginDocument }</script><script type="text/javascript"> 
+</script> 
+</div>
+<div class="abstract">
+<!--l. 18--><p class="noindent">Solve linear equations.
+</p></div>   <div class="maketitle"></div>
+<a href="https://cnx.org/contents/mwjClAV_@8.1:62_eXnY6@14/Linear-Equations-in-One-Variable">Link to section in online textbook.</a>
+<!--l. 28--><p class="noindent">Now, watch <span class="underline"><a href="https://mediasite.video.ufl.edu/Mediasite/Play/486c7ecd0ea14369bfc405492ae942f51d">this video</a></span> to review how to solve linear equations. These techniques will
+be used throughout most of the semester. Be sure to write notes to yourself that you
+can review later!
+</p><!--l. 30--><p class="noindent">Now try to solve the following linear equations.
+</p>
+<script type="text/sagemath"># SOLVES BASIC LINEAR EQUATIONS OF THE FORM
+    # b0 * (b1 + b2 * x) = b3 ( x * b4 - b5)
+
+x = var('x')
+
+###################
+def maybeMakeNegative(rational):
+    maybeNegative = (-1)**ZZ.random_element(2)
+    rational = maybeNegative * rational
+    return rational
+
+def generateBlocks():
+    listNaturals = range(2, 16)
+    n0, n1, n2, n3, n4, n5 = sample(listNaturals, 6)
+    b0 = Integer(-n0)
+    b1 = Integer(maybeMakeNegative(n1))
+    b2 = Integer(maybeMakeNegative(n2))
+    b3 = Integer(-n3)
+    b4 = Integer(maybeMakeNegative(n4))
+    b5 = Integer(maybeMakeNegative(n5))
+                                                                  
+
+                                                                  
+    # Begin checking for one solution
+    OneSolutionCheck = b0*b2 - b3*b4
+    # Makes sure there is exactly one solution
+    while (OneSolutionCheck == 0):
+        listNaturals = range(2, 16)
+        n0, n1, n2, n3, n4, n5 = sample(listNaturals, 6)
+        b0 = Integer(-n0)
+        b1 = Integer(maybeMakeNegative(n1))
+        b2 = Integer(maybeMakeNegative(n2))
+        b3 = Integer(-n3)
+        b4 = Integer(maybeMakeNegative(n4))
+        b5 = Integer(maybeMakeNegative(n5))
+        # Begin checking for one solution
+        OneSolutionCheck = b0*b2 - b3*b4
+    blocks = [b0, b1, b2, b3, b4, b5]
+    return blocks
+
+#b0 * (b1 + b2 * x) =  b3 ( x * b4 - b5)
+def generateSolution(blocks):
+    a, b, c, d, e, f = blocks
+    basicLinearEquation = a * (b + c * x) - d * ( x * e - f)
+    solution = float(solve(basicLinearEquation, x)[0].rhs())
+    return solution
+
+def generateFeedback(blocks):
+    a, b, c, d, e, f = blocks
+    basicLinearEquation = a * (b - c * x) - d * ( x * e + f)
+    feedback = float(solve(basicLinearEquation, x)[0].rhs())
+    return feedback
+
+######### END OF DEFINITIONS ##########
+
+                                                                  
+
+                                                                  
+##### QUESTION 1 #####
+blocks1 = generateBlocks()
+answer1 = generateSolution(blocks1)
+feedback1 = generateFeedback(blocks1)
+displayEquationLeft1 = blocks1[1]+blocks1[2]*x
+displayEquationRight1 = blocks1[4]*x-blocks1[5]
+
+##### QUESTION 2 #####
+blocks2 = generateBlocks()
+answer2 = generateSolution(blocks2)
+feedback2 = generateFeedback(blocks2)
+displayEquationLeft2 = blocks2[1]+blocks2[2]*x
+displayEquationRight2 = blocks2[4]*x-blocks2[5]
+
+##### QUESTION 3 #####
+blocks3 = generateBlocks()
+answer3 = generateSolution(blocks3)
+feedback3 = generateFeedback(blocks3)
+displayEquationLeft3 = blocks3[1]+blocks3[2]*x
+displayEquationRight3 = blocks3[4]*x-blocks3[5]
+
+</script>
+<div role="article" class="problem-environment exercise" id="problem1"><a id="x1-8r1"></a> Solve the equation below.
+<!--l. 111--><p class="noindent"><script type="math/tex">\sage {blocks1[0]} (\sage {displayEquationLeft1}) = \sage {blocks1[3]} (\sage {displayEquationRight1})</script>
+</p><!--l. 113--><p class="noindent"><script type="math/tex">x = \answer [tolerance=0.01]{\sage {answer1}}</script>
+</p>
+<div class="feedback" data-feedback="script" id="feedback2"><script type="text/javascript">function feedback2() { return incorrect; }</script> Did you get <script type="math/tex">\sage {feedback1}</script> as your answer? If so, you are not distributing correctly. Remember
+that if you have something like <script type="math/tex">-3(2x-1)</script>, you need to distribute the <script type="math/tex">-3</script> to BOTH <script type="math/tex">2x</script> and <script type="math/tex">-1</script> to get <script type="math/tex">-6x+3</script>. </div>
+</div>
+<div role="article" class="problem-environment exercise" id="problem3"><a id="x1-9r2"></a> Solve the equation below.
+<!--l. 123--><p class="noindent"><script type="math/tex">\sage {blocks2[0]} (\sage {displayEquationLeft2}) = \sage {blocks2[3]} (\sage {displayEquationRight2})</script>
+                                                                  
+
+                                                                  
+</p><!--l. 125--><p class="noindent"><script type="math/tex">x = \answer [tolerance=0.01]{\sage {answer2}}</script>
+</p>
+<div class="feedback" data-feedback="script" id="feedback4"><script type="text/javascript">function feedback4() { return incorrect; }</script> Did you get <script type="math/tex">\sage {feedback2}</script> as your answer? If so, you are not distributing correctly. Remember
+that if you have something like <script type="math/tex">-3(2x-1)</script>, you need to distribute the <script type="math/tex">-3</script> to BOTH <script type="math/tex">2x</script> and <script type="math/tex">-1</script> to get <script type="math/tex">-6x+3</script>. </div>
+</div>
+<div role="article" class="problem-environment exercise" id="problem5"><a id="x1-10r3"></a> Solve the equation below.
+<!--l. 135--><p class="noindent"><script type="math/tex">\sage {blocks3[0]} (\sage {displayEquationLeft3}) = \sage {blocks3[3]} (\sage {displayEquationRight3})</script>
+</p><!--l. 137--><p class="noindent"><script type="math/tex">x = \answer [tolerance=0.01]{\sage {answer3}}</script>
+</p>
+<div class="feedback" data-feedback="script" id="feedback6"><script type="text/javascript">function feedback6() { return incorrect; }</script> Did you get <script type="math/tex">\sage {feedback3}</script> as your answer? If so, you are not distributing correctly. Remember
+that if you have something like <script type="math/tex">-3(2x-1)</script>, you need to distribute the <script type="math/tex">-3</script> to BOTH <script type="math/tex">2x</script> and <script type="math/tex">-1</script> to get <script type="math/tex">-6x+3</script>. </div>
+</div>
+<script type="text/sagemath"># Type 2 - Solve Advanced linear equations (fractions)
+#(coefficients[0]*x + numerators[0])/denominators[0]
+    # - (coefficients[1]*x+numerators[1])/denominators[1]
+    # = (coefficients[2]*x+numerators[2])/denominators[2]
+
+x = var('x')
+###################
+def maybeMakeNegative(rational):
+    maybeNegative = (-1)**ZZ.random_element(2)
+    rational = maybeNegative * rational
+    return rational
+
+#No restrictions on coefficients or numerators
+def createThreeRandomIntegers():
+    a = maybeMakeNegative(ZZ.random_element(3, 9))
+    b = maybeMakeNegative(ZZ.random_element(3, 9))
+    c = maybeMakeNegative(ZZ.random_element(3, 9))
+    return [a, b, c]
+
+                                                                  
+
+                                                                  
+def createThreeDistinctRandomNaturals():
+    possibleNaturals= range(2,7)
+    n1, n2, n3 = sample(possibleNaturals, 3)
+    naturals = [Integer(n1), Integer(n2), Integer(n3)]
+    return naturals
+
+def createThreeDistinctRandomIntegers():
+    a, b, c = sample(range(3, 8), 3)
+    return [Integer(maybeMakeNegative(a)), Integer(maybeMakeNegative(b)), Integer(maybeMakeNegative(c))]
+
+def createViableConstants():
+    a, b, c = createThreeRandomIntegers()
+    d, e, f = createThreeRandomIntegers()
+    g, h, i = createThreeDistinctRandomNaturals()
+    # Check that there is exactly one solution to the linear equation
+    OneSolutionCheck = (a/g) - (b/h) - (c/i)
+    while (OneSolutionCheck == 0):
+        a, b, c = createThreeRandomIntegers()
+        d, e, f = createThreeRandomIntegers()
+        g, h, i = createThreeDistinctRandomNaturals()
+        OneSolutionCheck = (a/g) - (b/h) - (c/i)
+    return [a, b, c, d, e, f, g, h, i]
+
+def createSolution(constants):
+    a, b, c, d, e, f, g, h, i = constants
+    equationBlockOne = (a*x+d)/g
+    equationBlockTwo = (b*x+e)/h
+    equationBlockThree = (c*x+f)/i
+    toSolve = equationBlockOne - equationBlockTwo - equationBlockThree
+    solution = round(float(solve(toSolve, x)[0].rhs()), 3)
+    return solution
+
+                                                                  
+
+                                                                  
+def generateFeedback1(constants):
+    a, b, c, d, e, f, g, h, i = constants
+    equationBlockOne = (a*x+d)/g
+    equationBlockTwo = (b*x-e)/h
+    equationBlockThree = (c*x+f)/i
+    toSolve = equationBlockOne - equationBlockTwo - equationBlockThree
+    feedback = round(float(solve(toSolve, x)[0].rhs()), 3)
+    return feedback
+
+def generateFeedback2(constants):
+    a, b, c, d, e, f, g, h, i = constants
+    equationBlockOne = (a*x)/g + d
+    equationBlockTwo = (b*x)/h + e
+    equationBlockThree = (c*x)/i + f
+    toSolve = equationBlockOne - equationBlockTwo - equationBlockThree
+    feedback = round(float(solve(toSolve, x)[0].rhs()), 3)
+    return feedback
+
+def generateFeedback3(constants):
+    a, b, c, d, e, f, g, h, i = constants
+    equationBlockOne = (a*x)/g + d
+    equationBlockTwo = (b*x)/h - e
+    equationBlockThree = (c*x)/i + f
+    toSolve = equationBlockOne - equationBlockTwo - equationBlockThree
+    feedback = round(float(solve(toSolve, x)[0].rhs()), 3)
+    return feedback
+
+
+######## END OF DEFINITIONS ###########
+
+##### QUESTION 4 #####
+constants4 = createViableConstants()
+                                                                  
+
+                                                                  
+displayNumeratorA4 = constants4[0] * x + constants4[3]
+displayNumeratorB4 = constants4[1] * x + constants4[4]
+displayNumeratorC4 = constants4[2] * x + constants4[5]
+answer4 = createSolution(constants4)
+feedback41 = generateFeedback1(constants4)
+feedback42 = generateFeedback2(constants4)
+feedback43 = generateFeedback3(constants4)
+
+##### QUESTION 5 #####
+constants5 = createViableConstants()
+displayNumeratorA5 = constants5[0] * x + constants5[3]
+displayNumeratorB5 = constants5[1] * x + constants5[4]
+displayNumeratorC5 = constants5[2] * x + constants5[5]
+answer5 = createSolution(constants5)
+feedback51 = generateFeedback1(constants5)
+feedback52 = generateFeedback2(constants5)
+feedback53 = generateFeedback3(constants5)
+
+##### QUESTION 6 #####
+constants6 = createViableConstants()
+displayNumeratorA6 = constants6[0] * x + constants6[3]
+displayNumeratorB6 = constants6[1] * x + constants6[4]
+displayNumeratorC6 = constants6[2] * x + constants6[5]
+answer6 = createSolution(constants6)
+feedback61 = generateFeedback1(constants6)
+feedback62 = generateFeedback2(constants6)
+feedback63 = generateFeedback3(constants6)
+</script>
+<div role="article" class="problem-environment exercise" id="problem7"><a id="x1-11r4"></a> Solve the equation below.
+<!--l. 262--><p class="noindent"><script type="math/tex">\frac {\sage {displayNumeratorA4}}{\sage {constants4[6]}} - \frac {\sage {displayNumeratorB4}}{\sage {constants4[7]}} = \frac {\sage {displayNumeratorC4}}{\sage {constants4[8]}}</script>
+</p>
+<div role="article" class="problem-environment hint" id="problem8"><a id="x1-12r5"></a> Adding/Multiplying fractions can be difficult and tedious. Is there something we can
+                                                                  
+
+                                                                  
+multiply both sides of the equation by to remove the fractions from the
+equation?
+</div>
+<!--l. 268--><p class="noindent"><script type="math/tex">x = \answer [tolerance=0.01]{\sage {answer4}}</script>
+</p>
+<div class="feedback" data-feedback="attempt" id="feedback9">There are two common issues when solving linear equations:
+<!--l. 273--><p class="noindent">The first we saw in the previous set of problems: not distributing correctly. If you got
+<script type="math/tex">\sage {feedback41}</script>, check that you distributed any negatives correctly.
+</p><!--l. 275--><p class="noindent">The second common issue is not dividing correctly. If we have a fraction like <script type="math/tex">\frac {6x-4}{2}</script>, the 2 is
+dividing <strong>both</strong> parts. So, this would become <script type="math/tex">3x-2</script> and not <script type="math/tex">3x-4</script>. If you got <script type="math/tex">\sage {feedback42}</script>, you made this type
+of mistake.
+</p><!--l. 277--><p class="noindent">If you made both of these mistakes, you got <script type="math/tex">\sage {feedback43}</script>. Restart the problem and correct both
+issues. </p></div>
+</div>
+<div role="article" class="problem-environment exercise" id="problem10"><a id="x1-13r6"></a> Solve the equation below.
+<!--l. 284--><p class="noindent"><script type="math/tex">\frac {\sage {displayNumeratorA5}}{\sage {constants5[6]}} - \frac {\sage {displayNumeratorB5}}{\sage {constants5[7]}} = \frac {\sage {displayNumeratorC5}}{\sage {constants5[8]}}</script>
+</p><!--l. 286--><p class="noindent"><script type="math/tex">x = \answer [tolerance=0.01]{\sage {answer5}}</script>
+</p>
+<div class="feedback" data-feedback="attempt" id="feedback11">There are two common issues when solving linear equations:
+<!--l. 291--><p class="noindent">The first we saw in the previous set of problems: not distributing correctly. If you got
+<script type="math/tex">\sage {feedback51}</script>, check that you distributed any negatives correctly.
+</p><!--l. 293--><p class="noindent">The second common issue is not dividing correctly. If we have a fraction like <script type="math/tex">\frac {6x-4}{2}</script>, the 2 is
+dividing <strong>both</strong> parts. So, this would become <script type="math/tex">3x-2</script> and not <script type="math/tex">3x-4</script>. If you got <script type="math/tex">\sage {feedback52}</script>, you made this type
+of mistake.
+</p><!--l. 295--><p class="noindent">If you made both of these mistakes, you got <script type="math/tex">\sage {feedback53}</script>. Restart the problem and correct both
+issues. </p></div>
+</div>
+<div role="article" class="problem-environment exercise" id="problem12"><a id="x1-14r7"></a> Solve the equation below.
+<!--l. 302--><p class="noindent"><script type="math/tex">\frac {\sage {displayNumeratorA6}}{\sage {constants6[6]}} - \frac {\sage {displayNumeratorB6}}{\sage {constants6[7]}} = \frac {\sage {displayNumeratorC6}}{\sage {constants6[8]}}</script>
+</p><!--l. 304--><p class="noindent"><script type="math/tex">x= \answer [tolerance=0.01]{\sage {answer6}}</script>
+</p>
+<div class="feedback" data-feedback="attempt" id="feedback13">There are two common issues when solving linear equations:
+<!--l. 309--><p class="noindent">The first we saw in the previous set of problems: not distributing correctly. If you got
+<script type="math/tex">\sage {feedback61}</script>, check that you distributed any negatives correctly.
+</p><!--l. 311--><p class="noindent">The second common issue is not dividing correctly. If we have a fraction like <script type="math/tex">\frac {6x-4}{2}</script>, the 2 is
+dividing <strong>both</strong> parts. So, this would become <script type="math/tex">3x-2</script> and not <script type="math/tex">3x-4</script>. If you got <script type="math/tex">\sage {feedback62}</script>, you made this type
+                                                                  
+
+                                                                  
+of mistake.
+</p><!--l. 313--><p class="noindent">If you made both of these mistakes, you got <script type="math/tex">\sage {feedback63}</script>. Restart the problem and correct both
+issues. </p></div>
+</div>
+ 
+ 
+
+                                                                  
+
+                                                                  
+                                                                  
+
+
+</body></html>

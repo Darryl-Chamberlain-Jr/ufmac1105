@@ -1,0 +1,259 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+ 
+\input{../preamble} %% we can turn off input when making a master document
+ 
+\outcome{}
+\author{Darryl Chamberlain Jr.}
+  
+\title{Objective 3 - One-to-One}
+ 
+\begin{document}
+\begin{abstract}
+Determine whether a function is 1-1.
+\end{abstract}
+\maketitle
+ 
+\href{https://cnx.org/contents/mwjClAV_@8.1:9ZKq0BnY@15/Inverse-Functions}{Link to section in online textbook}
+ 
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 3  %%%
+%%%%%%%%%%%%%%%%%%%%%
+ 
+First, watch
+% UPDATE VIDEO LINK
+\underline{\href{https://mediasite.video.ufl.edu/Mediasite/Play/38913b95b7e94a1bafa4da5313d1c4cf1d}{this video}} to learn what it means for a function to be 1-1 and how we can determine if a function is 1-1.
+% OBJECTIVE of video.
+Feel free to pause the video and fill out the notes as you go.
+ 
+% Two types: Graphically and Algebraically
+ 
+% Q1 - Determine whether the graph is 1-1 (linear)
+\begin{question}
+Is the following graph 1-1?
+ 
+\[
+\graph[rectangular]{f(x) = 3x+4}
+\]
+ 
+$\answer[format=string]{Yes}$
+ 
+\begin{feedback}
+If you are having trouble seeing the Desmos graph, use the ``zoom out" button. You can also interact with the graph! Click and move to look around.
+\end{feedback}
+ 
+\begin{hint}
+\textit{"Yes" or "No"} \\ \\
+To check if an equation is a function, we have the [blank] Line Test. Do we have a similar way to test if a function is 1-1?
+\end{hint}
+ 
+\end{question}
+ 
+% Q2 - Determine whether the graph is 1-1 (Quadratic)
+\begin{question}
+Is the following graph 1-1?
+ 
+\[
+\graph[rectangular]{f(x) = -(x-2)^2+3}
+\]
+ 
+\begin{feedback}
+If you are having trouble seeing the Desmos graph, use the ``zoom out" button. You can also interact with the graph! Click and move to look around.
+\end{feedback}
+ 
+$\answer[format=string]{No}$
+\begin{hint}
+\textit{"Yes" or "No"} \\ \\
+To check if an equation is a function, we have the [blank] Line Test. Do we have a similar way to test if a function is 1-1?
+\end{hint}
+ 
+\end{question}
+ 
+% Q3 - Determine whether the function is 1-1 (Cubic)
+\begin{question}
+Is the following graph 1-1?
+ 
+\[
+\graph[rectangular]{f(x) = x^3 - 1}
+\]
+ 
+$\answer[format=string]{Yes}$
+ 
+\begin{feedback}
+If you are having trouble seeing the Desmos graph, use the ``zoom out" button. You can also interact with the graph! Click and move to look around.
+\end{feedback}
+ 
+\begin{hint}
+\textit{"Yes" or "No"} \\ \\
+To check if an equation is a function, we have the [blank] Line Test. Do we have a similar way to test if a function is 1-1?
+\end{hint}
+ 
+\end{question}
+ 
+% Q4 - Determine whether the function is 1-1 (Square root)
+\begin{question}
+Is the following graph 1-1?
+ 
+\[
+\graph[rectangular]{f(x) = (x-1)^{1/2}+3}
+\]
+ 
+\begin{feedback}
+If you are having trouble seeing the Desmos graph, use the ``zoom out" button. You can also interact with the graph! Click and move to look around.
+\end{feedback}
+ 
+$\answer[format=string]{Yes}$
+\begin{hint}
+\textit{"Yes" or "No"} \\ \\
+To check if an equation is a function, we have the [blank] Line Test. Do we have a similar way to test if a function is 1-1?
+\end{hint}
+\end{question}
+ 
+% Q5 - Determine whether the function is 1-1 (Square root)
+\begin{question}
+Is the following graph 1-1?
+ 
+\[
+\graph[rectangular]{f(x) = (x+2)^{1/3}-1}
+\]
+ 
+\begin{feedback}
+If you are having trouble seeing the Desmos graph, use the ``zoom out" button. You can also interact with the graph! Click and move to look around.
+\end{feedback}
+ 
+$\answer[format=string]{Yes}$
+\begin{hint}
+\textit{"Yes" or "No"} \\ \\
+To check if an equation is a function, we have the [blank] Line Test. Do we have a similar way to test if a function is 1-1?
+\end{hint}
+ 
+\end{question}
+ 
+% Q6 - Determine whether the function is 1-1 (Square root)
+\begin{question}
+Is the following graph 1-1?
+ 
+\[
+\graph[rectangular]{f(x) = 1/(x+1)}
+\]
+ 
+\begin{feedback}
+If you are having trouble seeing the Desmos graph, use the ``zoom out" button. You can also interact with the graph! Click and move to look around.
+\end{feedback}
+ 
+$\answer[format=string]{Yes}$
+\begin{hint}
+\textit{"Yes" or "No"} \\ \\
+To check if an equation is a function, we have the [blank] Line Test. Do we have a similar way to test if a function is 1-1?
+\end{hint}
+ 
+\end{question}
+ 
+% Q7 - Determine whether the graph is 1-1 (linear)
+\begin{question}
+Is the following function 1-1?
+ 
+$$ f(x) = 3x+4 $$
+ 
+$\answer[format=string]{Yes}$
+ 
+\begin{hint}
+\textit{"Yes" or "No"} \\ \\
+To algebraically check if an equation is a function, we check if $f(a) = f(b)$ leads to $a = b$. That is, you plug in $a$, plug in $b$, then set them equal to each other and try to reduce. If only there were an easier way to check...
+\end{hint}
+ 
+\end{question}
+ 
+% Q8 - Determine whether the graph is 1-1 (Quadratic)
+\begin{question}
+Is the following function 1-1?
+ 
+$$ f(x) = -(x-2)^2+3 $$
+ 
+$\answer[format=string]{No}$
+ 
+\begin{hint}
+\textit{"Yes" or "No"} \\ \\
+To algebraically check if an equation is a function, we check if $f(a) = f(b)$ leads to $a = b$. That is, you plug in $a$, plug in $b$, then set them equal to each other and try to reduce. If only there were an easier way to check...
+\end{hint}
+ 
+\end{question}
+ 
+% Q9 - Determine whether the function is 1-1 (Cubic)
+\begin{question}
+Is the following function 1-1?
+ 
+$$ f(x) = x^3 - 1 $$
+ 
+$\answer[format=string]{Yes}$
+ 
+\begin{hint}
+\textit{"Yes" or "No"} \\ \\
+To algebraically check if an equation is a function, we check if $f(a) = f(b)$ leads to $a = b$. That is, you plug in $a$, plug in $b$, then set them equal to each other and try to reduce. If only there were an easier way to check...
+\end{hint}
+ 
+\end{question}
+ 
+% Q10 - Determine whether the function is 1-1 (Square root)
+\begin{question}
+Is the following function 1-1?
+ 
+$$ f(x) = \sqrt{x-1}+3 $$
+ 
+$\answer[format=string]{Yes}$
+ 
+\begin{hint}
+\textit{"Yes" or "No"} \\ \\
+To algebraically check if an equation is a function, we check if $f(a) = f(b)$ leads to $a = b$. That is, you plug in $a$, plug in $b$, then set them equal to each other and try to reduce. If only there were an easier way to check...
+\end{hint}
+ 
+\end{question}
+ 
+% Q11 - Determine whether the function is 1-1 (Square root)
+\begin{question}
+Is the following function 1-1?
+ 
+$$ f(x) = \sqrt[3]{x+2}-1 $$
+ 
+$\answer[format=string]{Yes}$
+ 
+\begin{hint}
+\textit{"Yes" or "No"} \\ \\
+To algebraically check if an equation is a function, we check if $f(a) = f(b)$ leads to $a = b$. That is, you plug in $a$, plug in $b$, then set them equal to each other and try to reduce. If only there were an easier way to check...
+\end{hint}
+ 
+\end{question}
+ 
+% Q12 - Determine whether the function is 1-1 (Square root)
+\begin{question}
+Is the following function 1-1?
+ 
+$$ f(x) = \frac{1}{x+1} $$
+ 
+$\answer[format=string]{Yes}$
+ 
+\begin{hint}
+\textit{"Yes" or "No"} \\ \\
+To algebraically check if an equation is a function, we check if $f(a) = f(b)$ leads to $a = b$. That is, you plug in $a$, plug in $b$, then set them equal to each other and try to reduce. If only there were an easier way to check...
+\end{hint}
+ 
+\end{question}
+ 
+% Summary
+\begin{question}
+When you started this Objective, you were likely put off by the number of questions. This was done purposefully! Before moving on with the summary, \textbf{have you finished all of the previous questions?}
+ 
+$\answer[format=string]{Yes}$
+ 
+\begin{feedback}[correct]
+If you look back, the first 6 questions are exactly the same as questions 7 through 12! This was done to illustrate that \textbf{knowing the general shapes of functions can give you useful information!} In fact, this section can be done very quickly when using the Vertical Line Test. As you learn about new functions and new Coodinate Systems, the Vertical Line Test will stop telling you whether a function is 1-1. But we don't have to worry about that now.
+\end{feedback}
+ 
+\end{question}
+ 
+\end{document}

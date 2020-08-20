@@ -1,0 +1,246 @@
+<!DOCTYPE html><html lang="en"><head> <title>Objective 4 - Solve Exponential</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<!-- charset=utf-8,-css,html,htex4ht,xhtml --> 
+<meta name="src" content="solveExp.tex"/> 
+<meta name="author" content="Darryl Chamberlain
+Jr."/> 
+<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"/> 
+<meta name="ximera" content="version 0.0.1"/> 
+<link href="https://ximera.osu.edu/public/stylesheets/standalone.css" rel="stylesheet" media="screen"/> 
+<script type="text/javascript" async="" src="https://ximera.osu.edu/public/javascripts/standalone.min.js"></script> 
+<meta name="learning-outcome" content=""/> 
+<meta name="dependency" content="932dc370121d9c8682828373ca92bd4095993ca1 preamble.tex"/><meta name="dependency" content="6efc57dea16714401b03a50d284354250f05153e module8Activity/solveExp.tex"/></head><body> 
+<div class="preamble"><script type="math/tex">\newenvironment {prompt}{}{}
+\newcommand {\ungraded }[0]{}
+\newcommand {\npnoround }[0]{\nprounddigits {-1}}
+\newcommand {\npnoroundexp }[0]{\nproundexpdigits {-1}}
+\newcommand {\npunitcommand }[1]{\ensuremath {\mathrm {#1}}}
+\newcommand {\HyperFirstAtBeginDocument }[0]{\AtBeginDocument }</script><script type="text/javascript"> 
+</script> 
+</div>
+<div class="abstract">
+<!--l. 18--><p class="noindent">Solve exponential equations with the same or different bases.
+</p></div>   <div class="maketitle"></div>
+<a href="https://cnx.org/contents/mwjClAV_@8.1:wfhkHyEh@11/Exponential-and-Logarithmic-Equations">Link to section in online textbook.</a>
+<!--l. 28--><p class="noindent">First, watch <span class="underline"><a href="https://mediasite.video.ufl.edu/Mediasite/Play/a70362f0ebae4b12a37022c13921532c1d">this video</a></span> to learn how to solve certain types of exponential equations
+(when the bases are the same). Then practice this method below.
+</p>
+<script type="text/sagemath">x = var("x")
+
+def maybeMakeNegative(natural):
+    integer = natural*(-1)**ZZ.random_element(2)
+    return integer
+
+def generateFactor():
+    a0 = maybeMakeNegative(ZZ.random_element(2, 7))
+    a1 = maybeMakeNegative(ZZ.random_element(2, 7))
+    factor = a0*x + a1
+    return factor
+
+#####
+factor5a = generateFactor()
+factor5b = generateFactor()
+base5 = ZZ.random_element(2, 7)
+#
+while len(solve(factor5a - factor5b == 0, x)) == 0:
+    factor5a = generateFactor()
+    factor5b = generateFactor()
+    base5 = ZZ.random_element(2, 7)
+                                                                  
+
+                                                                  
+#
+solution5 = round(float( solve(factor5a - factor5b == 0, x)[0].rhs() ), 3)
+#####
+#####
+factor6a = generateFactor()
+factor6b = generateFactor()
+preBase6 = ZZ.random_element(2, 7)
+k6 = ZZ.random_element(2, 4)
+base6a = preBase6**k6
+base6b = preBase6
+#
+while len(solve(k6*factor6a - factor6b == 0, x)) == 0:
+    factor6a = generateFactor()
+    factor6b = generateFactor()
+    preBase6 = ZZ.random_element(2, 7)
+    k6 = ZZ.random_element(2, 4)
+    base6a = preBase6**k6
+    base6b = preBase6
+#
+solution6 = round(float( solve(k6*factor6a - factor6b == 0, x)[0].rhs() ), 3)
+#####
+#####
+factor7a = generateFactor()
+factor7b = generateFactor()
+preBase7 = ZZ.random_element(2, 7)
+k7 = -ZZ.random_element(2, 4)
+base7a = preBase7**k7
+base7b = preBase7
+#
+while len(solve(k7*factor7a - factor7b == 0, x)) == 0:
+    factor7a = generateFactor()
+    factor7b = generateFactor()
+                                                                  
+
+                                                                  
+    preBase7 = ZZ.random_element(2, 7)
+    k7 = -ZZ.random_element(2, 4)
+    base7a = preBase7**k7
+    base7b = preBase7
+#
+solution7 = round(float( solve(k7*factor7a - factor7b == 0, x)[0].rhs() ), 3)
+#####
+#####
+factor8a = generateFactor()
+factor8b = generateFactor()
+preBase8 = ZZ.random_element(2, 7)
+k8a = ZZ.random_element(2, 4)
+k8b = k8a + ZZ.random_element(1, 2)
+base8a = preBase8**k8a
+base8b = preBase8**k8b
+#
+while len(solve(k8a*factor8a - k8b*factor8b == 0, x)) == 0:
+    factor8a = generateFactor()
+    factor8b = generateFactor()
+    preBase8 = ZZ.random_element(2, 7)
+    k8a = ZZ.random_element(2, 4)
+    k8b = k8a + ZZ.random_element(1, 2)
+    base8a = preBase8**k8a
+    base8b = preBase8**k8b
+#
+solution8 = round(float( solve(k8a*factor8a - k8b*factor8b == 0, x)[0].rhs() ), 3)
+</script>
+<div role="article" class="problem-environment question" id="problem1"><a id="x1-8r1"></a> Solve the exponential equation below.
+<!--l. 118--><p class="noindent">
+                                                                  
+
+                                                                  
+                                 <script type="math/tex; mode=display"> \sage {base5}^{\sage {factor5a}} = \sage {base5}^{\sage {factor5b}} </script>
+</p><!--l. 120--><p class="noindent"><script type="math/tex"> x = \answer [tolerance=0.05]{\sage {solution5}} </script>
+</p></div>
+<div role="article" class="problem-environment question" id="problem2"><a id="x1-9r2"></a> Solve the exponential equation below.
+<!--l. 127--><p class="noindent">
+                                 <script type="math/tex; mode=display"> \sage {base6a}^{\sage {factor6a}} = \sage {base6b}^{\sage {factor6b}} </script>
+</p><!--l. 129--><p class="noindent"><script type="math/tex"> x = \answer [tolerance=0.05]{\sage {solution6}} </script>
+</p></div>
+<div role="article" class="problem-environment question" id="problem3"><a id="x1-10r3"></a> Solve the exponential equation below.
+<!--l. 136--><p class="noindent">
+                                 <script type="math/tex; mode=display"> \left (\sage {base7a}\right )^{\sage {factor7a}} = \sage {base7b}^{\sage {factor7b}} </script>
+</p><!--l. 138--><p class="noindent"><script type="math/tex"> x = \answer [tolerance=0.05]{\sage {solution7}} </script>
+</p></div>
+<div role="article" class="problem-environment question" id="problem4"><a id="x1-11r4"></a> Solve the exponential equation below.
+                                                                  
+
+                                                                  
+<!--l. 145--><p class="noindent">
+                                 <script type="math/tex; mode=display"> \sage {base8a}^{\sage {factor8a}} = \sage {base8b}^{\sage {factor8b}} </script>
+</p><!--l. 147--><p class="noindent"><script type="math/tex"> x = \answer [tolerance=0.05]{\sage {solution8}} </script>
+</p></div>
+<!--l. 150--><p class="noindent">It’s great when equations line up like this, but what happens if we <strong>can’t</strong> write the
+bases to be the same? Watch <span class="underline"><a href="https://mediasite.video.ufl.edu/Mediasite/Play/74d3379663e044208baceb58ec14428b1d">this video</a></span> to learn how to solve <strong>any</strong> type of exponential
+equation. Then practice with the questions below. <br class="newline"/>
+</p><!--l. 152--><p class="noindent"><em>Note: Yes, you can use this method all of the time! While changing the bases to be the
+same to rewrite the question can be easier sometimes, taking the log of both sides will
+<strong>always</strong> solve exponential equations.</em>
+</p>
+<script type="text/sagemath">x = var("x")
+
+def maybeMakeNegative(natural):
+    integer = natural*(-1)**ZZ.random_element(2)
+    return integer
+
+def generateFactor():
+    a0 = maybeMakeNegative(ZZ.random_element(2, 7))
+    a1 = maybeMakeNegative(ZZ.random_element(2, 7))
+    factor = a0*x + a1
+    return factor
+
+def generateRelativelyPrimeBases():
+    b0 = ZZ.random_element(2, 9)
+                                                                  
+
+                                                                  
+    b1 = ZZ.random_element(2, 9)
+    while gcd(b0, b1) > 1:
+        b0 = ZZ.random_element(2, 9)
+        b1 = ZZ.random_element(2, 9)
+    return [b0, b1]
+##########
+factor9a = generateFactor()
+factor9b = generateFactor()
+base9a, base9b = generateRelativelyPrimeBases()
+#
+while len(solve(factor9a * ln(base9a) - factor9b * ln(base9b) == 0, x)) == 0:
+    factor9a = generateFactor()
+    factor9b = generateFactor()
+    base9a, base9b = generateRelativelyPrimeBases()
+#
+solution9 = round(float( solve(factor9a * ln(base9a) - factor9b * ln(base9b) == 0, x)[0].rhs() ), 3)
+#####
+#####
+factor10a = generateFactor()
+factor10b = generateFactor()
+base10a = generateRelativelyPrimeBases()[0] ** ZZ.random_element(2, 4)
+base10b = generateRelativelyPrimeBases()[1] ** ZZ.random_element(2, 4)
+#
+while len(solve(factor10a * ln(base10a) - factor10b * ln(base10b) == 0, x)) == 0:
+    factor10a = generateFactor()
+    factor10b = generateFactor()
+    base10a = generateRelativelyPrimeBases()[0] ** ZZ.random_element(2, 4)
+    base10b = generateRelativelyPrimeBases()[1] ** ZZ.random_element(2, 4)
+#
+solution10 = round(float( solve(factor10a * ln(base10a) - factor10b * ln(base10b) == 0, x)[0].rhs() ), 3)
+#####
+#####
+                                                                  
+
+                                                                  
+factor11a = generateFactor()
+factor11b = generateFactor()
+base11a = generateRelativelyPrimeBases()[0] ** ZZ.random_element(2, 4)
+base11b = generateRelativelyPrimeBases()[1] ** - ZZ.random_element(2, 4)
+#
+while len(solve(factor11a * ln(base11a) - factor11b * ln(base11b) == 0, x)) == 0:
+    factor11a = generateFactor()
+    factor11b = generateFactor()
+    base11a = generateRelativelyPrimeBases()[0] ** ZZ.random_element(2, 4)
+    base11b = generateRelativelyPrimeBases()[1] ** - ZZ.random_element(2, 4)
+#
+solution11 = round(float( solve(factor11a * ln(base11a) - factor11b * ln(base11b) == 0, x)[0].rhs() ), 3)
+</script>
+<div role="article" class="problem-environment question" id="problem5"><a id="x1-12r5"></a> Solve the exponential equation below.
+<!--l. 219--><p class="noindent">
+                                 <script type="math/tex; mode=display"> \sage {base9a}^{\sage {factor9a}} = \sage {base9b}^{\sage {factor9b}} </script>
+</p><!--l. 221--><p class="noindent"><script type="math/tex"> x = \answer [tolerance=0.05]{\sage {solution9}} </script>
+</p></div>
+<div role="article" class="problem-environment question" id="problem6"><a id="x1-13r6"></a> Solve the exponential equation below.
+<!--l. 228--><p class="noindent">
+                                                                  
+
+                                                                  
+                                 <script type="math/tex; mode=display"> \sage {base10a}^{\sage {factor10a}} = \sage {base10b}^{\sage {factor10b}} </script>
+</p><!--l. 230--><p class="noindent"><script type="math/tex"> x = \answer [tolerance=0.05]{\sage {solution10}} </script>
+</p></div>
+<div role="article" class="problem-environment question" id="problem7"><a id="x1-14r7"></a> Solve the exponential equation below.
+<!--l. 237--><p class="noindent">
+                                 <script type="math/tex; mode=display"> \sage {base11a}^{\sage {factor11a}} = \sage {base11b}^{\sage {factor11b}} </script>
+</p><!--l. 239--><p class="noindent"><script type="math/tex"> x = \answer [tolerance=0.05]{\sage {solution11}} </script>
+</p></div>
+<div role="article" class="problem-environment question" id="problem8"><a id="x1-15r8"></a> <strong>Main takeaway:</strong> Before looking, you should work through the previous problems.
+<em>Have you finished working through the examples?</em> <script type="math/tex">\answer [format=string]{Yes}</script> <div class="feedback" data-feedback="correct" id="feedback9"> While changing the bases to be
+the same to rewrite the question can be easier sometimes, taking the log of both sides
+will <strong>always</strong> solve exponential equations. </div>
+</div>
+ 
+ 
+
+                                                                  
+
+                                                                  
+                                                                  
+
+
+</body></html>

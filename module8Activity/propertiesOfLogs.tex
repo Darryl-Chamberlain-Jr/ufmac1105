@@ -1,0 +1,124 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+
+\input{../preamble} %% we can turn off input when making a master document
+
+\outcome{}
+\author{Darryl Chamberlain Jr.}
+ 
+\title{Objective 3 - Properties of Logs}
+
+\begin{document}
+\begin{abstract}
+Utilize the properties of logarithmic functions to simplify expressions.
+\end{abstract}
+\maketitle
+
+\href{https://cnx.org/contents/mwjClAV_@8.1:nVZd13Io@12/Logarithmic-Properties}{Link to section in online textbook.}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 3  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+First, watch 
+% UPDATE VIDEO LINK
+\underline{\href{https://mediasite.video.ufl.edu/Mediasite/Play/7e65c57eca234077bd438136658d2db81d}{this video}} to learn about the various properties of logarithmic functions.  You'll want to memorize the following:
+
+\begin{itemize}
+\item $\log_b(1) = $
+\item $\log_b(b) = $
+\item $\log_b(xy) = $
+\item $\log_b(\frac{x}{y}) = $
+\item $\log_b(x^r) = $
+\end{itemize}
+
+% Create 2 different versions
+
+\begin{sagesilent}
+x, y, z, = var("x, y, z")
+
+def generateDisplayAndAnswer():
+    a = ZZ.random_element(3, 9)
+    expX = ZZ.random_element(3, 9)
+    expY = ZZ.random_element(3, 9)
+    expZ = ZZ.random_element(3, 9)
+    function = (1/2)*log(a) + (expX/2)*log(x) + (expY/2)*log(y) - expZ*log(z)
+    numerator = a*x**expX*y**expY
+    denominator = z**expZ
+    return [numerator, denominator, function]
+
+### QUESTION 7 ###
+numerator7, denominator7, answer7 = generateDisplayAndAnswer()
+
+### Question 8 ###
+numerator8, denominator8, answer8 = generateDisplayAndAnswer()
+\end{sagesilent}
+
+% Q7
+\begin{question}
+Use the properties of logarithmic functions to simplify the expression below to $\log$ of a single number or variable.
+
+$$ \log\left(\frac{\sqrt{\sage{numerator7}}}{\sage{denominator7}}\right) $$
+
+$ \answer{\sage{answer7}}$
+
+\hspace*{0mm} \\\\ \textit{Example answer: $2 \log(5) + 3 \log(x) - \frac{5}{2} \log(y) - 2 \log(z)$. If you aren't using the Math Editor at the top of the page, make sure you include \textbf{all} the parentheses!}
+
+\end{question}
+
+% Q8
+\begin{question}
+Use the properties of logarithmic functions to simplify the expression below to $\log$ of a single number or variable. 
+
+$$ \log\left(\frac{\sqrt{\sage{numerator8}}}{\sage{denominator8}}\right) $$
+
+$ \answer{\sage{answer8}}$
+
+\hspace*{0mm} \\\\ \textit{Example answer: $2 \log(5) + 3 \log(x) - \frac{5}{2} \log(y) - 2 \log(z)$. If you aren't using the Math Editor at the top of the page, make sure you include \textbf{all} the parentheses!}
+
+\end{question}
+
+\begin{sagesilent}
+def generateCoefficientsAndAnswer():
+    a = ZZ.random_element(3, 10)
+    b = ZZ.random_element(3, 10)
+    answer = round(float(ln(b)- 2*a), 3)
+    return [a, b, answer]
+
+constant9, numerator9, answer9 = generateCoefficientsAndAnswer()
+\end{sagesilent}
+
+In the last objective, we saw that we could solve logarithmic equations by converting to exponential form. If that doesn't work, we may want to try using properties of logarithmic functions to simplify, then convert (if needed). Try this with the problem below. 
+
+% Q9 
+\begin{question}
+Use the properties of logarithmic functions to solve the logarithmic equation below. 
+
+$$ \sage{constant9} = \ln\left( \sqrt{ \frac{\sage{numerator9}}{e^x}} \right)  $$
+
+$ x = \answer[tolerance=0.05]{\sage{answer9}} $
+
+\end{question}
+
+\begin{question}
+\textbf{Main takeaway:} Before looking, you should work through the previous problems. \textit{Have you finished working through the examples?} $\answer[format=string]{Yes}$
+\begin{feedback}[correct]
+We learned a few properties of logarithmic functions. 
+\begin{itemize}
+	\item $\log_b(1) = 0$
+	\item $\log_b(b) = 1$
+	\item $\log_b(xy) = \log_b{(x)} + \log_b{(y)}$
+	\item $\log_b(\frac{x}{y}) = \log_b{(x)} - \log_b{(y)}$
+	\item $\log_b(x^r) = r*\log_b{(x)}$
+\end{itemize}
+
+These properties allow us to break up extremely complicated functions into a sum/difference of $\log$ functions. This is actually used as an advanced technique in Calculus to deal with taking the derivative of particularly challenging functions! The last question was part of a Calculus question that I saw students struggle using their properties to simplify, so it became part of our course.
+\end{feedback}
+\end{question}
+
+\end{document}

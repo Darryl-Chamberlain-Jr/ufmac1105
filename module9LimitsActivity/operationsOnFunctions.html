@@ -1,0 +1,310 @@
+<!DOCTYPE html><html lang="en"><head> <title>Objective 1 - Domain</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<!-- charset=utf-8,-css,html,htex4ht,xhtml --> 
+<meta name="src" content="operationsOnFunctions.tex"/> 
+<meta name="author" content="Darryl Chamberlain
+Jr."/> 
+<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"/> 
+<meta name="ximera" content="version 0.0.1"/> 
+<link href="https://ximera.osu.edu/public/stylesheets/standalone.css" rel="stylesheet" media="screen"/> 
+<script type="text/javascript" async="" src="https://ximera.osu.edu/public/javascripts/standalone.min.js"></script> 
+<meta name="learning-outcome" content=""/> 
+<meta name="dependency" content="932dc370121d9c8682828373ca92bd4095993ca1 preamble.tex"/><meta name="dependency" content="fee57f87ed0e96124a4a460533932237587b5979 module9LimitsActivity/operationsOnFunctions.tex"/></head><body> 
+<div class="preamble"><script type="math/tex">\newenvironment {prompt}{}{}
+\newcommand {\ungraded }[0]{}
+\newcommand {\inputGif }[1]{The gif ‘‘#1&#x0022; would be inserted here when publishing online. }
+\newcommand {\npnoround }[0]{\nprounddigits {-1}}
+\newcommand {\npnoroundexp }[0]{\nproundexpdigits {-1}}
+\newcommand {\npunitcommand }[1]{\ensuremath {\mathrm {#1}}}
+\newcommand {\HyperFirstAtBeginDocument }[0]{\AtBeginDocument }                           </script><script type="text/javascript"> 
+</script> 
+</div>
+<div class="abstract">
+<!--l. 18--><p class="noindent">Identify the domain after operating <script type="math/tex">(+, -, \text {x}, \div )</script> on functions.
+</p></div>   <div class="maketitle"></div>
+<a href="https://cnx.org/contents/mwjClAV_@8.1:ik_Ed0Pa@12/Composition-of-Functions">Link to section in online textbook.</a>
+<!--l. 28--><p class="noindent">First, watch <span class="underline"><a href="https://mediasite.video.ufl.edu/Mediasite/Play/492b15b9c57c443d84b8f5bb37304a3d1d">this video</a></span> to see how operations change the domain of two functions.
+This is the first time we are treating <strong>functions</strong> like <strong>numbers</strong> that we can
+add/subtract/multiply/divide.
+</p>
+<script type="text/sagemath">x = var("x")
+
+def maybeMakeNegative(natural):
+    integer = natural*(-1)**ZZ.random_element(2)
+    return integer
+
+def generatePolynomial(degree):
+    coefficients = [maybeMakeNegative(ZZ.random_element(3, 7)), maybeMakeNegative(ZZ.random_element(3, 7)), maybeMakeNegative(ZZ.random_element(3, 7)), maybeMakeNegative(ZZ.random_element(3, 7)), maybeMakeNegative(ZZ.random_element(3, 7))]
+    if degree == 1:
+        coefficients[4] = 0
+        coefficients[3] = 0
+        coefficients[2] = 0
+    elif degree == 2:
+        coefficients[4] = 0
+        coefficients[3] = 0
+    else:
+        coefficients[4] = 0
+    polynomial = coefficients[4] * x**4 + coefficients[3] * x**3 + coefficients[2] * x**2 + coefficients[1] * x + coefficients[0]
+    return polynomial
+
+                                                                  
+
+                                                                  
+def generateQuadratic():
+    a1 = maybeMakeNegative(ZZ.random_element(1, 6))
+    b1 = maybeMakeNegative(ZZ.random_element(1, 6))
+    a2 = maybeMakeNegative(ZZ.random_element(1, 6))
+    b2 = maybeMakeNegative(ZZ.random_element(1, 6))
+    if -b1/a1 == -b2/a2 or a1 == 3 or a2 == 3:
+        a1 = maybeMakeNegative(ZZ.random_element(1, 6))
+        b1 = maybeMakeNegative(ZZ.random_element(1, 6))
+        a2 = maybeMakeNegative(ZZ.random_element(1, 6))
+        b2 = maybeMakeNegative(ZZ.random_element(1, 6))
+    factor1 = a1*x + b1
+    factor2 = a2*x + b2
+    quadratic = factor1 * factor2
+    if -b1/a1 < -b2/a2:
+        return [quadratic, -b1/a1, -b2/a2]
+    else:
+        return [quadratic, -b2/a2, -b1/a1]
+
+def generateRadical():
+    factor = generatePolynomial(1)
+    pivotPoint = round(float(solve(factor == 0, x)[0].rhs() ), 3)
+    checkNearby = pivotPoint - 1
+    if factor(x=checkNearby) < 0:
+        domain = [pivotPoint, Infinity]
+    else:
+        domain = [-Infinity, pivotPoint]
+    radical = sqrt(factor)
+    return [radical, domain]
+
+def generateRational():
+    factor = generatePolynomial(1)
+    excludeFromDomain = round(float(solve(factor == 0, x)[0].rhs() ), 3)
+                                                                  
+
+                                                                  
+    rational = 1/factor
+    return [rational, excludeFromDomain]
+######
+d1 = ZZ.random_element(1, 5)
+f1 = generatePolynomial(d1)
+g1 = generateQuadratic()
+###
+d2 = ZZ.random_element(1, 5)
+f2 = generatePolynomial(d2)
+g2 = generateRadical()
+while g2[1][0] == -Infinity:
+    g2 = generateRadical()
+###
+d3 = ZZ.random_element(1, 5)
+f3 = generatePolynomial(d3)
+g3 = generateRational()
+###
+g4 = generateRadical()
+while g4[1][1] == Infinity:
+    g4 = generateRadical()
+f4 = generateRational()
+while f4[1] > g4[1][1]:
+    f4 = generateRational()
+</script>
+<div role="article" class="problem-environment question" id="problem1"><a id="x1-9r1"></a>
+<!--l. 118--><p class="noindent">First, determine the domain of each function below. Then, determine the resulting
+domain after operating (<script type="math/tex">+, -, \text {x}, \div </script>) on the two functions.
+</p><!--l. 120--><p class="noindent">
+                                                                  
+
+                                                                  
+                                 <script type="math/tex; mode=display"> f(x) = \sage {f1} </script>
+                                 <script type="math/tex; mode=display"> g(x) = \sage {g1[0]} </script>
+</p><!--l. 123--><p class="noindent">Domain of <script type="math/tex">f(x)</script>: <script type="math/tex">\answer [format=string]{(} \answer {\sage {-Infinity}}, \answer {\sage {Infinity}} \answer [format=string]{)}</script>
+</p><!--l. 125--><p class="noindent">Sample response: <script type="math/tex">(-\infty , \infty )</script>
+</p>
+<div class="feedback" data-feedback="attempt" id="feedback2"><em>Note: There are boxes for you to put either ”(” or ”[” based on whether you want to
+include the end points. This is why there are four boxes.</em> </div>
+<div role="article" class="problem-environment hint" id="problem3"><a id="x1-10r2"></a> You are looking for the interval that describes the domain. If we do not need to
+remove numbers from the domain, the answer is <script type="math/tex">(-\infty , \infty )</script>. Otherwise, we need to restrict the
+domain like <script type="math/tex">(3, \infty )</script>.
+</div>
+<!--l. 135--><p class="noindent">Domain of <script type="math/tex">g(x)</script>: <script type="math/tex">\answer [format=string]{(} \answer {\sage {-Infinity}}, \answer {\sage {Infinity}} \answer [format=string]{)}</script> <br class="newline"/>
+</p><!--l. 137--><p class="noindent">Domain of <script type="math/tex">f(x) + g(x)</script>: <script type="math/tex">\answer [format=string]{(} \answer {\sage {-Infinity}}, \answer {\sage {Infinity}} \answer [format=string]{)}</script> <br class="newline"/>
+</p><!--l. 139--><p class="noindent">Domain of <script type="math/tex">f(x) - g(x)</script>: <script type="math/tex">\answer [format=string]{(} \answer {\sage {-Infinity}}, \answer {\sage {Infinity}} \answer [format=string]{)}</script> <br class="newline"/>
+</p><!--l. 141--><p class="noindent">Domain of <script type="math/tex">f(x) * g(x)</script>: <script type="math/tex">\answer [format=string]{(} \answer {\sage {-Infinity}}, \answer {\sage {Infinity}} \answer [format=string]{)}</script> <br class="newline"/>
+</p><!--l. 143--><p class="noindent">Domain of <script type="math/tex">f(x) \div g(x)</script>:
+                                                                  
+
+                                                                  
+                                 <script type="math/tex; mode=display">\answer [format=string]{(} \answer {\sage {-Infinity}}, \answer {\sage {g1[1]}} \answer [format=string]{)}</script>
+                                 <script type="math/tex; mode=display">\cup </script>
+                                 <script type="math/tex; mode=display">\answer [format=string]{(} \answer [tolerance=0.05]{\sage {g1[1]}}, \answer [tolerance=0.05]{\sage {g1[2]}} \answer [format=string]{)}</script>
+                                                                  
+
+                                                                  
+                                 <script type="math/tex; mode=display">\cup </script>
+                                 <script type="math/tex; mode=display">\answer [format=string]{(} \answer [tolerance=0.05]{\sage {g1[2]}}, \answer {\sage {Infinity}} \answer [format=string]{)}</script>
+</p>
+<div role="article" class="problem-environment hint" id="problem4"><a id="x1-11r3"></a> The denominator is already factored so you can focus on the new concept. How do
+we write the union of intervals when we have 2 points missing?
+</div>
+</div>
+<div role="article" class="problem-environment question" id="problem5"><a id="x1-12r4"></a> First, determine the domain of each function below. Then, determine the resulting
+domain after operating (<script type="math/tex">+, -, \text {x}, \div </script>) on the two functions.
+<!--l. 161--><p class="noindent">
+                                 <script type="math/tex; mode=display"> f(x) = \sage {f2} </script>
+                                                                  
+
+                                                                  
+                                 <script type="math/tex; mode=display"> g(x) = \sage {g2[0]} </script>
+</p><!--l. 164--><p class="noindent">Domain of <script type="math/tex">f(x)</script>: <script type="math/tex">\answer [format=string]{(} \answer {\sage {-Infinity}}, \answer {\sage {Infinity}} \answer [format=string]{)}</script>
+</p>
+<div class="feedback" data-feedback="attempt" id="feedback6"><em>Note: There are boxes for you to put either ”(” or ”[” based on whether you want to
+include the end points. This is why there are four boxes.</em> </div>
+<div role="article" class="problem-environment hint" id="problem7"><a id="x1-13r5"></a> You are looking for the interval that describes the domain. If we do not need to
+remove numbers from the domain, the answer is <script type="math/tex">(-\infty , \infty )</script>. Otherwise, we need to restrict the
+domain like <script type="math/tex">(3, \infty )</script>.
+</div>
+<!--l. 174--><p class="noindent">Domain of <script type="math/tex">g(x)</script>: <script type="math/tex">\answer [format=string]{[} \answer [tolerance=0.05]{\sage {g2[1][0]}}, \answer {\sage {Infinity}} \answer [format=string]{)}</script> <br class="newline"/>
+</p><!--l. 176--><p class="noindent">Domain of <script type="math/tex">f(x) + g(x)</script>: <script type="math/tex">\answer [format=string]{[} \answer [tolerance=0.05]{\sage {g2[1][0]}}, \answer {\sage {Infinity}} \answer [format=string]{)}</script> <br class="newline"/>
+</p><!--l. 178--><p class="noindent">Domain of <script type="math/tex">f(x) - g(x)</script>: <script type="math/tex">\answer [format=string]{[} \answer [tolerance=0.05]{\sage {g2[1][0]}}, \answer {\sage {Infinity}} \answer [format=string]{)}</script> <br class="newline"/>
+</p><!--l. 180--><p class="noindent">Domain of <script type="math/tex">f(x) * g(x)</script>: <script type="math/tex">\answer [format=string]{[} \answer [tolerance=0.05]{\sage {g2[1][0]}}, \answer {\sage {Infinity}} \answer [format=string]{)}</script> <br class="newline"/>
+</p><!--l. 182--><p class="noindent">Domain of <script type="math/tex">f(x) \div g(x)</script>: <script type="math/tex">\answer [format=string]{(} \answer [tolerance=0.05]{\sage {g2[1][0]}}, \answer {\sage {Infinity}} \answer [format=string]{)}</script>
+</p>
+<div role="article" class="problem-environment hint" id="problem8"><a id="x1-14r6"></a> The domain for division is <strong>nearly</strong> the same. Do we need to exclude something extra
+since the radical is in the denominator?
+</div>
+</div>
+<div role="article" class="problem-environment question" id="problem9"><a id="x1-15r7"></a>
+<!--l. 194--><p class="noindent">First, determine the domain of each function below. Then, determine the resulting
+domain after operating (<script type="math/tex">+, -, \text {x}, \div </script>) on the two functions.
+</p><!--l. 196--><p class="noindent">
+                                                                  
+
+                                                                  
+                                 <script type="math/tex; mode=display"> f(x) = \sage {f3} </script>
+                                 <script type="math/tex; mode=display"> g(x) = \sage {g3[0]} </script>
+</p><!--l. 199--><p class="noindent">Domain of <script type="math/tex">f(x)</script>: <script type="math/tex">\answer [format=string]{(} \answer {\sage {-Infinity}}, \answer {\sage {Infinity}} \answer [format=string]{)}</script>
+</p><!--l. 201--><p class="noindent"><em>Hint: You are looking for the interval that describes the domain. If we do not need to
+remove numbers from the domain, the answer is <script type="math/tex">(-\infty , \infty )</script>. Otherwise, we need to restrict the
+domain like <script type="math/tex">(3, \infty )</script>.</em> <br class="newline"/>
+</p><!--l. 203--><p class="noindent">Domain of <script type="math/tex">g(x)</script>:
+                                 <script type="math/tex; mode=display">\answer [format=string]{(} \answer {\sage {-Infinity}}, \answer [tolerance=0.05]{\sage {g3[1]}} \answer [format=string]{)}</script>
+                                                                  
+
+                                                                  
+                                 <script type="math/tex; mode=display">\cup </script>
+                                 <script type="math/tex; mode=display">\answer [format=string]{(} \answer [tolerance=0.05]{\sage {g3[1]}}, \answer {\sage {Infinity}} \answer [format=string]{)}</script>
+ <br class="newline"/>
+</p><!--l. 208--><p class="noindent">Domain of <script type="math/tex">f(x) + g(x)</script>:
+                                 <script type="math/tex; mode=display">\answer [format=string]{(} \answer {\sage {-Infinity}}, \answer [tolerance=0.05]{\sage {g3[1]}} \answer [format=string]{)}</script>
+                                                                  
+
+                                                                  
+                                 <script type="math/tex; mode=display">\cup </script>
+                                 <script type="math/tex; mode=display">\answer [format=string]{(} \answer [tolerance=0.05]{\sage {g3[1]}}, \answer {\sage {Infinity}} \answer [format=string]{)}</script>
+ <br class="newline"/>
+</p><!--l. 213--><p class="noindent">Domain of <script type="math/tex">f(x) - g(x)</script>:
+                                 <script type="math/tex; mode=display">\answer [format=string]{(} \answer {\sage {-Infinity}}, \answer [tolerance=0.05]{\sage {g3[1]}} \answer [format=string]{)}</script>
+                                 <script type="math/tex; mode=display">\cup </script>
+                                                                  
+
+                                                                  
+                                 <script type="math/tex; mode=display">\answer [format=string]{(} \answer [tolerance=0.05]{\sage {g3[1]}}, \answer {\sage {Infinity}} \answer [format=string]{)}</script>
+ <br class="newline"/>
+</p><!--l. 218--><p class="noindent">Domain of <script type="math/tex">f(x) * g(x)</script>:
+                                 <script type="math/tex; mode=display">\answer [format=string]{(} \answer {\sage {-Infinity}}, \answer [tolerance=0.05]{\sage {g3[1]}} \answer [format=string]{)}</script>
+                                 <script type="math/tex; mode=display">\cup </script>
+                                                                  
+
+                                                                  
+                                 <script type="math/tex; mode=display">\answer [format=string]{(} \answer {\sage {g3[1]}}, \answer {\sage {Infinity}} \answer [format=string]{)}</script>
+ <br class="newline"/>
+</p><!--l. 223--><p class="noindent">Domain of <script type="math/tex">f(x) \div g(x)</script>:
+                                 <script type="math/tex; mode=display">\answer [format=string]{(} \answer {\sage {-Infinity}}, \answer [tolerance=0.05]{\sage {g3[1]}} \answer [format=string]{)}</script>
+                                 <script type="math/tex; mode=display">\cup </script>
+                                 <script type="math/tex; mode=display">\answer [format=string]{(} \answer [tolerance=0.05]{\sage {g3[1]}}, \answer {\sage {Infinity}} \answer [format=string]{)}</script>
+                                                                  
+
+                                                                  
+</p>
+<div role="article" class="problem-environment hint" id="problem10"><a id="x1-16r8"></a> You may be tempted to say that dividing by a rational will “fix” the domain. When
+looking at the entire function <script type="math/tex">f(x) \div g(x)</script>, we want to make sure our values are defined on each
+function separately AND the resulting function.
+</div>
+</div>
+<div role="article" class="problem-environment question" id="problem11"><a id="x1-17r9"></a>
+<!--l. 238--><p class="noindent">First, determine the domain of each function below. Then, determine the resulting
+domain after operating (<script type="math/tex">+, -, \text {x}, \div </script>) on the two functions.
+</p><!--l. 240--><p class="noindent">
+                                 <script type="math/tex; mode=display"> f(x) = \sage {f4[0]} </script>
+                                 <script type="math/tex; mode=display"> g(x) = \sage {g4[0]} </script>
+</p><!--l. 243--><p class="noindent">Domain of <script type="math/tex">f(x)</script>:
+                                                                  
+
+                                                                  
+                                 <script type="math/tex; mode=display">\answer [format=string]{(} \answer {\sage {-Infinity}}, \answer [tolerance=0.05]{\sage {f4[1]}} \answer [format=string]{)}</script>
+                                 <script type="math/tex; mode=display">\cup </script>
+                                 <script type="math/tex; mode=display">\answer [format=string]{(} \answer [tolerance=0.05]{\sage {f4[1]}}, \answer {\sage {Infinity}} \answer [format=string]{)}</script>
+ <em>Hint: You are looking for the interval that describes the domain. If we do not need to
+remove numbers from the domain, the answer is <script type="math/tex">(-\infty , \infty )</script>. Otherwise, we need to restrict the
+domain like <script type="math/tex">(3, \infty )</script>.</em> <br class="newline"/>
+</p><!--l. 249--><p class="noindent">Domain of <script type="math/tex">g(x)</script>:
+                                                                  
+
+                                                                  
+                                 <script type="math/tex; mode=display">\answer [format=string]{(} \answer {\sage {-Infinity}}, \answer [tolerance=0.05]{\sage {g4[1][1]}} \answer [format=string]{]}</script>
+</p><!--l. 252--><p class="noindent">Domain of <script type="math/tex">f(x) + g(x)</script>:
+                                 <script type="math/tex; mode=display">\answer [format=string]{(} \answer {\sage {-Infinity}}, \answer [tolerance=0.05]{\sage {f4[1]}} \answer [format=string]{)}</script>
+                                 <script type="math/tex; mode=display">\cup </script>
+                                 <script type="math/tex; mode=display">\answer [format=string]{(} \answer [tolerance=0.05]{\sage {f4[1]}}, \answer [tolerance=0.05]{\sage {g4[1][1]}} \answer [format=string]{]}</script>
+ <br class="newline"/>
+                                                                  
+
+                                                                  
+</p><!--l. 257--><p class="noindent">Domain of <script type="math/tex">f(x) - g(x)</script>:
+                                 <script type="math/tex; mode=display">\answer [format=string]{(} \answer {\sage {-Infinity}}, \answer [tolerance=0.05]{\sage {f4[1]}} \answer [format=string]{)}</script>
+                                 <script type="math/tex; mode=display">\cup </script>
+                                 <script type="math/tex; mode=display">\answer [format=string]{(} \answer [tolerance=0.05]{\sage {f4[1]}}, \answer [tolerance=0.05]{\sage {g4[1][1]}} \answer [format=string]{]}</script>
+ <br class="newline"/>
+</p><!--l. 262--><p class="noindent">Domain of <script type="math/tex">f(x) * g(x)</script>:
+                                                                  
+
+                                                                  
+                                 <script type="math/tex; mode=display">\answer [format=string]{(} \answer {\sage {-Infinity}}, \answer [tolerance=0.05]{\sage {f4[1]}} \answer [format=string]{)}</script>
+                                 <script type="math/tex; mode=display">\cup </script>
+                                 <script type="math/tex; mode=display">\answer [format=string]{(} \answer [tolerance=0.05]{\sage {f4[1]}}, \answer [tolerance=0.05]{\sage {g4[1][1]}} \answer [format=string]{]}</script>
+ <br class="newline"/>
+</p><!--l. 267--><p class="noindent">Domain of <script type="math/tex">f(x) \div g(x)</script>:
+                                                                  
+
+                                                                  
+                                 <script type="math/tex; mode=display">\answer [format=string]{(} \answer {\sage {-Infinity}}, \answer [tolerance=0.05]{\sage {f4[1]}} \answer [format=string]{)}</script>
+                                 <script type="math/tex; mode=display">\cup </script>
+                                 <script type="math/tex; mode=display">\answer [format=string]{(} \answer [tolerance=0.05]{\sage {f4[1]}}, \answer [tolerance=0.05]{\sage {g4[1][1]}} \answer [format=string]{)}</script>
+</p>
+</div>
+<div role="article" class="problem-environment problem" id="problem12"><a id="x1-18r10"></a> Look back on the last 4 questions and see if you can spot a pattern. This pattern is
+our main takeaway for this objective: <br class="newline"/><br class="newline"/>
+<!--l. 277--><p class="noindent">The resulting domain is the <script type="math/tex">\answer [format=string]{intersection}</script> of the two parent domains. If we are looking at the
+special case of dividing, we also need to remove <script type="math/tex">g(x) = \answer {0}</script> from the <script type="math/tex">\answer [format=string]{intersection}</script> of the two parent
+domains.
+</p>
+                                                                  
+
+                                                                  
+<div class="feedback" data-feedback="correct" id="feedback13"> In Calculus, you will learn new operations on functions. One of the most important
+things to keep in mind is the relationship between the domain of the “parent
+function(s)” and the resulting function. </div>
+</div>
+ 
+ 
+
+                                                                  
+
+                                                                  
+                                                                  
+
+
+</body></html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html><html lang="en"><head> <title>Objective - Solving Rational Equations</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<!-- charset=utf-8,-css,html,htex4ht,xhtml --> 
+<meta name="src" content="solveRationalEquations.tex"/> 
+<meta name="author" content="Darryl Chamberlain
+Jr."/> 
+<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"/> 
+<meta name="ximera" content="version 0.0.1"/> 
+<link href="https://ximera.osu.edu/public/stylesheets/standalone.css" rel="stylesheet" media="screen"/> 
+<script type="text/javascript" async="" src="https://ximera.osu.edu/public/javascripts/standalone.min.js"></script> 
+<meta name="learning-outcome" content=""/> 
+<meta name="dependency" content="932dc370121d9c8682828373ca92bd4095993ca1 preamble.tex"/><meta name="dependency" content="8435e6403672c969aa38f560cce418568351e68e module7Activity/solveRationalEquations.tex"/></head><body> 
+<div class="preamble"><script type="math/tex">\newenvironment {prompt}{}{}
+\newcommand {\ungraded }[0]{}
+\newcommand {\npnoround }[0]{\nprounddigits {-1}}
+\newcommand {\npnoroundexp }[0]{\nproundexpdigits {-1}}
+\newcommand {\npunitcommand }[1]{\ensuremath {\mathrm {#1}}}
+\newcommand {\HyperFirstAtBeginDocument }[0]{\AtBeginDocument }</script><script type="text/javascript"> 
+</script> 
+</div>
+<div class="abstract">
+<!--l. 18--><p class="noindent">Solve rational equations that lead to linear and quadratic equations.
+</p></div>   <div class="maketitle"></div>
+<a href="https://cnx.org/contents/mwjClAV_@8.1:KNTP2r7D@13/Rational-Functions">Link to section in online textbook.</a>
+<!--l. 28--><p class="noindent">First, watch <span class="underline"><a href="https://mediasite.video.ufl.edu/Mediasite/Play/ffc3b5525c1f48cf96b92988eca638641d">this video</a></span> to learn how solving rational functions. Since our domain can
+be restricted, we need to check these values!
+</p>
+<script type="text/sagemath">x = var("x")
+
+def maybeMakeNegative(natural):
+    integer = natural*(-1)**ZZ.random_element(2)
+    return integer
+
+def generateTermsLinearSolutions(numberOfSolutions):
+    if (numberOfSolutions==0):
+        mask = ZZ.random_element(3, 7)
+        a = maybeMakeNegative(ZZ.random_element(2, 9)) * mask
+        d = -1
+        f = 1
+        e = a
+        b = maybeMakeNegative(ZZ.random_element(2, 9)) * mask
+        c = maybeMakeNegative(ZZ.random_element(2, 9)) * mask
+        solution = 0
+    else:
+        a = maybeMakeNegative(ZZ.random_element(2, 9))
+        b = maybeMakeNegative(ZZ.random_element(2, 9))
+        c = maybeMakeNegative(ZZ.random_element(2, 9))
+        d = maybeMakeNegative(ZZ.random_element(2, 9))
+                                                                  
+
+                                                                  
+        e = maybeMakeNegative(ZZ.random_element(2, 9))
+        f = maybeMakeNegative(ZZ.random_element(2, 9))
+        makeSolutionExist = (-f*a +e + d*c*f)/(-d*f*b)
+        #
+        while (makeSolutionExist==0):
+            a = maybeMakeNegative(ZZ.random_element(2, 9))
+            b = maybeMakeNegative(ZZ.random_element(2, 9))
+            c = maybeMakeNegative(ZZ.random_element(2, 9))
+            d = maybeMakeNegative(ZZ.random_element(2, 9))
+            e = maybeMakeNegative(ZZ.random_element(2, 9))
+            f = maybeMakeNegative(ZZ.random_element(2, 9))
+            makeSolutionExist = (-f*a +e + d*c*f)/(-d*f*b)
+        solution = (-f*a +e + d*c*f)/(-d*f*b)
+    leftTerm = (a/(b*x+c)) - d
+    rightTermNum = e
+    rightTermDenom = f*(b*x+c)
+    return [leftTerm, rightTermNum, rightTermDenom, solution]
+
+def generateCoefficientsQuadraticSolutions(numberOfSolutions):
+    #
+    a = maybeMakeNegative(ZZ.random_element(2, 7))
+    b = maybeMakeNegative(ZZ.random_element(2, 7))
+    c = maybeMakeNegative(ZZ.random_element(2, 7))
+    d = -ZZ.random_element(2, 7)
+    e = maybeMakeNegative(ZZ.random_element(2, 7))
+    f = maybeMakeNegative(ZZ.random_element(2, 7))
+    g = maybeMakeNegative(ZZ.random_element(2, 7))
+    discrim = (a*g-e*b)**2 - 4*(a*f+d)*(-e*c)
+    leadingCoefficient = a*f+d
+
+   #
+    if (numberOfSolutions == 0):
+                                                                  
+
+                                                                  
+        while (leadingCoefficient == 0 or discrim > 0 or discrim == 0):
+            a = maybeMakeNegative(ZZ.random_element(2, 7))
+            b = maybeMakeNegative(ZZ.random_element(2, 7))
+            c = maybeMakeNegative(ZZ.random_element(2, 7))
+            d = -ZZ.random_element(2, 7)
+            e = maybeMakeNegative(ZZ.random_element(2, 7))
+            f = maybeMakeNegative(ZZ.random_element(2, 7))
+            g = maybeMakeNegative(ZZ.random_element(2, 7))
+            discrim = (a*g-e*b)**2 - 4*(a*f+d)*(-e*c)
+            leadingCoefficient = a*f+d
+        solution = [0, 0]
+    elif (numberOfSolutions == 1):
+        while (leadingCoefficient==0 or discrim != 0):
+            a = maybeMakeNegative(ZZ.random_element(2, 7))
+            b = maybeMakeNegative(ZZ.random_element(2, 7))
+            c = maybeMakeNegative(ZZ.random_element(2, 7))
+            d = -ZZ.random_element(2, 7)
+            e = maybeMakeNegative(ZZ.random_element(2, 7))
+            f = maybeMakeNegative(ZZ.random_element(2, 7))
+            g = maybeMakeNegative(ZZ.random_element(2, 7))
+            discrim = (a*g-e*b)**2 - 4*(a*f+d)*(-e*c)
+            leadingCoefficient = a*f+d
+        quadraticEquation = (a*x)/(b*x+c) + (d*x**2)/(b*f*x**2 + (b*g+c*f)*x+c*g) - e/(f*x+g)
+        singleSolution = solve(quadraticEquation == 0, x)[0].rhs()
+        solution = [singleSolution, 0]
+    else:
+        while (leadingCoefficient==0 or discrim < 0 or discrim == 0):
+            a = maybeMakeNegative(ZZ.random_element(2, 7))
+            b = maybeMakeNegative(ZZ.random_element(2, 7))
+            c = maybeMakeNegative(ZZ.random_element(2, 7))
+            d = -ZZ.random_element(2, 7)
+            e = maybeMakeNegative(ZZ.random_element(2, 7))
+                                                                  
+
+                                                                  
+            f = maybeMakeNegative(ZZ.random_element(2, 7))
+            g = maybeMakeNegative(ZZ.random_element(2, 7))
+            discrim = (a*g-e*b)**2 - 4*(a*f+d)*(-e*c)
+            leadingCoefficient = a*f+d
+        quadraticEquation = (a*x)/(b*x+c) + (d*x**2)/(b*f*x**2 + (b*g+c*f)*x+c*g) - e/(f*x+g)
+        rawSolutions = solve(quadraticEquation == 0, x)
+        solution1 = rawSolutions[0].rhs()
+        solution2 = rawSolutions[1].rhs()
+        solution = sorted([solution1, solution2])
+    firstTerm = (a*x)/(b*x+c)
+    secondTerm = (d*x**2)/(b*f*x**2 + (b*g+c*f)*x+c*g)
+    thirdTerm = e/(f*x+g)
+    return [firstTerm, secondTerm, thirdTerm, solution]
+##########
+leftTerm1, rightTerm1Num, rightTerm1Denom, solution1 = generateTermsLinearSolutions(0)
+leftTerm2, rightTerm2Num, rightTerm2Denom, solution2 = generateTermsLinearSolutions(1)
+#
+firstTerm3, secondTerm3, thirdTerm3, solution3TEMP = generateCoefficientsQuadraticSolutions(0)
+leftTerm3 = firstTerm3 + secondTerm3
+#
+firstTerm4, secondTerm4, thirdTerm4, solution4TEMP = generateCoefficientsQuadraticSolutions(1)
+leftTerm4 = firstTerm4 + secondTerm4
+solution4 = solution4TEMP[0]
+#
+firstTerm5, secondTerm5, thirdTerm5, solution5TEMP = generateCoefficientsQuadraticSolutions(2)
+leftTerm5 = firstTerm5 + secondTerm5
+solution5a, solution5b = sorted([solution5TEMP[0], solution5TEMP[1]])
+</script>
+<div role="article" class="problem-environment question" id="problem1"><a id="x1-8r1"></a> Solve the rational equation below. <em>Remember to check your solutions to make sure
+they are valid!</em> If there is no solution, answer “NA”.
+<!--l. 150--><p class="noindent"><script type="math/tex"> \sage {leftTerm1} = \frac {\sage {rightTerm1Num}}{\sage {rightTerm1Denom}}</script>
+</p><!--l. 152--><p class="noindent">Solution: <script type="math/tex">x = \answer [format=string]{NA}</script>
+                                                                  
+
+                                                                  
+</p>
+</div>
+<div role="article" class="problem-environment question" id="problem2"><a id="x1-9r2"></a> Solve the rational equation below. <em>Remember to check your solutions to make sure
+they are valid!</em> If there is no solution, answer “NA”.
+<!--l. 161--><p class="noindent"><script type="math/tex"> \sage {leftTerm2} = \frac {\sage {rightTerm2Num}}{\sage {rightTerm2Denom}}</script>
+</p><!--l. 163--><p class="noindent">Solution: <script type="math/tex">x = \answer [tolerance=0.05]{\sage {solution2}}</script>
+</p>
+</div>
+<div role="article" class="problem-environment question" id="problem3"><a id="x1-10r3"></a> Solve the rational equation below. <em>Remember to check your solutions to
+make sure they are valid!</em> If there are more boxes than solutions, answer
+“NA”.
+<!--l. 172--><p class="noindent"><script type="math/tex"> \sage {leftTerm3} = \sage {thirdTerm3}</script>
+</p><!--l. 174--><p class="noindent">Solutions: <script type="math/tex">x = \answer [format=string]{NA}</script> and <script type="math/tex">x = \answer [format=string]{NA}</script>
+</p>
+</div>
+<div role="article" class="problem-environment question" id="problem4"><a id="x1-11r4"></a> Solve the rational equation below. <em>Remember to check your solutions to
+make sure they are valid!</em> If there are more boxes than solutions, answer
+“NA”.
+<!--l. 183--><p class="noindent"><script type="math/tex"> \sage {leftTerm4} = \sage {thirdTerm4}</script>
+</p><!--l. 185--><p class="noindent">Solutions: <script type="math/tex">x = \answer [tolerance=0.05]{\sage {solution4}}</script> and <script type="math/tex">x = \answer [format=string]{NA}</script>
+</p>
+</div>
+<div role="article" class="problem-environment question" id="problem5"><a id="x1-12r5"></a> Solve the rational equation below. <em>Remember to check your solutions to
+make sure they are valid!</em> If there are more boxes than solutions, answer
+“NA”.
+<!--l. 194--><p class="noindent"><script type="math/tex"> \sage {leftTerm5} = \sage {thirdTerm5}</script>
+</p><!--l. 196--><p class="noindent">Solutions: <script type="math/tex">x = \answer [tolerance=0.05]{\sage {solution5a}}</script> and <script type="math/tex">x = \answer [tolerance=0.05]{\sage {solution5b}}</script>
+</p></div>
+<div role="article" class="problem-environment question" id="problem6"><a id="x1-13r6"></a> <strong>Main takeaway:</strong> Before looking, you should work through the previous problems.
+<em>Have you finished working through the examples?</em> <script type="math/tex">\answer [format=string]{Yes}</script> <div class="feedback" data-feedback="correct" id="feedback7"> To solve rational equations, we
+want to multiply to remove the denominators. When in doubt, multiply by the
+denominator of each one at a time. This may not always be the most efficient way
+<em>(multiplying by the GCD would be)</em> it will eventually get the equation into a
+more manageable form. Like with radical functions, we also need to check
+our solutions to make sure they are valid – that we are not dividing by 0. </div>
+</div>
+                                                                  
+
+                                                                  
+ 
+ 
+
+                                                                  
+
+                                                                  
+                                                                  
+
+
+</body></html>

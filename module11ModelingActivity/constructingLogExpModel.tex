@@ -1,0 +1,113 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+ 
+\input{../preamble} %% we can turn off input when making a master document
+ 
+\outcome{}
+\author{Darryl Chamberlain Jr.}
+  
+\title{Objective 3 - Construct Log/Exp Models}
+ 
+\begin{document}
+\begin{abstract}
+
+\end{abstract}
+
+\maketitle
+ 
+% Link to textbook
+Link to textbook: 
+\href{https://cnx.org/contents/mwjClAV_@8.21:_tqWoaDz@17/Exponential-and-Logarithmic-Models}{Construct a model equation for the real-life situation.} 
+
+\textbf{Videos: }
+\begin{itemize}
+	\item \href{https://www.youtube.com/watch?v=8W2KbhC9mE0&feature=youtu.be%2F}{pH}
+	\item \href{https://www.youtube.com/watch?v=HYHzK6kF0ts&feature=youtu.be%2F}{Age using Half-Life}
+	\item \href{https://www.youtube.com/watch?v=eSOhLhSz9pk&feature=youtu.be%2F}{Doubling time growth pt. 1}
+	\item \href{https://www.youtube.com/watch?v=YK7rERyFlOM&feature=youtu.be%2F}{Doubling time growth pt. 2} 
+	\item \href{http://www.larsonprecalculus.com/precalc10e/content/instructional-videos/chapter-3/section-1/radioactive-decay-and-law-of-cooling/}{Radioactive Decay and Law of Cooling}
+\end{itemize}
+ 
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 3  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+%DOUBLING/TRIPILING/QUADRUPLING TIME
+\begin{sagesilent}
+t = var('t')
+rateList1 = ["doubles", "triples", "quadruples"]
+choose1 = ZZ.random_element(0, 3)
+rate1 = rateList1[choose1]
+initialBacteria1 = ZZ.random_element(1, 9)*100
+k1 = ln(choose1+2)
+bacteriaPopulation1 = initialBacteria1 * (choose1 + 2)**(t)
+\end{sagesilent}
+\begin{question}
+A population of bacteria $\sage{rate1}$ every hours. If the culture started with $\sage{initialBacteria1}$, write the equation that models the bacteria population after $t$ hours. 
+
+$P(t) = \answer{\sage{initialBacteria1}} \answer{\sage{choose1+2}}^{\answer{t}}$
+
+\end{question}
+
+% HALF-LIFE
+\begin{sagesilent}
+t = var('t')
+halfLifeYears2 = ZZ.random_element(100, 1001)*ZZ.random_element(100, 1001)
+initialAmount2 = ZZ.random_element(100, 1000)
+k2 = -ln(2)/halfLifeYears2
+equation2 = initialAmount2*e**(k2*t)
+\end{sagesilent}
+\begin{question}
+There is initially $\sage{initialAmount2}$ grams of element $X$. The half-life of element $X$ is $\sage{halfLifeYears2}$ years. Describe the amount of element $X$ remaining as a function of time, $t$, in years. Use $e$ as the base of your exponential model and exact values.
+
+$X(t) = \answer{\sage{initialAmount2}} e^{\answer{\sage{k2}t}  }$
+
+\begin{hint}
+	The exponent's coefficient is not $\frac{1}{\sage{halfLifeYears2}}$ nor is it $\frac{-1}{\sage{halfLifeYears2}}$. To find the correct coefficient, take the base exponential equation $\text{current amount } = \text{ initial amount } e^{ct}$,  use what you know about the half-life time and amount, then solve the equation for $c$. If you are having trouble, refer back to the objective on "Solving exponential equations". Do not use a calculator - use exact values to get a correct answer. 
+\end{hint}
+\end{question}
+
+% Carbon Dating
+\begin{sagesilent}
+t = var('t')
+r = var('r')
+k3 = ln(0.5)/5730
+equation3A = e**(t*k3)
+equation3B = ln(r)/k3
+percent3 = ZZ.random_element(1, 101)
+old3 = round(equation3B(percent3*0.01), 0)
+\end{sagesilent}
+
+\begin{question}
+The half-life of carbon-14 is 5,730 years. 
+
+\textbf{Part A.} Describe the amount of carbon-14 remaining after $t$ years. The initial amount of carbon-14, $C_0$, is already included below. 
+
+$C = C_0 * \answer{e}^{\answer{\sage{k3}t} }$
+
+\textbf{Part B.} Solve the equation above for $t$ written in terms of the ratio of carbon-14 remaining, $r = \frac{C}{C_0}$.
+
+$t = \answer[tolerance=0.001]{\sage{1/k3}} \ln(\answer{r}) $
+
+\textbf{Part C.} The equation above is used to carbon-date objects. \textit{To solidify this idea, use the model in Part B. to solve the following problem.}
+
+A bone fragment is found that contains $\sage{percent3}\%$ of its original carbon-14. To the nearest year, how old is the bone?
+
+$\answer{\sage{old3}} \, \text{ years old}$
+
+\begin{hint}
+	\textbf{Part A.} The exponent's coefficient is not $\frac{1}{5730}$ nor is it $\frac{-1}{5730}$. To find the correct coefficient, take the base exponential equation $\text{current amount } = \text{ initial amount } e^{ct}$,  use what you know about the half-life time and amount, then solve the equation for $c$. If you are having trouble, refer back to the objective on "Solving exponential equations". Do not use a calculator - use exact values to get a correct answer. 
+	
+	\textbf{Part B.} Now that you found the exponent's coefficient, you have modeled the general equation as $C = C_0 e^{ct}$. Since it asks you to rewrite the equation in terms of $r = \frac{C}{C_0}$, start by converting the equation into one with $r$ instead of $C$ and $C_0$. Then, solve the equation for $t$.
+	
+	\textbf{Part C.} What does $r = \frac{C}{C_0}$ represent? If we know this, then we could use the equation you built in Part B. to solve for the age of the bone. 
+\end{hint}
+
+\end{question}
+
+\end{document}

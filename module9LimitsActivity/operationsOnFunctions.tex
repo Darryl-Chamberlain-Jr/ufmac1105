@@ -1,0 +1,285 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+ 
+\input{../preamble} %% we can turn off input when making a master document
+ 
+\outcome{}
+\author{Darryl Chamberlain Jr.}
+  
+\title{Objective 1 - Domain}
+ 
+\begin{document}
+\begin{abstract}
+Identify the domain after operating $(+, -, \text{x}, \div)$ on functions.
+\end{abstract}
+\maketitle
+ 
+\href{https://cnx.org/contents/mwjClAV_@8.1:ik_Ed0Pa@12/Composition-of-Functions}{Link to section in online textbook.}
+ 
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 1  %%%
+%%%%%%%%%%%%%%%%%%%%%
+ 
+First, watch
+\underline{\href{https://mediasite.video.ufl.edu/Mediasite/Play/492b15b9c57c443d84b8f5bb37304a3d1d}{this video}} to see how operations change the domain of two functions. This is the first time we are treating \textbf{functions} like \textbf{numbers} that we can add/subtract/multiply/divide.
+ 
+% Types of functions:
+    % Polynomial - All Real numbers
+    % Rational -  Square and Cube
+    % Radical - Remove denominator
+ 
+\begin{sagesilent}
+x = var("x")
+ 
+def maybeMakeNegative(natural):
+    integer = natural*(-1)**ZZ.random_element(2)
+    return integer
+ 
+def generatePolynomial(degree):
+    coefficients = [maybeMakeNegative(ZZ.random_element(3, 7)), maybeMakeNegative(ZZ.random_element(3, 7)), maybeMakeNegative(ZZ.random_element(3, 7)), maybeMakeNegative(ZZ.random_element(3, 7)), maybeMakeNegative(ZZ.random_element(3, 7))]
+    if degree == 1:
+        coefficients[4] = 0
+        coefficients[3] = 0
+        coefficients[2] = 0
+    elif degree == 2:
+        coefficients[4] = 0
+        coefficients[3] = 0
+    else:
+        coefficients[4] = 0
+    polynomial = coefficients[4] * x**4 + coefficients[3] * x**3 + coefficients[2] * x**2 + coefficients[1] * x + coefficients[0]
+    return polynomial
+ 
+def generateQuadratic():
+    a1 = maybeMakeNegative(ZZ.random_element(1, 6))
+    b1 = maybeMakeNegative(ZZ.random_element(1, 6))
+    a2 = maybeMakeNegative(ZZ.random_element(1, 6))
+    b2 = maybeMakeNegative(ZZ.random_element(1, 6))
+    if -b1/a1 == -b2/a2 or a1 == 3 or a2 == 3:
+        a1 = maybeMakeNegative(ZZ.random_element(1, 6))
+        b1 = maybeMakeNegative(ZZ.random_element(1, 6))
+        a2 = maybeMakeNegative(ZZ.random_element(1, 6))
+        b2 = maybeMakeNegative(ZZ.random_element(1, 6))
+    factor1 = a1*x + b1
+    factor2 = a2*x + b2
+    quadratic = factor1 * factor2
+    if -b1/a1 < -b2/a2:
+        return [quadratic, -b1/a1, -b2/a2]
+    else:
+        return [quadratic, -b2/a2, -b1/a1]
+ 
+def generateRadical():
+    factor = generatePolynomial(1)
+    pivotPoint = round(float(solve(factor == 0, x)[0].rhs() ), 3)
+    checkNearby = pivotPoint - 1
+    if factor(x=checkNearby) < 0:
+        domain = [pivotPoint, Infinity]
+    else:
+        domain = [-Infinity, pivotPoint]
+    radical = sqrt(factor)
+    return [radical, domain]
+ 
+def generateRational():
+    factor = generatePolynomial(1)
+    excludeFromDomain = round(float(solve(factor == 0, x)[0].rhs() ), 3)
+    rational = 1/factor
+    return [rational, excludeFromDomain]
+######
+d1 = ZZ.random_element(1, 5)
+f1 = generatePolynomial(d1)
+g1 = generateQuadratic()
+###
+d2 = ZZ.random_element(1, 5)
+f2 = generatePolynomial(d2)
+g2 = generateRadical()
+while g2[1][0] == -Infinity:
+    g2 = generateRadical()
+###
+d3 = ZZ.random_element(1, 5)
+f3 = generatePolynomial(d3)
+g3 = generateRational()
+###
+g4 = generateRadical()
+while g4[1][1] == Infinity:
+    g4 = generateRadical()
+f4 = generateRational()
+while f4[1] > g4[1][1]:
+    f4 = generateRational()
+\end{sagesilent}
+ 
+% Q1 - 2 poly, g(x) is a quadratic
+ 
+\begin{question}
+ 
+First, determine the domain of each function below. Then, determine the resulting domain after operating ($+, -, \text{x}, \div$) on the two functions. 
+ 
+$$ f(x) = \sage{f1} $$
+$$ g(x) = \sage{g1[0]} $$
+ 
+Domain of $f(x)$: $\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer{\sage{Infinity}} \answer[format=string]{)}$
+
+Sample response: $(-\infty, \infty)$
+ 
+\begin{feedback}
+\textit{Note: There are boxes for you to put either "(" or "[" based on whether you want to include the end points. This is why there are four boxes.}
+\end{feedback}
+ 
+\begin{hint}
+You are looking for the interval that describes the domain. If we do not need to remove numbers from the domain, the answer is $(-\infty, \infty)$. Otherwise, we need to restrict the domain like $(3, \infty)$.
+\end{hint}
+ 
+Domain of $g(x)$: $\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer{\sage{Infinity}} \answer[format=string]{)}$  \\
+ 
+Domain of $f(x) + g(x)$: $\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer{\sage{Infinity}} \answer[format=string]{)}$  \\
+ 
+Domain of $f(x) - g(x)$: $\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer{\sage{Infinity}} \answer[format=string]{)}$  \\
+ 
+Domain of $f(x) * g(x)$: $\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer{\sage{Infinity}} \answer[format=string]{)}$  \\
+ 
+Domain of $f(x) \div g(x)$:
+$$\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer{\sage{g1[1]}} \answer[format=string]{)}$$
+$$\cup$$
+$$\answer[format=string]{(} \answer[tolerance=0.05]{\sage{g1[1]}}, \answer[tolerance=0.05]{\sage{g1[2]}} \answer[format=string]{)}$$
+$$\cup$$
+$$\answer[format=string]{(} \answer[tolerance=0.05]{\sage{g1[2]}}, \answer{\sage{Infinity}} \answer[format=string]{)}$$
+ 
+\begin{hint}
+The denominator is already factored so you can focus on the new concept. How do we write the union of intervals when we have 2 points missing?
+\end{hint}
+ 
+\end{question}
+ 
+% Q2 - Poly and Radical
+ 
+\begin{question}
+First, determine the domain of each function below. Then, determine the resulting domain after operating ($+, -, \text{x}, \div$) on the two functions.
+ 
+$$ f(x) = \sage{f2} $$
+$$ g(x) = \sage{g2[0]} $$
+ 
+Domain of $f(x)$: $\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer{\sage{Infinity}} \answer[format=string]{)}$
+ 
+\begin{feedback}
+\textit{Note: There are boxes for you to put either "(" or "[" based on whether you want to include the end points. This is why there are four boxes.}
+\end{feedback}
+ 
+\begin{hint}
+You are looking for the interval that describes the domain. If we do not need to remove numbers from the domain, the answer is $(-\infty, \infty)$. Otherwise, we need to restrict the domain like $(3, \infty)$.
+\end{hint}
+ 
+Domain of $g(x)$: $\answer[format=string]{[} \answer[tolerance=0.05]{\sage{g2[1][0]}}, \answer{\sage{Infinity}} \answer[format=string]{)}$  \\
+ 
+Domain of $f(x) + g(x)$: $\answer[format=string]{[} \answer[tolerance=0.05]{\sage{g2[1][0]}}, \answer{\sage{Infinity}} \answer[format=string]{)}$  \\
+ 
+Domain of $f(x) - g(x)$: $\answer[format=string]{[} \answer[tolerance=0.05]{\sage{g2[1][0]}}, \answer{\sage{Infinity}} \answer[format=string]{)}$  \\
+ 
+Domain of $f(x) * g(x)$: $\answer[format=string]{[} \answer[tolerance=0.05]{\sage{g2[1][0]}}, \answer{\sage{Infinity}} \answer[format=string]{)}$  \\
+ 
+Domain of $f(x) \div g(x)$: $\answer[format=string]{(} \answer[tolerance=0.05]{\sage{g2[1][0]}}, \answer{\sage{Infinity}} \answer[format=string]{)}$
+ 
+\begin{hint}
+The domain for division is \textbf{nearly} the same. Do we need to exclude something extra since the radical is in the denominator?
+\end{hint}
+ 
+\end{question}
+ 
+% Q3 - poly and rational
+ 
+\begin{question}
+ 
+First, determine the domain of each function below. Then, determine the resulting domain after operating ($+, -, \text{x}, \div$) on the two functions.
+ 
+$$ f(x) = \sage{f3} $$
+$$ g(x) = \sage{g3[0]} $$
+ 
+Domain of $f(x)$: $\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer{\sage{Infinity}} \answer[format=string]{)}$
+ 
+\textit{Hint: You are looking for the interval that describes the domain. If we do not need to remove numbers from the domain, the answer is $(-\infty, \infty)$. Otherwise, we need to restrict the domain like $(3, \infty)$.} \\
+ 
+Domain of $g(x)$:
+$$\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer[tolerance=0.05]{\sage{g3[1]}} \answer[format=string]{)}$$
+$$\cup$$
+$$\answer[format=string]{(} \answer[tolerance=0.05]{\sage{g3[1]}}, \answer{\sage{Infinity}} \answer[format=string]{)}$$  \\
+ 
+Domain of $f(x) + g(x)$:
+$$\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer[tolerance=0.05]{\sage{g3[1]}} \answer[format=string]{)}$$
+$$\cup$$
+$$\answer[format=string]{(} \answer[tolerance=0.05]{\sage{g3[1]}}, \answer{\sage{Infinity}} \answer[format=string]{)}$$  \\
+ 
+Domain of $f(x) - g(x)$:
+$$\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer[tolerance=0.05]{\sage{g3[1]}} \answer[format=string]{)}$$
+$$\cup$$
+$$\answer[format=string]{(} \answer[tolerance=0.05]{\sage{g3[1]}}, \answer{\sage{Infinity}} \answer[format=string]{)}$$  \\
+ 
+Domain of $f(x) * g(x)$:
+$$\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer[tolerance=0.05]{\sage{g3[1]}} \answer[format=string]{)}$$
+$$\cup$$
+$$\answer[format=string]{(} \answer{\sage{g3[1]}}, \answer{\sage{Infinity}} \answer[format=string]{)}$$  \\
+ 
+Domain of $f(x) \div g(x)$:
+$$\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer[tolerance=0.05]{\sage{g3[1]}} \answer[format=string]{)}$$
+$$\cup$$
+$$\answer[format=string]{(} \answer[tolerance=0.05]{\sage{g3[1]}}, \answer{\sage{Infinity}} \answer[format=string]{)}$$ 
+ 
+\begin{hint}
+You may be tempted to say that dividing by a rational will ``fix" the domain. When looking at the entire function $f(x) \div g(x)$, we want to make sure our values are defined on each function separately AND the resulting function.
+\end{hint}
+ 
+\end{question}
+ 
+% Q4 - radical and rational
+ 
+\begin{question}
+ 
+First, determine the domain of each function below. Then, determine the resulting domain after operating ($+, -, \text{x}, \div$) on the two functions.
+ 
+$$ f(x) = \sage{f4[0]} $$
+$$ g(x) = \sage{g4[0]} $$
+ 
+Domain of $f(x)$:
+$$\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer[tolerance=0.05]{\sage{f4[1]}} \answer[format=string]{)}$$
+$$\cup$$
+$$\answer[format=string]{(} \answer[tolerance=0.05]{\sage{f4[1]}}, \answer{\sage{Infinity}} \answer[format=string]{)}$$
+\textit{Hint: You are looking for the interval that describes the domain. If we do not need to remove numbers from the domain, the answer is $(-\infty, \infty)$. Otherwise, we need to restrict the domain like $(3, \infty)$.} \\
+ 
+Domain of $g(x)$:
+$$\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer[tolerance=0.05]{\sage{g4[1][1]}} \answer[format=string]{]}$$
+ 
+Domain of $f(x) + g(x)$:
+$$\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer[tolerance=0.05]{\sage{f4[1]}} \answer[format=string]{)}$$
+$$\cup$$
+$$\answer[format=string]{(} \answer[tolerance=0.05]{\sage{f4[1]}}, \answer[tolerance=0.05]{\sage{g4[1][1]}} \answer[format=string]{]}$$  \\
+ 
+Domain of $f(x) - g(x)$:
+$$\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer[tolerance=0.05]{\sage{f4[1]}} \answer[format=string]{)}$$
+$$\cup$$
+$$\answer[format=string]{(} \answer[tolerance=0.05]{\sage{f4[1]}}, \answer[tolerance=0.05]{\sage{g4[1][1]}} \answer[format=string]{]}$$  \\
+ 
+Domain of $f(x) * g(x)$:
+$$\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer[tolerance=0.05]{\sage{f4[1]}} \answer[format=string]{)}$$
+$$\cup$$
+$$\answer[format=string]{(} \answer[tolerance=0.05]{\sage{f4[1]}}, \answer[tolerance=0.05]{\sage{g4[1][1]}} \answer[format=string]{]}$$  \\
+ 
+Domain of $f(x) \div g(x)$:
+$$\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer[tolerance=0.05]{\sage{f4[1]}} \answer[format=string]{)}$$
+$$\cup$$
+$$\answer[format=string]{(} \answer[tolerance=0.05]{\sage{f4[1]}}, \answer[tolerance=0.05]{\sage{g4[1][1]}} \answer[format=string]{)}$$   
+ 
+\end{question}
+ 
+\begin{problem}
+Look back on the last 4 questions and see if you can spot a pattern. This pattern is our main takeaway for this objective: \\ \\
+ 
+The resulting domain is the $\answer[format=string]{intersection}$ of the two parent domains. If we are looking at the special case of dividing, we also need to remove $g(x) = \answer{0}$ from the $\answer[format=string]{intersection}$ of the two parent domains.
+ 
+\begin{feedback}[correct]
+In Calculus, you will learn new operations on functions. One of the most important things to keep in mind is the relationship between the domain of the ``parent function(s)" and the resulting function.
+\end{feedback}
+ 
+\end{problem}
+ 
+\end{document}

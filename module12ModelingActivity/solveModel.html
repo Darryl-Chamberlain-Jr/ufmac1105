@@ -1,0 +1,168 @@
+<!DOCTYPE html><html lang="en"><head> <title>Objective 3 - Solving Real-World Problems</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<!-- charset=utf-8,-css,html,htex4ht,xhtml --> 
+<meta name="src" content="solveModel.tex"/> 
+<meta name="author" content="Darryl Chamberlain
+Jr."/> 
+<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"/> 
+<meta name="ximera" content="version 0.0.1"/> 
+<link href="https://ximera.osu.edu/public/stylesheets/standalone.css" rel="stylesheet" media="screen"/> 
+<script type="text/javascript" async="" src="https://ximera.osu.edu/public/javascripts/standalone.min.js"></script> 
+<meta name="learning-outcome" content=""/> 
+<meta name="dependency" content="932dc370121d9c8682828373ca92bd4095993ca1 preamble.tex"/><meta name="dependency" content="29391e8669439012568d39e1117e3f9494bf764f module12ModelingActivity/solveModel.tex"/></head><body> 
+<div class="preamble"><script type="math/tex">\newenvironment {prompt}{}{}
+\newcommand {\ungraded }[0]{}
+\newcommand {\npnoround }[0]{\nprounddigits {-1}}
+\newcommand {\npnoroundexp }[0]{\nproundexpdigits {-1}}
+\newcommand {\npunitcommand }[1]{\ensuremath {\mathrm {#1}}}
+\newcommand {\HyperFirstAtBeginDocument }[0]{\AtBeginDocument }</script><script type="text/javascript"> 
+</script> 
+</div>
+<div class="abstract">
+</div>
+<div class="maketitle"></div>
+<!--l. 23--><p class="noindent"><em>Note: There are no textbook or videos directly to this section. If you want to review a
+certain type of model, you will need to go back to that Module.</em>
+</p><!--l. 29--><p class="noindent">We have spent a lot of time building models. Once we have a model, solving a
+real-world problem is just a matter of plugging in some values into your
+model.
+</p>
+<script type="text/sagemath">v = var('v')
+concA = ZZ.random_element(1, 4)*5
+concB = ZZ.random_element(2, 5)*10
+concTotal = ZZ.random_element(10, 31)
+while concTotal < concA or concTotal > concB:
+    concTotal = ZZ.random_element(10, 31)
+totalVolume = ZZ.random_element(5, 15)
+eqPartA6 = totalVolume - v
+eqPartB6 = concA * 0.01 * v
+eqPartC6 = concB * 0.01 * eqPartA6
+eqPartD6 = eqPartB6 + eqPartC6
+volumeA = solve(eqPartD6==concTotal*totalVolume*0.01, v)[0].rhs()
+volumeB = eqPartA6(volumeA)
+</script>
+<div role="article" class="problem-environment question" id="problem1"><a id="x1-8r1"></a> Chemists commonly create a solution by mixing two products of differing
+concentrations together. Find the amount of <script type="math/tex">\sage {concA}\%</script> acid solution and <script type="math/tex">\sage {concB}\%</script> acid solution needed
+to create a <script type="math/tex">\sage {totalVolume}</script> liter <script type="math/tex">\sage {concTotal}</script>% solution.
+<!--l. 50--><p class="noindent"><script type="math/tex">\sage {concA}\%</script> acid solution: <script type="math/tex">\answer [tolerance=0.05]{\sage {volumeA}}</script> liters
+</p><!--l. 52--><p class="noindent"><script type="math/tex">\sage {concB}\%</script> acid solution: <script type="math/tex">\answer [tolerance=0.05]{\sage {volumeB}}</script> liters
+</p>
+</div>
+                                                                  
+
+                                                                  
+<script type="text/sagemath">t = var('t')
+halfLifeYears2 = ZZ.random_element(10, 101)*ZZ.random_element(10, 101)
+afterYears = halfLifeYears2 + ZZ.random_element(50, 101)
+initialAmount2 = ZZ.random_element(100, 1000)
+k2 = ln(1/2)/halfLifeYears2
+equation2 = initialAmount2*e**(k2*t)
+amountLeft = equation2(afterYears)
+</script>
+<div role="article" class="problem-environment question" id="problem2"><a id="x1-9r2"></a> There is initially <script type="math/tex">\sage {initialAmount2}</script> grams of element <script type="math/tex">X</script>. The half-life of element <script type="math/tex">X</script> is <script type="math/tex">\sage {halfLifeYears2}</script> years. How much
+element <script type="math/tex">X</script> will be left after <script type="math/tex">\sage {afterYears}</script> years?
+<!--l. 69--><p class="noindent"><script type="math/tex">\answer [tolerance=0.01]{\sage {amountLeft}}</script> grams
+</p></div>
+<script type="text/sagemath">x = var("x")
+fixedCost1 = ZZ.random_element(10, 26)*1000
+productionCost1 = round(ZZ.random_element(1, 4)*0.05, 2)
+sellingPoint1 = round(productionCost1*ZZ.random_element(2, 5), 2)
+costs1 = productionCost1*x + fixedCost1
+profits1 = sellingPoint1*x
+revenue1 = profits1 - costs1
+exactBreakEven = solve(revenue1==0, x)[0].rhs()
+if exactBreakEven > round(exactBreakEven, 0):
+    breakEven = round(exactBreakEven, 0) + 1
+else:
+    breakEven = round(exactBreakEven, 0)
+</script>
+<div role="article" class="problem-environment question" id="problem3"><a id="x1-10r3"></a> A company sells doughnuts. They incur a fixed cost of $<script type="math/tex">\sage {fixedCost1}</script> for rent, insurance, and
+other expenses. It costs $<script type="math/tex">\sage {productionCost1}</script> to produce each doughnut. The company sells
+each doughnut for $<script type="math/tex">\sage {sellingPoint1}</script>. How many doughnuts would they need to sell to break
+even?
+<!--l. 91--><p class="noindent"><script type="math/tex">\answer {\sage {breakEven}}</script> doughnuts
+</p>
+</div>
+<script type="text/sagemath">k1 = (4*pi**2) / (9.8)
+a1 = ZZ.random_element(3, 9)
+                                                                  
+
+                                                                  
+saturnA = a1 - ZZ.random_element(1, 3)
+while (saturnA > a1):
+    a1 = ZZ.random_element(3, 9)
+    saturnA = a1 - ZZ.random_element(1, 3)
+T1 = round(k1*sqrt(a1**3)*12, 2)
+saturnMonths = round(k1*sqrt(saturnA**3)*12, 2)
+
+</script>
+<div role="article" class="problem-environment question" id="problem4"><a id="x1-11r4"></a> Kepler’s Third Law: The square of the time, <script type="math/tex">T</script>, required for a planet to orbit the Sun
+is directly proportional to the cube of the mean distance, <script type="math/tex">a</script>, that the planet is
+from the Sun. Assume that Neptune’s mean distance from the Sun is <script type="math/tex">\sage {a1}</script> AUs
+and it takes Neptune about <script type="math/tex">\sage {T1}</script> months to orbit the Sun. If it takes Saturn
+about <script type="math/tex">\sage {saturnMonths}</script> months to orbit the Sun, what is Saturn’s mean distance from the
+Sun?
+<!--l. 111--><p class="noindent"><script type="math/tex">\answer [tolerance=0.05]{\sage {saturnA}}</script>
+</p>
+</div>
+<script type="text/sagemath">t = var('t')
+r = var('r')
+k3 = ln(0.5)/5730
+equation3A = e**(t*k3)
+equation3B = ln(r)/k3
+percent3 = ZZ.random_element(1, 101)
+old3 = round(equation3B(percent3*0.01), 0)
+</script>
+<div role="article" class="problem-environment question" id="problem5"><a id="x1-12r5"></a> The half-life of carbon-14 is 5,730 years. A bone fragment is found that contains <script type="math/tex">\sage {percent3}\%</script> of
+its original carbon-14. To the nearest year, how old is the bone?
+<!--l. 128--><p class="noindent"><script type="math/tex">\answer {\sage {old3}} \, \text { years old}</script>
+</p>
+</div>
+<script type="text/sagemath">m = var('m')
+officerAspeed3 = ZZ.random_element(2, 7)
+officerBspeed3 = ZZ.random_element(2, 7)
+                                                                  
+
+                                                                  
+while officerAspeed3 == officerBspeed3:
+    officerAspeed3 = ZZ.random_element(2, 7)
+    officerBspeed3 = ZZ.random_element(2, 7)
+partA3 = officerAspeed3/60 * m
+partB3 = officerAspeed3/60 * m + officerBspeed3/60 * m
+partC3 = sqrt((officerAspeed3/60)**2 + (officerBspeed3/60)**2)*m
+distanceOfficers = ZZ.random_element(2, 5)
+timeOfficers = solve(partC3 == distanceOfficers, m)[0].rhs()
+</script>
+<div role="article" class="problem-environment question" id="problem6"><a id="x1-13r6"></a> Two UFPD are patrolling the campus on foot. To cover more ground, they split up
+and begin walking in different directions. Office A is walking at <script type="math/tex">\sage {officerAspeed3}</script> mph directly south
+while Office B is walking at <script type="math/tex">\sage {officerBspeed3}</script> mph directly west. How long would they need to walk
+before they are <script type="math/tex">\sage {distanceOfficers}</script> miles away from each other?
+<!--l. 150--><p class="noindent"><script type="math/tex">\answer [tolerance=0.05]{\sage {timeOfficers}}</script> minutes
+</p>
+</div>
+<script type="text/sagemath">t = var('t')
+rateList1 = ["doubles", "triples", "quadruples"]
+choose1 = ZZ.random_element(0, 3)
+rate1 = rateList1[choose1]
+initialBacteria1 = ZZ.random_element(1, 9)*100
+bacteriaPopulation1 = initialBacteria1 * (choose1 + 2)**(t)
+hugeBacteriaPopulation = ZZ.random_element(1, 9)
+timeToHugePopulation = solve(bacteriaPopulation1 == hugeBacteriaPopulation*1000000, t)[0].rhs()
+</script>
+<div role="article" class="problem-environment question" id="problem7"><a id="x1-14r7"></a> A population of bacteria <script type="math/tex">\sage {rate1}</script> every hour. If the culture started with <script type="math/tex">\sage {initialBacteria1}</script>, how long would it
+take before the population is over <script type="math/tex">\sage {hugeBacteriaPopulation}</script> million?
+<!--l. 167--><p class="noindent"><script type="math/tex">\answer [tolerance=0.05]{\sage {timeToHugePopulation}}</script> hours
+</p>
+</div>
+ 
+ 
+
+                                                                  
+
+                                                                  
+                                                                  
+
+
+</body></html>

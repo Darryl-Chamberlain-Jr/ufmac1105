@@ -1,0 +1,160 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+
+\input{../preamble} %% we can turn off input when making a master document
+
+\outcome{}
+\author{Darryl Chamberlain Jr.}
+ 
+\title{Objective 3 - Solving Radical Equations (Linear)}
+
+\begin{document}
+\begin{abstract}
+Solve radical equations that lead to linear equations.
+\end{abstract}
+\maketitle
+
+\href{https://cnx.org/contents/mwjClAV_@8.1:uI1As6DV@15/Other-Types-of-Equations}{Link to section in online textbook.}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 3  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+First, watch 
+% UPDATE VIDEO LINK
+\underline{\href{https://mediasite.video.ufl.edu/Mediasite/Play/631ca9eb67f349698705032a7c42906d1d}{this video}} to see how solving radical equations is different from solving linear and quadratic equations. \textbf{The major difference is in the restricted domains of radical functions!} This objective will focus on radical equations that lead to linear equations.  That means we can have 0 or 1 solution \textit{(based on whether the potential solution is in the domains of the radical functions)}. 
+
+\begin{sagesilent}
+def createSingleSolutionLinearFactors(): 
+    a = (-1)**(ZZ.random_element(2))*(ZZ.random_element(2, 10))
+    b = (-1)**(ZZ.random_element(2))*(ZZ.random_element(2, 10))
+    c = (-1)**(ZZ.random_element(2))*(ZZ.random_element(2, 10))
+    d = (-1)**(ZZ.random_element(2))*(ZZ.random_element(2, 10))
+    factorA = a*x + b
+    factorB = c*x + d
+    answerList = solve(factorA-factorB==0, x)
+    while len(answerList)==0 or b==d:
+        a = (-1)**(ZZ.random_element(2))*(ZZ.random_element(2, 10))
+        b = (-1)**(ZZ.random_element(2))*(ZZ.random_element(2, 10))
+        c = (-1)**(ZZ.random_element(2))*(ZZ.random_element(2, 10))
+        d = (-1)**(ZZ.random_element(2))*(ZZ.random_element(2, 10))
+        factorA = a*x + b
+        factorB = c*x + d
+        answerList = solve(factorA-factorB==0, x)
+    return [a, b, c, d]
+
+a9, b9, c9, d9 = createSingleSolutionLinearFactors()
+factor9A = a9*x + b9
+factor9B = c9*x + d9
+answer9 = round(float(solve(factor9A-factor9B==0, x)[0].rhs()), 3)
+checkFactorAGreater9 = factor9A(answer9)
+checkFactorBGreater9 = factor9B(answer9)
+while (checkFactorAGreater9 < 0 or checkFactorBGreater9 < 0):
+    a9, b9, c9, d9 = createSingleSolutionLinearFactors()
+    factor9A = a9*x + b9
+    factor9B = c9*x + d9
+    answer9 = round(float(solve(factor9A-factor9B==0, x)[0].rhs()), 3)
+    checkFactorAGreater9 = factor9A(answer9)
+    checkFactorBGreater9 = factor9B(answer9)
+
+a10, b10, c10, d10 = createSingleSolutionLinearFactors()
+factor10A = a10*x + b10
+factor10B = c10*x + d10
+answer10 = round(float(solve(factor10A-factor10B==0, x)[0].rhs()), 3)
+checkFactorAGreater10 = factor10A(answer10)
+checkFactorBGreater10 = factor10B(answer10)
+while (checkFactorAGreater10 < 0 or checkFactorBGreater10 < 0):
+    a10, b10, c10, d10 = createSingleSolutionLinearFactors()
+    factor10A = a10*x + b10
+    factor10B = c10*x + d10
+    answer10 = round(float(solve(factor10A-factor10B==0, x)[0].rhs()), 3)
+    checkFactorAGreater10 = factor10A(answer10)
+    checkFactorBGreater10 = factor10B(answer10)
+
+a11, b11, c11, d11 = createSingleSolutionLinearFactors()
+factor11A = a11*x + b11
+factor11B = c11*x + d11
+answer11 = round(float(solve(factor11A-factor11B==0, x)[0].rhs()), 3)
+checkFactorAGreater11 = factor11A(answer11)
+checkFactorBGreater11 = factor11B(answer11)
+while (checkFactorAGreater11 > 0 and checkFactorBGreater11 > 0):
+    a11, b11, c11, d11 = createSingleSolutionLinearFactors()
+    factor11A = a11*x + b11
+    factor11B = c11*x + d11
+    answer11 = round(float(solve(factor11A-factor11B==0, x)[0].rhs()), 3)
+    checkFactorAGreater11 = factor11A(answer11)
+    checkFactorBGreater11 = factor11B(answer11)
+
+a12, b12, c12, d12 = createSingleSolutionLinearFactors()
+factor12A = a12*x + b12
+factor12B = c12*x + d12
+answer12 = round(float(solve(factor12A-factor12B==0, x)[0].rhs()), 3)
+checkFactorAGreater12 = factor12A(answer12)
+checkFactorBGreater12 = factor12B(answer12)
+while (checkFactorAGreater12 > 0 and checkFactorBGreater12 > 0):
+    a12, b12, c12, d12 = createSingleSolutionLinearFactors()
+    factor12A = a12*x + b12
+    factor12B = c12*x + d12
+    answer12 = round(float(solve(factor12A-factor12B==0, x)[0].rhs()), 3)
+    checkFactorAGreater12 = factor12A(answer12)
+    checkFactorBGreater12 = factor12B(answer12)
+\end{sagesilent}
+
+% Q9
+\begin{question}
+Solve the following equation. \textit{If there is no Real solution, type "NA".}
+
+$$ \sqrt{\sage{factor9A}} = \sqrt{\sage{factor9B}} $$
+
+Potential Solution: $x = \answer[tolerance=0.05]{\sage{answer9}}$
+
+Actual Solution: $x = \answer[tolerance=0.05]{\sage{answer9}}$
+
+\begin{hint}
+How can we tell if the potential solution (the value we get from squaring both sides and solving) is an actual solution? Is there anything we need to worry about when it comes to square root functions? \textit{(think domain)}
+\end{hint}
+
+\end{question}
+
+% Q10
+\begin{question}
+Solve the following equation. \textit{If there is no Real solution, type "NA".}
+
+$$ \sqrt{\sage{factor11A}} = \sqrt{\sage{factor11B}} $$
+
+Potential Solution: $x = \answer[tolerance=0.05]{\sage{answer11}}$
+
+Actual Solution: $x = \answer[format=string]{NA}$
+
+\end{question}
+
+% Q11
+\begin{question}
+Solve the following equation. \textit{If there is no Real solution, type "NA".}
+
+$$ \sqrt{\sage{factor12A}} = \sqrt{\sage{factor12B}} $$
+
+Potential Solution: $x = \answer[tolerance=0.05]{\sage{answer12}}$
+
+Actual Solution: $x = \answer[format=string]{NA}$
+
+\end{question}      
+
+% Q12
+\begin{question}
+Solve the following equation. \textit{If there is no Real solution, type "NA".}
+
+$$ \sqrt{\sage{factor10A}} = \sqrt{\sage{factor10B}} $$
+
+Potential Solution: $x = \answer[tolerance=0.05]{\sage{answer10}}$
+
+Actual Solution: $x = \answer[tolerance=0.05]{\sage{answer10}}$
+
+\end{question}
+
+\end{document}

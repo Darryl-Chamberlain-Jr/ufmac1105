@@ -1,0 +1,158 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+ 
+\input{../preamble} %% we can turn off input when making a master document
+ 
+\outcome{}
+\author{Darryl Chamberlain Jr.}
+  
+\title{Objective 2 - Construct Correct Model}
+ 
+\begin{document}
+\begin{abstract}
+
+\end{abstract}
+
+\maketitle
+ 
+\textit{Note: There are no textbook or videos directly to this section. If you want to review a certain type of model, you will need to go back to that Module.}
+ 
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 1  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{General tips to constructing a model:}
+\begin{itemize}
+\item Identify the appropriate function to model the situation.
+\item Try introducing small numbers to check your model. \textit{For example, if you need to model population growth, try using a small population like 10 to make sure you are seeing the growth you expect.}
+\item Check your units and variables. 
+\end{itemize}
+
+% LINEAR
+\begin{sagesilent}
+v = var('v')
+concA = ZZ.random_element(1, 4)*5
+concB = ZZ.random_element(2, 5)*10
+concTotal = ZZ.random_element(10, 31)
+while concTotal < concA or concTotal > concB:
+    concTotal = ZZ.random_element(10, 31)
+totalVolume = ZZ.random_element(5, 15)
+eqPartA6 = totalVolume - v
+eqPartB6 = concA * 0.01 * v
+eqPartC6 = concB * 0.01 * eqPartA6
+eqPartD6 = eqPartB6 + eqPartC6
+\end{sagesilent}
+\begin{question}
+Chemists commonly create a solution by mixing two products of differing concentrations together. For example, a chemist could have large amounts of a $\sage{concA}\%$ acid solution and a $\sage{concB}\%$ acid solution, but need a $\sage{totalVolume}$ liter $\sage{concTotal}$\% solution. Construct a model that describes the amount of acid in a $\sage{concTotal}\%$ acid solution, $A_{\sage{concTotal}}$, in terms of the volume of the $\sage{concA}\%$ acid solution, $v$. 
+
+$A_{\sage{concTotal}} = \answer{\sage{eqPartD6}}$
+
+\end{question}
+
+% EXPONENTIAL 
+\begin{sagesilent}
+t = var('t')
+halfLifeYears2 = ZZ.random_element(100, 1001)*ZZ.random_element(100, 1001)
+initialAmount2 = ZZ.random_element(100, 1000)
+k2 = -ln(2)/halfLifeYears2
+equation2 = initialAmount2*e**(k2*t)
+\end{sagesilent}
+\begin{question}
+There is initially $\sage{initialAmount2}$ grams of element $X$. The half-life of element $X$ is $\sage{halfLifeYears2}$ years. Describe the amount of element $X$ remaining as a function of time, $t$, in years.
+
+$X(t) = \answer{\sage{initialAmount2}} \answer{e}^{\answer{\sage{k2}} t}$
+\end{question}
+
+% LINEAR
+\begin{sagesilent}
+x = var("x")
+fixedCost1 = ZZ.random_element(10, 26)*1000
+productionCost1 = round(ZZ.random_element(1, 4)*0.05, 2)
+sellingPoint1 = round(productionCost1*ZZ.random_element(1, 4), 2)
+costs1 = productionCost1*x + fixedCost1
+profits1 = sellingPoint1*x
+revenue1 = profits1 - costs1
+\end{sagesilent}
+
+\begin{question}
+A company sells doughnuts. They incur a fixed cost of \$$\sage{fixedCost1}$ for rent, insurance, and other expenses. It costs \$$\sage{productionCost1}$ to produce each doughnut. The company sells each doughnut for \$$\sage{sellingPoint1}$. Construct a model that describes their total revenue, $R$, as a function of the number of doughnuts, $x$, they produce.
+
+$R(x) = \answer{\sage{revenue1}}$
+
+\end{question}
+
+% DIRECT 
+\begin{sagesilent}
+k = var('k')
+a = var('a')
+k4 = round((4*pi**2) / (9.8), 3)
+a4 = ZZ.random_element(3, 9)
+T4 = round(k4*sqrt(a4**3)*12, 2)
+\end{sagesilent}
+
+\begin{question}
+Kepler's Third Law: The square of the time, $T$, required for a planet to orbit the Sun is directly proportional to the cube of the mean distance, $a$, that the planet is from the Sun. Assume that Mars' mean distance from the Sun is $\sage{a4}$ AUs and it takes Mars about $\sage{T4}$ months to orbit the Sun. Write the equation that describes time $T$ (years) in terms of the mean distance, $a$ (AUs).
+
+$T(a) = \answer[tolerance=0.05]{\sage{k4}} a^{\answer{3/2}}$
+
+\end{question}
+
+\begin{sagesilent}
+t = var('t')
+r = var('r')
+k5 = ln(0.5)/5730
+equation5A = e**(t*k5)
+equation5B = ln(r)/k5
+percent5 = ZZ.random_element(1, 101)
+old5 = round(equation5B(percent5*0.01), 0)
+\end{sagesilent}
+
+\begin{question}
+The half-life of carbon-14 is 5,730 years. Describe the age in years of an object in terms of the ratio of carbon-14, $r = \frac{C}{C_0}$, remaining.
+
+$t(r) = \answer[tolerance=0.01]{\sage{1/k5}} \ln(\answer{r}) $
+
+\end{question}
+
+% LINEAR
+\begin{sagesilent}
+m = var('m')
+officerAspeed3 = ZZ.random_element(2, 7)
+officerBspeed3 = ZZ.random_element(2, 7)
+while officerAspeed3 == officerBspeed3:
+    officerAspeed3 = ZZ.random_element(2, 7)
+    officerBspeed3 = ZZ.random_element(2, 7)
+partA3 = officerAspeed3/60 * m
+partB3 = officerAspeed3/60 * m + officerBspeed3/60 * m
+partC3 = sqrt((officerAspeed3/60)**2 + (officerBspeed3/60)**2)*m
+\end{sagesilent}
+
+\begin{question}
+Two UFPD are patrolling the campus on foot. To cover more ground, they split up and begin walking in different directions. Office A is walking at $\sage{officerAspeed3}$ mph while Office B is walking at $\sage{officerBspeed3}$ mph. Construct a model that describes their total distance from each other, $T_2$, as a function of minutes, $m$, that have passed \textit{if they were walking in exactly 90 degrees from each other} (e.g., North/East).
+
+$T_2(m) = \answer{\sage{partC3}}$
+
+\end{question}
+
+\begin{sagesilent}
+t = var('t')
+rateList1 = ["doubles", "triples", "quadruples"]
+choose8 = ZZ.random_element(0, 3)
+rate8 = rateList1[choose8]
+initialBacteria8 = ZZ.random_element(1, 9)*100
+k8 = ln(choose8+2)
+bacteriaPopulation8 = initialBacteria8 * (choose8 + 2)**(k8*t)
+\end{sagesilent}
+\begin{question}
+A population of bacteria $\sage{rate8}$ every hours. If the culture started with $\sage{initialBacteria8}$, write the equation that models the bacteria population after $t$ hours. 
+
+$P(t) = \answer{\sage{initialBacteria8}} \answer{\sage{choose8+2}}^{\answer{t}}$
+
+\end{question}
+
+\end{document}

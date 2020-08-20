@@ -1,0 +1,270 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+
+\input{../preamble} %% we can turn off input when making a master document
+
+\outcome{}
+\author{Darryl Chamberlain Jr.}
+ 
+\title{Objective 1 - Domain of Rational Functions}
+
+\begin{document}
+\begin{abstract}
+Identify the domain of a rational function.
+\end{abstract}
+\maketitle
+
+\href{https://cnx.org/contents/mwjClAV_@8.1:KNTP2r7D@13/Rational-Functions}{Link to section in online textbook.}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 1  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+As we discussed in Module 1, we cannot divide by 0. This gives us ``something" that is not a Real \textit{(nor a Complex)} number. When considering the domain of a rational function, we need to exclude these values. The questions below will consider different rational functions to give you an idea of what our domain can look like. \href{https://www.youtube.com/watch?v=jCqSSp449UI}{Try working through the following questions BEFORE watching the video here!}
+
+\begin{sagesilent}
+R, x = QQ['x'].objgen()
+
+def maybeMakeNegative(natural):
+    integer = natural*(-1)**ZZ.random_element(2)
+    return integer 
+
+def makeIntegerFactor():
+    zero = maybeMakeNegative(ZZ.random_element(1, 6))
+    integerFactor = x - zero
+    return [integerFactor, zero]
+
+def makeRationalFactor():
+    a = maybeMakeNegative(ZZ.random_element(1, 4))
+    b = maybeMakeNegative(ZZ.random_element(1, 6))
+    while gcd(abs(a), abs(b)) > 1:
+        a = maybeMakeNegative(ZZ.random_element(1, 4))
+        b = maybeMakeNegative(ZZ.random_element(1, 6))
+    rationalFactor = a*x + b
+    return [rationalFactor, -b/a]
+
+def makeIrrationalQuadratic():
+    a = maybeMakeNegative(ZZ.random_element(1, 6))
+    b = maybeMakeNegative(ZZ.random_element(1, 6))
+    c = maybeMakeNegative(ZZ.random_element(1, 6))
+    discrim = b**2 - 4*a*c
+    integerType = type(2)
+    while type(sqrt(discrim)) == integerType:
+        a = maybeMakeNegative(ZZ.random_element(1, 6))
+        b = maybeMakeNegative(ZZ.random_element(1, 6))
+        c = maybeMakeNegative(ZZ.random_element(1, 6))
+        discrim = b**2 - 4*a*c
+    solution0 = (-b + sqrt(discrim))/2*a
+    solution1 = (-b - sqrt(discrim))/2*a
+    smallerSolution, largerSolution = sorted([solution0, solution1])
+    quadratic = a*x**2 + b*x + c
+    return [quadratic, smallerSolution, largerSolution]
+
+def makeComplexQuadratic():
+    a0 = maybeMakeNegative(ZZ.random_element(1, 4))
+    b0 = maybeMakeNegative(ZZ.random_element(1, 6))
+    complex0 = a0 + b0*i
+    complex1 = a0 - b0*i
+    quadratic = x**2 + (a0**2 + b0**2)
+    return [quadratic, complex0, complex1]
+##########
+function1, answer1 = makeIntegerFactor()
+###
+function2, answer2 = makeRationalFactor()
+###
+factor3a, answer3aTEMP = makeRationalFactor()
+factor3b, answer3bTEMP = makeRationalFactor()
+while answer3aTEMP == answer3bTEMP:
+    factor3a, answer3aTEMP = makeRationalFactor()
+    factor3b, answer3bTEMP = makeRationalFactor()
+answer3a, answer3b = sorted([answer3aTEMP, answer3bTEMP])
+###
+factor4a, answer4aTEMP = makeIntegerFactor()
+factor4b, answer4bTEMP = makeIntegerFactor()
+while answer4aTEMP == answer4bTEMP:
+    function4a, answer4aTEMP = makeIntegerFactor()
+    function4b, answer4bTEMP = makeIntegerFactor()
+function4 = factor4a * factor4b
+answer4a, answer4b = sorted([answer4aTEMP, answer4bTEMP])
+###
+factor5a, answer5aTEMP = makeRationalFactor()
+factor5b, answer5bTEMP = makeRationalFactor()
+while answer5aTEMP == answer5bTEMP:
+    function5a, answer5aTEMP = makeRationalFactor()
+    function5b, answer5bTEMP = makeRationalFactor()
+function5 = factor5a * factor5b
+answer5a, answer5b = sorted([answer5aTEMP, answer5bTEMP])
+###
+factor6a, answer6aTEMP = makeRationalFactor()
+factor6b, answer6bTEMP = makeRationalFactor()
+#factor6c, answer6cTEMP = makeIntegerFactor()
+while answer6aTEMP == answer6bTEMP:
+    function6a, answer6aTEMP = makeRationalFactor()
+    function6b, answer6bTEMP = makeRationalFactor()
+function6 = factor6a * factor6b * x
+answer6a, answer6b, answer6c = sorted([answer6aTEMP, answer6bTEMP, 0])
+###
+#factor7a, answer7 = makeIntegerFactor()
+answer7 = 0
+factor7b, answer7complexA, answer7complexB = makeComplexQuadratic()
+function7 = x * factor7b
+\end{sagesilent}
+
+\textit{First, we start with a bare-bones example.}
+
+% Q1 - Basic, f(x) = 1/(x-a)
+\begin{question}
+Solve for when the denominator is equal to zero.
+
+$ f(x) = \frac{1}{\sage{function1}} $
+
+The denominator is zero when $x = \answer{\sage{answer1}}$. 
+
+That means the domain of the rational function is 
+
+$$ \answer[format=string]{(} \answer{\sage{-Infinity}}, \answer{\sage{answer1}} \answer[format=string]{)} $$ 
+$$\cup$$
+$$\answer[format=string]{(} \answer{\sage{answer1}}, \answer{\sage{Infinity}} \answer[format=string]{)} $$
+
+\end{question}
+
+\textit{Does it matter that our first example had an Integer that was removed from the domain? Let's try to do the same thing when a Rational number makes the denominator zero. }
+
+% Q2 - Basic, f(x) = 1/(a_0 x - a_1)
+\begin{question}
+Solve for when the denominator is equal to zero. 
+
+$ f(x) = \frac{1}{\sage{function2}} $
+
+The denominator is zero when $x = \answer[tolerance=0.05]{\sage{answer2}}$. 
+
+That means the domain of the rational function is 
+
+$$ \answer[format=string]{(} \answer{\sage{-Infinity}}, \answer[tolerance=0.05]{\sage{answer2}} \answer[format=string]{)}$$
+$$\cup$$
+$$\answer[format=string]{(} \answer[tolerance=0.05]{\sage{answer2}}, \answer{\sage{Infinity}} \answer[format=string]{)} $$
+
+
+% Remember to give tolerances when necessary
+\end{question}
+
+\textit{So we've seen that it doesn't matter what type of Real number makes the denominator zero. What happens when we have two or more fractions in the same function? The domain is the intersection of the domains of each function separately \textbf{(we'll dig into this idea in a later Module)}. Since we are just working with rational functions, an easier way to think of this is to remove every value that makes a denominator equal to zero from the domain of the function. Practice this with the following function. }
+
+% Q3 - Add/Subtract, f(x) = 1/(a_0 x - a_1) + 1/(b_0 x - b_1)
+\begin{question}
+Solve for when the denominator is equal to zero. 
+
+$ f(x) = \frac{1}{\sage{factor3a}} - \frac{1}{\sage{factor3b}} $
+
+The denominator is zero when $x = \answer[tolerance=0.05]{\sage{answer3a}}$ and $x = \answer[tolerance=0.05]{\sage{answer3b}}$. 
+
+That means the domain of the rational function is 
+
+$$ \answer[format=string]{(} \answer{\sage{-Infinity}}, \answer[tolerance=0.05]{\sage{answer3a}} \answer[format=string]{)}$$
+$$\cup $$
+$$\answer[format=string]{(} \answer[tolerance=0.05]{\sage{answer3a}}, \answer[tolerance=0.05]{\sage{answer3b}} \answer[format=string]{)} $$
+$$\cup $$
+$$\answer[format=string]{(} \answer[tolerance=0.05]{\sage{answer3b}}, \answer{\sage{Infinity}} \answer[format=string]{)}
+$$
+
+% Remember to give tolerances when necessary
+\end{question}
+
+\textit{What happens if we have a polynomial that is larger than degree 1 in the denominator? We will need to factor it somehow!}
+
+% Q4 - Need to factor, f(x) = 1/(x-a)(x-b)
+\begin{question}
+Solve for when the denominator is equal to zero. 
+
+$ f(x) = \frac{1}{\sage{function4}} $
+
+The denominator is zero when $x = \answer[tolerance=0.05]{\sage{answer4a}}$ and $x = \answer[tolerance=0.05]{\sage{answer4b}}$. 
+
+That means the domain of the rational function is 
+
+$$ \answer[format=string]{(} \answer{\sage{-Infinity}}, \answer[tolerance=0.05]{\sage{answer4a}} \answer[format=string]{)} $$
+$$ \cup $$
+$$ \answer[format=string]{(} \answer[tolerance=0.05]{\sage{answer4a}}, \answer[tolerance=0.05]{\sage{answer4b}} \answer[format=string]{)} $$
+$$ \cup $$
+$$ \answer[format=string]{(} \answer[tolerance=0.05]{\sage{answer4b}}, \answer{\sage{Infinity}} \answer[format=string]{)}
+$$
+% Remember to give tolerances when necessary
+\end{question}
+
+\textit{We are slowly ramping up the difficulty in factoring the denominator. Practice again when the two zeros are Rational numbers.}
+
+% Q5 - Need to factor, f(x) = 1/(a_0 x - a_1)(b_0 x - b_1)
+\begin{question}
+Solve for when the denominator is equal to zero. 
+
+$ f(x) = \frac{1}{\sage{function5}} $
+
+The denominator is zero when $x = \answer[tolerance=0.05]{\sage{answer5a}}$ and $x = \answer[tolerance=0.05]{\sage{answer5b}}$. 
+
+That means the domain of the rational function is 
+
+$$ \answer[format=string]{(} \answer{\sage{-Infinity}}, \answer[tolerance=0.05]{\sage{answer5a}} \answer[format=string]{)} $$
+$$ \cup $$
+$$ \answer[format=string]{(} \answer[tolerance=0.05]{\sage{answer5a}}, \answer[tolerance=0.05]{\sage{answer5b}} \answer[format=string]{)} $$
+$$ \cup $$
+$$ \answer[format=string]{(} \answer[tolerance=0.05]{\sage{answer5b}}, \answer{\sage{Infinity}} \answer[format=string]{)}$$
+
+% Remember to give tolerances when necessary
+\end{question}
+
+\textit{Practice again when there are three Rational zeros.}
+
+%Q6 - Need to factor cubic, f(x) = 1/(x-a)(b_0 x - b_1)(c_0 x - c_1)
+\begin{question}
+Solve for when the denominator is equal to zero. 
+
+$ f(x) = \frac{1}{\sage{function6}} $
+
+The denominator is zero when $x = \answer[tolerance=0.05]{\sage{answer6a}}$, $x = \answer[tolerance=0.05]{\sage{answer6b}}$, and $x = \answer[tolerance=0.05]{\sage{answer6c}}$. 
+
+That means the domain of the rational function is 
+
+$$ \answer[format=string]{(} \answer{\sage{-Infinity}}, \answer[tolerance=0.05]{\sage{answer6a}} \answer[format=string]{)} $$
+$$ \cup $$
+$$ \answer[format=string]{(} \answer[tolerance=0.05]{\sage{answer6a}}, \answer[tolerance=0.05]{\sage{answer6b}} \answer[format=string]{)} $$
+$$ \cup $$
+$$ \answer[format=string]{(} \answer[tolerance=0.05]{\sage{answer6b}}, \answer[tolerance=0.05]{\sage{answer6c}} \answer[format=string]{)} $$
+$$ \cup $$
+$$ \answer[format=string]{(} \answer[tolerance=0.05]{\sage{answer6c}}, \answer{\sage{Infinity}} \answer[format=string]{)} $$
+\end{question}
+
+\textit{Up to this point, I've made sure there were as many $x$-values removed from the domain as the degree in the denominator. But this doesn't have to be the case! If we have copies, like for the function $f(x)=\frac{1}{(x-1)^2}$, we would only remove $x=1$ from the domain. But there is one other case where the degree of the polynomial in the denominator would not match the number of $x$-values we remove from the domain...}
+
+%Q7 - Need to factor cubic, complex denominator, f(x) = 1/(x-a)(x-bi)(x+bi)
+\begin{question}
+Solve for when the denominator is equal to zero. 
+
+$ f(x) = \frac{1}{\sage{function7}} $
+
+The denominator is zero when $x = \answer{\sage{answer7}}$. 
+\begin{feedback}
+There is only one REAL value that makes the denominator equal to zero - the others are complex. As we have been doing in this course, we are only looking at functions graphed on the Real plane. It is a far more difficult question to consider these functions on the Complex plane. 
+\end{feedback}
+
+That means the domain of the rational function is 
+
+$$ \answer[format=string]{(} \answer{\sage{-Infinity}}, \answer{\sage{answer7}} \answer[format=string]{)} $$
+$$ \cup $$
+$$ \answer[format=string]{(} \answer{\sage{answer7}}, \answer{\sage{Infinity}} \answer[format=string]{)} $$
+
+\end{question}
+
+% TAKEAWAY
+\begin{question}
+\textbf{Main takeaway:} Before looking, you should work through the previous problems. \textit{Have you finished working through the examples?} $\answer[format=string]{Yes}$
+\begin{feedback}[correct]
+To find the domain of a rational function, solve for when the denominator is equal to zero. If there are multiple fractions, remove when each denominator is equal to zero from the domain. The number of $x$-values we remove \textit{does not need to be the same as the degree of the polynomial}! If we have copies (e.g., $f(x) = \frac{1}{(x-1)^2}$) or we have complex roots (e.g., $f(x) = \frac{1}{x^2 + 4}$), we would have less $x$-values to remove from the domain than the degree of the polynomial in the denominator.
+\end{feedback}
+\end{question}
+
+\end{document}

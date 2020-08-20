@@ -1,0 +1,319 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+
+\input{../preamble} %% we can turn off input when making a master document
+
+\outcome{Understand quadratic functions.}
+\author{Darryl Chamberlain Jr.}
+ 
+\title{Objective 1 - Factor trinomials}
+
+\begin{document}
+\begin{abstract}
+Factor a trinomial with leading coefficient 1 and greater than 1. 
+\end{abstract}
+\maketitle
+
+\href{https://cnx.org/contents/mwjClAV_@8.1:Sc8taR03@9/Factoring-Polynomials}{Link to section in online textbook}
+
+One of the most important tools we will learn in this class is how to factor. We will need it in nearly all Modules from now on. 
+
+Watch \underline{\href{https://mediasite.video.ufl.edu/Mediasite/Play/fba151da987447b9953fc738071bd4411d}{this video}} to review the basics for factoring trinomials. \textbf{Important: You may be able to factor these trinomials by guessing and checking. However, learning this basic technique will help you when you need to factor more difficult trinomials!}
+
+Now try to factor the following polynomials. 
+
+\begin{sagesilent}
+x = var("x")
+#################
+def maybeMakeNegative(rational):
+    maybeNegative = (-1)**ZZ.random_element(1)
+    rational = maybeNegative * rational
+    return rational
+def generateNumber(maxRange):
+    number = 2*(ZZ.random_element(maxRange-2)+2)
+    return number
+def createZeros(maxRange):
+    c = maybeMakeNegative(generateNumber(maxRange))
+    d = maybeMakeNegative(generateNumber(maxRange))
+    while (c==-d or c==d):
+        c = maybeMakeNegative(generateNumber(maxRange))
+        d = maybeMakeNegative(generateNumber(maxRange))
+    if (c < d or c==d):
+        return [c, d]
+    else:
+        return [d, c]
+##### END OF DEFINTIONS #####
+
+###### QUESTION 4 #######
+zeros4 = createZeros(14)
+quadratic4 = x**2 + (zeros4[0] + zeros4[1]) * x + zeros4[0]*zeros4[1]
+factor4A = x+zeros4[0]
+factor4B = x+zeros4[1]
+###### QUESTION 5 #######
+zeros5 = createZeros(14)
+quadratic5 = x**2 + (zeros5[0] + zeros5[1]) * x + zeros5[0]*zeros5[1]
+factor5A = x+zeros5[0]
+factor5B = x+zeros5[1]
+\end{sagesilent}
+
+\begin{question}
+
+Factor the trinomial below. 
+
+$\sage{quadratic4}$ 
+
+($\answer{\sage{factor4A}}$) ($\answer{\sage{factor4B}}$)
+
+\end{question}
+
+\begin{question}
+
+Factor the trinomial below. 
+	
+$\sage{quadratic5}$ 
+
+($\answer{\sage{factor5A}}$)($\answer{\sage{factor5B}}$) 
+
+\end{question}
+
+Now that we have the basic technique to factor trinomials, we can focus on more difficult trinomials. Watch \underline{\href{https://mediasite.video.ufl.edu/Mediasite/Play/a022a3fb56194931b3f6c9833a9cd2251d}{this video}} to learn how to use the previous technique and extend it to trinomials with leading coefficient greater than 1.
+
+Now try to factor the following polynomials. 
+
+\begin{sagesilent}
+x = var("x")
+import random
+import math
+
+#######################
+def maybeMakeNegative(rational):
+    maybeNegative = (-1)**ZZ.random_element(1)
+    rational = maybeNegative * rational
+    return rational
+
+def generateZeros(minimum, maximum):
+    a = ZZ.random_element(maximum-minimum)+minimum
+    b = maybeMakeNegative(ZZ.random_element(maximum-minimum)+minimum)
+    while gcd(abs(a), abs(b)) > 1:
+        a = ZZ.random_element(maximum-minimum)+minimum
+        b = maybeMakeNegative(ZZ.random_element(maximum-minimum)+minimum)
+    return [a, -b]
+
+########## END OF DEFINITIONS #############
+
+##### QUESTION 6 ######
+zeros6 = generateZeros(3, 9)
+quadratic6 = zeros6[0]**2 * x**2 - zeros6[1]**2
+factor6A = zeros6[0]*x-abs(zeros6[1])
+factor6B = zeros6[0]*x+abs(zeros6[1])
+
+##### QUESTION 7 ######
+zeros7 = generateZeros(3, 9)
+quadratic7 = zeros7[0]**2 * x**2 - zeros7[1]**2
+factor7A = zeros7[0]*x-abs(zeros7[1])
+factor7B = zeros7[0]*x+abs(zeros7[1])
+
+\end{sagesilent}
+
+\begin{question}
+
+Factor the polynomial below. 
+
+$\sage{quadratic6}$
+
+($\answer{\sage{factor6A}}$)($\answer{\sage{factor6B}}$)
+
+\end{question}
+
+\begin{question}
+	Factor the polynomial below. 
+	
+	$\sage{quadratic7}$
+
+	($\answer{\sage{factor7A}}$)($\answer{\sage{factor7B}}$)
+\end{question}
+
+%%%%%%%%%%%%%%%%%
+
+\begin{sagesilent}
+x = var("x")
+import random
+import math
+
+##################
+def maybeMakeNegative(rational):
+    maybeNegative = (-1)**ZZ.random_element(1)
+    rational = maybeNegative * rational
+    return rational
+
+def generateSolution(minimum, maximum):
+    listPrimes = prime_range(minimum, maximum)
+    a, c = random.sample(listPrimes, 2)
+    #
+    b = maybeMakeNegative(randint(minimum, maximum))
+    d = maybeMakeNegative(randint(minimum, maximum))
+    # This makes sure we can't factor out a constant.
+    while (gcd(a, b)*gcd(c, d)>1):
+        a, c = random.sample(listPrimes, 2)
+        b = maybeMakeNegative(randint(minimum, maximum))
+        d = maybeMakeNegative(randint(minimum, maximum))
+    #This will guarantee that we always generate solutions with b < = d# 
+    if(b < d or b == d):
+        return [Integer(a), Integer(b), Integer(c), Integer(d)]
+    else:
+        return[Integer(c), Integer(d), Integer(a), Integer(b)]
+
+def generateProblem(solution):
+    a, b, c, d = solution
+    coeffA = Integer(a*c)
+    coeffB = Integer(a*d+b*c)
+    coeffC = Integer(b*d)
+    return [coeffA, coeffB, coeffC]
+
+######### END OF DEFINITIONS #########
+minimum = 3
+maximum = 10
+
+##### QUESTION 8 #####
+coefficients8 = generateSolution(minimum, maximum)
+a8, b8, c8 = generateProblem(coefficients8)
+quadratic8 = a8 * x**2 + b8 * x + c8
+factor8A = coefficients8[0]*x+coefficients8[1]
+factor8B = coefficients8[2]*x+coefficients8[3]
+
+##### QUESTION 9 #####
+coefficients9 = generateSolution(minimum, maximum)
+a9, b9, c9 = generateProblem(coefficients9)
+quadratic9 = a9 * x**2 + b9 * x + c9
+factor9A = coefficients9[0]*x+coefficients9[1]
+factor9B = coefficients9[2]*x+coefficients9[3]
+\end{sagesilent}
+
+\begin{question}
+Factor the polynomial below. 
+
+$\sage{quadratic8}$
+
+($\answer{\sage{factor8A}}$)($\answer{\sage{factor8B}}$)
+
+\end{question}
+
+\begin{question}
+Factor the polynomial below. 
+
+$\sage{quadratic9}$ 
+
+($\answer{\sage{factor9A}}$)($\answer{\sage{factor9B}}$)
+
+\end{question}
+
+%%%%%%%%%%%%%%%%
+
+\begin{sagesilent}
+x = var("x")
+import numpy
+import random
+
+##################
+def maybeMakeNegative(rational):
+    maybeNegative = (-1)**(randint(0, 1))
+    rational = maybeNegative * rational
+    return rational
+
+def generateFactors(minimumPrime, maximumPrime, numberOfFactors):
+    listPrimes = prime_range(minimum, maximum)
+    aFactors = [random.sample(listPrimes, 1) for i in range(numberOfFactors)]
+    cFactors = [random.sample(listPrimes, 1) for i in range(numberOfFactors)]
+    return [aFactors, cFactors]
+
+def generateSolution(minimum, maximum, factors):
+    aFactors = factors[0]
+    cFactors = factors[1]
+    a = numpy.prod(aFactors)
+    c = numpy.prod(cFactors)
+    b = maybeMakeNegative(randint(minimum, maximum))
+    d = maybeMakeNegative(randint(minimum, maximum))
+    # This makes sure we can't factor out a constant.
+    while ((gcd(a, b)*gcd(c, d)>1) or (a==c and b==-d)):
+        aFactors = factors[0]
+        cFactors = factors[1]
+        a = numpy.prod(aFactors)
+        c = numpy.prod(cFactors)
+        b = maybeMakeNegative(randint(minimum, maximum))
+        d = maybeMakeNegative(randint(minimum, maximum))
+    #This will guarantee that we always generate solutions with b < = d
+    if(b < d or b==d):
+        return [Integer(a), Integer(b), Integer(c), Integer(d)]
+    else:
+        return[Integer(c), Integer(d), Integer(a), Integer(b)]
+
+def generateProblem(solution):
+    a, b, c, d = solution
+    coeffA = Integer(a*c)
+    coeffB = Integer(a*d+b*c)
+    coeffC = Integer(b*d)
+    return [coeffA, coeffB, coeffC]
+
+######### END OF DEFINITIONS #########
+minimum = 2
+maximum = 7
+numberOfFactors = 2
+
+##### QUESTION 10 #####
+factors10 = generateFactors(minimum, maximum, numberOfFactors)
+solution10 = generateSolution(minimum, maximum, factors10)
+coefficients10 = generateProblem(solution10)
+quadratic10 = coefficients10[0] * x**2 + coefficients10[1] * x + coefficients10[2]
+factor10A = solution10[0]*x + solution10[1]
+factor10B = solution10[2]*x + solution10[3]
+
+##### QUESTION 11 #####
+factors11 = generateFactors(minimum, maximum, numberOfFactors)
+solution11 = generateSolution(minimum, maximum, factors11)
+coefficients11 = generateProblem(solution11)
+quadratic11 = coefficients11[0] * x**2 + coefficients11[1] * x + coefficients11[2]
+factor11A = solution11[0]*x + solution11[1]
+factor11B = solution11[2]*x + solution11[3]
+
+##### QUESTION 12 #####
+factors12 = generateFactors(minimum, maximum, numberOfFactors)
+solution12 = generateSolution(minimum, maximum, factors12)
+coefficients12 = generateProblem(solution12)
+quadratic12 = coefficients12[0] * x**2 + coefficients12[1] * x + coefficients12[2]
+factor12A = solution12[0]*x + solution12[1]
+factor12B = solution12[2]*x + solution12[3]
+\end{sagesilent}
+
+\begin{question}
+Factor the polynomial below. 
+
+$\sage{quadratic10}$
+
+($\answer{\sage{factor10A}}$)($\answer{\sage{factor10B}}$)
+
+\end{question}
+
+\begin{question}
+	Factor the polynomial below. 
+	
+	$\sage{quadratic11}$
+
+	($\answer{\sage{factor11A}}$)($\answer{\sage{factor11B}}$)
+
+\end{question}
+
+\begin{question}
+	Factor the polynomial below. 
+	
+	$\sage{quadratic12}$
+
+	($\answer{\sage{factor12A}}$)($\answer{\sage{factor12B}}$)
+
+\end{question}
+
+\end{document}

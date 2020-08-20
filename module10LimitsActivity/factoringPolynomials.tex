@@ -1,0 +1,205 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+ 
+\input{../preamble} %% we can turn off input when making a master document
+ 
+\outcome{}
+\author{Darryl Chamberlain Jr.}
+  
+\title{Objective 3 - Completely Factor Polynomials}
+ 
+\begin{document}
+\begin{abstract}
+Use Synthetic Division to factor a polynomial completely.
+\end{abstract}
+\maketitle
+ 
+\href{https://cnx.org/contents/mwjClAV_@8.1:G7V9LHif@17/Zeros-of-Polynomial-Functions}{Link to section in online textbook.}
+ 
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 3  %%%
+%%%%%%%%%%%%%%%%%%%%%
+ 
+First, watch
+\underline{\href{https://mediasite.video.ufl.edu/Mediasite/Play/1a497eb432a54ac38c2f6957859f4ea71d}{this video}} to learn how to use synthetic division and the Rational Root Theorem to completely factor any polynomial.
+ 
+\begin{sagesilent}
+R, x = QQ['x'].objgen()
+def maybeMakeNegative(natural):
+    integer = natural*(-1)**ZZ.random_element(2)
+    return integer
+ 
+def makeIntegerFactor():
+    zero = maybeMakeNegative(ZZ.random_element(1, 6))
+    integerFactor = x - zero
+    return [integerFactor, zero]
+ 
+def makeRationalFactor():
+    a = ZZ.random_element(1, 4)
+    b = maybeMakeNegative(ZZ.random_element(1, 6))
+    while gcd(abs(a), abs(b)) > 1:
+        a = ZZ.random_element(1, 4)
+        b = maybeMakeNegative(ZZ.random_element(1, 6))
+    rationalFactor = a*x + b
+    return [rationalFactor, -b/a]
+ 
+def makeIrrationalQuadratic():
+    a = ZZ.random_element(1, 6)
+    b = maybeMakeNegative(ZZ.random_element(1, 6))
+    c = maybeMakeNegative(ZZ.random_element(1, 6))
+    discrim = b**2 - 4*a*c
+    integerType = type(2)
+    while type(sqrt(discrim)) == integerType or discrim &lt; 0:
+        a = ZZ.random_element(1, 6)
+        b = maybeMakeNegative(ZZ.random_element(1, 6))
+        c = maybeMakeNegative(ZZ.random_element(1, 6))
+        discrim = b**2 - 4*a*c
+    solution0 = (-b + sqrt(discrim))/(2*a)
+    solution1 = (-b - sqrt(discrim))/(2*a)
+    smallerSolution, largerSolution = sorted([solution0, solution1])
+    quadratic = a*x**2 + b*x + c
+    return [quadratic, smallerSolution, largerSolution]
+ 
+def makeComplexQuadratic():
+    a0 = maybeMakeNegative(ZZ.random_element(1, 4))
+    b0 = maybeMakeNegative(ZZ.random_element(1, 6))
+    complex0 = a0 + b0*i
+    complex1 = a0 - b0*i
+    quadratic = x**2 -2*a0*x + (a0**2 + b0**2)
+    return [quadratic, complex0, complex1]
+######################
+factor1a, zeroTemp1a = makeIntegerFactor()
+factor1b, zeroTemp1b = makeIntegerFactor()
+factor1c, zeroTemp1c = makeIntegerFactor()
+polynomial1 = factor1a * factor1b * factor1c
+zero1a, zero1b, zero1c = sorted([zeroTemp1a, zeroTemp1b, zeroTemp1c])
+ 
+factor2a, zeroTemp2a = makeIntegerFactor()
+factor2b, zeroTemp2b = makeIntegerFactor()
+factor2c, zeroTemp2c = makeIntegerFactor()
+factor2d, zeroTemp2d = makeIntegerFactor()
+polynomial2 = factor2a * factor2b * factor2c * factor2d
+zero2a, zero2b, zero2c, zero2d = sorted([zeroTemp2a, zeroTemp2b, zeroTemp2c, zeroTemp2d])
+ 
+factor3a, zeroTemp3a = makeIntegerFactor()
+factor3b, zeroTemp3b = makeRationalFactor()
+factor3c, zeroTemp3c = makeRationalFactor()
+polynomial3 = factor3a * factor3b * factor3c
+zero3a, zero3b, zero3c = sorted([zeroTemp3a, zeroTemp3b, zeroTemp3c])
+ 
+factor4a, zeroTemp4a = makeRationalFactor()
+factor4b, zeroTemp4b = makeRationalFactor()
+factor4c, zeroTemp4c = makeRationalFactor()
+polynomial4 = factor4a * factor4b * factor4c
+zero4a, zero4b, zero4c = sorted([zeroTemp4a, zeroTemp4b, zeroTemp4c])
+ 
+factor5a, zeroTemp5a = makeIntegerFactor()
+factor5b, zeroTemp5b, zeroTemp5c = makeIrrationalQuadratic()
+zero5a, zero5b, zero5c = sorted([zeroTemp5a, zeroTemp5b, zeroTemp5c])
+polynomial5 = factor5a * factor5b
+ 
+factor6a, zero6a = makeIntegerFactor()
+factor6b, zero6b, zero6c = makeComplexQuadratic()
+polynomial6 = factor6a * factor6b
+\end{sagesilent}
+ 
+% Q1 - Cubic, all integers
+\begin{question}
+Factor the polynomial below. Then, list all actual zeros for the polynomial.
+ 
+$$ f(x) = \sage{polynomial1} $$
+ 
+Factored Form: $(\answer{\sage{factor1a}})(\answer{\sage{factor1b}})(\answer{\sage{factor1c}})$
+\begin{feedback}
+While there are some ways to order the factors, it seemed to be more work than it was worth. As you find zeros, try placing the factor in any of the open blocks.
+\end{feedback}
+ 
+Zeros \textit{(smallest to largest)}: $\answer[tolerance=0.05]{\sage{zero1a}}, \answer[tolerance=0.05]{\sage{zero1b}}, \answer[tolerance=0.05]{\sage{zero1c}}$
+\end{question}
+ 
+% Q2 - Quintic, all integers
+\begin{question}
+Factor the polynomial below. Then, list all actual zeros for the polynomial.
+ 
+$$ f(x) = \sage{polynomial2} $$
+ 
+Factored Form: $(\answer{\sage{factor2a}})(\answer{\sage{factor2b}})(\answer{\sage{factor2c}})(\answer{\sage{factor2d}})$
+ 
+\begin{hint}
+The final term in this polynomial can get vary large, leading to \textbf{many} possible rational roots. I made sure the zeros will be between -5 and 5, so you can ignore the rest.
+\end{hint}
+\begin{feedback}
+While there are some ways to order the factors, it seemed to be more work than it was worth. As you find zeros, try placing the factor in any of the open blocks.
+\end{feedback}
+ 
+Zeros \textit{(smallest to largest)}: $\answer[tolerance=0.05]{\sage{zero2a}}, \answer[tolerance=0.05]{\sage{zero2b}}, \answer[tolerance=0.05]{\sage{zero2c}}, \answer[tolerance=0.05]{\sage{zero2d}}$
+\end{question}
+ 
+% Q3 - Cubic, 1 integer and 2 rationals
+\begin{question}
+Factor the polynomial below. Then, list all actual zeros for the polynomial.
+ 
+$$ f(x) = \sage{polynomial3} $$
+ 
+Factored Form: $(\answer{\sage{factor3a}})(\answer{\sage{factor3b}})(\answer{\sage{factor3c}})$
+\begin{feedback}
+While there are some ways to order the factors, it seemed to be more work than it was worth. As you find zeros, try placing the factor in any of the open blocks.
+\end{feedback}
+ 
+Zeros \textit{(smallest to largest)}: $\answer[tolerance=0.05]{\sage{zero3a}}, \answer[tolerance=0.05]{\sage{zero3b}}, \answer[tolerance=0.05]{\sage{zero3c}}$
+\end{question}
+ 
+% Q4 - Quintic, 3 rationals
+\begin{question}
+Factor the polynomial below. Then, list all actual zeros for the polynomial.
+ 
+$$ f(x) = \sage{polynomial4} $$
+ 
+Factored Form: $(\answer{\sage{factor4a}})(\answer{\sage{factor4b}})(\answer{\sage{factor4c}})$
+\begin{feedback}
+While there are some ways to order the factors, it seemed to be more work than it was worth. As you find zeros, try placing the factor in any of the open blocks.
+\end{feedback}
+ 
+Zeros \textit{(smallest to largest)}: $\answer[tolerance=0.05]{\sage{zero4a}}, \answer[tolerance=0.05]{\sage{zero4b}}, \answer[tolerance=0.05]{\sage{zero4c}}$
+\end{question}
+ 
+% Q5 - Cubic, 1 rational and 2 irrational
+\begin{question}
+Factor the polynomial below. Then, list all actual zeros for the polynomial.
+ 
+$$ f(x) = \sage{polynomial5} $$
+ 
+Factored Form: $(\answer{\sage{factor5a}})(\answer{\sage{factor5b}})$
+\begin{feedback}
+There are only two blocks for you to input factors even though it is a cubic polynomial. This is not an error...
+\end{feedback}
+ 
+Zeros \textit{(smallest to largest)}: $\answer[tolerance=0.05]{\sage{zero5a}}, \answer[tolerance=0.05]{\sage{zero5b}}, \answer[tolerance=0.05]{\sage{zero5c}}$
+\end{question}
+ 
+% Q6 - Cubic, 1 rational and 2 complex
+\begin{question}
+Factor the polynomial below. Then, list all actual zeros for the polynomial.
+ 
+$$ f(x) = \sage{polynomial6} $$
+ 
+Factored Form: $(\answer{\sage{factor6a}})(\answer{\sage{factor6b}})$
+\begin{feedback}
+There are only two blocks for you to input factors even though it is a cubic polynomial. This is not an error...
+\end{feedback}
+ 
+Zeros: $\answer[tolerance=0.05]{\sage{zero6a}}, \answer{\sage{zero6b}}, \answer{\sage{zero6c}}$
+\end{question}
+ 
+ 
+\textbf{Main takeaway:} Up until this point, we had some techniques to factor quadratics only. When we were looking to graph polynomial functions, we were given the factored forms of these polynomials. With what we've learned in this section, we can take the Standard Form of a polynomial and draw a sketch.
+ 
+\textbf{Looking ahead:} Our sketches focused on the end behavior and what was happening at the zeros. Calculus will help us sketch what is happening between the zeros, giving us more information on what the exact function looks like.
+ 
+ 
+\end{document}

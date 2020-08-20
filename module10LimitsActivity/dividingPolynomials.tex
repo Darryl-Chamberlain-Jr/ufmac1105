@@ -1,0 +1,206 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+ 
+\input{../preamble} %% we can turn off input when making a master document
+ 
+\outcome{}
+\author{Darryl Chamberlain Jr.}
+  
+\title{Objective 1 - Divide with Synthetic Division}
+ 
+\begin{document}
+\begin{abstract}
+Divide two polynomials using Synthetic Division.
+\end{abstract}
+\maketitle
+ 
+\href{https://cnx.org/contents/mwjClAV_@8.1:EfK9BY7_@13/Dividing-Polynomials}{Link to section in online textbook.}
+ 
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 1  %%%
+%%%%%%%%%%%%%%%%%%%%%
+ 
+First, watch
+\underline{\href{https://mediasite.video.ufl.edu/Mediasite/Play/0397977141d7448e967c5224b069d4731d}{this video}} to learn how to divide polynomials using synthetic division. This process can be used to divide polynomials by \textit{linear factors}. To divide by non-linear factor \textit{(e.g., $x^2+1$)}, you would need to perform long division. However, this is rarely necessary to solve an equation or graph a function.
+ 
+\begin{question}
+First, we start with some questions to learn the terminology for this section.
+ 
+If we were to divide $\frac{9}{2}$ using long division, we would get $4$ with a remainder of $1$. Write what this looks like as an equation, then practice the terminology for each part of the equation.
+ 
+$$\frac{9}{2} = \answer{4} + \frac{\answer{1}}{2}$$
+ 
+$$\frac{\answer[format=string]{dividend}}{\answer[format=string]{divisor}} = \answer[format=string]{quotient} + \frac{\answer[format=string]{remainder}}{\answer[format=string]{divisor}} $$
+ 
+\begin{feedback}
+Terminology: ``quotient", ``divisor", ``dividend", ``remainder" \\ \\
+Some terms will be used more than once.
+\end{feedback}
+ 
+\begin{hint}
+You likely know some of these words (remainder, quotient) but not others. You also know ``divisor" though! Try to think of questions that normally ask for ``divisors", like ``What is the GCD \textit{(greatest common divisor)} of 12 and 9?" In this question, is it asking for something that is being divided or something that is dividing other numbers?
+\end{hint}
+ 
+\end{question}
+ 
+\begin{sagesilent}
+x = var("x")
+ 
+def maybeMakeNegative(natural):
+    integer = natural*(-1)**ZZ.random_element(2)
+    return integer
+ 
+def generateSyntheticDivisionTerms(z0, missingOrNot):
+    #Goal: (a0*x+b0)*(a1*x+b1)*(z0*x-z1)+r
+    a0 = ZZ.random_element(2, 6)
+    b0 = maybeMakeNegative(ZZ.random_element(2, 6))
+    a1 = ZZ.random_element(2, 6)
+    b1 = maybeMakeNegative(ZZ.random_element(2, 6))
+    z1 = maybeMakeNegative(ZZ.random_element(2, 6))
+    r = maybeMakeNegative(ZZ.random_element(2, 6))
+    #
+    numeratorPoly = (a0*a1*z0)*x**3 + (-a0*a1*z1 + a0*b1*z0 + a1*b0*z0)*x**2+ (-a0*b1*z1 - a1*b0*z1 + b0*b1*z0)*x + (-b0*b1*z1 + r)
+    numCo1 = a0*a1*z0
+    numCo2 = -a0*a1*z1 + a0*b1*z0 + a1*b0*z0
+    numCo3 = -a0*b1*z1 - a1*b0*z1 + b0*b1*z0
+    numCo4 = -b0*b1*z1 + r
+    #
+    denominator = z0 * x - z1
+    quotient = (a0*a1)*x**2 + (a0*b1+a1*b0)*x + b0*b1
+    remainder = r
+    #
+    if missingOrNot == "notMissing":
+        while (numCo1==0 or numCo2==0 or numCo3==0 or numCo4==0):
+            a0 = ZZ.random_element(2, 6)
+            b0 = maybeMakeNegative(ZZ.random_element(2, 6))
+            a1 = ZZ.random_element(2, 6)
+            b1 = maybeMakeNegative(ZZ.random_element(2, 6))
+            z1 = maybeMakeNegative(ZZ.random_element(2, 6))
+            r = maybeMakeNegative(ZZ.random_element(2, 6))
+            #
+            numeratorPoly = (a0*a1*z0)*x**3 + (-a0*a1*z1 + a0*b1*z0 + a1*b0*z0)*x**2+ (-a0*b1*z1 - a1*b0*z1 + b0*b1*z0)*x + (-b0*b1*z1 + r)
+            numCo1 = a0*a1*z0
+            numCo2 = -a0*a1*z1 + a0*b1*z0 + a1*b0*z0
+            numCo3 = -a0*b1*z1 - a1*b0*z1 + b0*b1
+            numCo4 = -b0*b1*z1 + r
+            denominator = z0*x - z1
+            quotient = (a0*a1)*x**2 + (a0*b1+a1*b0)*x + b0*b1
+            remainder = r
+            #
+    else:
+        index =  0
+        while (abs(numCo1)>0 and abs(numCo2)>0 and abs(numCo3)>0 and abs(numCo4)>0):
+            a0 = ZZ.random_element(2, 6)
+            b0 = maybeMakeNegative(ZZ.random_element(2, 6))
+            a1 = ZZ.random_element(2, 6)
+            b1 = maybeMakeNegative(ZZ.random_element(2, 6))
+            z1 = maybeMakeNegative(ZZ.random_element(2, 6))
+            r = maybeMakeNegative(ZZ.random_element(2, 6))
+            #
+            numeratorPoly = (a0*a1*z0)*x**3 + (-a0*a1*z1 + a0*b1*z0 + a1*b0*z0)*x**2+ (-a0*b1*z1 - a1*b0*z1 + b0*b1*z0)*x + (-b0*b1*z1 + r)
+            numCo1 = a0*a1*z0
+            numCo2 = -a0*a1*z1 + a0*b1*z0 + a1*b0*z0
+            numCo3 = -a0*b1*z1 - a1*b0*z1 + b0*b1
+            numCo4 = -b0*b1*z1 + r
+            denominator = z0*x - z1
+            quotient = (a0*a1)*x**2 + (a0*b1+a1*b0)*x + b0*b1
+            remainder = r
+            index =  index + 1
+            #
+    truncatedDividend = (a0*a1*z0)*x**3
+    truncatedDivisor = z0*x
+    return [numeratorPoly, denominator, quotient, remainder, truncatedDividend, truncatedDivisor]
+#####
+#####
+#####
+dividend2, divisor2, quotient2, remainder2, truncatedDividend2, truncatedDivisor2 = generateSyntheticDivisionTerms(1, "notMissing")
+ 
+dividend3, divisor3, quotient3, remainder3, truncatedDividend3, truncatedDivisor3 = generateSyntheticDivisionTerms(ZZ.random_element(2, 6), "notMissing")
+ 
+dividend4, divisor4, quotient4, remainder4, truncatedDividend4, truncatedDivisor4 = generateSyntheticDivisionTerms(1, "missing")
+ 
+dividend5, divisor5, quotient5, remainder5, truncatedDividend5, truncatedDivisor5 = generateSyntheticDivisionTerms(ZZ.random_element(2, 6), "missing")
+\end{sagesilent}
+ 
+% Question 2 - Synthetic division with integer
+Let's see how we can apply this same idea to polynomials.
+ 
+\begin{question}
+Complete the division below. Then, rewrite the equation to remove the fractions.
+ 
+$$ \frac{ \sage{dividend2} }{ \sage{divisor2} } = \answer{\sage{quotient2}} + \frac{ \answer{\sage{remainder2}} }{ \sage{divisor2} } $$
+ 
+ 
+$$ \sage{dividend2} = \answer{\sage{quotient2}} (\sage{divisor2}) + \answer{\sage{remainder2}} $$
+ 
+\begin{feedback}[correct]
+Great! Based on the second equation, you can see why we care about Synthetic Division: it gives us a new way to factor polynomials! If only there were no remainder...
+\end{feedback}
+ 
+\end{question}
+ 
+Now watch \href{https://mediasite.video.ufl.edu/Mediasite/Play/a0b86c86cdcb483ebb38b63684ca5c9e1d}{this video} to see how to deal with linear terms that are not in the form $x-a$. The process is \textit{nearly} the same, except we need to divide our quotient by the $a$ in the factor $ax-b$.
+ 
+% Question 3 - Synthetic division with rational
+\begin{question}
+Complete the division below. Then, rewrite the equation to remove the fractions. \textit{This time after completing the synthetic division, you will need to factor our the $a$ term. }
+ 
+$$ \frac{ \sage{dividend3} }{ \sage{divisor3} } = \answer{\sage{quotient3}} + \frac{ \answer{\sage{remainder3}} }{ \sage{divisor3} } $$
+ 
+ 
+$$ \sage{dividend3} = \answer{\sage{quotient3}} (\sage{divisor3}) + \answer{\sage{remainder3}} $$
+ 
+\begin{hint}
+You likely got the remainder correct but not the quotient. To see why, let's focus on $\frac{\sage{truncatedDividend3}}{\sage{truncatedDivisor3}}$. This should be the first term of your quotient. Is there a relationship  between what the first term should be and what your quotient is? Maybe check the instructions/video just before this question...
+\end{hint}
+ 
+\begin{feedback}[correct]
+Right again! Synthetic division can be used for linear terms of the form $ax + b$. To do so, we solve the factor equal to zero and synthetically divide by this zero. Then we divide the quotient by $a$ since synthetic division only focuses on the zero and not the coefficients of the divisor.
+\end{feedback}
+ 
+\end{question}
+ 
+% Question 4 - Synthetic division with integer
+\begin{question}
+Complete the division below. Then, rewrite the equation to remove the fractions.
+ 
+$$ \frac{ \sage{dividend4} }{ \sage{divisor4} } = \answer{\sage{quotient4}} + \frac{ \answer{\sage{remainder4}} }{ \sage{divisor4} } $$
+ 
+ 
+$$ \sage{dividend4} = \answer{\sage{quotient4}} (\sage{divisor4}) + \answer{\sage{remainder4}} $$
+ 
+\begin{feedback}
+We need to make sure there is a coefficient for each term in the divisor. Did you put a 0 if we were missing a term?
+\end{feedback}
+ 
+\begin{feedback}[correct]
+Great! Synthetic division relies on positions to remove terms and strip down the division to numbers. Not including a 0 for a missing term would be the same as thinking 111 is 1101.
+\end{feedback}
+ 
+\end{question}
+ 
+% Question 5 - Synthetic division with rational
+\begin{question}
+Complete the division below. Then, rewrite the equation to remove the fractions.
+ 
+$$ \frac{ \sage{dividend5} }{ \sage{divisor5} } = \answer{\sage{quotient5}} + \frac{ \answer{\sage{remainder5}} }{ \sage{divisor5} } $$
+ 
+ 
+$$ \sage{dividend5} = \answer{\sage{quotient5}} (\sage{divisor5}) + \answer{\sage{remainder5}} $$
+ 
+\begin{hint}
+	You likely got the remainder correct but not the quotient. To see why, let's focus on $\frac{\sage{truncatedDividend5}}{\sage{truncatedDivisor5}}$. This should be the first term of your quotient. Is there a relationship  between what the first term should be and what your quotient is? Maybe check the instructions/video just before question three...
+\end{hint}
+ 
+\begin{feedback}[correct]
+Perfect! You seem to understand how to synthetically divide under any conditions. We'll use a lot of synthetic division in the next two objectives.
+\end{feedback}
+ 
+\end{question}
+ 
+\end{document}

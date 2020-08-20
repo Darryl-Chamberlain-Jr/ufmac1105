@@ -1,0 +1,81 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+ 
+\input{../preamble} %% we can turn off input when making a master document
+ 
+\outcome{}
+\author{Darryl Chamberlain Jr.}
+  
+\title{Objective 1 - Limit Notation}
+ 
+\begin{document}
+\begin{abstract}
+Interpret the notation for limits.
+\end{abstract}
+\maketitle
+ 
+\href{https://cnx.org/contents/i4nRcikn@5.1:dKCfyV9u@5/The-Limit-of-a-Function}{Link to section in online textbook.}
+
+\href{https://www.youtube.com/watch?v=tXAu5Ib-Oxk}{Intro video for limit notation}
+ 
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 1  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+% Limit Notation intro: Interpreting arrows
+
+Our College Algebra textbook gives a light introduction to \href{https://cnx.org/contents/mwjClAV_@8.21:KNTP2r7D@14/Rational-Functions#Table_03_07_001}{``arrow notation"} when talking about limits. This is a great starting point to understand what exactly a limit is. 
+
+\begin{tabular}{l | l}
+\textbf{Symbol} & \textbf{Meaning} \\
+\hline 
+$x \rightarrow a^{-}$ & $x$ approaches $a$ from the left \\
+$x \rightarrow a^{+}$ & $x$ approaches $a$ from the right \\ 
+$x \rightarrow \infty$ & $x$ approaches infinity \\ 
+$x \rightarrow -\infty$ & $x$ approaches negative infinity \\ 
+\end{tabular}
+
+This notation works for the output of a function as well! So if we say $f(x) \rightarrow \infty$, we mean that the output of the function approaches infinity. We've already seen this with end behavior of polynomials. For example, if we wanted to describe the end behavior of $f(x) = x^2$, we would say ``$f(x) \rightarrow \infty$ as $x \rightarrow \infty$ and as $x \rightarrow -\infty$. The limit notation condenses this phrase. 
+
+\begin{definition}
+$\lim_{x \rightarrow a} (f(x)) = L$ means ``as $x \rightarrow a$, $f(x) \rightarrow L$". 
+\end{definition}
+
+Let's practice. Use \href{https://www.desmos.com/calculator/x3mllngnj7}{this Desmos link} to answer the following questions about $f(x)=\frac{1}{x}$. 
+
+\begin{question}
+As $x$ approaches infinity, what happens to the $y$ value of $\frac{1}{x}$?
+
+$\lim_{x \rightarrow \infty}\left(\frac{1}{x}\right) = \answer{0}$
+
+As $x$ approaches negative infinity, what happens to the $y$ value of $\frac{1}{x}$?
+
+$\lim_{x \rightarrow -\infty}\left(\frac{1}{x}\right) = \answer{0}$
+\end{question}
+
+Looking at the graph, you are probably wondering what we would say about the limit as $x$ approaches $0$ of $f(x) = \frac{1}{x}$. We will deal with that in the next objective. For the rest of this objective, we'll practice interpreting the limit notation. 
+
+\begin{question}
+Translate the phrase ``$\frac{x+3}{x^2-9}$ approaches $-\frac{1}{6}$ as $x$ approaches $-3$" into limit notation. 
+
+$\lim_{\answer{x} \rightarrow \answer{-3}}\left( \answer{\sage{(x+3)/(x**2-9)}}  \right) = \answer{-\frac{1}{6}}$
+\end{question}
+
+\begin{question}
+Translate the phrase ``as $x$ approaches infinity, $-(x+2)^3(x-3)^2$ approaches negative infinity" into limit notation. 
+	
+$\lim_{\answer{x} \rightarrow \answer{\sage{Infinity} } }\left( \answer{\sage{-(x+2)**3 * (x-3)**2}}  \right) = \answer{\sage{-Infinity}}$
+\end{question}
+
+\begin{question}
+Translate the phrase ``as $x$ approaches $3$, $\frac{1}{(x-3)^2}$ approaches infinity" into limit notation. 
+	
+$\lim_{\answer{x} \rightarrow \answer{3}}\left( \answer{\sage{1/(x-3)**2}}  \right) = \answer{\sage{Infinity}}$
+\end{question}
+
+\end{document}

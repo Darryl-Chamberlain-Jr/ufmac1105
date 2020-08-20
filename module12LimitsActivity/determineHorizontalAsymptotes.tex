@@ -1,0 +1,294 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+ 
+\input{../preamble} %% we can turn off input when making a master document
+ 
+\outcome{}
+\author{Darryl Chamberlain Jr.}
+  
+\title{Objective 3 - Horizontal Asymptotes}
+ 
+\begin{document}
+\begin{abstract}
+
+\end{abstract}
+\maketitle
+ 
+\href{https://cnx.org/contents/mwjClAV_@8.21:KNTP2r7D@14/Rational-Functions}{Link to section in online textbook.}
+
+\href{https://mediasite.video.ufl.edu/Mediasite/Play/0957426faa87413085c428f14dc054e71d}{Video explanation of horizontal/oblique asymptotes \textit{without using limits}.}
+ 
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 3  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+Holes and Vertical Asymptotes describe $x$-values the function is not defined at. Horizontal and Oblique Asymptotes will describe the end behavior of a rational function. 
+
+In Module 6 (\textit{Polynomial Functions}), 
+
+we looked at the end behavior of polynomial functions. What we saw was that polynomial functions eventually end looking like one of four things:
+\begin{itemize}
+    \item $x^2$: Both ends pointing up.
+    \item $-x^2$: Both ends pointing down.
+    \item $x^3$: Starting bottom-left, finishing top-right.
+    \item $-x^3$: Starting top-left, finishing bottom-right.
+\end{itemize}
+
+For polynomials, \textbf{the largest degree term determines the behavior near $\pm \infty$.} 
+
+Let's consider the end behavior of polynomials using limits: 
+
+$$f(x) = a_nx^n + a_{n-1}x^{n-1} + \cdots a_1 x + a_0$$
+
+End behavior is describes as the limit as $f(x)$ approaches positive or negative infinity. So 
+
+$$ \lim_{x \rightarrow \pm \infty} a_n x^n + a_{n-1}x^{n-1} + \cdots a_1 x + a_0$$
+
+As we go out toward infinity, only the largest term matters \textit{Why? Because it grows \textbf{much} faster than all of the others.} So we can drop all lower-degree terms.
+
+$$ \lim_{x \rightarrow \pm \infty} a_n x^n $$
+
+This limit is either $\pm \infty$! 
+
+We can do the same kind of consideration with rational functions.  
+
+$$ f(x) = \frac{a_nx^n + a_{n-1}x^{n-1} + \cdots a_1 x + a_0}{b_mx^m + b_{m-1}x^{m-1} + \cdots b_1 x + b_0}$$ 
+
+$$ \lim_{x \rightarrow \pm \infty} f(x) = \lim_{x \rightarrow \pm \infty} \frac{a_n x^n}{b_m x^m} $$
+
+This limit can be $\pm \infty$, but could be a single number if $\frac{x^n}{x^m} = 1$. When that happens, we get 
+
+$$ \lim_{x \rightarrow \pm \infty} f(x) = \lim_{x \rightarrow \pm \infty} \frac{a_n}{b_m} = \frac{a_n}{b_m}$$
+
+This means the function levels out to a single value! This is our Horizontal Asymptote: the horizontal line the function is approaching as it goes toward $\pm \infty$. 
+
+\begin{theorem}
+\textbf{Horizontal Asymptotes of a Rational Function}
+
+$$ f(x) = \frac{a_nx^n + a_{n-1}x^{n-1} + \cdots a_1 x + a_0}{b_mx^m + b_{m-1}x^{m-1} + \cdots b_1 x + b_0} $$
+
+If $n = m$, then $\lim_{x \rightarrow \pm \infty} f(x) = \frac{a_n}{b_m}$. This gives us a horizontal asymptote $y = \frac{a_n}{b_m}$.
+
+If $n < m$, then $\lim_{x \rightarrow \pm \infty} f(x) = \frac{a_n}{b_m x^{m-n}} = 0$. This gives us a horizontal asymptote $y=0$. 
+\end{theorem}
+
+Notice how we have avoided language like ``asymptotes are the lines the function never touches"? Now that we are using limits, we can be more precise. With vertical asymptotes, we know the function never touches the line as \textbf{the function is not defined at that point}. However, a function \textbf{can} cross horizontal asymptotes as they only describe the behavior of the function \textbf{near $\pm \infty$}!
+
+\begin{question}
+Evaluate the limit  $\lim_{x \rightarrow \infty} \frac{2x-4}{3x^3-6}$. 
+
+\[
+\graph[rectangular]{f(x) = (2x-4)/(3x^3-6)}
+\]
+ 
+$\answer{0}$
+ 
+\begin{feedback}[correct]
+Right! Again, just the degree and leading coefficient matter when thinking about end behavior. So we if write just those, we get $\frac{2x}{3x^3} = \frac{2}{3x^2}$. We saw in the previous section that $\lim_{x \rightarrow \infty} \frac{2}{3x^2} = ``
+\frac{2}{\infty}" = 0$. 
+ 
+This is also a good example that our function may touch/cross over the horizontal asymptote! Look at what is happening to the function around $x=2$: it starts below the asymptote $y=0$, the function hits the horizontal asymptote at $x=2$, begins to grow, then decays back down to parallel $y=0$. Horizontal asymptotes only tell us what is happening as we go toward $- \infty$ or $+ \infty$. Since they are not determined by what is outside of the domain of the function, the function can sometimes cross them. 
+\end{feedback}
+\end{question}
+
+\begin{sagesilent}
+R, x = QQ['x'].objgen()
+ 
+def maybeMakeNegative(natural):
+    integer = natural*(-1)**ZZ.random_element(2)
+    return integer
+ 
+def makeIntegerFactor():
+    zero = maybeMakeNegative(ZZ.random_element(1, 6))
+    integerFactor = x - zero
+    return [integerFactor, zero]
+ 
+def makeRationalFactor():
+    a = maybeMakeNegative(ZZ.random_element(1, 4))
+    b = maybeMakeNegative(ZZ.random_element(1, 6))
+    while gcd(abs(a), abs(b)) > 1:
+        a = maybeMakeNegative(ZZ.random_element(1, 4))
+        b = maybeMakeNegative(ZZ.random_element(1, 6))
+    rationalFactor = a*x + b
+    return [rationalFactor, a]
+ 
+def makeIrrationalQuadratic():
+    a = maybeMakeNegative(ZZ.random_element(1, 6))
+    b = maybeMakeNegative(ZZ.random_element(1, 6))
+    c = maybeMakeNegative(ZZ.random_element(1, 6))
+    discrim = b**2 - 4*a*c
+    integerType = type(2)
+    while type(sqrt(discrim)) == integerType:
+        a = maybeMakeNegative(ZZ.random_element(1, 6))
+        b = maybeMakeNegative(ZZ.random_element(1, 6))
+        c = maybeMakeNegative(ZZ.random_element(1, 6))
+        discrim = b**2 - 4*a*c
+    solution0 = (-b + sqrt(discrim))/2*a
+    solution1 = (-b - sqrt(discrim))/2*a
+    smallerSolution, largerSolution = sorted([solution0, solution1])
+    quadratic = a*x**2 + b*x + c
+    return [quadratic, smallerSolution, largerSolution]
+ 
+def makeComplexQuadratic():
+    a0 = maybeMakeNegative(ZZ.random_element(1, 4))
+    b0 = maybeMakeNegative(ZZ.random_element(1, 6))
+    complex0 = a0 + b0*i
+    complex1 = a0 - b0*i
+    quadratic = x**2 - (a0**2 + b0**2)
+    return [quadratic, complex0, complex1]
+ 
+def createPolyDegree1to4(degree):
+    if degree == 1:
+        poly, deadZero1 = makeRationalFactor()
+        leadingCoefficient = derivative(poly, x)/factorial(degree)
+    elif degree == 2:
+        factor2a, deadZero2a = makeRationalFactor()
+        factor2b, deadZero2b = makeRationalFactor()
+        poly = factor2a * factor2b
+        leadingCoefficient = derivative(derivative(poly, x), x)/factorial(degree)
+    elif degree == 3:
+        factor3a, deadZero3a = makeRationalFactor()
+        factor3b, deadZero3b = makeRationalFactor()
+        factor3c, deadZero3c = makeRationalFactor()
+        poly = factor3a * factor3b * factor3c
+        leadingCoefficient = derivative(derivative(derivative(poly, x), x), x)/factorial(degree)
+    elif degree == 4:
+        factor4a, deadZero4a = makeRationalFactor()
+        factor4b, deadZero4b = makeRationalFactor()
+        factor4c, deadZero4c = makeRationalFactor()
+        factor4d, deadZero4d = makeRationalFactor()
+        poly = factor4a * factor4b * factor4c * factor4d
+        leadingCoefficient = derivative(derivative(derivative(derivative(poly, x), x), x), x)/factorial(degree)
+    else:
+        poly = 0
+        leadingCoefficient = 0
+    return [poly, leadingCoefficient]
+ 
+def horizontalAsymptote():
+    chooseType = ZZ.random_element(2)
+    if chooseType == 0:
+        degreeDenom = ZZ.random_element(2, 5)
+        degreeNum = ZZ.random_element(1, degreeDenom)
+        polyNumerator, coeffNumerator = createPolyDegree1to4(degreeNum)
+        polyDenominator, coeffDenominator = createPolyDegree1to4(degreeDenom)
+        horizontalAsymptote = 0
+    elif chooseType == 1:
+        degreeNumAndDenom = ZZ.random_element(1, 5)
+        polyNumerator, coeffNumerator = createPolyDegree1to4(degreeNumAndDenom)
+        polyDenominator, coeffDenominator = createPolyDegree1to4(degreeNumAndDenom)
+        horizontalAsymptote = coeffNumerator/coeffDenominator
+    else:
+        polyNumerator = 0
+        polyDenominator = 0
+        horizontalAsymptote = 0
+    return [polyNumerator, polyDenominator, horizontalAsymptote]
+     
+def obliqueAsymptote(z0, missingOrNot):
+    a0 = ZZ.random_element(2, 6)
+    b0 = maybeMakeNegative(ZZ.random_element(2, 6))
+    a1 = ZZ.random_element(2, 6)
+    b1 = maybeMakeNegative(ZZ.random_element(2, 6))
+    z1 = maybeMakeNegative(ZZ.random_element(2, 6))
+    r = maybeMakeNegative(ZZ.random_element(2, 6))
+    #
+    numeratorPoly = (a0*a1*z0)*x**3 + (-a0*a1*z1 + a0*b1*z0 + a1*b0*z0)*x**2+ (-a0*b1*z1 - a1*b0*z1 + b0*b1*z0)*x + (-b0*b1*z1 + r)
+    numCo1 = a0*a1*z0
+    numCo2 = -a0*a1*z1 + a0*b1*z0 + a1*b0*z0
+    numCo3 = -a0*b1*z1 - a1*b0*z1 + b0*b1*z0
+    numCo4 = -b0*b1*z1 + r
+    #
+    denominator = z0 * x - z1
+    quotient = (a0*a1)*x**2 + (a0*b1+a1*b0)*x + b0*b1
+    remainder = r
+    #
+    if missingOrNot == "notMissing":
+        while (numCo1==0 or numCo2==0 or numCo3==0 or numCo4==0):
+            a0 = ZZ.random_element(2, 6)
+            b0 = maybeMakeNegative(ZZ.random_element(2, 6))
+            a1 = ZZ.random_element(2, 6)
+            b1 = maybeMakeNegative(ZZ.random_element(2, 6))
+            z1 = maybeMakeNegative(ZZ.random_element(2, 6))
+            r = maybeMakeNegative(ZZ.random_element(2, 6))
+            #
+            numeratorPoly = (a0*a1*z0)*x**3 + (-a0*a1*z1 + a0*b1*z0 + a1*b0*z0)*x**2+ (-a0*b1*z1 - a1*b0*z1 + b0*b1*z0)*x + (-b0*b1*z1 + r)
+            numCo1 = a0*a1*z0
+            numCo2 = -a0*a1*z1 + a0*b1*z0 + a1*b0*z0
+            numCo3 = -a0*b1*z1 - a1*b0*z1 + b0*b1
+            numCo4 = -b0*b1*z1 + r
+            denominator = z0*x - z1
+            quotient = (a0*a1)*x**2 + (a0*b1+a1*b0)*x + b0*b1
+            remainder = r
+            #
+    else:
+        index =  0
+        while (abs(numCo1)>0 and abs(numCo2)>0 and abs(numCo3)>0 and abs(numCo4)>0):
+            a0 = ZZ.random_element(2, 6)
+            b0 = maybeMakeNegative(ZZ.random_element(2, 6))
+            a1 = ZZ.random_element(2, 6)
+            b1 = maybeMakeNegative(ZZ.random_element(2, 6))
+            z1 = maybeMakeNegative(ZZ.random_element(2, 6))
+            r = maybeMakeNegative(ZZ.random_element(2, 6))
+            #
+            numeratorPoly = (a0*a1*z0)*x**3 + (-a0*a1*z1 + a0*b1*z0 + a1*b0*z0)*x**2+ (-a0*b1*z1 - a1*b0*z1 + b0*b1*z0)*x + (-b0*b1*z1 + r)
+            numCo1 = a0*a1*z0
+            numCo2 = -a0*a1*z1 + a0*b1*z0 + a1*b0*z0
+            numCo3 = -a0*b1*z1 - a1*b0*z1 + b0*b1
+            numCo4 = -b0*b1*z1 + r
+            denominator = z0*x - z1
+            quotient = (a0*a1)*x**2 + (a0*b1+a1*b0)*x + b0*b1
+            remainder = r
+            index =  index + 1
+            #
+    return [numeratorPoly, denominator, quotient, remainder]
+#####
+polyNum1, polyDenom1, horAsy1 = horizontalAsymptote()
+polyNum2, polyDenom2, horAsy2 = horizontalAsymptote()
+#
+choices = ["missing", "notMissing"]
+polyNum3, polyDenom3, obliqueAsy3, deadRemainder3 = obliqueAsymptote(1, choices[ZZ.random_element(2)])
+polyNum4, polyDenom4, obliqueAsy4, deadRemainder4 = obliqueAsymptote(ZZ.random_element(2, 6), choices[ZZ.random_element(2)])
+\end{sagesilent}
+ 
+% Q1 - Top smaller or equal
+\begin{problem}
+Determine whether there is a horizontal asymptote of the rational function below. If there is no horizontal asymptote, type ``NA". 
+ 
+$ f(x) = \frac{\sage{polyNum1}}{\sage{polyDenom1}}$
+ 
+There is a horizontal asymptote at $y = \answer{\sage{horAsy1}}$.
+\end{problem}
+
+% Q3 - Top bigger
+\begin{problem}
+Determine whether there is a horizontal asymptote of the rational function below. If there is no horizontal asymptote, type ``NA". 
+ 
+$ f(x) = \frac{\sage{polyNum3}}{\sage{polyDenom3}}$
+ 
+There is a horizontal asymptote at $y = \answer[format=string]{NA}$.
+\end{problem}
+ 
+% Q2 - Top smaller or equal
+\begin{problem}
+Determine whether there is a horizontal asymptote of the rational function below. If there is no horizontal asymptote, type ``NA". 
+ 
+$ f(x) = \frac{\sage{polyNum2}}{\sage{polyDenom2}}$
+ 
+There is a horizontal asymptote at $y = \answer{\sage{horAsy2}}$.
+\end{problem}
+ 
+% Q4 - Top bigger
+\begin{problem}
+Determine whether there is a horizontal asymptote of the rational function below. If there is no horizontal asymptote, type ``NA". 
+ 
+$ f(x) = \frac{\sage{polyNum4}}{\sage{polyDenom4}}$
+ 
+There is a horizontal asymptote at $y = \answer[format=string]{NA}$.
+\end{problem}
+
+
+\end{document}

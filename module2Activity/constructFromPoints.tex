@@ -1,0 +1,202 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+
+\input{../preamble} %% we can turn off input when making a master document
+
+\outcome{Recognize and construct linear functions as well as solve linear equations.}
+\author{Darryl Chamberlain Jr.}
+\title{Objective 1 - Construct a linear function from points}
+
+\begin{document}
+\begin{abstract}
+Use points to construct a linear function. 
+\end{abstract}
+\maketitle
+
+\href{https://cnx.org/contents/mwjClAV_@8.1:62_eXnY6@14/Linear-Equations-in-One-Variable}{Link to section in online textbook.}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 1  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+First, watch \underline{\href{https://mediasite.video.ufl.edu/Mediasite/Play/ea9a27e045aa4cbeb9211f7d64e96cb31d}{this video}} to learn about what is necessary to construct a linear function.
+
+This objective will focus on constructing linear functions from a point and slope or from two points.
+
+\begin{sagesilent}
+x = var('x')
+
+#################
+def maybeMakeNegative(rational):
+    maybeNegative = (-1)**ZZ.random_element(2)
+    rational = maybeNegative * rational
+    return rational
+
+def generatePoints():
+    pointOne = [maybeMakeNegative(ZZ.random_element(2,9)), maybeMakeNegative(ZZ.random_element(2, 9))]
+    pointTwo = [maybeMakeNegative(ZZ.random_element(2, 9)), maybeMakeNegative(ZZ.random_element(2, 9))]
+    # Makes sure coordinates are distinct and not a vertical/horizontal line
+    while (pointOne[0]==pointTwo[0] or pointOne[1]==pointTwo[1]):
+        pointOne = [maybeMakeNegative(ZZ.random_element(2, 9)), maybeMakeNegative(ZZ.random_element(2, 9))]
+        pointTwo = [maybeMakeNegative(ZZ.random_element(2, 9)), maybeMakeNegative(ZZ.random_element(2, 9))]
+    return [pointOne, pointTwo]
+
+def generateSolution(problem):
+    pointOne, pointTwo = problem
+    numerator = pointTwo[1]-pointOne[1]
+    denominator = pointTwo[0]-pointOne[0]
+    slope = float(numerator/denominator)
+    yInt = float(pointTwo[1]-slope*pointTwo[0])
+    slope = slope
+    #print "Slope %s and y-Intercept %s" %(slope, yInt)
+    return [slope, yInt]
+
+######## END OF DEFINITIONS #########
+
+##### QUESTION 1 #####
+points1 = generatePoints()
+pointOne1, pointTwo1 = points1
+solution1 = generateSolution(points1)
+equation1 = solution1[0]*x + solution1[1]
+
+##### QUESTION 2 #####
+points2 = generatePoints()
+pointOne2, pointTwo2 = points2
+solution2 = generateSolution(points2)
+equation2 = solution2[0]*x + solution2[1]
+
+##### QUESTION 3 #####
+points3 = generatePoints()
+pointOne3, pointTwo3 = points3
+solution3 = generateSolution(points3)
+equation3 = solution3[0]*x + solution3[1]
+\end{sagesilent}
+
+\begin{question}
+Find the equation of the line containing the two points below. Write the equation in slope-intercept form. \\
+$(\sage{pointOne1[0]}, \sage{pointOne1[1]}) \text{ and } (\sage{pointTwo1[0]}, \sage{pointTwo1[1]})$
+
+$y = \answer[tolerance=0.05]{\sage{solution1[0]}}x$ $+ \answer[tolerance=0.05]{\sage{solution1[1]}}$ 
+
+\begin{hint}
+To construct a linear function, we need its slope and a single point on the line. Can we figure out the slope from two points?
+\end{hint}
+\end{question}
+
+\begin{question}
+Find the equation of the line containing the two points below. Write the equation in slope-intercept form. \\
+$(\sage{pointOne2[0]}, \sage{pointOne2[1]}) \text{ and } (\sage{pointTwo2[0]}, \sage{pointTwo2[1]})$
+
+$y = \answer[tolerance=0.05]{\sage{solution2[0]}}x$ $+ \answer[tolerance=0.05]{\sage{solution2[1]}}$ 
+\end{question}
+
+\begin{question}
+Find the equation of the line containing the two points below. Write the equation in slope-intercept form. \\
+$(\sage{pointOne3[0]}, \sage{pointOne3[1]}) \text{ and } (\sage{pointTwo3[0]}, \sage{pointTwo3[1]})$
+
+$y = \answer[tolerance=0.05]{\sage{solution3[0]}}x$ $+ \answer[tolerance=0.05]{\sage{solution3[1]}}$ 
+\end{question}
+
+%%%%%%%%% TYPE 2 - PARALLEL OR PERPENDICULAR
+
+\begin{sagesilent}
+x, y = var('x, y')
+
+#################
+def maybeMakeNegative(rational):
+    maybeNegative = (-1)**ZZ.random_element(2)
+    rational = maybeNegative * rational
+    return rational
+
+def generateProblemAndSolution(lineType):
+    if lineType == 0:
+        point = [maybeMakeNegative(ZZ.random_element(2, 11)), maybeMakeNegative(ZZ.random_element(2, 11))]
+        aCoeff = ZZ.random_element(3, 10)
+        bCoeff = maybeMakeNegative(ZZ.random_element(3, 10))
+        cCoeff = ZZ.random_element(3, 16)
+        # Slope and y-intercept
+        slope = float(-aCoeff/bCoeff)
+        yInt = float(point[1]-slope*point[0])
+        return [[slope, yInt], point, [aCoeff, bCoeff, cCoeff]]
+    else:
+        point = [maybeMakeNegative(ZZ.random_element(2, 11)), maybeMakeNegative(ZZ.random_element(2, 11))]
+        aCoeff = ZZ.random_element(3, 10)
+        bCoeff = maybeMakeNegative(ZZ.random_element(3, 10))
+        cCoeff = ZZ.random_element(3, 16)
+        # Slope and y-intercept
+        slope = float(bCoeff/aCoeff)
+        yInt = float(point[1]-slope*point[0])
+        return [[slope, yInt], point, [aCoeff, bCoeff, cCoeff]]
+
+################# QUESTION 4 - Parallel #####################
+solution4, point4, coefficients4 = generateProblemAndSolution(0)
+aCoeff4, bCoeff4, cCoeff4 = coefficients4
+standardForm4 = aCoeff4 * x + bCoeff4 * y
+pointSlopeForm4 = solution4[0]*x + solution4[1]
+
+################# QUESTION 5 - Parallel #####################
+solution5, point5, coefficients5 = generateProblemAndSolution(0)
+aCoeff5, bCoeff5, cCoeff5 = coefficients5
+standardForm5 = aCoeff5 * x + bCoeff5 * y
+pointSlopeForm5 = solution5[0]*x + solution5[1]
+
+################# QUESTION 6 - Perpendicular #####################
+solution6, point6, coefficients6 = generateProblemAndSolution(1)
+aCoeff6, bCoeff6, cCoeff6 = coefficients6
+standardForm6 = aCoeff6 * x + bCoeff6 * y
+pointSlopeForm6 = solution6[0]*x + solution6[1]
+
+################# QUESTION 7 - Perpendicular #####################
+solution7, point7, coefficients7 = generateProblemAndSolution(1)
+aCoeff7, bCoeff7, cCoeff7 = coefficients7
+standardForm7 = aCoeff7 * x + bCoeff7 * y
+pointSlopeForm7 = solution7[0]*x + solution7[1]
+\end{sagesilent}
+
+\textbf{For these problems, you'll be given a description of the line and a point. Think about what information you should get from the line, then use the point to construct a new linear function.}
+
+\begin{question}
+Find the equation of the line described below. Write the equation of the line in slope-intercept form. \\
+
+Parallel to $\sage{standardForm4}=\sage{cCoeff4}$ and passing through the point $(\sage{point4[0]}, \sage{point4[1]})$.
+
+$y = \answer[tolerance=0.05]{\sage{solution4[0]}}x$ $+ \answer[tolerance=0.05]{\sage{solution4[1]}}$ 
+
+\begin{hint}
+If a line is parallel to another, what does that mean about its slope?
+\end{hint}
+\end{question}
+
+\begin{question}
+Find the equation of the line described below. Write the equation of the line in slope-intercept form. \\
+
+Parallel to $\sage{standardForm5}=\sage{cCoeff5}$ and passing through the point $(\sage{point5[0]}, \sage{point5[1]})$.
+
+$y = \answer[tolerance=0.05]{\sage{solution5[0]}}x$ $+ \answer[tolerance=0.05]{\sage{solution5[1]}}$ 
+\end{question}
+
+\begin{question}
+Find the equation of the line described below. Write the equation of the line in slope-intercept form. \\
+
+Perpendicular to $\sage{standardForm6}=\sage{cCoeff6}$ and passing through the point $(\sage{point6[0]}, \sage{point6[1]})$.
+
+$y = \answer[tolerance=0.05]{\sage{solution6[0]}}x$ $+ \answer[tolerance=0.05]{\sage{solution6[1]}}$ 
+\begin{hint}
+If a line is perpendicular to another, what does that mean about its slope?
+\end{hint}
+\end{question}
+
+\begin{question}
+Find the equation of the line described below. Write the equation of the line in slope-intercept form. \\
+
+Perpendicular to $\sage{standardForm7}=\sage{cCoeff7}$ and passing through the point $(\sage{point7[0]}, \sage{point7[1]})$.
+
+$y = \answer[tolerance=0.05]{\sage{solution7[0]}}x$ $+ \answer[tolerance=0.05]{\sage{solution7[1]}}$ 
+\end{question}
+
+\end{document}

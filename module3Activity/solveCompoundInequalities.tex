@@ -1,0 +1,251 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+
+\input{../preamble} %% we can turn off input when making a master document
+
+\outcome{Understand and solve linear inequalities.}
+\author{Darryl Chamberlain Jr.}
+ 
+\title{Objective 3 - Solve Compound Linear Inequalities}
+
+\begin{document}
+\begin{abstract}
+Solve linear inequalities. 
+\end{abstract}
+\maketitle
+
+\href{https://cnx.org/contents/mwjClAV_@8.1:uIjtHMfW@9/Linear-Inequalities-and-Absolute-Value-Inequalities}{Link to section in online textbook.}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 2  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+Watch \underline{\href{https://mediasite.video.ufl.edu/Mediasite/Play/c9a9321595e84b0f8333324964f36b011d}{this video}}  to learn how to solve compound inequalities. For both kinds of compound inequalities, we first split it into two inequalities, solve separately, then put them back together at the end. 
+
+\begin{sagesilent}
+import random
+x = var('x')
+##################
+def maybeMakeNegative(rational):
+    maybeNegative = (-1)**ZZ.random_element(2)
+    rational = maybeNegative * rational
+    return rational
+    
+def createNumerators():
+    numerators = [0, 0, 0, 0]
+    numerators[0] = maybeMakeNegative(ZZ.random_element(3, 11))
+    numerators[1] = maybeMakeNegative(ZZ.random_element(3, 11))
+    numerators[2] = maybeMakeNegative(ZZ.random_element(3, 11))
+    numerators[3] = maybeMakeNegative(ZZ.random_element(3, 11))
+    return numerators
+
+def createDenominators():
+    listOfDenominators= range(2, 10)
+    a, b, c, d = random.sample(listOfDenominators, 4)
+    return [Integer(a), Integer(b), Integer(c), Integer(d)]
+
+def createCoefficientsHard():
+    n0, n1, n2, n3 = createNumerators()
+    d0, d1, d2, d3 = createDenominators()
+    left = (n0/d0)+(n1/d1)*x
+    right = (n2/d2)*x+(n3/d3)
+    oneSolutionCheck = (n1/d1) - (n2/d2)
+    while oneSolutionCheck == 0:
+        n0, n1, n2, n3 = createNumerators()
+        d0, d1, d2, d3 = createDenominators()
+        left = (n0/d0)+(n1/d1)*x
+        right = (n2/d2)*x+(n3/d3)
+        oneSolutionCheck = (n1/d1) - (n2/d2)
+    return [n0, n1, n2, n3, d0, d1, d2, d3]
+
+def createIntervalSolutionHard(coefficients, direction):
+    n0, n1, n2, n3, d0, d1, d2, d3 = coefficients
+    left = (n0/d0)+(n1/d1)*x
+    right = (n2/d2)*x+(n3/d3)
+    # Checks which direction the interval points
+    endpoint = round(float(solve(left-right, x)[0].rhs() ), 3)
+    nearEndpoint = endpoint - 1
+    checkNearby = float(float(n0/d0)+float(n1/d1)*nearEndpoint - (float(n2/d2)*nearEndpoint+float(n3/d3)))
+    if direction == "leq" or direction == "less":
+        if (checkNearby < 0):
+            interval = [-oo, endpoint]
+            whichSideFloat = "Right"
+        else:
+            interval = [endpoint, oo]
+            whichSideFloat = "Left"  
+    elif direction == "geq" or direction == "greater": 
+        if (checkNearby > 0):
+            interval = [-oo, endpoint]
+            whichSideFloat = "Right"
+        else:
+            interval = [endpoint, oo]
+            whichSideFloat = "Left"
+    else:
+        interval = [0, 0]
+        whichSideFloat = "Neither"
+    return [interval, whichSideFloat]
+
+######## QUESTION 1 - Forces $(-\infty, a) \text{ or } (b, \infty)$ solution ##########
+coefficients1A = createCoefficientsHard()
+solution1A = createIntervalSolutionHard(coefficients1A, "less")
+while solution1A[1] == "Left":
+    coefficients1A = createCoefficientsHard()
+    solution1A = createIntervalSolutionHard(coefficients1A, "less")
+n1A0, n1A1, n1A2, n1A3, d1A0, d1A1, d1A2, d1A3 = coefficients1A
+displayLeftFactor1A = n1A0/d1A0+n1A1/d1A1*x
+displayRightFactor1A = n1A2/d1A2*x+n1A3/d1A3
+
+coefficients1B = createCoefficientsHard()
+solution1B = createIntervalSolutionHard(coefficients1B, "greater")
+while solution1B[1] == "Right":
+    coefficients1B = createCoefficientsHard()
+    solution1B = createIntervalSolutionHard(coefficients1B, "greater")
+n1B0, n1B1, n1B2, n1B3, d1B0, d1B1, d1B2, d1B3 = coefficients1B
+displayLeftFactor1B = n1B0/d1B0+n1B1/d1B1*x
+displayRightFactor1B = n1B2/d1B2*x+n1B3/d1B3
+
+
+######## QUESTION 2 - Forces $(-\infty, a] \text{ or } [b, \infty)$ solution ##########
+coefficients2A = createCoefficientsHard()
+solution2A = createIntervalSolutionHard(coefficients2A, "leq")
+while solution2A[1] == "Left":
+    coefficients2A = createCoefficientsHard()
+    solution2A = createIntervalSolutionHard(coefficients2A, "leq")
+n2A0, n2A1, n2A2, n2A3, d2A0, d2A1, d2A2, d2A3 = coefficients2A
+displayLeftFactor2A = n2A0/d2A0+n2A1/d2A1*x
+displayRightFactor2A = n2A2/d2A2*x+n2A3/d2A3
+
+coefficients2B = createCoefficientsHard()
+solution2B = createIntervalSolutionHard(coefficients2B, "geq")
+while solution2B[1] == "Right":
+    coefficients2B = createCoefficientsHard()
+    solution2B = createIntervalSolutionHard(coefficients2B, "geq")
+n2B0, n2B1, n2B2, n2B3, d2B0, d2B1, d2B2, d2B3 = coefficients2B
+displayLeftFactor2B = n2B0/d2B0+n2B1/d2B1*x
+displayRightFactor2B = n2B2/d2B2*x+n2B3/d2B3
+
+\end{sagesilent}
+
+% Compound Inequality - OR
+\begin{question}
+$\sage{displayLeftFactor1A} < \sage{displayRightFactor1A}$ or $\sage{displayLeftFactor1B} > \sage{displayRightFactor1B}$
+
+$\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer[tolerance=0.05]{\sage{solution1A[0][1]}} \answer[format=string]{)}$
+\\
+$\cup$ 
+\\
+$\answer[format=string]{(} \answer[tolerance=0.05]{\sage{solution1B[0][0]}}, \answer{\sage{Infinity}} \answer[format=string]{)}$
+
+\begin{hint}
+There are four boxes so you can input the entire interval. Each interval should be: \\
+( or [ \\
+number or $\infty$ \\
+number or $\infty$ \\
+) or ] 
+\end{hint}
+
+\end{question}
+
+% Compound Inequality - OR
+\begin{question}
+$\sage{displayLeftFactor2A} \leq \sage{displayRightFactor2A}$ or $\sage{displayLeftFactor2B} \geq \sage{displayRightFactor2B}$
+
+$\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer[tolerance=0.05]{\sage{solution2A[0][1]}} \answer[format=string]{]}$
+\\
+$\cup$ 
+\\
+$\answer[format=string]{[} \answer[tolerance=0.05]{\sage{solution2B[0][0]}}, \answer{\sage{Infinity}} \answer[format=string]{)}$
+
+\begin{hint}
+	There are four boxes so you can input the entire interval. Each option should be: \\
+	( or [ \\
+	number or $\infty$ \\
+	number or $\infty$ \\
+	) or ] 
+\end{hint}
+\end{question}
+
+\begin{sagesilent}
+x = var('x')
+############
+def createAllCoefficientsAndEndpoints():
+    coefficients = [0, 0, 0, 0, 0, 0, 0]
+    coefficients[0] = maybeMakeNegative(ZZ.random_element(3, 9))
+    coefficients[1] = maybeMakeNegative(ZZ.random_element(3, 9))
+    coefficients[3] = maybeMakeNegative(ZZ.random_element(3, 9))
+    coefficients[4] = ZZ.random_element(3, 9)
+    coefficients[5] = maybeMakeNegative(ZZ.random_element(3, 9))
+    coefficients[6] = maybeMakeNegative(ZZ.random_element(3, 9))
+    # Need 1, 4, and 6 set before 2
+    coefficients[2] = max(coefficients[1], coefficients[6])*coefficients[4] + ZZ.random_element(2, 5)
+    # This flips the inequalities
+    smallerEndpoint = float((-coefficients[0]*coefficients[4] + coefficients[3]) / (coefficients[1]*coefficients[4] - coefficients[2]))
+    largerEndpoint = float((coefficients[4]*coefficients[5] - coefficients[3]) / (coefficients[2] - coefficients[4] * coefficients[6]))
+    #####
+    # Makes sure we get a solution interval
+    while  (largerEndpoint < smallerEndpoint) or (largerEndpoint == smallerEndpoint):
+        coefficients[0] = maybeMakeNegative(ZZ.random_element(3, 9))
+        coefficients[1] = maybeMakeNegative(ZZ.random_element(3, 9))
+        coefficients[3] = maybeMakeNegative(ZZ.random_element(3, 9))
+        coefficients[4] = ZZ.random_element(3, 9)
+        coefficients[5] = maybeMakeNegative(ZZ.random_element(3, 9))
+        coefficients[6] = maybeMakeNegative(ZZ.random_element(3, 9))
+        # Need 1, 4, and 6 set before 2
+        coefficients[2] = max(coefficients[1], coefficients[6])*coefficients[4] + ZZ.random_element(2, 5)
+        # This flips the inequalities
+        smallerEndpoint = float((-coefficients[0]*coefficients[4] + coefficients[3]) / (coefficients[1]*coefficients[4] - coefficients[2]))
+        largerEndpoint = float((coefficients[4]*coefficients[5] - coefficients[3]) / (coefficients[2] - coefficients[4] * coefficients[6]))
+    #####
+    a, b, c, d, e, f, g = coefficients
+    return [coefficients, smallerEndpoint, largerEndpoint]
+
+def constructInequalitiesToDisplay(coefficients):
+    c0, c1, c2, c3, c4, c5, c6 = coefficients
+    andInequalityLeft = c0 + c1*x
+    andInequalityMiddle = (c2*x + c3)/c4
+    andInequalityRight = c5 + c6*x
+    return [andInequalityLeft, andInequalityMiddle, andInequalityRight]
+##############
+coefficients3, smallerEndpoint3, largerEndpoint3 = createAllCoefficientsAndEndpoints()
+andInequalityLeft3, andInequalityMiddle3, andInequalityRight3 = constructInequalitiesToDisplay(coefficients3)
+
+coefficients4, smallerEndpoint4, largerEndpoint4 = createAllCoefficientsAndEndpoints()
+andInequalityLeft4, andInequalityMiddle4, andInequalityRight4 = constructInequalitiesToDisplay(coefficients4)
+\end{sagesilent}
+
+% Compound Inequality - AND
+\begin{question}
+$$\sage{andInequalityLeft3} < \sage{andInequalityMiddle3} < \sage{andInequalityRight3}$$
+
+$\answer[format=string]{(} \answer[tolerance=0.05]{\sage{smallerEndpoint3}}, \answer[tolerance=0.05]{\sage{largerEndpoint3}} \answer[format=string]{)}$
+
+\begin{hint}
+	There are four boxes so you can input the entire interval. Each option should be: \\
+	( or [ \\
+	number or $\infty$ \\
+	number or $\infty$ \\
+	) or ] 
+\end{hint}
+\end{question}
+
+% Compound Inequality - AND
+\begin{question}
+$$\sage{andInequalityLeft4} \leq \sage{andInequalityMiddle4} \leq \sage{andInequalityRight4}$$
+
+$\answer[format=string]{[} \answer[tolerance=0.05]{\sage{smallerEndpoint4}}, \answer[tolerance=0.05]{\sage{largerEndpoint4}} \answer[format=string]{]}$
+
+\begin{hint}
+	There are four boxes so you can input the entire interval. Each option should be: \\
+	( or [ \\
+	number or $\infty$ \\
+	number or $\infty$ \\
+	) or ] 
+\end{hint}
+\end{question}
+
+\end{document}

@@ -1,0 +1,7 @@
+\newenvironment {prompt}{}{}
+\newcommand {\ungraded }[0]{}
+\newcommand {\inputGif }[1]{The gif ``#1" would be inserted here when publishing online. }
+\newcommand {\npnoround }[0]{\nprounddigits {-1}}
+\newcommand {\npnoroundexp }[0]{\nproundexpdigits {-1}}
+\newcommand {\npunitcommand }[1]{\ensuremath {\mathrm {#1}}}
+\newcommand {\HyperFirstAtBeginDocument }[0]{\AtBeginDocument }

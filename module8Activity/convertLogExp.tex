@@ -1,0 +1,194 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+
+\input{../preamble} %% we can turn off input when making a master document
+
+\outcome{}
+\author{Darryl Chamberlain Jr.}
+ 
+\title{Objective 2 - Convert Between Forms}
+
+\begin{document}
+\begin{abstract}
+Convert between logarithmic and exponential forms of a function.
+\end{abstract}
+\maketitle
+
+\href{https://cnx.org/contents/mwjClAV_@8.1:dGtL5139@10/Logarithmic-Functions}{Link to section in online textbook.}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 2  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+First, watch 
+\underline{\href{https://www.youtube.com/watch?v=t0zDL8c6ZHs}{this video}} on converting between logarithmic and exponential functions and \underline{\href{https://mediasite.video.ufl.edu/Mediasite/Play/09f642efc33c49e1be49f7d6a6e51d311d}{this video}} learn how to use these conversions to solve an equation. We use the conversion: 
+
+$$ y = \log_b{(x)} \leftrightarrow x = b^y$$
+
+This portion of the homework is short so that if you know it, you can keep moving forward. If you don't, use the "Another" button to keep reloading new questions until you feel comfortable. 
+
+
+% 2 QUESTIONS: LOG TO EXP and EXP TO LOG
+
+\begin{sagesilent}
+x = var("x")
+y = var("y")
+
+def createVariables():
+    listWholes = ZZ.range(9)
+    uniqueList = Subsets([listWholes[i] + 2 for i in range(9)], 3)
+    base, horShift, vertShift = uniqueList.random_element()
+    vertShift = (-1)**ZZ.random_element(2)
+    return [base, horShift, vertShift]
+
+def convertToExpFunction(base, horShift, vertShift, var):
+    function = (base)**(var - vertShift) + horShift
+    return function
+    
+##### END OF DEFINITIONS #####
+
+### QUESTION 5 ###
+base5, horShift5, vertShift5 = createVariables()
+logFunction5 = x - horShift5
+answer5 = convertToExpFunction(base5, horShift5, vertShift5, y)
+
+### QUESTION 6 ###
+base6, horShift6, vertShift6 = createVariables()
+expFunction6 = convertToExpFunction(base6, vertShift6, horShift6, x)
+answerVert6 = y - vertShift6
+\end{sagesilent}
+
+% Q5
+\begin{question}
+Convert the function below to exponential form. 
+
+$$ y = \log_{\sage{base5}}(\sage{logFunction5}) + \sage{vertShift5} $$
+
+$ x = \answer{\sage{answer5}}$
+
+\begin{hint}
+Do you have it in the form $\text{something} = \log_b{\text{something}}$? It may help to color-code where things are moving in the conversion formula and in the question.
+\end{hint}
+
+\end{question}
+
+% Q6
+\begin{question}
+Convert the function below to logarithmic form.
+
+$$ y = \sage{expFunction6} $$
+
+$ x = \log_{\answer{\sage{base6}}}$$(\answer{\sage{answerVert6}})$ $+ \answer{\sage{horShift6}}$
+
+\end{question}
+
+One of the more common reasons to change forms is to solve Logarithmic equations. Remember: you want to get it in the form $\text{something} = \log_b{\text{something}}$ \textit{before} trying to convert. Try solving a few logarithmic equations below.
+
+\begin{sagesilent}
+x = var("x")
+
+#Ideas for forms of this question:
+#log(f1*x+f2)/log(b) + k = n1/d1, solve for x
+
+def maybeMakeNegative(natural):
+    integer = natural*(-1)**ZZ.random_element(2)
+    return integer 
+def generateEquationAndSolutionEasy(): 
+    f1 = maybeMakeNegative(ZZ.random_element(3, 7))
+    f2 = 0
+    displayFactor = f1 * x
+    base = ZZ.random_element(2, 5)
+    k = 0
+    n1 = ZZ.random_element(3, 10)
+    d1 = 1
+    leftHandSide = log(f1*x+f2)/log(base) + k
+    rightHandSide = n1/d1
+    solution = round(float(solve(leftHandSide == rightHandSide, x)[0].rhs()), 3)
+    # 
+    return [displayFactor, base, rightHandSide, solution]
+def generateEquationAndSolutionHard(): 
+    f1 = maybeMakeNegative(ZZ.random_element(3, 7))
+    f2 = maybeMakeNegative(ZZ.random_element(3, 7))
+    displayFactor = f1*x + f2
+    base = ZZ.random_element(2, 5)
+    k = ZZ.random_element(3, 10)
+    n1 = maybeMakeNegative(ZZ.random_element(3, 7))
+    d1 = maybeMakeNegative(ZZ.random_element(3, 7))
+    leftHandSide = log(f1*x+f2)/log(base) + k
+    rightHandSide = n1/d1
+    solution = round(float(solve(leftHandSide == rightHandSide, x)[0].rhs()), 3)
+    return [displayFactor, base, k, rightHandSide, solution]
+
+##### END OF DEFINITIONS ####
+# Question 1 - Easy #
+displayFactor1, base1, rightHandSide1, answer1 = generateEquationAndSolutionEasy()
+
+# Question 2 - Easy #
+displayFactor2, base2, rightHandSide2, answer2 = generateEquationAndSolutionEasy()
+
+# Question 3 - Hard #
+displayFactor3, base3, k3, rightHandSide3, answer3 = generateEquationAndSolutionHard()
+
+# Question 4 - Hard #
+displayFactor4, base4, k4, rightHandSide4, answer4 = generateEquationAndSolutionHard()
+\end{sagesilent}
+
+% Q1 - Easy version
+% log(f1*x)/log(b)= n1, solve for x
+
+\begin{question}
+Solve the logarithmic equation below. 
+
+$$ \log_{\sage{base1}}{(\sage{displayFactor1})} = \sage{rightHandSide1}$$
+
+$x = \answer[tolerance=0.05]{\sage{answer1}}$
+
+\end{question}
+
+% Q2 - Easy version
+% log(f1*x)/log(b)= n1, solve for x
+
+\begin{question}
+Solve the logarithmic equation below.  
+
+$$ \log_{\sage{base2}}{(\sage{displayFactor2})} = \sage{rightHandSide2}$$
+
+$x = \answer[tolerance=0.05]{\sage{answer2}}$
+
+\end{question}
+
+% Q3 - Hard version
+% log(f1*x+f2)/log(b) + k = n1/d1, solve for x
+
+\begin{question}
+Solve the logarithmic equation below.  
+
+$$ \log_{\sage{base3}}{(\sage{displayFactor3})} + \sage{k3} = \sage{rightHandSide3}$$
+
+$x = \answer[tolerance=0.05]{\sage{answer3}}$
+
+\end{question}
+
+% Q4 - Hard version
+\begin{question}
+Solve the logarithmic equation below.  
+
+$$ \log_{\sage{base4}}{(\sage{displayFactor4})} + \sage{k4} = \sage{rightHandSide4}$$
+
+$x = \answer[tolerance=0.05]{\sage{answer4}}$
+
+\end{question}
+
+\begin{question}
+\textbf{Main takeaway:} Before looking, you should work through the previous problems. \textit{Have you finished working through the examples?} $\answer[format=string]{Yes}$
+\begin{feedback}[correct]
+The conversion $$ y = \log_b{(x)} \leftrightarrow x = b^y$$ is extremely useful in mathematics. This is the only way (so far) that we could solve an equation like $3 = \log_4{(x)}$. To solve exponential equations, we could use this conversion. However, it will be more useful to learn a new technique in the next section.
+\end{feedback}
+\end{question}
+
+\end{document}

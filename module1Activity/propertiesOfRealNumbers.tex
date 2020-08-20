@@ -1,0 +1,152 @@
+\documentclass{ximera}
+%\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+
+%\input{../preamble} %% we can turn off input when making a master document
+
+\outcome{Understand the different sets of numbers along with the properties of these sets.}
+\author{Darryl Chamberlain Jr.}
+
+\title{Order of Operations}
+
+\begin{document}
+\begin{abstract}
+Apply the properties of Real numbers to simplify expressions.
+\end{abstract}
+\maketitle
+
+\href{https://cnx.org/contents/mwjClAV_@8.1:0KhpF2RH@23/Real-Numbers-Algebra-Essentials}{Link to section in textbook}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 3  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+Now that we have the terminology for the different sets of numbers, we can review their properties. We'll start with the Real numbers first. Watch \href{https://mediasite.video.ufl.edu/Mediasite/Play/adc9e0878901450db891a5b46b383bf01d}{this video} to review the properties of Real numbers. \textit{Note: You won't be asked to define a property or know the property by name. However, you \textbf{will} need to know how to use the properties to simplify in order.}
+
+We'll focus on Order of Operations here as many students were taught an order that \textbf{does not align with how most calculators/computers simplify expressions.} Think about PEMDAS as:
+
+\begin{question}
+P: $\answer[format=string]{Parentheses}$
+
+E: $\answer[format=string]{Exponents}$
+
+M or D: $\answer[format=string]{Multiplication}$ or $\answer[format=string]{Division}$
+
+A or S: $\answer[format=string]{Addition}$ or $\answer[format=string]{Subtraction}$
+\end{question}
+
+{\Large \textbf{If they are on the same level, you complete them from left-to-right.}}
+
+\begin{question}
+Let's take a closer look at why M/D is written on the same level.
+$7 \div 5 \times 4 = \answer{5.6}$
+
+$7 \times \frac{1}{5} \times 4 = \answer{5.6}$
+
+Multiplying by $\frac{1}{5}$ is the same as dividing by $\answer{5}$. Now let's see what happens if we did multiplication first.
+
+$7 \div (5 \times 4) = \answer{0.35}$
+
+By changing everything to multiplication, we can see why it is so important to read from left-to-right when operations are on the same level!
+\end{question}
+
+Now try to simplify the more complicated expressions below.
+
+\begin{sagesilent}
+# Order of Operations Question
+def generateSolution1(constants):
+    c0, c1, c2, c3, c4, c5 = constants
+    solution = float((c0 - ((c1/c2) * c3)) - (c4 * c5 ))
+    return solution
+
+def generateDistractor1(constants):
+    c0, c1, c2, c3, c4, c5 = constants
+    distractor = float(c0 - (c1/(c2 * c3)) - (c4 * c5 ))
+    return distractor
+
+def generateSolution2(constants):
+    c0, c1, c2, c3, c4, c5 = constants
+    solution = float(c0 - c1 - c2 + c3 - c4 + c5 )
+    return solution
+
+def generateDistractor2(constants):
+    c0, c1, c2, c3, c4, c5 = constants
+    distractor = float(c0 - c1 - (c2 + c3) - (c4 + c5) )
+    return distractor
+
+def generateSolution3(constants):
+    c0, c1, c2, c3, c4, c5 = constants
+    solution = float((c0/c1) - c2 + (c3/c4) + c5 )
+    return solution
+
+def generateDistractor3(constants):
+    c0, c1, c2, c3, c4, c5 = constants
+    distractor = float( (c0/c1) - ( (c2 + (c3/c4) ) + c5) )
+    return distractor
+
+def generateSolutionAndDistractor(structureType, constants):
+    if structureType==1:
+        return [generateSolution1(constants), generateDistractor1(constants)]
+    elif structureType==2:
+        return [generateSolution2(constants), generateDistractor2(constants)]
+    elif structureType==3:
+        return [generateSolution3(constants), generateDistractor3(constants)]
+    else:
+        return [0, 0]
+
+def createProblem(structureType):
+    # Array of 6 distinct integers
+    constants = sample(list(range(2, 21)), 6)
+    solution, distractor = generateSolutionAndDistractor(structureType, constants)
+    # CHECKS if doing the question wrong will still give the correct solution.
+    index = 0
+    while solution == distractor:
+        constants = sample(list(range(2, 21)), 6)
+        solution, distractor = generateSolutionAndDistractor(structureType, constants)
+        # Makes sure we don't get stuck in an infinite loop
+        index += 1
+        if (index > 100):
+            break
+    return [constants, solution, distractor]
+
+########## END OF DEFINITIONS ###########
+
+constants1, solution1, distractor1 = createProblem(1)
+constants2, solution2, distractor2 = createProblem(2)
+constants3, solution3, distractor3 = createProblem(3)
+
+\end{sagesilent}
+
+\begin{exercise}
+Simplify the expression $\sage{constants1[0]} - \sage{constants1[1]} \div \sage{constants1[2]} * \sage{constants1[3]} - (\sage{constants1[4]} * \sage{constants1[5]})$.
+
+$\answer[tolerance=0.01]{\sage{solution1}}$
+
+\begin{hint}
+Did you get $\sage{distractor1}$ as your answer? If you did, you are not treating multiplication and division as being on the same level. You need to complete these from left-to-right!
+\end{hint}
+\end{exercise}
+
+\begin{exercise}
+	Simplify the expression $\sage{constants2[0]} - \sage{constants2[1]} - \sage{constants2[2]} + \sage{constants2[3]} - \sage{constants2[4]} + \sage{constants2[5]}$.
+
+	$\answer[tolerance=0.01]{\sage{solution2}}$
+  \begin{hint}
+  Did you get $\sage{distractor2}$ as your answer? If you did, you are not treating addition and subtraction as being on the same level. You need to complete these from left-to-right!
+  \end{hint}
+\end{exercise}
+
+\begin{exercise}
+	Simplify the expression $\sage{constants3[0]} \div \sage{constants3[1]} - \sage{constants3[2]} + \sage{constants3[3]} \div \sage{constants3[4]} + \sage{constants3[5]}$.
+
+	$\answer[tolerance=0.01]{\sage{solution3}}$
+  \begin{hint}
+  Did you get $\sage{distractor3}$ as your answer? If you did, you are not treating addition and subtraction as being on the same level. You need to complete these from left-to-right!
+  \end{hint}
+\end{exercise}
+
+\end{document}

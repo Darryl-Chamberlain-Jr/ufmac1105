@@ -1,0 +1,317 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+
+\input{../preamble} %% we can turn off input when making a master document
+
+\outcome{Recognize and construct linear functions as well as solve linear equations.}
+\author{Darryl Chamberlain Jr.}
+ 
+\title{Objective 4 - Solve Linear Equations}
+
+\begin{document}
+\begin{abstract}
+Solve linear equations. 
+\end{abstract}
+\maketitle
+
+\href{https://cnx.org/contents/mwjClAV_@8.1:62_eXnY6@14/Linear-Equations-in-One-Variable}{Link to section in online textbook.}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 2  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+Now, watch \underline{\href{https://mediasite.video.ufl.edu/Mediasite/Play/486c7ecd0ea14369bfc405492ae942f51d}{this video}} to review how to solve linear equations. These techniques will be used throughout most of the semester. Be sure to write notes to yourself that you can review later!
+
+Now try to solve the following linear equations. 
+
+\begin{sagesilent}
+# SOLVES BASIC LINEAR EQUATIONS OF THE FORM
+    # b0 * (b1 + b2 * x) = b3 ( x * b4 - b5)
+
+x = var('x')
+
+###################
+def maybeMakeNegative(rational):
+    maybeNegative = (-1)**ZZ.random_element(2)
+    rational = maybeNegative * rational
+    return rational
+
+def generateBlocks():
+    listNaturals = range(2, 16)
+    n0, n1, n2, n3, n4, n5 = sample(listNaturals, 6)
+    b0 = Integer(-n0)
+    b1 = Integer(maybeMakeNegative(n1))
+    b2 = Integer(maybeMakeNegative(n2))
+    b3 = Integer(-n3)
+    b4 = Integer(maybeMakeNegative(n4))
+    b5 = Integer(maybeMakeNegative(n5))
+    # Begin checking for one solution
+    OneSolutionCheck = b0*b2 - b3*b4
+    # Makes sure there is exactly one solution
+    while (OneSolutionCheck == 0):
+        listNaturals = range(2, 16)
+        n0, n1, n2, n3, n4, n5 = sample(listNaturals, 6)
+        b0 = Integer(-n0)
+        b1 = Integer(maybeMakeNegative(n1))
+        b2 = Integer(maybeMakeNegative(n2))
+        b3 = Integer(-n3)
+        b4 = Integer(maybeMakeNegative(n4))
+        b5 = Integer(maybeMakeNegative(n5))
+        # Begin checking for one solution
+        OneSolutionCheck = b0*b2 - b3*b4
+    blocks = [b0, b1, b2, b3, b4, b5]
+    return blocks
+
+#b0 * (b1 + b2 * x) =  b3 ( x * b4 - b5)
+def generateSolution(blocks):
+    a, b, c, d, e, f = blocks
+    basicLinearEquation = a * (b + c * x) - d * ( x * e - f)
+    solution = float(solve(basicLinearEquation, x)[0].rhs())
+    return solution
+    
+def generateFeedback(blocks):
+    a, b, c, d, e, f = blocks
+    basicLinearEquation = a * (b - c * x) - d * ( x * e + f)
+    feedback = float(solve(basicLinearEquation, x)[0].rhs())
+    return feedback
+
+######### END OF DEFINITIONS ##########
+
+##### QUESTION 1 #####
+blocks1 = generateBlocks()
+answer1 = generateSolution(blocks1)
+feedback1 = generateFeedback(blocks1)
+displayEquationLeft1 = blocks1[1]+blocks1[2]*x
+displayEquationRight1 = blocks1[4]*x-blocks1[5]
+
+##### QUESTION 2 #####
+blocks2 = generateBlocks()
+answer2 = generateSolution(blocks2)
+feedback2 = generateFeedback(blocks2)
+displayEquationLeft2 = blocks2[1]+blocks2[2]*x
+displayEquationRight2 = blocks2[4]*x-blocks2[5]
+
+##### QUESTION 3 #####
+blocks3 = generateBlocks()
+answer3 = generateSolution(blocks3)
+feedback3 = generateFeedback(blocks3)
+displayEquationLeft3 = blocks3[1]+blocks3[2]*x
+displayEquationRight3 = blocks3[4]*x-blocks3[5]
+
+\end{sagesilent}
+
+\begin{exercise}
+Solve the equation below. 
+
+$\sage{blocks1[0]} (\sage{displayEquationLeft1}) = \sage{blocks1[3]} (\sage{displayEquationRight1})$
+
+$x = \answer[tolerance=0.01]{\sage{answer1}}$
+
+\begin{feedback}[incorrect]
+	Did you get $\sage{feedback1}$ as your answer? If so, you are not distributing correctly. Remember that if you have something like $-3(2x-1)$, you need to distribute the $-3$ to BOTH $2x$ and $-1$ to get $-6x+3$. 
+\end{feedback}
+\end{exercise}
+
+\begin{exercise}
+Solve the equation below. 
+
+$\sage{blocks2[0]} (\sage{displayEquationLeft2}) = \sage{blocks2[3]} (\sage{displayEquationRight2})$
+
+$x = \answer[tolerance=0.01]{\sage{answer2}}$
+
+\begin{feedback}[incorrect]
+	Did you get $\sage{feedback2}$ as your answer? If so, you are not distributing correctly. Remember that if you have something like $-3(2x-1)$, you need to distribute the $-3$ to BOTH $2x$ and $-1$ to get $-6x+3$. 
+\end{feedback}
+\end{exercise}
+
+\begin{exercise}
+Solve the equation below. 
+
+$\sage{blocks3[0]} (\sage{displayEquationLeft3}) = \sage{blocks3[3]} (\sage{displayEquationRight3})$
+
+$x = \answer[tolerance=0.01]{\sage{answer3}}$
+
+\begin{feedback}[incorrect]
+	Did you get $\sage{feedback3}$ as your answer? If so, you are not distributing correctly. Remember that if you have something like $-3(2x-1)$, you need to distribute the $-3$ to BOTH $2x$ and $-1$ to get $-6x+3$. 
+\end{feedback}
+\end{exercise}
+
+%%%%%%%%%% TYPE 2 - ADVANCED LINEAR EQUATIONS
+
+\begin{sagesilent}
+# Type 2 - Solve Advanced linear equations (fractions)
+#(coefficients[0]*x + numerators[0])/denominators[0]
+    # - (coefficients[1]*x+numerators[1])/denominators[1]
+    # = (coefficients[2]*x+numerators[2])/denominators[2]
+
+x = var('x')
+###################
+def maybeMakeNegative(rational):
+    maybeNegative = (-1)**ZZ.random_element(2)
+    rational = maybeNegative * rational
+    return rational
+
+#No restrictions on coefficients or numerators
+def createThreeRandomIntegers():
+    a = maybeMakeNegative(ZZ.random_element(3, 9))
+    b = maybeMakeNegative(ZZ.random_element(3, 9))
+    c = maybeMakeNegative(ZZ.random_element(3, 9))
+    return [a, b, c]
+
+def createThreeDistinctRandomNaturals():
+    possibleNaturals= range(2,7)
+    n1, n2, n3 = sample(possibleNaturals, 3)
+    naturals = [Integer(n1), Integer(n2), Integer(n3)]
+    return naturals
+
+def createThreeDistinctRandomIntegers():
+    a, b, c = sample(range(3, 8), 3)
+    return [Integer(maybeMakeNegative(a)), Integer(maybeMakeNegative(b)), Integer(maybeMakeNegative(c))]
+
+def createViableConstants():
+    a, b, c = createThreeRandomIntegers()
+    d, e, f = createThreeRandomIntegers()
+    g, h, i = createThreeDistinctRandomNaturals()
+    # Check that there is exactly one solution to the linear equation
+    OneSolutionCheck = (a/g) - (b/h) - (c/i)
+    while (OneSolutionCheck == 0):
+        a, b, c = createThreeRandomIntegers()
+        d, e, f = createThreeRandomIntegers()
+        g, h, i = createThreeDistinctRandomNaturals()
+        OneSolutionCheck = (a/g) - (b/h) - (c/i)
+    return [a, b, c, d, e, f, g, h, i]
+
+def createSolution(constants):
+    a, b, c, d, e, f, g, h, i = constants
+    equationBlockOne = (a*x+d)/g
+    equationBlockTwo = (b*x+e)/h
+    equationBlockThree = (c*x+f)/i
+    toSolve = equationBlockOne - equationBlockTwo - equationBlockThree
+    solution = round(float(solve(toSolve, x)[0].rhs()), 3)
+    return solution
+    
+def generateFeedback1(constants):
+    a, b, c, d, e, f, g, h, i = constants
+    equationBlockOne = (a*x+d)/g
+    equationBlockTwo = (b*x-e)/h
+    equationBlockThree = (c*x+f)/i
+    toSolve = equationBlockOne - equationBlockTwo - equationBlockThree
+    feedback = round(float(solve(toSolve, x)[0].rhs()), 3)
+    return feedback
+    
+def generateFeedback2(constants):
+    a, b, c, d, e, f, g, h, i = constants
+    equationBlockOne = (a*x)/g + d
+    equationBlockTwo = (b*x)/h + e
+    equationBlockThree = (c*x)/i + f
+    toSolve = equationBlockOne - equationBlockTwo - equationBlockThree
+    feedback = round(float(solve(toSolve, x)[0].rhs()), 3)
+    return feedback
+
+def generateFeedback3(constants): 
+    a, b, c, d, e, f, g, h, i = constants
+    equationBlockOne = (a*x)/g + d
+    equationBlockTwo = (b*x)/h - e
+    equationBlockThree = (c*x)/i + f
+    toSolve = equationBlockOne - equationBlockTwo - equationBlockThree
+    feedback = round(float(solve(toSolve, x)[0].rhs()), 3)
+    return feedback
+
+
+######## END OF DEFINITIONS ###########
+
+##### QUESTION 4 #####
+constants4 = createViableConstants()
+displayNumeratorA4 = constants4[0] * x + constants4[3]
+displayNumeratorB4 = constants4[1] * x + constants4[4]
+displayNumeratorC4 = constants4[2] * x + constants4[5]
+answer4 = createSolution(constants4)
+feedback41 = generateFeedback1(constants4)
+feedback42 = generateFeedback2(constants4)
+feedback43 = generateFeedback3(constants4)
+
+##### QUESTION 5 #####
+constants5 = createViableConstants()
+displayNumeratorA5 = constants5[0] * x + constants5[3]
+displayNumeratorB5 = constants5[1] * x + constants5[4]
+displayNumeratorC5 = constants5[2] * x + constants5[5]
+answer5 = createSolution(constants5)
+feedback51 = generateFeedback1(constants5)
+feedback52 = generateFeedback2(constants5)
+feedback53 = generateFeedback3(constants5)
+
+##### QUESTION 6 #####
+constants6 = createViableConstants()
+displayNumeratorA6 = constants6[0] * x + constants6[3]
+displayNumeratorB6 = constants6[1] * x + constants6[4]
+displayNumeratorC6 = constants6[2] * x + constants6[5]
+answer6 = createSolution(constants6)
+feedback61 = generateFeedback1(constants6)
+feedback62 = generateFeedback2(constants6)
+feedback63 = generateFeedback3(constants6)
+\end{sagesilent}
+
+\begin{exercise}
+Solve the equation below. 
+
+$\frac{\sage{displayNumeratorA4}}{\sage{constants4[6]}} - \frac{\sage{displayNumeratorB4}}{\sage{constants4[7]}} = \frac{\sage{displayNumeratorC4}}{\sage{constants4[8]}}$
+
+\begin{hint}
+Adding/Multiplying fractions can be difficult and tedious. Is there something we can multiply both sides of the equation by to remove the fractions from the equation?
+\end{hint}
+
+$x = \answer[tolerance=0.01]{\sage{answer4}}$
+
+\begin{feedback}
+	There are two common issues when solving linear equations:
+	
+	The first we saw in the previous set of problems: not distributing correctly. If you got $\sage{feedback41}$, check that you distributed any negatives correctly. 
+	
+	The second common issue is not dividing correctly. If we have a fraction like $\frac{6x-4}{2}$, the 2 is dividing \textbf{both} parts. So, this would become $3x-2$ and not $3x-4$. If you got $\sage{feedback42}$, you made this type of mistake. 
+	
+	If you made both of these mistakes, you got $\sage{feedback43}$. Restart the problem and correct both issues. 
+\end{feedback}
+\end{exercise}
+
+\begin{exercise}
+Solve the equation below. 
+
+$\frac{\sage{displayNumeratorA5}}{\sage{constants5[6]}} - \frac{\sage{displayNumeratorB5}}{\sage{constants5[7]}} = \frac{\sage{displayNumeratorC5}}{\sage{constants5[8]}}$
+
+$x = \answer[tolerance=0.01]{\sage{answer5}}$
+
+\begin{feedback}
+	There are two common issues when solving linear equations:
+	
+	The first we saw in the previous set of problems: not distributing correctly. If you got $\sage{feedback51}$, check that you distributed any negatives correctly. 
+	
+	The second common issue is not dividing correctly. If we have a fraction like $\frac{6x-4}{2}$, the 2 is dividing \textbf{both} parts. So, this would become $3x-2$ and not $3x-4$. If you got $\sage{feedback52}$, you made this type of mistake. 
+	
+	If you made both of these mistakes, you got $\sage{feedback53}$. Restart the problem and correct both issues. 
+\end{feedback}
+\end{exercise}
+
+\begin{exercise}
+Solve the equation below. 
+
+$\frac{\sage{displayNumeratorA6}}{\sage{constants6[6]}} - \frac{\sage{displayNumeratorB6}}{\sage{constants6[7]}} = \frac{\sage{displayNumeratorC6}}{\sage{constants6[8]}}$
+
+$x= \answer[tolerance=0.01]{\sage{answer6}}$
+
+\begin{feedback}
+	There are two common issues when solving linear equations:
+	
+	The first we saw in the previous set of problems: not distributing correctly. If you got $\sage{feedback61}$, check that you distributed any negatives correctly. 
+	
+	The second common issue is not dividing correctly. If we have a fraction like $\frac{6x-4}{2}$, the 2 is dividing \textbf{both} parts. So, this would become $3x-2$ and not $3x-4$. If you got $\sage{feedback62}$, you made this type of mistake. 
+	
+	If you made both of these mistakes, you got $\sage{feedback63}$. Restart the problem and correct both issues. 
+\end{feedback}
+\end{exercise}
+
+\end{document}

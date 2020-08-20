@@ -1,0 +1,185 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+
+\input{../preamble} %% we can turn off input when making a master document
+
+\outcome{}
+\author{Darryl Chamberlain Jr.}
+ 
+\title{Objective 4 - Solving Radical Equations (Quadratic)}
+
+\begin{document}
+\begin{abstract}
+Solve radical equations that lead to quadratic equations. 
+\end{abstract}
+\maketitle
+
+\href{https://cnx.org/contents/mwjClAV_@8.1:uI1As6DV@15/Other-Types-of-Equations}{Link to section in online textbook.}
+
+First, watch 
+% UPDATE VIDEO LINK
+\underline{\href{https://mediasite.video.ufl.edu/Mediasite/Play/631ca9eb67f349698705032a7c42906d1d}{this video}} to see how solving radical equations is different from solving linear and quadratic equations. \textbf{The major difference is in the restricted domains of radical functions!} This objective will focus on radical equations that lead to quadratic equations. That means we can have 0, 1, or 2 solutions \textit{(based on whether the potential solutions are in the domains of the radical functions)}. 
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 4  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+
+%Now practice working with 
+% TYPE OF PROBLEMS
+%below. 
+% (ax+b)(cx+d) = acx^2 + (ad+bc)x + bd  
+% (ac)x^2 + bd = - (ad+bc)x
+% \sqrt{(ac)x^2 + bd} = \sqrt{- (ad+bc)x} 
+%  \sqrt{(ac)x^2 + bd} - \sqrt{- (ad+bc)x} = 0
+
+\begin{sagesilent}
+x = var('x')
+def generateCoefficients(): 
+    a = (-1)**ZZ.random_element(2) * (ZZ.random_element(3, 7))
+    b = (-1)**ZZ.random_element(2) * (ZZ.random_element(3, 7))
+    c = (-1)**ZZ.random_element(2) * (ZZ.random_element(3, 7))
+    d = (-1)**ZZ.random_element(2) * (ZZ.random_element(3, 7))
+    discriminant = (a*c+b*d)**2 - 4*a*c*b*d
+    while discriminant < 0 or discriminant == 0:
+        a = (-1)**ZZ.random_element(2) * (ZZ.random_element(3, 7))
+        b = (-1)**ZZ.random_element(2) * (ZZ.random_element(3, 7))
+        c = (-1)**ZZ.random_element(2) * (ZZ.random_element(3, 7))
+        d = (-1)**ZZ.random_element(2) * (ZZ.random_element(3, 7))
+        discriminant = (a*c+b*d)**2 - 4*a*c*b*d
+    return [a, b, c, d]
+#  
+def checkDomainOfTerms(a, b, c, d, solution):
+    term1 = a*c*x**2 + b*d
+    term2 = -(a*d+b*c)*x
+    term1Check = term1(x=solution)
+    term2Check = term2(x=solution)
+    if term1Check > 0 and term2Check > 0:
+        inDomain = 1
+    else:
+        inDomain = 0
+    return inDomain
+#
+def equationWithTwoSolutions():
+    a, b, c, d = generateCoefficients()
+    solution1 = -b/a
+    solution2 = -d/c
+    solution1inDomain = checkDomainOfTerms(a, b, c, d, solution1)
+    solution2inDomain = checkDomainOfTerms(a, b, c, d, solution2)
+    counter = 0
+    while solution1inDomain == 0 or solution2inDomain == 0:
+        a, b, c, d = generateCoefficients()
+        solution1 = -b/a
+        solution2 = -d/c
+        solution1inDomain = checkDomainOfTerms(a, b, c, d, solution1)
+        solution2inDomain = checkDomainOfTerms(a, b, c, d, solution2)
+        counter = counter + 1 
+    return [a, b, c, d]
+#
+def equationWithOneSolution():
+    a, b, c, d = generateCoefficients()
+    solution1 = -b/a
+    solution2 = -d/c
+    solution1inDomain = checkDomainOfTerms(a, b, c, d, solution1)
+    solution2inDomain = checkDomainOfTerms(a, b, c, d, solution2)
+    counter = 0
+    while (solution1inDomain == 0 and solution2inDomain == 0) or (solution1inDomain == 1 and solution2inDomain == 1):
+        a, b, c, d = generateCoefficients()
+        solution1 = -b/a
+        solution2 = -d/c
+        solution1inDomain = checkDomainOfTerms(a, b, c, d, solution1)
+        solution2inDomain = checkDomainOfTerms(a, b, c, d, solution2)
+        counter = counter + 1 
+    if solution1inDomain == 1:
+        return [a, b, c, d, round(solution1, 3)]
+    else:
+        return [a, b, c, d, round(solution2, 3)]
+#
+def equationWithZeroSolutions():
+    a, b, c, d = generateCoefficients()
+    solution1 = -b/a
+    solution2 = -d/c
+    solution1inDomain = checkDomainOfTerms(a, b, c, d, solution1)
+    solution2inDomain = checkDomainOfTerms(a, b, c, d, solution2)
+    counter = 0
+    while solution1inDomain == 1 or solution2inDomain == 1:
+        a, b, c, d = generateCoefficients()
+        solution1 = -b/a
+        solution2 = -d/c
+        solution1inDomain = checkDomainOfTerms(a, b, c, d, solution1)
+        solution2inDomain = checkDomainOfTerms(a, b, c, d, solution2)
+        counter = counter + 1 
+    return [a, b, c, d]
+#
+def orderSolutions(a, b, c, d):
+    s1 = round(-b/a, 3)
+    s2 = round(-d/c, 3)
+    if (s1 < s2):
+        return [s1, s2]
+    else: 
+        return [s2, s1]
+##### END OF DEFINITIONS #####
+
+##### QUESTION 13 #####
+a13, b13, c13, d13 = equationWithTwoSolutions()
+termA13 = a13*c13*x**2 + b13*d13
+termB13 = -(a13*d13+b13*c13)*x
+solutionA13, solutionB13 = orderSolutions(a13, b13, c13, d13)
+
+##### QUESTION 14 #####
+a14, b14, c14, d14, solution14 = equationWithOneSolution()
+termA14 = a14*c14*x**2 + b14*d14
+termB14 = -(a14*d14+b14*c14)*x
+
+##### QUESTION 15 #####
+a15, b15, c15, d15 = equationWithZeroSolutions()
+termA15 = a15*c15*x**2 + b15*d15
+termB15 = -(a15*d15+b15*c15)*x
+\end{sagesilent}
+
+%Q 13 
+\begin{question}
+Solve the following equation. 
+
+$$ \sqrt{\sage{termA13}} - \sqrt{\sage{termB13}} = 0 $$
+
+Smallest solution: $x = \answer[tolerance=0.05]{\sage{solutionA13}}$
+
+Largest solution: $x = \answer[tolerance=0.05]{\sage{solutionB13}}$
+
+\textit{If there is only one Real solution, type "NA" as the largest solution. If there are no Real solutions, type "NA" for both.}
+
+\end{question}
+
+%Q 14
+\begin{question}
+Solve the following equation. 
+
+$$ \sqrt{\sage{termA14}} - \sqrt{\sage{termB14}} = 0 $$
+
+Smallest solution: $x = \answer[tolerance=0.05]{\sage{solution14}}$
+
+Largest solution: $x = \answer[format=string]{NA}$
+
+\textit{If there is only one Real solution, type "NA" as the largest solution. If there are no Real solutions, type "NA" for both.}
+\end{question}
+
+%Q 15
+\begin{question}
+Solve the following equation. 
+
+$$ \sqrt{\sage{termA15}} - \sqrt{\sage{termB15}} = 0 $$
+
+Smallest solution: $x = \answer[format=string]{NA}$
+
+Largest solution: $x = \answer[format=string]{NA}$
+
+\textit{If there is only one Real solution, type "NA" as the largest solution. If there are no Real solutions, type "NA" for both.}
+\end{question}
+
+\end{document}

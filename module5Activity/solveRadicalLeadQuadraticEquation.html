@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="en"><head> <title>Objective 4 - Solving Radical Equations (Quadratic)</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<!-- charset=utf-8,-css,html,htex4ht,xhtml --> 
+<meta name="src" content="solveRadicalLeadQuadraticEquation.tex"/> 
+<meta name="author" content="Darryl Chamberlain
+Jr."/> 
+<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"/> 
+<meta name="ximera" content="version 0.0.1"/> 
+<link href="https://ximera.osu.edu/public/stylesheets/standalone.css" rel="stylesheet" media="screen"/> 
+<script type="text/javascript" async="" src="https://ximera.osu.edu/public/javascripts/standalone.min.js"></script> 
+<meta name="learning-outcome" content=""/> 
+<meta name="dependency" content="932dc370121d9c8682828373ca92bd4095993ca1 preamble.tex"/><meta name="dependency" content="86109a6407e863c1b2af51ab548e690e8afa43ac module5Activity/solveRadicalLeadQuadraticEquation.tex"/></head><body> 
+<div class="preamble"><script type="math/tex">\newenvironment {prompt}{}{}
+\newcommand {\ungraded }[0]{}
+\newcommand {\npnoround }[0]{\nprounddigits {-1}}
+\newcommand {\npnoroundexp }[0]{\nproundexpdigits {-1}}
+\newcommand {\npunitcommand }[1]{\ensuremath {\mathrm {#1}}}
+\newcommand {\HyperFirstAtBeginDocument }[0]{\AtBeginDocument }</script><script type="text/javascript"> 
+</script> 
+</div>
+<div class="abstract">
+<!--l. 18--><p class="noindent">Solve radical equations that lead to quadratic equations.
+</p></div>   <div class="maketitle"></div>
+<a href="https://cnx.org/contents/mwjClAV_@8.1:uI1As6DV@15/Other-Types-of-Equations">Link to section in online textbook.</a>
+<!--l. 24--><p class="noindent">First, watch <span class="underline"><a href="https://mediasite.video.ufl.edu/Mediasite/Play/631ca9eb67f349698705032a7c42906d1d">this video</a></span> to see how solving radical equations is different from solving
+linear and quadratic equations. <strong>The major difference is in the restricted
+domains of radical functions!</strong> This objective will focus on radical equations that
+lead to quadratic equations. That means we can have 0, 1, or 2 solutions
+<em>(based on whether the potential solutions are in the domains of the radical
+functions)</em>.
+</p>
+<script type="text/sagemath">x = var('x')
+def generateCoefficients():
+    a = (-1)**ZZ.random_element(2) * (ZZ.random_element(3, 7))
+    b = (-1)**ZZ.random_element(2) * (ZZ.random_element(3, 7))
+    c = (-1)**ZZ.random_element(2) * (ZZ.random_element(3, 7))
+    d = (-1)**ZZ.random_element(2) * (ZZ.random_element(3, 7))
+    discriminant = (a*c+b*d)**2 - 4*a*c*b*d
+    while discriminant < 0 or discriminant == 0:
+        a = (-1)**ZZ.random_element(2) * (ZZ.random_element(3, 7))
+        b = (-1)**ZZ.random_element(2) * (ZZ.random_element(3, 7))
+        c = (-1)**ZZ.random_element(2) * (ZZ.random_element(3, 7))
+        d = (-1)**ZZ.random_element(2) * (ZZ.random_element(3, 7))
+        discriminant = (a*c+b*d)**2 - 4*a*c*b*d
+    return [a, b, c, d]
+#
+def checkDomainOfTerms(a, b, c, d, solution):
+    term1 = a*c*x**2 + b*d
+    term2 = -(a*d+b*c)*x
+                                                                  
+
+                                                                  
+    term1Check = term1(x=solution)
+    term2Check = term2(x=solution)
+    if term1Check > 0 and term2Check > 0:
+        inDomain = 1
+    else:
+        inDomain = 0
+    return inDomain
+#
+def equationWithTwoSolutions():
+    a, b, c, d = generateCoefficients()
+    solution1 = -b/a
+    solution2 = -d/c
+    solution1inDomain = checkDomainOfTerms(a, b, c, d, solution1)
+    solution2inDomain = checkDomainOfTerms(a, b, c, d, solution2)
+    counter = 0
+    while solution1inDomain == 0 or solution2inDomain == 0:
+        a, b, c, d = generateCoefficients()
+        solution1 = -b/a
+        solution2 = -d/c
+        solution1inDomain = checkDomainOfTerms(a, b, c, d, solution1)
+        solution2inDomain = checkDomainOfTerms(a, b, c, d, solution2)
+        counter = counter + 1
+    return [a, b, c, d]
+#
+def equationWithOneSolution():
+    a, b, c, d = generateCoefficients()
+    solution1 = -b/a
+    solution2 = -d/c
+    solution1inDomain = checkDomainOfTerms(a, b, c, d, solution1)
+    solution2inDomain = checkDomainOfTerms(a, b, c, d, solution2)
+    counter = 0
+    while (solution1inDomain == 0 and solution2inDomain == 0) or (solution1inDomain == 1 and solution2inDomain == 1):
+                                                                  
+
+                                                                  
+        a, b, c, d = generateCoefficients()
+        solution1 = -b/a
+        solution2 = -d/c
+        solution1inDomain = checkDomainOfTerms(a, b, c, d, solution1)
+        solution2inDomain = checkDomainOfTerms(a, b, c, d, solution2)
+        counter = counter + 1
+    if solution1inDomain == 1:
+        return [a, b, c, d, round(solution1, 3)]
+    else:
+        return [a, b, c, d, round(solution2, 3)]
+#
+def equationWithZeroSolutions():
+    a, b, c, d = generateCoefficients()
+    solution1 = -b/a
+    solution2 = -d/c
+    solution1inDomain = checkDomainOfTerms(a, b, c, d, solution1)
+    solution2inDomain = checkDomainOfTerms(a, b, c, d, solution2)
+    counter = 0
+    while solution1inDomain == 1 or solution2inDomain == 1:
+        a, b, c, d = generateCoefficients()
+        solution1 = -b/a
+        solution2 = -d/c
+        solution1inDomain = checkDomainOfTerms(a, b, c, d, solution1)
+        solution2inDomain = checkDomainOfTerms(a, b, c, d, solution2)
+        counter = counter + 1
+    return [a, b, c, d]
+#
+def orderSolutions(a, b, c, d):
+    s1 = round(-b/a, 3)
+    s2 = round(-d/c, 3)
+    if (s1 < s2):
+        return [s1, s2]
+                                                                  
+
+                                                                  
+    else:
+        return [s2, s1]
+##### END OF DEFINITIONS #####
+
+##### QUESTION 13 #####
+a13, b13, c13, d13 = equationWithTwoSolutions()
+termA13 = a13*c13*x**2 + b13*d13
+termB13 = -(a13*d13+b13*c13)*x
+solutionA13, solutionB13 = orderSolutions(a13, b13, c13, d13)
+
+##### QUESTION 14 #####
+a14, b14, c14, d14, solution14 = equationWithOneSolution()
+termA14 = a14*c14*x**2 + b14*d14
+termB14 = -(a14*d14+b14*c14)*x
+
+##### QUESTION 15 #####
+a15, b15, c15, d15 = equationWithZeroSolutions()
+termA15 = a15*c15*x**2 + b15*d15
+termB15 = -(a15*d15+b15*c15)*x
+</script>
+<div role="article" class="problem-environment question" id="problem1"><a id="x1-8r1"></a> Solve the following equation.
+<!--l. 149--><p class="noindent">
+                                 <script type="math/tex; mode=display"> \sqrt {\sage {termA13}} - \sqrt {\sage {termB13}} = 0 </script>
+                                                                  
+
+                                                                  
+</p><!--l. 151--><p class="noindent">Smallest solution: <script type="math/tex">x = \answer [tolerance=0.05]{\sage {solutionA13}}</script>
+</p><!--l. 153--><p class="noindent">Largest solution: <script type="math/tex">x = \answer [tolerance=0.05]{\sage {solutionB13}}</script>
+</p><!--l. 155--><p class="noindent"><em>If there is only one Real solution, type ”NA” as the largest solution. If there are no
+Real solutions, type ”NA” for both.</em>
+</p>
+</div>
+<div role="article" class="problem-environment question" id="problem2"><a id="x1-9r2"></a> Solve the following equation.
+<!--l. 163--><p class="noindent">
+                                 <script type="math/tex; mode=display"> \sqrt {\sage {termA14}} - \sqrt {\sage {termB14}} = 0 </script>
+</p><!--l. 165--><p class="noindent">Smallest solution: <script type="math/tex">x = \answer [tolerance=0.05]{\sage {solution14}}</script>
+</p><!--l. 167--><p class="noindent">Largest solution: <script type="math/tex">x = \answer [format=string]{NA}</script>
+</p><!--l. 169--><p class="noindent"><em>If there is only one Real solution, type ”NA” as the largest solution. If there are no
+Real solutions, type ”NA” for both.</em>
+</p></div>
+<div role="article" class="problem-environment question" id="problem3"><a id="x1-10r3"></a> Solve the following equation.
+<!--l. 176--><p class="noindent">
+                                 <script type="math/tex; mode=display"> \sqrt {\sage {termA15}} - \sqrt {\sage {termB15}} = 0 </script>
+                                                                  
+
+                                                                  
+</p><!--l. 178--><p class="noindent">Smallest solution: <script type="math/tex">x = \answer [format=string]{NA}</script>
+</p><!--l. 180--><p class="noindent">Largest solution: <script type="math/tex">x = \answer [format=string]{NA}</script>
+</p><!--l. 182--><p class="noindent"><em>If there is only one Real solution, type ”NA” as the largest solution. If there are no
+Real solutions, type ”NA” for both.</em>
+</p></div>
+ 
+ 
+
+                                                                  
+
+                                                                  
+                                                                  
+
+
+</body></html>

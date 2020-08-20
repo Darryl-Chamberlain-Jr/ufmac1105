@@ -1,0 +1,90 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+ 
+\input{../preamble} %% we can turn off input when making a master document
+ 
+\outcome{}
+\author{Darryl Chamberlain Jr.}
+  
+\title{Objective 1 - Identify Direct Variation}
+ 
+\begin{document}
+\begin{abstract}
+
+\end{abstract}
+
+\maketitle
+ 
+% Link to textbook
+Link to textbook: 
+\href{https://cnx.org/contents/mwjClAV_@8.12:yUH0hROr@12/Modeling-Using-Variation}{Identify when two quantities are varying directly with each other.}
+
+\href{https://www.youtube.com/watch?v=oL5kQ8KH_70&list=PLsCqF7qYpC5aHckH-Nh5nF3A598qhRJ8S&index=2}{Video on Direct Variation}
+ 
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 1  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+In the last Module, we looked at when two quantities changed at a constant rate: $y=kx$. This is a \textit{direct variation} - one quantity is a constant multiplied by another quantity. This is still direct variation if we describe one quantity $(y)$ as a constant multiplied by the power of another quantity, as this is still a quantity! 
+
+\textbf{Direct Variation:} $y = k x^n$, where $n$ is a positive Real number. 
+
+\textbf{Identifying a Direct Variation of Quantities}
+
+In word problems, we will be looking for the phrases ``vary directly" or ``directly proportional". Outside of these phrases, the easiest way to determine whether two quantities are varying directly with each other is to graph some values. If the graph looks like a polynomial or radical function, then the quantities may be varying directly! \textbf{\textit{Warning: It is difficult to tell the difference between $\log{(x)}$ and $\sqrt{x}$ from just a few points. If we were given a few points and not told the relationship between the values, then we would need statistical methods to determine which function is more appropriate for the model. For our class, you will be told how to model the situation.}} 
+
+For the questions below, determine whether it would be reasonable to model the problem with a direct variation. \textit{Do not attempt to solve these problems - we will work on that in a future objective.}
+
+
+\begin{question}
+[Astronomy] Kepler's Third Law: The square of the time, $T$, required for a planet to orbit the Sun is directly proportional to the cube of the mean distance, $a$, that the planet is from the Sun. Should we model the relationship between time and distance with a direct variation?
+
+$\answer[format=string]{Yes}$
+
+\begin{feedback}
+If we write out the formula described, we would have $T^2 = k a^3$. We have a quantity, $T^2$, equal to a constant times another quantity, $a^3$. This describes a direct variation! If we wanted it in our form $y = k x^n$, we could square root both sides and have $T = c a^{3/2}$, where this is a different constant than before. 
+\end{feedback}
+\end{question}
+
+\begin{question}
+[Physics] The rate of vibration of a string under constant tension, $r$, varies inversely with the length of the string, $l$. Should we model the relationship between rate of vibration and length of string with a direct variation?
+
+$\answer[format=string]{No}$
+
+\begin{feedback}
+An inverse variation is described by $y = \frac{k}{x^n}$, where $n$ is a positive Real number. The next objective will talk about how inverse variation is different than direct variation. 
+\end{feedback}
+
+\end{question}
+
+
+\begin{question}
+A population of bacteria doubles every hour. Should we model the scenario with a direct variation?
+
+$\answer[format=string]{No}$
+
+\begin{feedback}
+Our two quantities are population $P$ and time $t$ (in hours). If we want it to double every hour, we want to multiply by 2 every time $t$ increases - we would write that as $2^t$. This isn't a power function anymore! This would be exponential growth, and something we will look at in the following Module. 
+\end{feedback}
+
+\end{question}
+
+\begin{question}
+[Anthropology] Radiocarbon dating is used to calculate the approximate date a plant or animal died by noting the percentage of carbon-14, $r$ in the object. The age of the object $t$, in years, is directly proportional to the natural log of the percentage of carbon-14, $r$ in the object. Should we model the relationship between $t$ and $r$ with a direct variation?
+
+$\answer[format=string]{No}$
+
+\begin{feedback}
+Remember, direct variation describes how two quantities vary directly \textbf{with power functions}. 
+\end{feedback}
+
+
+\end{question}
+
+
+\end{document}

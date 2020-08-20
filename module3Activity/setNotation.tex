@@ -1,0 +1,77 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+
+\input{../preamble} %% we can turn off input when making a master document
+
+\outcome{Understand and solve linear inequalities.}
+\author{Darryl Chamberlain Jr.}
+ 
+\title{Objective 1 - Set Notation}
+
+\begin{document}
+\begin{abstract}
+Describe solutions as sets of numbers. 
+\end{abstract}
+\maketitle
+
+\href{https://cnx.org/contents/mwjClAV_@8.1:uIjtHMfW@9/Linear-Inequalities-and-Absolute-Value-Inequalities}{Link to section in online textbook.}
+
+\textbf{\Large Note: As this section reviews definitions, there is no associated video.}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 1  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+We start with a terminology review. 
+
+A \textbf{set} is a collection of mathematical objects. We'll commonly look at sets of numbers like the Natural numbers: $\{ 1, 2, 3, 4, \ldots \}$. 
+
+An \textbf{interval} is a collection of Real numbers. For example, $(1, 2)$ is the set of Real numbers between 1 and 2 (but not including 1 or 2). If we want to include the endpoints of an interval, we use brackets, such as $[1, 2]$. 
+
+We can describe solutions that exist in an interval by using the notation $x \in (a, b)$. We read this as ``$x$ is an element of $(a, b)$" and means that $x$ is some number between $a$ and $b$. For example, $x \in [1, 2]$ means that $x$ is some number between 1 and 2 (and could be one of the two numbers). 
+
+We can also describe intervals using \textbf{inequalities}. For example, to describe the set of $x \in (1, 2)$ using inequalities, we would use $1 < x < 2$. This is usually a more natural way for students to read ``$x$ is a Real number between 1 and 2." If we want to include the endpoints of an inequality, we use the symbols $\leq$ or $\geq$. 
+
+\begin{question}
+Write each set described in Interval notation.
+
+\begin{tabular}{|p{0.5\linewidth}|c|c|}
+\hline 
+\textbf{Set described in words} & \textbf{Inequality Notation} & \textbf{Interval Notation} \\
+\hline 
+All Real numbers between $a$ and $b$, but not including $a$ or $b$ & $a < x < b$ & $\{x \, | \, x \in \answer{(a, b)} \}$ \\
+All Real numbers greater than $a$, but not including $a$ & $x > a$ & $\{x \, | \, x \in \answer{(a, \infty)} \}$ \\
+All Real numbers less than $b$, but not including $b$ & $x < b$ & $\{x \, | \, x \in \answer{(-\infty, b)} \}$ \\
+All Real numbers greater than $a$, including $a$ & $x \geq a$ & $\{x \, | \, x \in \answer{[a, \infty)} \}$ \\
+All Real numbers less than $b$, including $b$ & $x \leq b$ & $\{x \, | \, x \in \answer{(-\infty, b]} \}$ \\
+All Real numbers between $a$ and $b$, including $a$ & $a \leq x < b$ & $\{x \, | \, x \in \answer{[a, b)} \}$ \\
+All Real numbers between $a$ and $b$, including $b$ & $a < x \leq b$ & $\{x \, | \, x \in \answer{(a, b]} \}$ \\
+All Real numbers between $a$ and $b$, including $a$ and $b$ & $a \leq x \leq b$ & $\{x \, | \, x \in \answer{[a, b]} \}$ \\
+All Real numbers less than $a$ or greater than $b$ & $x < a \text{ or } x > b$ & $\{x \, | \, x \in \answer{(-\infty, a)} \cup \answer{(b, \infty)} \}$ \\
+All Real numbers & $x \geq a \text{ or } x < a$ & $\{x \, | \, x \in \answer{(-\infty, \infty)} \}$ \\
+\hline
+\end{tabular}
+
+\end{question}
+
+\begin{question}
+On exams, you will answer questions primarily using interval notation. Solve the linear equation below and choose the interval that contains the solution. 
+
+$$x + 3 = 5.5$$
+
+\begin{multipleChoice}
+\choice{$x = a, \text{ where } a \in [-2, -1]$}
+\choice{$x = a, \text{ where } a \in [-1, 0]$}
+\choice{$x = a, \text{ where } a \in [0, 1]$}
+\choice{$x = a, \text{ where } a \in [1, 2]$}
+\choice[correct]{$x = a, \text{ where } a \in [2, 3]$}
+\end{multipleChoice}
+
+\end{question}
+
+\end{document}

@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="en"><head> <title>Objective 3 - Construct Direct and Indirect Variation Models</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<!-- charset=utf-8,-css,html,htex4ht,xhtml --> 
+<meta name="src" content="constructVariationModel.tex"/> 
+<meta name="author" content="Darryl Chamberlain
+Jr."/> 
+<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"/> 
+<meta name="ximera" content="version 0.0.1"/> 
+<link href="https://ximera.osu.edu/public/stylesheets/standalone.css" rel="stylesheet" media="screen"/> 
+<script type="text/javascript" async="" src="https://ximera.osu.edu/public/javascripts/standalone.min.js"></script> 
+<meta name="learning-outcome" content=""/> 
+<meta name="dependency" content="932dc370121d9c8682828373ca92bd4095993ca1 preamble.tex"/><meta name="dependency" content="25eb3d38974d2fcc5de97f50b2b76ac35514847f module10ModelingActivity/constructVariationModel.tex"/></head><body> 
+<div class="preamble"><script type="math/tex">\newenvironment {prompt}{}{}
+\newcommand {\ungraded }[0]{}
+\newcommand {\npnoround }[0]{\nprounddigits {-1}}
+\newcommand {\npnoroundexp }[0]{\nproundexpdigits {-1}}
+\newcommand {\npunitcommand }[1]{\ensuremath {\mathrm {#1}}}
+\newcommand {\HyperFirstAtBeginDocument }[0]{\AtBeginDocument }</script><script type="text/javascript"> 
+</script> 
+</div>
+<div class="abstract">
+</div>
+<div class="maketitle"></div>
+<!--l. 24--><p class="noindent">Link to textbook: <a href="https://cnx.org/contents/mwjClAV_@8.12:yUH0hROr@12/Modeling-Using-Variation">Direct and Indirect Variation.</a>
+</p><!--l. 27--><p class="noindent"><a href="https://www.youtube.com/watch?v=WGqmAmzUODM">Video on Direct Variation</a>
+</p><!--l. 29--><p class="noindent"><a href="https://www.youtube.com/watch?v=awp2vxqd-l4">Video on Inverse Variation</a>
+</p><!--l. 31--><p class="noindent"><a href="https://www.youtube.com/watch?v=is07Wg_0DiY">Video on Direct and Inverse Variation</a>
+</p><!--l. 33--><p class="noindent"><a href="https://www.youtube.com/watch?v=dCjOPvlpIl8">Video to provide examples from this homework.</a>
+</p><!--l. 35--><p class="noindent">Now that we’ve seen how to recognize whether when we would use direct and inverse
+variation equations, we’ll practice creating the equations. <strong>After you complete the
+questions in this objective, try to describe the general process to
+constructing direct and inverse variation equations.</strong>
+</p>
+<script type="text/sagemath">k = var('k')
+a = var('a')
+k1 = (4*pi**2) / (9.8)
+a1 = ZZ.random_element(3, 9)
+T1 = round(k1*sqrt(a1**3)*12, 2)
+</script>
+<div role="article" class="problem-environment question" id="problem1"><a id="x1-8r1"></a> [Astronomy] Kepler’s Third Law: The square of the time, <script type="math/tex">T</script>, required for a planet to
+orbit the Sun is directly proportional to the cube of the mean distance, <script type="math/tex">a</script>, that the
+planet is from the Sun.
+<!--l. 49--><p class="noindent"><strong>Part A.</strong> Write the equation that describes time <script type="math/tex">T</script> (years) in terms of the mean
+distance, <script type="math/tex">a</script> (AUs). Use <script type="math/tex">k</script> for your constant.
+</p><!--l. 51--><p class="noindent"><script type="math/tex">T(a) = \answer {\sage {k}}a^{\answer {3/2}}</script>
+</p><!--l. 53--><p class="noindent"><strong>Part B.</strong> Assume that Mars’ mean distance from the Sun is <script type="math/tex">\sage {a1}</script> AUs and it takes Mars
+about <script type="math/tex">\sage {T1}</script> months to orbit the Sun. Write the equation that describes time <script type="math/tex">T</script> (years) in
+terms of the mean distance, <script type="math/tex">a</script> (AUs).
+</p><!--l. 55--><p class="noindent"><script type="math/tex">T(a) = \answer [tolerance=0.05]{\sage {k1}}a^{\answer {3/2}}</script>
+</p>
+                                                                  
+
+                                                                  
+<div class="feedback" data-feedback="attempt" id="feedback2"><strong>Part A.</strong> Remember: if you initially had <script type="math/tex">c</script> as a constant and took it’s square root, this
+is <strong>still</strong> a constant. So we can rebrand it as <script type="math/tex">k</script>.
+<!--l. 60--><p class="noindent"><strong>Part B.</strong> Check your units! </p></div>
+</div>
+<script type="text/sagemath">P = var('P')
+V = var('V')
+n = var('n')
+R = var('R')
+T = var('T')
+temp2 = ZZ.random_element(1, 6)*10
+volume2 = ZZ.random_element(5, 25)
+pressure2 = ZZ.random_element(1, 4)
+R2 = 8.31
+#
+moles2B = round((pressure2 * volume2) / (temp2 * R2), 3)
+coefficientB2 = R2*temp2/volume2
+#
+temp2C = ZZ.random_element(1, 6)*10
+while temp2 == temp2C:
+    temp2C = ZZ.random_element(1, 6)*10
+moles2C = round((pressure2 * volume2) / (temp2C * R2), 3)
+coefficientC2 = pressure2*volume2/R2
+</script>
+<div role="article" class="problem-environment question" id="problem3"><a id="x1-9r2"></a> [Chemistry] Ideal Gas Law: The product of pressure, <script type="math/tex">P</script> (atmospheres), and volume, <script type="math/tex">V</script>
+(liters), of a gas is directly proportional to the product of the amount of substance, <script type="math/tex">n</script>
+(moles), and temperature, <script type="math/tex">T</script> (Celsius).
+<!--l. 88--><p class="noindent"><strong>Part A.</strong> Write the equation that describes the Ideal Gas Law. Use <script type="math/tex">R</script> for your
+constant.
+</p><!--l. 90--><p class="noindent"><script type="math/tex">\answer {\sage {P*V}} = \answer {\sage {n*R*T}}</script>
+</p><!--l. 92--><p class="noindent"><strong>Part B.</strong> Assume that the temperature, <script type="math/tex">\sage {temp2} C</script>, and volume of the gas, <script type="math/tex">\sage {volume2}</script> liters, remain
+constant. At <script type="math/tex">\sage {pressure2}</script> atmosphere of pressure, there are <script type="math/tex">\sage {moles2B}</script> moles of the gas. Write an
+equation that describes the pressure on the gas in terms of the amount of the
+gas.
+</p><!--l. 94--><p class="noindent"><script type="math/tex">P(n) = \answer [tolerance=0.5]{\sage {coefficientB2}} n^{\answer {1}}</script>
+                                                                  
+
+                                                                  
+</p><!--l. 96--><p class="noindent"><strong>Part C.</strong> Now assume that the pressure, <script type="math/tex">\sage {pressure2}</script> atmospheres, and volume of the gas, <script type="math/tex">\sage {volume2}</script>
+liters, remain constant. At <script type="math/tex">\sage {temp2C} C</script>, there are <script type="math/tex">\sage {moles2C}</script> moles of the gas. Write an equation
+that describes the temperature of the gas in terms of the amount of the
+gas.
+</p><!--l. 98--><p class="noindent"><script type="math/tex">T(n) = \answer [tolerance=0.05]{\sage {coefficientC2}} n^{\answer {-1}}</script>
+</p></div>
+<script type="text/sagemath">l3 = ZZ.random_element(2, 25)
+r3 = ZZ.random_element(200, 500)
+k3 = l3*r3/10
+</script>
+<div role="article" class="problem-environment question" id="problem4"><a id="x1-10r3"></a> [Physics] The rate of vibration of a string under constant tension, <script type="math/tex">r</script> cm/s, varies
+inversely with the length of the string, <script type="math/tex">l</script> cm. When the string is <script type="math/tex">\sage {l3}</script> mm long, the rate of
+vibration is <script type="math/tex">\sage {r3}</script> cm/s. Write an equation that describes the rate of vibration of a string
+in terms of the length of the string.
+<!--l. 110--><p class="noindent"><script type="math/tex">r(l) = \answer {\sage {k3}} l^{\answer {-1}}</script>
+</p>
+<div role="article" class="problem-environment hint" id="problem5"><a id="x1-11r4"></a> Check your units!
+</div>
+</div>
+<script type="text/sagemath">tons4 = ZZ.random_element(1, 3)
+mph4 = ZZ.random_element(4, 16)
+energy4 = round(0.5 * (tons4 * 908) * (mph4*1609.34/3600)**2, 2)
+</script>
+<div role="article" class="problem-environment question" id="problem6"><a id="x1-12r5"></a> [Physics] The kinetic energy <script type="math/tex">K</script> (J) of a moving object varies jointly with
+its mass <script type="math/tex">m</script> (kg) and the square of its velocity <script type="math/tex">v</script> (m/s). A <script type="math/tex">\sage {tons4}</script> ton car traveling
+at <script type="math/tex">\sage {mph4}</script> miles per hour has about <script type="math/tex">\sage {energy4}</script> Joules of kinetic energy. Write an equation
+that describes the amount of kinetic energy, <script type="math/tex">K</script> in terms of mass <script type="math/tex">m</script> and velocity
+<script type="math/tex">v</script>.
+<!--l. 126--><p class="noindent"><script type="math/tex">K = \answer [tolerance=0.05]{1/2} m^{\answer {1}} v^{\answer {2}}</script>
+</p>
+<div class="feedback" data-feedback="attempt" id="feedback7">On the exam, you would <strong>not</strong> be expected to know the conversions like tons to kg -
+these will be given on a problem-by-problem basis. </div>
+</div>
+ 
+ 
+
+                                                                  
+
+                                                                  
+                                                                  
+
+
+</body></html>

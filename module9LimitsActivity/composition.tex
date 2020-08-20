@@ -1,0 +1,219 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+ 
+\input{../preamble} %% we can turn off input when making a master document
+ 
+\outcome{}
+\author{Darryl Chamberlain Jr.}
+  
+\title{Objective 2 - Composition}
+ 
+\begin{document}
+\begin{abstract}
+Evaluate the composition of two functions.
+\end{abstract}
+\maketitle
+ 
+\href{https://cnx.org/contents/mwjClAV_@8.1:ik_Ed0Pa@12/Composition-of-Functions}{Link to section in online textbook.}
+ 
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 2  %%%
+%%%%%%%%%%%%%%%%%%%%%
+ 
+First, watch
+% UPDATE VIDEO LINK
+\underline{\href{https://mediasite.video.ufl.edu/Mediasite/Play/cf54ade8e8594719ac48e17841a745401d}{this video}} to learn how use a new operation on functions: Composition.
+ 
+\begin{sagesilent}
+x = var("x")
+ 
+def maybeMakeNegative(natural):
+    integer = natural*(-1)**ZZ.random_element(2)
+    return integer
+ 
+def evaluateNegativeCubeRoot(value, a, b):
+    if value - b < 0:
+        return -((-value+b)**(1/3)) + a
+    else:
+        return (value-b)**(1/3) + a
+ 
+def generatePolynomial(degree):
+    coefficients = [maybeMakeNegative(ZZ.random_element(3, 7)), maybeMakeNegative(ZZ.random_element(3, 7)), maybeMakeNegative(ZZ.random_element(3, 7)), maybeMakeNegative(ZZ.random_element(3, 7)), maybeMakeNegative(ZZ.random_element(3, 7))]
+    if degree == 1:
+        coefficients[4] = 0
+        coefficients[3] = 0
+        coefficients[2] = 0
+    elif degree == 2:
+        coefficients[4] = 0
+        coefficients[3] = 0
+    else:
+        coefficients[4] = 0
+    polynomial = coefficients[4] * x**4 + coefficients[3] * x**3 + coefficients[2] * x**2 + coefficients[1] * x + coefficients[0]
+    return polynomial
+ 
+def generateRadical():
+    factor = generatePolynomial(1)
+    pivotPoint = round(float(solve(factor == 0, x)[0].rhs() ), 3)
+    checkNearby = pivotPoint - 1
+    if factor(x=checkNearby) < 0:
+        domain = [pivotPoint, Infinity]
+    else:
+        domain = [-Infinity, pivotPoint]
+    radical = sqrt(factor)
+    return [radical, domain]
+ 
+def generateRational():
+    factor = generatePolynomial(1)
+    excludeFromDomain = round(float(solve(factor == 0, x)[0].rhs() ), 3)
+    rational = 1/factor
+    return [rational, excludeFromDomain]
+ 
+def generateInversePair():
+    a = maybeMakeNegative(ZZ.random_element(3, 7))
+    b = maybeMakeNegative(ZZ.random_element(3, 7))
+    while a == b or a == -b:
+        a = maybeMakeNegative(ZZ.random_element(3, 7))
+        b = maybeMakeNegative(ZZ.random_element(3, 7))
+    poly = (x - a)**3 + b
+    radical = (x-b)**(1/3) + a
+    return [poly, radical, a, b]
+#####
+degreeQ1f = ZZ.random_element(1, 3)
+degreeQ1g = ZZ.random_element(1, 3)
+functionQ1f = generatePolynomial(degreeQ1f)
+functionQ1g = generatePolynomial(degreeQ1g)
+valueQ1 = maybeMakeNegative(ZZ.random_element(1, 5))
+#
+evaluateFGQ1 = round(float(functionQ1f(x = functionQ1g(x = valueQ1))), 3)
+evaluateGFQ1 = round(float(functionQ1g(x = functionQ1f(x = valueQ1))), 3)
+###
+###
+degreeQ2f = ZZ.random_element(2, 5)
+functionQ2f = generatePolynomial(degreeQ2f)
+tempQ2 = generateRational()
+functionQ2g = tempQ2[0]
+valueQ2 = maybeMakeNegative(ZZ.random_element(1, 5))
+while valueQ2 == tempQ2:
+    valueQ2 = maybeMakeNegative(ZZ.random_element(2, 7))
+#
+evaluateFGQ2 = round(float(functionQ2f(x = functionQ2g(x = valueQ2))), 3)
+evaluateGFQ2 = round(float(functionQ2g(x = functionQ2f(x = valueQ2))), 3)
+###
+###
+degreeQ3f = ZZ.random_element(2, 5)
+functionQ3f = generatePolynomial(degreeQ3f)
+tempQ3 = generateRadical()
+functionQ3g = tempQ3[0]
+if tempQ3[1][0] > -Infinity:
+    bound3 = tempQ3[1][0]
+    valueQ3 = maybeMakeNegative(ZZ.random_element(1, 5))
+    while valueQ3 < bound3 or functionQ3f(valueQ3) < bound3:
+        degreeQ3f = ZZ.random_element(2, 5)
+        functionQ3f = generatePolynomial(degreeQ3f)
+        valueQ3 = maybeMakeNegative(ZZ.random_element(1, 5))
+else:
+    bound3 = tempQ3[1][1]
+    valueQ3 = maybeMakeNegative(ZZ.random_element(1, 5))
+    while valueQ3 > bound3 or functionQ3f(valueQ3) > bound3:
+        degreeQ3f = ZZ.random_element(2, 5)
+        functionQ3f = generatePolynomial(degreeQ3f)
+        valueQ3 = maybeMakeNegative(ZZ.random_element(1, 5))
+#
+evaluateFGQ3 = round(float(functionQ3f(x = functionQ3g(x = valueQ3))), 3)
+evaluateGFQ3 = round(float(functionQ3g(x = functionQ3f(x = valueQ3))), 3)
+###
+###
+functionQ4f, functionQ4g, aQ4, bQ4 = generateInversePair()
+valueQ4 = maybeMakeNegative(ZZ.random_element(2, 7))
+#
+evaluateFGQ4 = round(float(functionQ4f(x = evaluateNegativeCubeRoot(valueQ4, aQ4, bQ4) )), 3)
+evaluateGFQ4 = round(float( evaluateNegativeCubeRoot(functionQ4f(x = valueQ4), aQ4, bQ4) ), 3)
+###
+ 
+ 
+ 
+\end{sagesilent}
+ 
+% Q1 - Two polynomials
+\begin{question}
+For the two functions below, evaluate $(f\circ g)(\sage{valueQ1})$ and $(g \circ f)(\sage{valueQ1})$
+ 
+$$f(x) = \sage{functionQ1f}$$
+$$g(x) = \sage{functionQ1g}$$
+ 
+$(f\circ g)(\sage{valueQ1}) = \answer[tolerance=0.05]{\sage{evaluateFGQ1}}$ \\
+ 
+$(g \circ f)(\sage{valueQ1}) = \answer[tolerance=0.05]{\sage{evaluateGFQ1}}$
+ 
+\begin{feedback}
+Remember, the order is important! This joins subtraction and division where the order matters.
+\end{feedback}
+ 
+\end{question}
+ 
+% Q2 - Polynomial and Rational
+\begin{question}
+For the two functions below, evaluate $(f\circ g)(\sage{valueQ2})$ and $(g \circ f)(\sage{valueQ2})$
+ 
+$$f(x) = \sage{functionQ2f}$$
+$$g(x) = \sage{functionQ2g}$$
+ 
+$(f\circ g)(\sage{valueQ2}) = \answer[tolerance=0.05]{\sage{evaluateFGQ2}}$ \\
+ 
+$(g \circ f)(\sage{valueQ2}) = \answer[tolerance=0.05]{\sage{evaluateGFQ2}}$
+ 
+\begin{feedback}[correct]
+Great! Beyond our first question, we needed to be careful that we could plug in our values, as $g(x)$ has a restricted domain.
+\end{feedback}
+ 
+\end{question}
+ 
+% Q3 - Polynomial and Radical (not inverses)
+\begin{question}
+For the two functions below, evaluate $(f\circ g)(\sage{valueQ3})$ and $(g \circ f)(\sage{valueQ3})$
+ 
+$$f(x) = \sage{functionQ3f}$$
+$$g(x) = \sage{functionQ3g}$$
+ 
+$(f\circ g)(\sage{valueQ3}) = \answer[tolerance=0.05]{\sage{evaluateFGQ3}}$ \\
+ 
+$(g \circ f)(\sage{valueQ3}) = \answer[tolerance=0.05]{\sage{evaluateGFQ3}}$
+ 
+\begin{feedback}[correct]
+Great! Beyond our first question, we needed to be careful that we could plug in our values, as $g(x)$ has a restricted domain.
+\end{feedback}
+ 
+\end{question}
+ 
+% Q4 - Polynomial and Radical (inverses)
+\begin{question}
+For the two functions below, evaluate $(f\circ g)(\sage{valueQ4})$ and $(g \circ f)(\sage{valueQ4})$
+ 
+$$f(x) = \sage{functionQ4f}$$
+$$g(x) = \sage{functionQ4g}$$
+ 
+$(f\circ g)(\sage{valueQ4}) = \answer[tolerance=0.05]{\sage{evaluateFGQ4}}$ \\
+ 
+$(g \circ f)(\sage{valueQ4}) = \answer[tolerance=0.05]{\sage{evaluateGFQ4}}$
+\end{question}
+ 
+%Q6 - Summary
+\begin{question}
+One of the biggest takeaways from this objective is noticing that $(f \circ g)(x) \neq (g \circ f)(x)$ \textbf{in most cases}.
+ 
+For which question was $(f \circ g)(x) \neq (g \circ f)(x)$? $\answer{4}$
+\begin{feedback}
+It is just asking for the number of the question. The answer is either ``1", ``2", ``3", or ``4".
+\end{feedback}
+ 
+\begin{feedback}[correct]
+Great job! But since it wasn't always the case, it should make you wonder: when is it that $(f \circ g)(x) = (g \circ f)(x)$? The next two objectives will answer this question.
+\end{feedback}
+\end{question}
+ 
+\end{document}

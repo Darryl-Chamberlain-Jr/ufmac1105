@@ -1,0 +1,311 @@
+<!DOCTYPE html><html lang="en"><head> <title>Objective 1 - End and Zero Behavior</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<!-- charset=utf-8,-css,html,htex4ht,xhtml --> 
+<meta name="src" content="endAndZeroBehavior.tex"/> 
+<meta name="author" content="Darryl Chamberlain
+Jr."/> 
+<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"/> 
+<meta name="ximera" content="version 0.0.1"/> 
+<link href="https://ximera.osu.edu/public/stylesheets/standalone.css" rel="stylesheet" media="screen"/> 
+<script type="text/javascript" async="" src="https://ximera.osu.edu/public/javascripts/standalone.min.js"></script> 
+<meta name="learning-outcome" content=""/> 
+<meta name="dependency" content="932dc370121d9c8682828373ca92bd4095993ca1 preamble.tex"/><meta name="dependency" content="bf7f5653a3ba53126b516dda0ab64141132b850e module6Activity/endAndZeroBehavior.tex"/></head><body> 
+<div class="preamble"><script type="math/tex">\newenvironment {prompt}{}{}
+\newcommand {\ungraded }[0]{}
+\newcommand {\npnoround }[0]{\nprounddigits {-1}}
+\newcommand {\npnoroundexp }[0]{\nproundexpdigits {-1}}
+\newcommand {\npunitcommand }[1]{\ensuremath {\mathrm {#1}}}
+\newcommand {\HyperFirstAtBeginDocument }[0]{\AtBeginDocument }</script><script type="text/javascript"> 
+</script> 
+</div>
+<div class="abstract">
+<!--l. 18--><p class="noindent">Identify the end behavior and zero behavior of a polynomial function.
+</p></div>   <div class="maketitle"></div>
+<a href="https://cnx.org/contents/mwjClAV_@8.1:ZE9qk3Qp@12/Graphs-of-Polynomial-Functions">Link to section in online textbook.</a>
+<!--l. 28--><p class="noindent">First, watch <span class="underline"><a href="https://mediasite.video.ufl.edu/Mediasite/Play/8814f4cd9bc24a2ea1f4cee8e42f09b21d">this video</a></span> to learn how to identify the end behavior and zero behavior of
+polynomial functions. Now practice describing the end behavior and zero behavior of
+polynomials below.
+</p>
+<script type="text/sagemath">x = var("x")
+def maybeMakeNegative(natural):
+    integer = (-1)**ZZ.random_element(2)
+    return integer
+
+def listZeros(factor1, factor2):
+    z0 = factor1
+    z1 = -factor1
+    z2 = factor2
+    z3 = -factor2
+    return [z0, z1, z2, z3]
+
+def generateCoefficientsAndZeros():
+    leadingCoefficient = maybeMakeNegative(ZZ.random_element(2, 10))
+    factor1 = ZZ.random_element(2, 10)
+    factor2 = ZZ.random_element(2, 10)
+    while factor1 == factor2:
+        factor1 = ZZ.random_element(2, 10)
+        factor2 = ZZ.random_element(2, 10)
+    chooseZero = ZZ.random_element(2)
+    if chooseZero == 0:
+                                                                  
+
+                                                                  
+        zeroOnDisplay = -factor1
+        e0 = ZZ.random_element(1, 4)
+        e1 = e0 + 2 * ZZ.random_element(1, 4) - 1
+        e2 = ZZ.random_element(1, 4)
+        e3 = e2 + ZZ.random_element(0, 3)
+    else:
+        zeroOnDisplay = -factor2
+        e0 = ZZ.random_element(1, 4)
+        e1 = e0 + ZZ.random_element(0, 3)
+        e2 = ZZ.random_element(1, 4)
+        e3 = e2 + 2 * ZZ.random_element(1, 4) - 1
+    zeros = listZeros(factor1, factor2)
+    exponents = e0, e1, e2, e3
+    return [leadingCoefficient, zeros, exponents, zeroOnDisplay]
+
+def displayPolynomial(leadingCoefficient, zeros, exponents):
+    z0, z1, z2, z3 = zeros
+    e0, e1, e2, e3 = exponents
+    polynomial = leadingCoefficient * (x - z0)**e0 * (x - z1)**e1 * (x - z2)**e2 * (x - z3)**e3
+    return polynomial
+
+def endBehaviorAnswer(leadingCoefficient, exponents):
+    e0, e1, e2, e3 = exponents
+    evenOrOdd = (e0 + e1 + e2 + e3) % 2
+    if leadingCoefficient < 0 and evenOrOdd == 1:
+        answer = "A"
+    elif leadingCoefficient < 0 and evenOrOdd == 0:
+        answer = "B"
+    elif leadingCoefficient > 0 and evenOrOdd == 1:
+        answer = "C"
+    elif leadingCoefficient > 0 and evenOrOdd == 0:
+        answer = "D"
+                                                                  
+
+                                                                  
+    else:
+        answer = "Broken"
+    return answer
+
+def zeroBehaviorAnswer(polynomial, zeroOnDisplay, exponentOnDisplay):
+    nearZero = zeroOnDisplay - 0.5
+    yValue = polynomial(x = nearZero)
+    evenOrOdd = exponentOnDisplay % 2
+    if yValue > 0 and evenOrOdd == 0:
+        answer = "EvenPositive"
+    elif yValue > 0 and evenOrOdd == 1:
+        answer = "OddNegative"
+    elif yValue < 0 and evenOrOdd == 0:
+        answer = "EvenNegative"
+    else:
+        answer = "OddPositive"
+    return answer
+
+def findDisplayExponent(zeroOnDisplay, zeros, exponents):
+    z0, z1, z2, z3 = zeros
+    e0, e1, e2, e3 = exponents
+    if zeroOnDisplay == z0:
+        return e0
+    elif zeroOnDisplay == z1:
+        return e1
+    elif zeroOnDisplay == z2:
+        return e2
+    else:
+        return e3
+
+### Question 2 - Answer B ###
+leadingCoefficient2, zeros2, exponents2, zeroOnDisplay2 = generateCoefficientsAndZeros()
+                                                                  
+
+                                                                  
+polynomial2 = displayPolynomial(leadingCoefficient2, zeros2, exponents2)
+answer2 = endBehaviorAnswer(leadingCoefficient2, exponents2)
+while answer2 == "A" or answer2 == "C" or answer2 == "D":
+    leadingCoefficient2, zeros2, exponents2, zeroOnDisplay2 = generateCoefficientsAndZeros()
+    polynomial2 = displayPolynomial(leadingCoefficient2, zeros2, exponents2)
+    answer2 = endBehaviorAnswer(leadingCoefficient2, exponents2)
+
+### Question 3 - Answer D ###
+leadingCoefficient3, zeros3, exponents3, zeroOnDisplay3 = generateCoefficientsAndZeros()
+polynomial3 = displayPolynomial(leadingCoefficient3, zeros3, exponents3)
+answer3 = endBehaviorAnswer(leadingCoefficient3, exponents3)
+while answer3 == "A" or answer3 == "B" or answer3 == "C":
+    leadingCoefficient3, zeros3, exponents3, zeroOnDisplay3 = generateCoefficientsAndZeros()
+    polynomial3 = displayPolynomial(leadingCoefficient3, zeros3, exponents3)
+    answer3 = endBehaviorAnswer(leadingCoefficient3, exponents3)
+
+### Question 4 - Answer A ###
+leadingCoefficient4, zeros4, exponents4, zeroOnDisplay4 = generateCoefficientsAndZeros()
+polynomial4 = displayPolynomial(leadingCoefficient4, zeros4, exponents4)
+answer4 = endBehaviorAnswer(leadingCoefficient4, exponents4)
+while answer4 == "B" or answer4 == "C" or answer4 == "D":
+    leadingCoefficient4, zeros4, exponents4, zeroOnDisplay4 = generateCoefficientsAndZeros()
+    polynomial4 = displayPolynomial(leadingCoefficient4, zeros4, exponents4)
+    answer4 = endBehaviorAnswer(leadingCoefficient4, exponents4)
+
+### Question 5 - Answer C ###
+leadingCoefficient5, zeros5, exponents5, zeroOnDisplay5 = generateCoefficientsAndZeros()
+polynomial5 = displayPolynomial(leadingCoefficient5, zeros5, exponents5)
+answer5 = endBehaviorAnswer(leadingCoefficient5, exponents5)
+while answer5 == "A" or answer5 == "B" or answer5 == "D":
+    leadingCoefficient5, zeros5, exponents5, zeroOnDisplay5 = generateCoefficientsAndZeros()
+    polynomial5 = displayPolynomial(leadingCoefficient5, zeros5, exponents5)
+                                                                  
+
+                                                                  
+    answer5 = endBehaviorAnswer(leadingCoefficient5, exponents5)
+
+##### Question 6 - Odd Negative #####
+leadingCoefficient6, zeros6, exponents6, zeroOnDisplay6 = generateCoefficientsAndZeros()
+polynomial6 = displayPolynomial(leadingCoefficient6, zeros6, exponents6)
+exponentOnDisplay6 = findDisplayExponent(zeroOnDisplay6, zeros6, exponents6)
+answer6 = zeroBehaviorAnswer(polynomial6, zeroOnDisplay6, exponentOnDisplay6)
+
+while answer6 == "EvenPositive" or answer6 == "EvenNegative" or answer6 == "OddPositive":
+    leadingCoefficient6, zeros6, exponents6, zeroOnDisplay6 = generateCoefficientsAndZeros()
+    polynomial6 = displayPolynomial(leadingCoefficient6, zeros6, exponents6)
+    exponentOnDisplay6 = findDisplayExponent(zeroOnDisplay6, zeros6, exponents6)
+    answer6 =  zeroBehaviorAnswer(polynomial6, zeroOnDisplay6, exponentOnDisplay6)
+
+##### Question 7 - Even Negative #####
+leadingCoefficient7, zeros7, exponents7, zeroOnDisplay7 = generateCoefficientsAndZeros()
+polynomial7 = displayPolynomial(leadingCoefficient7, zeros7, exponents7)
+exponentOnDisplay7 = findDisplayExponent(zeroOnDisplay7, zeros7, exponents7)
+answer7 = zeroBehaviorAnswer(polynomial7, zeroOnDisplay7, exponentOnDisplay7)
+while answer7 == "EvenPositive" or answer7 == "OddNegative" or answer7 == "OddPositive":
+    leadingCoefficient7, zeros7, exponents7, zeroOnDisplay7 = generateCoefficientsAndZeros()
+    polynomial7 = displayPolynomial(leadingCoefficient7, zeros7, exponents7)
+    exponentOnDisplay7 = findDisplayExponent(zeroOnDisplay7, zeros7, exponents7)
+    answer7 =  zeroBehaviorAnswer(polynomial7, zeroOnDisplay7, exponentOnDisplay7)
+
+##### Question 8 - Even Positive #####
+leadingCoefficient8, zeros8, exponents8, zeroOnDisplay8 = generateCoefficientsAndZeros()
+polynomial8 = displayPolynomial(leadingCoefficient8, zeros8, exponents8)
+exponentOnDisplay8 = findDisplayExponent(zeroOnDisplay8, zeros8, exponents8)
+answer8 = zeroBehaviorAnswer(polynomial8, zeroOnDisplay8, exponentOnDisplay8)
+while answer8 == "EvenNegative" or answer8 == "OddNegative" or answer8 == "OddPositive":
+    leadingCoefficient8, zeros8, exponents8, zeroOnDisplay8 = generateCoefficientsAndZeros()
+                                                                  
+
+                                                                  
+    polynomial8 = displayPolynomial(leadingCoefficient8, zeros8, exponents8)
+    exponentOnDisplay8 = findDisplayExponent(zeroOnDisplay8, zeros8, exponents8)
+    answer8 =  zeroBehaviorAnswer(polynomial8, zeroOnDisplay8, exponentOnDisplay8)
+
+##### Question 9 - Odd Positive #####
+leadingCoefficient9, zeros9, exponents9, zeroOnDisplay9 = generateCoefficientsAndZeros()
+polynomial9 = displayPolynomial(leadingCoefficient9, zeros9, exponents9)
+exponentOnDisplay9 = findDisplayExponent(zeroOnDisplay9, zeros9, exponents9)
+answer9 = zeroBehaviorAnswer(polynomial9, zeroOnDisplay9, exponentOnDisplay9)
+while answer9 == "EvenPositive" or answer9 == "OddNegative" or answer9 == "EvenNegative":
+    leadingCoefficient9, zeros9, exponents9, zeroOnDisplay9 = generateCoefficientsAndZeros()
+    polynomial9 = displayPolynomial(leadingCoefficient9, zeros9, exponents9)
+    exponentOnDisplay9 = findDisplayExponent(zeroOnDisplay9, zeros9, exponents9)
+    answer9 =  zeroBehaviorAnswer(polynomial9, zeroOnDisplay9, exponentOnDisplay9)
+</script>
+<div role="article" class="problem-environment question" id="problem1"><a id="x1-8r1"></a> Choose the <strong>end behavior</strong> of the polynomial below.
+<!--l. 200--><p class="noindent">
+                                 <script type="math/tex; mode=display"> f(x) = \sage {polynomial2} </script>
+</p>
+<div class="center">
+<!--l. 202--><p class="noindent">
+</p><!--l. 203--><p class="noindent"><img src="endBehaviorOptions.png" alt="PIC"/></p></div>
+                                                                  
+
+                                                                  
+<div class="multiple-choice" id="problem2"><span class="choice  " id="choice1">A</span> Choice A <br class="newline"/><span class="choice correct " id="choice2">B</span> Choice B <br class="newline"/><span class="choice  " id="choice3">C</span> Choice C <br class="newline"/><span class="choice  " id="choice4">D</span> Choice D </div>
+</div>
+<div role="article" class="problem-environment question" id="problem3"><a id="x1-9r2"></a> Choose the <strong>end behavior</strong> of the polynomial below.
+<!--l. 219--><p class="noindent">
+                                 <script type="math/tex; mode=display"> f(x) = \sage {polynomial3} </script>
+</p>
+<div class="center">
+<!--l. 221--><p class="noindent">
+</p><!--l. 222--><p class="noindent"><img src="endBehaviorOptions.png" alt="PIC"/></p></div>
+<div class="multiple-choice" id="problem4"><span class="choice  " id="choice5">A</span> Choice A <br class="newline"/><span class="choice  " id="choice6">B</span> Choice B <br class="newline"/><span class="choice  " id="choice7">C</span> Choice C <br class="newline"/><span class="choice correct " id="choice8">D</span> Choice D </div>
+</div>
+<div role="article" class="problem-environment question" id="problem5"><a id="x1-10r3"></a> Choose the <strong>end behavior</strong> of the polynomial below.
+<!--l. 238--><p class="noindent">
+                                                                  
+
+                                                                  
+                                 <script type="math/tex; mode=display"> f(x) = \sage {polynomial4} </script>
+</p>
+<div class="center">
+<!--l. 240--><p class="noindent">
+</p><!--l. 241--><p class="noindent"><img src="endBehaviorOptions.png" alt="PIC"/></p></div>
+<div class="multiple-choice" id="problem6"><span class="choice correct " id="choice9">A</span> Choice A <br class="newline"/><span class="choice  " id="choice10">B</span> Choice B <br class="newline"/><span class="choice  " id="choice11">C</span> Choice C <br class="newline"/><span class="choice  " id="choice12">D</span> Choice D </div>
+</div>
+<div role="article" class="problem-environment question" id="problem7"><a id="x1-11r4"></a> Choose the <strong>end behavior</strong> of the polynomial below.
+<!--l. 257--><p class="noindent">
+                                 <script type="math/tex; mode=display"> f(x) = \sage {polynomial5} </script>
+</p>
+<div class="center">
+<!--l. 259--><p class="noindent">
+</p><!--l. 260--><p class="noindent"><img src="endBehaviorOptions.png" alt="PIC"/></p></div>
+                                                                  
+
+                                                                  
+<div class="multiple-choice" id="problem8"><span class="choice  " id="choice13">A</span> Choice A <br class="newline"/><span class="choice  " id="choice14">B</span> Choice B <br class="newline"/><span class="choice correct " id="choice15">C</span> Choice C <br class="newline"/><span class="choice  " id="choice16">D</span> Choice D </div>
+</div>
+<div role="article" class="problem-environment question" id="problem9"><a id="x1-12r5"></a> Choose the option that describes the behavior at <script type="math/tex">x = \sage {zeroOnDisplay6}</script> of the polynomial below.
+<!--l. 276--><p class="noindent">
+                                 <script type="math/tex; mode=display"> f(x) = \sage {polynomial6} </script>
+</p>
+<div class="center">
+<!--l. 278--><p class="noindent">
+</p><!--l. 279--><p class="noindent"><img src="zeroBehaviorOptions.png" alt="PIC"/></p></div>
+<div class="multiple-choice" id="problem10"><span class="choice correct " id="choice17">A</span> Choice A <br class="newline"/><span class="choice  " id="choice18">B</span> Choice B <br class="newline"/><span class="choice  " id="choice19">C</span> Choice C <br class="newline"/><span class="choice  " id="choice20">D</span> Choice D </div>
+<div role="article" class="problem-environment hint" id="problem11"><a id="x1-13r6"></a> To know <strong>exactly</strong> what the zero behavior is, we should sketch the entire function.
+Clever students may figure out an arithmetic way to check zero behavior, but it is
+easier to sketch the function using end behavior and multiplicity of the zeros. <a href="https://www.youtube.com/watch?v=-3vPQ_mx1vY">Here is
+an example video for this particular type of problem.</a>
+</div>
+</div>
+<div role="article" class="problem-environment question" id="problem12"><a id="x1-14r7"></a> Choose the option that describes the behavior at <script type="math/tex">x = \sage {zeroOnDisplay7}</script> of the polynomial below.
+<!--l. 299--><p class="noindent">
+                                                                  
+
+                                                                  
+                                 <script type="math/tex; mode=display"> f(x) = \sage {polynomial7} </script>
+</p>
+<div class="center">
+<!--l. 301--><p class="noindent">
+</p><!--l. 302--><p class="noindent"><img src="zeroBehaviorOptions.png" alt="PIC"/></p></div>
+<div class="multiple-choice" id="problem13"><span class="choice  " id="choice21">A</span> Choice A <br class="newline"/><span class="choice correct " id="choice22">B</span> Choice B <br class="newline"/><span class="choice  " id="choice23">C</span> Choice C <br class="newline"/><span class="choice  " id="choice24">D</span> Choice D </div>
+</div>
+<div role="article" class="problem-environment question" id="problem14"><a id="x1-15r8"></a> Choose the option that describes the behavior at <script type="math/tex">x = \sage {zeroOnDisplay8}</script> of the polynomial below.
+<!--l. 318--><p class="noindent">
+                                 <script type="math/tex; mode=display"> f(x) = \sage {polynomial8} </script>
+</p>
+                                                                  
+
+                                                                  
+<div class="center">
+<!--l. 320--><p class="noindent">
+</p><!--l. 321--><p class="noindent"><img src="zeroBehaviorOptions.png" alt="PIC"/></p></div>
+<div class="multiple-choice" id="problem15"><span class="choice  " id="choice25">A</span> Choice A <br class="newline"/><span class="choice  " id="choice26">B</span> Choice B <br class="newline"/><span class="choice  " id="choice27">C</span> Choice C <br class="newline"/><span class="choice correct " id="choice28">D</span> Choice D </div>
+</div>
+<div role="article" class="problem-environment question" id="problem16"><a id="x1-16r9"></a> Choose the option that describes the behavior at <script type="math/tex">x = \sage {zeroOnDisplay9}</script> of the polynomial below.
+<!--l. 337--><p class="noindent">
+                                 <script type="math/tex; mode=display"> f(x) = \sage {polynomial9} </script>
+</p>
+<div class="center">
+<!--l. 339--><p class="noindent">
+</p><!--l. 340--><p class="noindent"><img src="zeroBehaviorOptions.png" alt="PIC"/></p></div>
+<div class="multiple-choice" id="problem17"><span class="choice  " id="choice29">A</span> Choice A <br class="newline"/><span class="choice  " id="choice30">B</span> Choice B <br class="newline"/><span class="choice correct " id="choice31">C</span> Choice C <br class="newline"/><span class="choice  " id="choice32">D</span> Choice D </div>
+</div>
+ 
+ 
+
+                                                                  
+
+                                                                  
+                                                                  
+
+
+</body></html>

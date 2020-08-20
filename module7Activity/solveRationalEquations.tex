@@ -1,0 +1,208 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+
+\input{../preamble} %% we can turn off input when making a master document
+
+\outcome{}
+\author{Darryl Chamberlain Jr.}
+ 
+\title{Objective - Solving Rational Equations}
+
+\begin{document}
+\begin{abstract}
+Solve rational equations that lead to linear and quadratic equations.
+\end{abstract}
+\maketitle
+
+\href{https://cnx.org/contents/mwjClAV_@8.1:KNTP2r7D@13/Rational-Functions}{Link to section in online textbook.}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 4  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+First, watch 
+\underline{\href{https://mediasite.video.ufl.edu/Mediasite/Play/ffc3b5525c1f48cf96b92988eca638641d}{this video}} to learn how solving rational functions. Since our domain can be restricted, we need to check these values!
+
+\begin{sagesilent}
+x = var("x")
+
+def maybeMakeNegative(natural):
+    integer = natural*(-1)**ZZ.random_element(2)
+    return integer 
+
+def generateTermsLinearSolutions(numberOfSolutions):
+    if (numberOfSolutions==0):
+        mask = ZZ.random_element(3, 7)
+        a = maybeMakeNegative(ZZ.random_element(2, 9)) * mask
+        d = -1
+        f = 1
+        e = a
+        b = maybeMakeNegative(ZZ.random_element(2, 9)) * mask
+        c = maybeMakeNegative(ZZ.random_element(2, 9)) * mask
+        solution = 0
+    else:
+        a = maybeMakeNegative(ZZ.random_element(2, 9))
+        b = maybeMakeNegative(ZZ.random_element(2, 9))
+        c = maybeMakeNegative(ZZ.random_element(2, 9))
+        d = maybeMakeNegative(ZZ.random_element(2, 9))
+        e = maybeMakeNegative(ZZ.random_element(2, 9))
+        f = maybeMakeNegative(ZZ.random_element(2, 9))
+        makeSolutionExist = (-f*a +e + d*c*f)/(-d*f*b)
+        #
+        while (makeSolutionExist==0):
+            a = maybeMakeNegative(ZZ.random_element(2, 9))
+            b = maybeMakeNegative(ZZ.random_element(2, 9))
+            c = maybeMakeNegative(ZZ.random_element(2, 9))
+            d = maybeMakeNegative(ZZ.random_element(2, 9))
+            e = maybeMakeNegative(ZZ.random_element(2, 9))
+            f = maybeMakeNegative(ZZ.random_element(2, 9))
+            makeSolutionExist = (-f*a +e + d*c*f)/(-d*f*b)
+        solution = (-f*a +e + d*c*f)/(-d*f*b)
+    leftTerm = (a/(b*x+c)) - d
+    rightTermNum = e
+    rightTermDenom = f*(b*x+c)
+    return [leftTerm, rightTermNum, rightTermDenom, solution]
+
+def generateCoefficientsQuadraticSolutions(numberOfSolutions):
+    #
+    a = maybeMakeNegative(ZZ.random_element(2, 7))
+    b = maybeMakeNegative(ZZ.random_element(2, 7))
+    c = maybeMakeNegative(ZZ.random_element(2, 7))
+    d = -ZZ.random_element(2, 7)
+    e = maybeMakeNegative(ZZ.random_element(2, 7))
+    f = maybeMakeNegative(ZZ.random_element(2, 7))
+    g = maybeMakeNegative(ZZ.random_element(2, 7))
+    discrim = (a*g-e*b)**2 - 4*(a*f+d)*(-e*c)
+    leadingCoefficient = a*f+d
+
+   #
+    if (numberOfSolutions == 0):
+        while (leadingCoefficient == 0 or discrim > 0 or discrim == 0):
+            a = maybeMakeNegative(ZZ.random_element(2, 7))
+            b = maybeMakeNegative(ZZ.random_element(2, 7))
+            c = maybeMakeNegative(ZZ.random_element(2, 7))
+            d = -ZZ.random_element(2, 7)
+            e = maybeMakeNegative(ZZ.random_element(2, 7))
+            f = maybeMakeNegative(ZZ.random_element(2, 7))
+            g = maybeMakeNegative(ZZ.random_element(2, 7))
+            discrim = (a*g-e*b)**2 - 4*(a*f+d)*(-e*c)
+            leadingCoefficient = a*f+d
+        solution = [0, 0]
+    elif (numberOfSolutions == 1):
+        while (leadingCoefficient==0 or discrim != 0):
+            a = maybeMakeNegative(ZZ.random_element(2, 7))
+            b = maybeMakeNegative(ZZ.random_element(2, 7))
+            c = maybeMakeNegative(ZZ.random_element(2, 7))
+            d = -ZZ.random_element(2, 7)
+            e = maybeMakeNegative(ZZ.random_element(2, 7))
+            f = maybeMakeNegative(ZZ.random_element(2, 7))
+            g = maybeMakeNegative(ZZ.random_element(2, 7))
+            discrim = (a*g-e*b)**2 - 4*(a*f+d)*(-e*c)
+            leadingCoefficient = a*f+d
+        quadraticEquation = (a*x)/(b*x+c) + (d*x**2)/(b*f*x**2 + (b*g+c*f)*x+c*g) - e/(f*x+g)
+        singleSolution = solve(quadraticEquation == 0, x)[0].rhs()
+        solution = [singleSolution, 0]
+    else:
+        while (leadingCoefficient==0 or discrim < 0 or discrim == 0):
+            a = maybeMakeNegative(ZZ.random_element(2, 7))
+            b = maybeMakeNegative(ZZ.random_element(2, 7))
+            c = maybeMakeNegative(ZZ.random_element(2, 7))
+            d = -ZZ.random_element(2, 7)
+            e = maybeMakeNegative(ZZ.random_element(2, 7))
+            f = maybeMakeNegative(ZZ.random_element(2, 7))
+            g = maybeMakeNegative(ZZ.random_element(2, 7))
+            discrim = (a*g-e*b)**2 - 4*(a*f+d)*(-e*c)
+            leadingCoefficient = a*f+d
+        quadraticEquation = (a*x)/(b*x+c) + (d*x**2)/(b*f*x**2 + (b*g+c*f)*x+c*g) - e/(f*x+g)
+        rawSolutions = solve(quadraticEquation == 0, x)
+        solution1 = rawSolutions[0].rhs()
+        solution2 = rawSolutions[1].rhs()
+        solution = sorted([solution1, solution2])
+    firstTerm = (a*x)/(b*x+c)
+    secondTerm = (d*x**2)/(b*f*x**2 + (b*g+c*f)*x+c*g)
+    thirdTerm = e/(f*x+g)
+    return [firstTerm, secondTerm, thirdTerm, solution]
+##########
+leftTerm1, rightTerm1Num, rightTerm1Denom, solution1 = generateTermsLinearSolutions(0)
+leftTerm2, rightTerm2Num, rightTerm2Denom, solution2 = generateTermsLinearSolutions(1)
+#
+firstTerm3, secondTerm3, thirdTerm3, solution3TEMP = generateCoefficientsQuadraticSolutions(0)
+leftTerm3 = firstTerm3 + secondTerm3
+#
+firstTerm4, secondTerm4, thirdTerm4, solution4TEMP = generateCoefficientsQuadraticSolutions(1)
+leftTerm4 = firstTerm4 + secondTerm4
+solution4 = solution4TEMP[0]
+#
+firstTerm5, secondTerm5, thirdTerm5, solution5TEMP = generateCoefficientsQuadraticSolutions(2)
+leftTerm5 = firstTerm5 + secondTerm5
+solution5a, solution5b = sorted([solution5TEMP[0], solution5TEMP[1]])
+\end{sagesilent}
+
+% Q1 - Linear, 0 solutions
+\begin{question}
+Solve the rational equation below. \textit{Remember to check your solutions to make sure they are valid!} If there is no solution, answer ``NA".
+
+$ \sage{leftTerm1} = \frac{\sage{rightTerm1Num}}{\sage{rightTerm1Denom}}$
+
+Solution: $x = \answer[format=string]{NA}$
+
+% Remember to give tolerances when necessary
+\end{question}
+
+% Q2 - Linear, 1 solution
+\begin{question}
+Solve the rational equation below. \textit{Remember to check your solutions to make sure they are valid!} If there is no solution, answer ``NA".
+
+$ \sage{leftTerm2} = \frac{\sage{rightTerm2Num}}{\sage{rightTerm2Denom}}$
+
+Solution: $x = \answer[tolerance=0.05]{\sage{solution2}}$
+
+% Remember to give tolerances when necessary
+\end{question}
+
+% Q3 - Quadratic, 0 solutions
+\begin{question}
+Solve the rational equation below. \textit{Remember to check your solutions to make sure they are valid!} If there are more boxes than solutions, answer ``NA".
+
+$ \sage{leftTerm3} = \sage{thirdTerm3}$
+
+Solutions: $x = \answer[format=string]{NA}$ and $x = \answer[format=string]{NA}$
+
+% Remember to give tolerances when necessary
+\end{question}
+
+% Q4 - Quadratic, 1 solution
+\begin{question}
+Solve the rational equation below. \textit{Remember to check your solutions to make sure they are valid!} If there are more boxes than solutions, answer ``NA".
+
+$ \sage{leftTerm4} = \sage{thirdTerm4}$
+
+Solutions: $x = \answer[tolerance=0.05]{\sage{solution4}}$ and $x = \answer[format=string]{NA}$
+
+% Remember to give tolerances when necessary
+\end{question}
+
+% Q5 - Quadratic, 2 solutions
+\begin{question}
+Solve the rational equation below. \textit{Remember to check your solutions to make sure they are valid!} If there are more boxes than solutions, answer ``NA".
+
+$ \sage{leftTerm5} = \sage{thirdTerm5}$
+
+Solutions: $x = \answer[tolerance=0.05]{\sage{solution5a}}$ and $x = \answer[tolerance=0.05]{\sage{solution5b}}$
+% Remember to give tolerances when necessary
+\end{question}
+
+% TAKEAWAY
+\begin{question}
+\textbf{Main takeaway:} Before looking, you should work through the previous problems. \textit{Have you finished working through the examples?} $\answer[format=string]{Yes}$
+\begin{feedback}[correct]
+To solve rational equations, we want to multiply to remove the denominators. When in doubt, multiply by the denominator of each one at a time. This may not always be the most efficient way \textit{(multiplying by the GCD would be)} it will eventually get the equation into a more manageable form. Like with radical functions, we also need to check our solutions to make sure they are valid -- that we are not dividing by 0.
+\end{feedback}
+\end{question}
+
+\end{document}

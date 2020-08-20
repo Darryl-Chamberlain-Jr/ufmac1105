@@ -1,0 +1,182 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+
+\input{../preamble} %% we can turn off input when making a master document
+
+\outcome{}
+\author{Darryl Chamberlain Jr.}
+ 
+\title{Objective 1 - Domain and Range}
+
+\begin{document}
+\begin{abstract}
+Describe the domain and range of a logarithmic or exponential function.
+\end{abstract}
+\maketitle
+
+\href{https://cnx.org/contents/mwjClAV_@8.1:REGENe1G@20/Graphs-of-Logarithmic-Functions}{Link to LOGARITHMIC FUNCTION section of online textbook.}
+
+\href{https://cnx.org/contents/mwjClAV_@8.1:c8aEyW2u@19/Graphs-of-Exponential-Functions}{Link to EXPONENTIAL FUNCTION section of online textbook.}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 1  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+First, watch 
+% UPDATE VIDEO LINK
+\underline{\href{https://mediasite.video.ufl.edu/Mediasite/Play/6054fd6bde6e40d8b4ba241855c1a3651d}{this video}} to learn about the domain and range of logarithmic and exponential functions. These functions are highly related, which is why they are presented together. Here are their basic forms:
+
+$$ f(x) = a\log{(x-h)} + k $$
+
+\[
+\graph[rectangular]{f(x)= a log_b{(x-h)} + k, a=1, b=2, h=0, k=0}
+\]
+
+$$ g(x) = a b^{x-h} + k $$
+
+\[
+\graph[rectangular]{g(x) = a b^{x-h} + k, a=1, b=2, h=0, k=0}
+\]
+
+Alternative videos:
+
+\href{http://www.larsonprecalculus.com/precalc10e/content/instructional-videos/chapter-3/section-1/graph-exponential-functions/}{Graph Exponential functions.}
+
+\href{http://www.larsonprecalculus.com/precalc10e/content/instructional-videos/chapter-3/section-2/graphing-logarithmic-functions/}{Graph Logarithmic functions.}
+
+Like rational functions, the point $(h, k)$ is not on \textbf{either} logarithmic or exponential functions! Try changing some of the constants and see how it affects the graphs. You'll want to figure out what the "shifting point" is and how to describe the domain/range in general. Once you have something, try to check by doing the problems below. 
+
+% 4 PROBLEMS: DOMAIN/RANGE FOR LOGARITHMIC AND EXPONENTIAL FUNCTIONS
+
+\begin{sagesilent}
+x = var("x")
+
+def constructFunction(type, direction, domainOrRange):
+    listWholes = ZZ.range(9)
+    uniqueList = Subsets([listWholes[i] + 2 for i in range(9)], 3)
+    base, horShift, vertShift = uniqueList.random_element()
+    #
+    if domainOrRange == "Domain" and type == "Exp":
+        leadingSign = (-1)**ZZ.random_element(2)
+        function = leadingSign * (base)**(x-horShift) + vertShift
+        valueToReturn = "NA"
+    elif direction == "Left" and domainOrRange == "Range" and type == "Exp":
+        function = - (base)**(x-horShift) + vertShift
+        valueToReturn = vertShift
+    elif direction == "Right" and domainOrRange == "Range" and type == "Exp":
+        function = (base)**(x-horShift) + vertShift
+        valueToReturn = vertShift
+    elif domainOrRange == "Range" and type == "Log":
+        leadingSign = (-1)**ZZ.random_element(2)
+        function = leadingSign * log(x-horShift) + vertShift
+        valueToReturn = "NA"
+    elif direction == "Left" and domainOrRange == "Domain" and type == "Log":
+        function = - log(x-horShift) + vertShift
+        valueToReturn = horShift
+    elif direction == "Right" and domainOrRange == "Domain" and type == "Log":
+        function = log(x-horShift) + vertShift
+        valueToReturn = horShift 
+    else:
+        function = x
+        valueToReturn = "Nothing"
+    return [function, valueToReturn]
+
+def leftOrRight():
+    list = ["Left", "Right"]
+    return list[ZZ.random_element(2)]
+
+##### END OF DEFINITIONS #####
+function1, answer1 = constructFunction("Exp", leftOrRight, "Domain")
+function2, answer2 = constructFunction("Exp", "Left", "Range")
+function3, answer3 = constructFunction("Log", "Right", "Domain")
+function4, answer4 = constructFunction("Log", leftOrRight, "Range")
+\end{sagesilent}
+
+% Q1
+\begin{question}
+
+Determine the \textbf{domain} of the exponential function below. 
+
+$$ f(x) = \sage{function1} $$
+
+$\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer{\sage{Infinity}} \answer[format=string]{)}$ 
+
+\begin{hint}
+Are there any values of $x$ we \textbf{cannot} put into the exponential function shown? 
+\end{hint}
+
+\end{question}
+
+% Q2
+\begin{question}
+
+Determine the \textbf{range} of the exponential function below. 
+
+$$ f(x) = \sage{function2} $$
+
+$\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer{\sage{answer2}} \answer[format=string]{)}$ 
+
+\begin{hint}
+The range of the basic exponential function $a^x$ is $(0, \infty)$. There are two things that can change that interval: (1) if the function is negative, the interval flips and (2) if the function is shifted $k$, the interval is also shifted $k$. 
+\end{hint}
+
+\end{question}
+
+% Q3
+\begin{question}
+
+Determine the \textbf{domain} of the logarithmic function below. 
+
+$$ f(x) = \sage{function3} $$
+
+$\answer[format=string]{(} \answer{\sage{answer3}}, \answer{\sage{Infinity}} \answer[format=string]{)}$ 
+
+\begin{hint}
+The domain of the basic logarithmic function $\log{(x)}$ is $(0, \infty)$. The only thing that can change this interval is shifting the function by $h$, which would shift this interval by $h$.
+\end{hint}
+
+\end{question}
+
+% Q4
+\begin{question}
+
+Determine the \textbf{range} of the logarithmic function below. 
+
+$$ f(x) = \sage{function4} $$
+
+$\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer{\sage{Infinity}} \answer[format=string]{)}$ 
+
+\begin{hint}
+Are there any values we cannot get out of a logarithmic function? 
+\end{hint}
+
+\end{question}
+
+\begin{question}
+\textbf{Main takeaway:} Before looking, you should work through the previous problems. \textit{Have you finished working through the examples?} $\answer[format=string]{Yes}$
+\begin{feedback}[correct]
+We summarize the domain, range, and shifting point \textit{(``vertex")} here. 
+
+Logarithmic Function: 
+\begin{itemize}
+    \item Domain depends on the inside of the $\log$ function. \textbf{We cannot take the log of a negative number nor of 0, so we find the domain by setting what is inside the log $> 0$ and solving.} 
+	\item Range is $(-\infty, \infty)$. 
+	\item Shifting point is $(h+1, k)$. Why? Because $\log_b(1) = 0$. 
+\end{itemize}
+
+Exponential Function:
+\begin{itemize}
+\item Domain is $(-\infty, \infty)$. 
+\item Range depends on $a$ and $k$. The basic range is $(k, \infty)$.  $a$ will flip our interval, since it flips the $y$-values.
+\item Shifting point is $(h, k+1)$. Why? Because $b^0=1$.
+\end{itemize}
+\end{feedback}
+\end{question}
+
+
+\end{document}

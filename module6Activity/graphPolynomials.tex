@@ -1,0 +1,92 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+
+\input{../preamble} %% we can turn off input when making a master document
+
+\outcome{}
+\author{Darryl Chamberlain Jr.}
+ 
+\title{Objective 2 - Graph Polynomials}
+
+\begin{document}
+\begin{abstract}
+Convert between a polynomial function and its graph.
+\end{abstract}
+\maketitle
+
+\href{https://cnx.org/contents/mwjClAV_@8.1:ZE9qk3Qp@12/Graphs-of-Polynomial-Functions}{Link to section in online textbook.}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 2  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+First, watch 
+% UPDATE VIDEO LINK
+\underline{\href{https://mediasite.video.ufl.edu/Mediasite/Play/a89227776292422b8882c22732e7b9ce1d}{this video}} to learn what the different forms of a polynomial can tell you about its shape. Now practice converting between the graph and the corresponding equation. 
+
+\begin{sagesilent}
+evenExp1 = ZZ.random_element(2, 5)*2
+evenExp2 = ZZ.random_element(2, 5)*2
+evenExp3 = ZZ.random_element(2, 5)*2
+evenExp4 = ZZ.random_element(2, 5)*2
+oddExp1 = ZZ.random_element(2, 5)*2 + 1
+oddExp2 = ZZ.random_element(2, 5)*2 + 1
+oddExp3 = ZZ.random_element(2, 5)*2 + 1
+oddExp4 = ZZ.random_element(2, 5)*2 + 1
+\end{sagesilent}
+
+% Q1
+\begin{question}
+Write an equation of the function graphed below. 
+
+	\begin{center}
+	    \includegraphics[width = 0.3\textwidth]{graphPolyQ1.png}
+	\end{center}
+
+\textit{List zeros from smallest to largest. Use $\sage{evenExp1}$ and $\sage{oddExp1}$ as exponents. The leading coefficient is either $1$ or $-1$.}
+
+$f(x) = \answer{1}(x - \answer{0})^{\answer{\sage{oddExp1}}}(x - \answer{1})^{\answer{\sage{oddExp1}}}(x - \answer{2})^{\answer{\sage{oddExp1}}}$
+\end{question}
+
+\begin{question}
+Write an equation of the function graphed below. 
+
+	\begin{center}
+	    \includegraphics[width = 0.3\textwidth]{graphPolyQ2.png}
+	\end{center}
+
+\textit{List zeros from smallest to largest. Use $\sage{evenExp2}$ and $\sage{oddExp2}$ as exponents. The leading coefficient is either $1$ or $-1$.}
+
+$f(x) = \answer{-1}(x - \answer{-1})^{\answer{\sage{oddExp2}}}(x - \answer{0})^{\answer{\sage{oddExp2}}}(x - \answer{2})^{\answer{\sage{oddExp2}}}$
+\end{question}
+
+% Q3
+\begin{question}
+Write an equation of the function graphed below. 
+
+	\begin{center}
+	    \includegraphics[width = 0.3\textwidth]{graphPolyQ3.png}
+	\end{center}
+
+\textit{List zeros from smallest to largest. Use $\sage{evenExp3}$ and $\sage{oddExp3}$ as exponents. The leading coefficient is either $1$ or $-1$.}
+
+$f(x) = \answer{-1}(x - \answer{-1})^{\answer{\sage{evenExp3}}}(x - \answer{1})^{\answer{\sage{evenExp3}}}(x - \answer{2})^{\answer{\sage{evenExp3}}}$
+\end{question}
+
+\begin{question}
+Write an equation of the function graphed below. 
+
+	\begin{center}
+	    \includegraphics[width = 0.3\textwidth]{graphPolyQ4.png}
+	\end{center}
+
+\textit{List zeros from smallest to largest. Use $\sage{evenExp4}$ and $\sage{oddExp4}$ as exponents. The leading coefficient is either $1$ or $-1$.}
+
+$f(x) = \answer{1}(x - \answer{-3})^{\answer{\sage{oddExp4}}}(x - \answer{1})^{\answer{\sage{oddExp4}}}(x - \answer{2})^{\answer{\sage{evenExp4}}}$
+\end{question}
+\end{document}

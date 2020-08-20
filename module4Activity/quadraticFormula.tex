@@ -1,0 +1,129 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+\usepackage{multicol}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+
+\input{../preamble} %% we can turn off input when making a master document
+
+\outcome{Understand and solve quadratic equations.}
+\author{Darryl Chamberlain Jr.}
+ 
+\title{Objective 4 - Solving Quadratic Equations with Quadratic Formula}
+
+\begin{document}
+\begin{abstract}
+Solving quadratic equations using the Quadratic Formula.
+\end{abstract}
+\maketitle
+
+\href{https://cnx.org/contents/mwjClAV_@8.1:-Sm9he1Q@17/Quadratic-Functions}{Link to section in online textbook.}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 3  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+First, watch \underline{\href{https://mediasite.video.ufl.edu/Mediasite/Play/75f74a5b7d244e30b1b4e24253f595f61d}{this video}} to learn how to solve quadratic equations using the Quadratic Formula. Remember: this method will \textbf{always} work, but may not be the easiest method. 
+
+Now practice solving quadratic equations with the quadratic formula. 
+
+\begin{sagesilent}
+x = var("x")
+
+################################
+def maybeMakeNegative(natural):
+    integer = natural*(-1)**ZZ.random_element(2)
+    return integer
+
+def generateCoefficients():
+    a = maybeMakeNegative(ZZ.random_element(2, 10))
+    b = maybeMakeNegative(ZZ.random_element(2, 10))
+    c = maybeMakeNegative(ZZ.random_element(2, 10))
+    coefficients = [a, b, c]
+    discrim = findDiscriminant(coefficients)
+    while (discrim < 0 or discrim == 0 or isSquare(discrim)==true):
+        a = maybeMakeNegative(ZZ.random_element(2, 10))
+        b = maybeMakeNegative(ZZ.random_element(2, 10))
+        c = maybeMakeNegative(ZZ.random_element(2, 10))
+        coefficients = [a, b, c]
+        discrim = findDiscriminant(coefficients)    
+    return [a, b, c]
+
+def generateSolution(coefficients):
+    a, b, c = coefficients
+    solveThisQuadratic = a*x**2+b*x+c
+    solution = solve(solveThisQuadratic, x)
+    if (solution[0].rhs() < solution[1].rhs()):
+        x0 = round(float(solution[0].rhs()), 3)
+        x1 = round(float(solution[1].rhs()), 3)
+        answer = [x0, x1]
+        return answer
+    else:
+        x0 = round(float(solution[1].rhs()), 3)
+        x1 = round(float(solution[0].rhs()), 3)
+        answer = [x0, x1]
+        return answer
+
+def findDiscriminant(coefficients):
+    a, b, c = coefficients
+    return b**2 - 4*a*c
+
+def isSquare(integer):
+    root = sqrt(integer)
+    typeInteger = type(3)
+    if type(root) == typeInteger:
+        return True
+    else:
+        return False
+
+################################
+coefficients11 = generateCoefficients()
+solution11 = generateSolution(coefficients11)
+problemDisplay11 = coefficients11[0]*x**2 + coefficients11[1]*x + coefficients11[2]
+
+coefficients12 = generateCoefficients()
+solution12 = generateSolution(coefficients12)
+problemDisplay12 = coefficients12[0]*x**2 + coefficients12[1]*x + coefficients12[2]
+
+coefficients13 = generateCoefficients()
+solution13 = generateSolution(coefficients13)
+problemDisplay13 = coefficients13[0]*x**2 + coefficients13[1]*x + coefficients13[2]
+\end{sagesilent}
+
+\begin{question}
+Solve the quadratic below.  
+
+	$$ \sage{problemDisplay11} = 0 $$
+
+Smaller solution: $x = \answer[tolerance=0.05]{\sage{solution11[0]}}$
+
+Larger solution: $x = \answer[tolerance=0.05]{\sage{solution11[1]}}$	
+
+\end{question}
+
+\begin{question}
+Solve the quadratic below. 
+
+	$$ \sage{problemDisplay12} = 0 $$
+
+Smaller solution: $x = \answer[tolerance=0.05]{\sage{solution12[0]}}$
+
+Larger solution: $x = \answer[tolerance=0.05]{\sage{solution12[1]}}$	
+
+\end{question}
+
+\begin{question}
+Solve the quadratic below. 
+
+	$$ \sage{problemDisplay13} = 0 $$
+
+Smaller solution: $x = \answer[tolerance=0.05]{\sage{solution13[0]}}$
+
+Larger solution: $x = \answer[tolerance=0.05]{\sage{solution13[1]}}$	
+
+\end{question}
+
+\end{document}

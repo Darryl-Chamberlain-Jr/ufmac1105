@@ -1,0 +1,129 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+
+\input{../preamble} %% we can turn off input when making a master document
+
+\outcome{Recognize and construct linear functions as well as solve linear equations.}
+\author{Darryl Chamberlain Jr.}
+ 
+\title{Objective 2 - Converting between linear forms}
+
+\begin{document}
+\begin{abstract}
+Converting between Slope-Intercept form and Standard form.
+\end{abstract}
+\maketitle
+
+\href{https://cnx.org/contents/mwjClAV_@8.1:62_eXnY6@14/Linear-Equations-in-One-Variable}{Link to section in online textbook.}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 1  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+First, watch \underline{\href{https://mediasite.video.ufl.edu/Mediasite/Play/49d31e3bbea64e158f4481960444eb791d}{this video}} to learn about the different forms we usually write linear functions in. This objective will focus on converting between Slope-Intercept form and Standard form.
+
+\begin{sagesilent}
+x = var('x')
+y = var('y')
+
+#################
+def maybeMakeNegative(rational):
+    maybeNegative = (-1)**ZZ.random_element(2)
+    rational = maybeNegative * rational
+    return rational
+
+def standardToSlopeInt():
+    A = ZZ.random_element(2, 9)
+    B = maybeMakeNegative(ZZ.random_element(2, 9))
+    C = maybeMakeNegative(ZZ.random_element(2, 9))
+    while gcd(A, B) > 1 or gcd(A, C) > 1:
+        A = ZZ.random_element(2, 9)
+        B = maybeMakeNegative(ZZ.random_element(2, 9))
+        C = maybeMakeNegative(ZZ.random_element(2, 9))
+    slope = float(-A/B)
+    yInt = float(C/B)
+    return [A, B, C, slope, yInt]
+
+def sloptIntToStandard():
+    mNum = maybeMakeNegative(ZZ.random_element(2, 9))
+    mDenom = ZZ.random_element(2, 9)
+    yIntNum = maybeMakeNegative(ZZ.random_element(2, 9))
+    yIntDenom = ZZ.random_element(2, 9)
+    while gcd(mNum, mDenom) > 1 or gcd(yIntNum, yIntDenom) > 1 or mDenom == yIntDenom:
+        mNum = maybeMakeNegative(ZZ.random_element(2, 9))
+        mDenom = ZZ.random_element(2, 9)
+        yIntNum = maybeMakeNegative(ZZ.random_element(2, 9))
+        yIntDenom = ZZ.random_element(2, 9)
+    slope = mNum/mDenom
+    yInt = yIntNum/yIntDenom
+    lcmConstant = (mDenom*yIntDenom/gcd(mDenom, yIntDenom))
+    if mNum < 0:
+        A = -mNum*lcmConstant/mDenom
+        B = lcmConstant
+        C = yIntNum*lcmConstant/yIntDenom
+    else:
+        A = mNum*lcmConstant/mDenom
+        B = -lcmConstant
+        C = -yIntNum*lcmConstant/yIntDenom
+    return [A, B, C, slope, yInt]
+###############
+A1, B1, C1, slope1, yInt1 = standardToSlopeInt()
+equationXY1 = A1*x + B1*y
+A2, B2, C2, slope2, yInt2 = standardToSlopeInt()
+equationXY2 = A2*x + B2*y
+A3, B3, C3, slope3, yInt3 = sloptIntToStandard()
+equationSlopeInt3 = slope3*x + yInt3
+A4, B4, C4, slope4, yInt4 = sloptIntToStandard()
+equationSlopeInt4 = slope4*x + yInt4
+\end{sagesilent}
+
+% Question 1 - Standard to Slope-Intercept
+\begin{question}
+Convert the linear function below from Standard form to Slope-Intercept form. 
+
+$$  \sage{equationXY1} = \sage{C1}  $$
+
+$y = \answer[tolerance=0.05]{\sage{slope1}}x + \answer[tolerance=0.05]{\sage{yInt1}}$
+\end{question}
+
+% Question 2 - Standard to Slope-Intercept
+\begin{question}
+Convert the linear function below from Standard form to Slope-Intercept form. 
+
+$$  \sage{equationXY2} = \sage{C2}  $$
+
+$y = \answer[tolerance=0.05]{\sage{slope2}}x + \answer[tolerance=0.5]{\sage{yInt2}}$
+\end{question}
+
+% Question 3 - Slope-Intercept to Standard
+\begin{question}
+Convert the linear function below from Slope-Intercept form to Standard form. 
+
+$$ y = \sage{equationSlopeInt3}$$
+
+\begin{hint}
+What do we know about the coefficients in Standard Form? Is there anything special about the coefficient for $x$?
+\end{hint}
+
+$ \answer{\sage{A3}}x + \answer{\sage{B3}}y = \answer{\sage{C3}} $
+\end{question}
+
+% Question 4 - Slope-Intercept to Standard
+\begin{question}
+Convert the linear function below from Slope-Intercept form to Standard form. 
+
+$$ y = \sage{equationSlopeInt4}$$
+
+\begin{hint}
+What do we know about the coefficients in Standard Form? Is there anything special about the coefficient for $x$?
+\end{hint}
+
+$ \answer{\sage{A4}}x + \answer{\sage{B4}}y = \answer{\sage{C4}} $
+\end{question}
+
+\end{document}

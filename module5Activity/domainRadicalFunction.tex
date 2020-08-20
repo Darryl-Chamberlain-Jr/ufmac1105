@@ -1,0 +1,89 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+
+\input{../preamble} %% we can turn off input when making a master document
+
+\outcome{}
+\author{Darryl Chamberlain Jr.}
+ 
+\title{Objective 1 - Domain}
+
+\begin{document}
+\begin{abstract}
+Identify the domain on which a radical function is not defined.
+\end{abstract}
+\maketitle
+
+\textit{Note: No direct section in the textbook discusses domain of radical functions.}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 1  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+First, watch \href{https://mediasite.video.ufl.edu/Mediasite/Play/d7b8d9e72bc642aeb816f991119e914d1d}{this video} to learn the basics on radical functions. I also suggest visiting \href{https://www.desmos.com/calculator/twa1f86qtm}{this Desmos page} to see how various numbers affect radical functions. Questions for this section will focus on the Domain of radical functions, as that will help us later when we try to solve radical equations.  
+
+\begin{sagesilent}
+a1 = ZZ.random_element(2, 10)
+\end{sagesilent}
+
+\begin{question}
+Write the domain of the function $\sqrt{x - \sage{a1} }$ in interval notation.
+
+$\answer[format=string]{[} \answer{\sage{a1}}, \answer{\sage{Infinity}} \answer[format=string]{)}$
+
+\begin{feedback}
+The answer blocks will take parentheses and brackets like ``(" or ``[". How do we decide which to include?
+\end{feedback}
+
+\end{question}
+
+\begin{sagesilent}
+a2 = (-1)**(ZZ.random_element(2))*(ZZ.random_element(2, 10))
+b2 = (-1)**(ZZ.random_element(2))*(ZZ.random_element(2, 10))
+factor2 = a2*x + b2
+#answer2 = round(float(solve(factor2==0, x)[0].rhs()),3) 
+\end{sagesilent}
+
+\begin{question}
+Write the domain of the function $\sqrt[3]{\sage{factor2}}$ in interval notation. 
+
+$\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer{\sage{Infinity}} \answer[format=string]{)}$
+
+\end{question}
+
+\begin{sagesilent}
+a3 = (-1)*(ZZ.random_element(2, 10))
+b3 = (-1)**(ZZ.random_element(2))*(ZZ.random_element(2, 10))
+factor3 = a3*x + b3
+answer3 = round(float(solve(factor3==0, x)[0].rhs()),3) 
+root3 = ZZ.random_element(2, 5)*2
+\end{sagesilent}
+
+\begin{question}
+Write the domain of the function $\sqrt[\sage{root3}]{\sage{factor3}}$ in interval notation. 
+
+$\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer[tolerance=0.05]{\sage{answer3}} \answer[format=string]{]}$
+
+\end{question}
+
+\begin{sagesilent}
+a4 = (-1)*(ZZ.random_element(2, 10))
+b4 = (-1)**(ZZ.random_element(2))*(ZZ.random_element(2, 10))
+factor4 = a4*x + b4
+answer4 = round(float(solve(factor4==0, x)[0].rhs()),3) 
+root4 = ZZ.random_element(2,5)*2+1
+\end{sagesilent}
+
+\begin{question}
+Write the domain of the function $\sqrt[\sage{root4}]{\sage{factor4}}$ in interval notation. 
+
+$\answer[format=string]{(} \answer{\sage{-Infinity}}, \answer{\sage{Infinity}} \answer[format=string]{)}$
+
+\end{question}
+
+\end{document}

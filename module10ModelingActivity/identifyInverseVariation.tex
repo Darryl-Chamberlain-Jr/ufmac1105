@@ -1,0 +1,77 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+\usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{2009}{\,} 
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+
+\input{../preamble} %% we can turn off input when making a master document
+
+\outcome{}
+\author{Darryl Chamberlain Jr.}
+
+\title{Objective 2 - Identify Inverse Variation}
+
+\begin{document}
+\begin{abstract}
+		
+\end{abstract}
+	
+\maketitle
+	
+% Link to textbook
+Link to textbook: 
+\href{https://cnx.org/contents/mwjClAV_@8.12:yUH0hROr@12/Modeling-Using-Variation}{Identify when two quantities are varying inversely with each other.}
+	
+\href{https://www.youtube.com/watch?v=vAwJ-WO-A3o&list=PLsCqF7qYpC5aHckH-Nh5nF3A598qhRJ8S&index=3}{Video on Inverse Variation}
+	
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 2  %%%
+%%%%%%%%%%%%%%%%%%%%%
+	
+In the last objective, we looked at when two quantities changed directly: $y=kx^n$. This is a \textit{direct variation} - one quantity is a constant multiplied by another quantity. In other words, as one quantity $(x^n)$ increases, so does the other quantity. We can also talk about an \textit{inverse variation} - as one quantity $(x^n)$ increases, the other decreases. 
+	
+\textbf{Inverse Variation:} $y = \frac{k}{x^n}$, where $n$ is a positive Real number. 
+	
+\textbf{Identifying a Direct Variation of Quantities}
+	
+In word problems, we will be looking for the phrases ``vary indirectly" or ``inversely proportional". Outside of these phrases, the easiest way to determine whether two quantities are varying directly with each other is to graph some values. If the graph looks like a rational function, then the quantities may be varying directly! \textbf{\textit{Warning: It is difficult to tell the difference between $e^x$ and the positive side of $1/x$ from just a few points. If we were given a few points and not told the relationship between the values, then we would need statistical methods to determine which function is more appropriate for the model. For our class, you will be told how to model the situation.}} 
+	
+For the questions below, determine whether it would be reasonable to model the problem with a direct variation. \textit{Do not attempt to solve these problems - we will work on that in a future objective.}
+
+\begin{question}
+[Astronomy] The weight of an object above the surface of Earth varies inversely with the square of the distance from the center of Earth. Should we model the relationship between weight and distance with an indirect variation?
+
+$\answer[format=string]{Yes}$
+
+\begin{feedback}
+We see our phrase ``varies inversely" between the two quantities we want to model. 
+\end{feedback}
+\end{question}
+
+
+\begin{question}
+[Chemistry] Ideal Gas Law: The product of pressure, $P$, and volume, $V$, of a gas is directly proportional to the product of the amount of substance, $n$, and temperature, $T$. Should we model the relationship between pressure and volume with an indirect variation?
+	
+$\answer[format=string]{Yes}$
+	
+\begin{feedback}
+	If we write this as an equation, we see that $PV = nRT$, where $R$ is a constant. \textbf{If} we are considering the relationship between the quantity $PV$ and quantity $nT$, we can see it is a direct variation. Solving for one of the quantities we want to think about, $P = \frac{nRT}/{V}$. If the other variables remained constant (say, we had a specific amount of substance and kept it at a constant temperature), this would give us the inverse variation form $P = \frac{k}{V}$. 
+\end{feedback}
+\end{question}
+
+\begin{question}
+[Physics] The kinetic energy $K$ of a moving object varies jointly with its mass $m$ and the square of its velocity $v$. Should we model the relationship between kinetic energy and mass/velocity with an indirect variation?
+
+$\answer[format=string]{No}$
+
+\begin{feedback}
+We see the phrase ``varies jointly" and are not sure whether this variation is direct or indirect. It is a common practice to assume direct variation unless they specify otherwise. In this case, since there is no mention of indirect variation, we assume the kinetic energy equation is $K = c mv$, where $c$ is a constant. 
+\end{feedback}
+
+\end{question}
+
+\end{document}

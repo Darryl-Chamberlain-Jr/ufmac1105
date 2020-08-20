@@ -1,0 +1,257 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+ 
+\input{../preamble} %% we can turn off input when making a master document
+ 
+\outcome{}
+\author{Darryl Chamberlain Jr.}
+  
+\title{Objective 4 - Oblique Asymptotes}
+ 
+\begin{document}
+\begin{abstract}
+
+\end{abstract}
+\maketitle
+ 
+\href{https://cnx.org/contents/mwjClAV_@8.21:KNTP2r7D@14/Rational-Functions}{Link to section in online textbook.}
+
+\href{https://mediasite.video.ufl.edu/Mediasite/Play/0957426faa87413085c428f14dc054e71d}{Video explanation of horizontal/oblique asymptotes \textit{without using limits}.}
+ 
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 4  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+Our last case, when the degree of the numerator is larger than the degree of the denominator, is much trickier. Since the numerator is larger, we can perform divide the polynomials to get some quotient (another, smaller polynomial) and then a remainder. In Calculus, you'll learn how to evaluate these limits without needing to divide the polynomials. For our case, we will simplify the issue by making sure we can use synthetic division to perform the polynomial division. The quotient will result in an \textit{oblique} asymptote, or an asymptote that is not horizontal/vertical.
+
+\begin{theorem}
+\textbf{Oblique Asymptotes of a Rational Function}
+
+$$ f(x) = \frac{a_nx^n + a_{n-1}x^{n-1} + \cdots a_1 x + a_0}{b_mx^m + b_{m-1}x^{m-1} + \cdots b_1 x + b_0} $$
+
+If $n > m$, then $\lim_{x \rightarrow \pm \infty} f(x) = q(x)$, where $q(x)$ is the quotient after dividing the two polynomials. This gives us an oblique asymptote $y = q(x)$.
+\end{theorem}
+ 
+\begin{question}
+Preform the division $\frac{x^2+4x+4}{x-1}$ and find the quotient.
+ 
+\[
+\graph[rectangular]{f(x) = (x^2+4x+4)/(x-1)}
+\]
+ 
+$y = \answer{x+5}$
+ 
+\begin{feedback}[correct]
+Right! If we are thinking end behavior, the function will eventually behave like the line $y=x+5$. We can think of the quotient as the ``main" part of the rational function as it determines the end behavior. We can summarize this as: \textbf{When the degree of the numerator is one larger than the denominator, the function will have an oblique asymptote at $y = $ quotient after synthetic division.}
+\end{feedback}
+\end{question}
+
+\begin{sagesilent}
+R, x = QQ['x'].objgen()
+ 
+def maybeMakeNegative(natural):
+    integer = natural*(-1)**ZZ.random_element(2)
+    return integer
+ 
+def makeIntegerFactor():
+    zero = maybeMakeNegative(ZZ.random_element(1, 6))
+    integerFactor = x - zero
+    return [integerFactor, zero]
+ 
+def makeRationalFactor():
+    a = maybeMakeNegative(ZZ.random_element(1, 4))
+    b = maybeMakeNegative(ZZ.random_element(1, 6))
+    while gcd(abs(a), abs(b)) > 1:
+        a = maybeMakeNegative(ZZ.random_element(1, 4))
+        b = maybeMakeNegative(ZZ.random_element(1, 6))
+    rationalFactor = a*x + b
+    return [rationalFactor, a]
+ 
+def makeIrrationalQuadratic():
+    a = maybeMakeNegative(ZZ.random_element(1, 6))
+    b = maybeMakeNegative(ZZ.random_element(1, 6))
+    c = maybeMakeNegative(ZZ.random_element(1, 6))
+    discrim = b**2 - 4*a*c
+    integerType = type(2)
+    while type(sqrt(discrim)) == integerType:
+        a = maybeMakeNegative(ZZ.random_element(1, 6))
+        b = maybeMakeNegative(ZZ.random_element(1, 6))
+        c = maybeMakeNegative(ZZ.random_element(1, 6))
+        discrim = b**2 - 4*a*c
+    solution0 = (-b + sqrt(discrim))/2*a
+    solution1 = (-b - sqrt(discrim))/2*a
+    smallerSolution, largerSolution = sorted([solution0, solution1])
+    quadratic = a*x**2 + b*x + c
+    return [quadratic, smallerSolution, largerSolution]
+ 
+def makeComplexQuadratic():
+    a0 = maybeMakeNegative(ZZ.random_element(1, 4))
+    b0 = maybeMakeNegative(ZZ.random_element(1, 6))
+    complex0 = a0 + b0*i
+    complex1 = a0 - b0*i
+    quadratic = x**2 - (a0**2 + b0**2)
+    return [quadratic, complex0, complex1]
+ 
+def createPolyDegree1to4(degree):
+    if degree == 1:
+        poly, deadZero1 = makeRationalFactor()
+        leadingCoefficient = derivative(poly, x)/factorial(degree)
+    elif degree == 2:
+        factor2a, deadZero2a = makeRationalFactor()
+        factor2b, deadZero2b = makeRationalFactor()
+        poly = factor2a * factor2b
+        leadingCoefficient = derivative(derivative(poly, x), x)/factorial(degree)
+    elif degree == 3:
+        factor3a, deadZero3a = makeRationalFactor()
+        factor3b, deadZero3b = makeRationalFactor()
+        factor3c, deadZero3c = makeRationalFactor()
+        poly = factor3a * factor3b * factor3c
+        leadingCoefficient = derivative(derivative(derivative(poly, x), x), x)/factorial(degree)
+    elif degree == 4:
+        factor4a, deadZero4a = makeRationalFactor()
+        factor4b, deadZero4b = makeRationalFactor()
+        factor4c, deadZero4c = makeRationalFactor()
+        factor4d, deadZero4d = makeRationalFactor()
+        poly = factor4a * factor4b * factor4c * factor4d
+        leadingCoefficient = derivative(derivative(derivative(derivative(poly, x), x), x), x)/factorial(degree)
+    else:
+        poly = 0
+        leadingCoefficient = 0
+    return [poly, leadingCoefficient]
+ 
+def horizontalAsymptote():
+    chooseType = ZZ.random_element(2)
+    if chooseType == 0:
+        degreeDenom = ZZ.random_element(2, 5)
+        degreeNum = ZZ.random_element(1, degreeDenom)
+        polyNumerator, coeffNumerator = createPolyDegree1to4(degreeNum)
+        polyDenominator, coeffDenominator = createPolyDegree1to4(degreeDenom)
+        horizontalAsymptote = 0
+    elif chooseType == 1:
+        degreeNumAndDenom = ZZ.random_element(1, 5)
+        polyNumerator, coeffNumerator = createPolyDegree1to4(degreeNumAndDenom)
+        polyDenominator, coeffDenominator = createPolyDegree1to4(degreeNumAndDenom)
+        horizontalAsymptote = coeffNumerator/coeffDenominator
+    else:
+        polyNumerator = 0
+        polyDenominator = 0
+        horizontalAsymptote = 0
+    return [polyNumerator, polyDenominator, horizontalAsymptote]
+     
+def obliqueAsymptote(z0, missingOrNot):
+    a0 = ZZ.random_element(2, 6)
+    b0 = maybeMakeNegative(ZZ.random_element(2, 6))
+    a1 = ZZ.random_element(2, 6)
+    b1 = maybeMakeNegative(ZZ.random_element(2, 6))
+    z1 = maybeMakeNegative(ZZ.random_element(2, 6))
+    r = maybeMakeNegative(ZZ.random_element(2, 6))
+    #
+    numeratorPoly = (a0*a1*z0)*x**3 + (-a0*a1*z1 + a0*b1*z0 + a1*b0*z0)*x**2+ (-a0*b1*z1 - a1*b0*z1 + b0*b1*z0)*x + (-b0*b1*z1 + r)
+    numCo1 = a0*a1*z0
+    numCo2 = -a0*a1*z1 + a0*b1*z0 + a1*b0*z0
+    numCo3 = -a0*b1*z1 - a1*b0*z1 + b0*b1*z0
+    numCo4 = -b0*b1*z1 + r
+    #
+    denominator = z0 * x - z1
+    quotient = (a0*a1)*x**2 + (a0*b1+a1*b0)*x + b0*b1
+    remainder = r
+    #
+    if missingOrNot == "notMissing":
+        while (numCo1==0 or numCo2==0 or numCo3==0 or numCo4==0):
+            a0 = ZZ.random_element(2, 6)
+            b0 = maybeMakeNegative(ZZ.random_element(2, 6))
+            a1 = ZZ.random_element(2, 6)
+            b1 = maybeMakeNegative(ZZ.random_element(2, 6))
+            z1 = maybeMakeNegative(ZZ.random_element(2, 6))
+            r = maybeMakeNegative(ZZ.random_element(2, 6))
+            #
+            numeratorPoly = (a0*a1*z0)*x**3 + (-a0*a1*z1 + a0*b1*z0 + a1*b0*z0)*x**2+ (-a0*b1*z1 - a1*b0*z1 + b0*b1*z0)*x + (-b0*b1*z1 + r)
+            numCo1 = a0*a1*z0
+            numCo2 = -a0*a1*z1 + a0*b1*z0 + a1*b0*z0
+            numCo3 = -a0*b1*z1 - a1*b0*z1 + b0*b1
+            numCo4 = -b0*b1*z1 + r
+            denominator = z0*x - z1
+            quotient = (a0*a1)*x**2 + (a0*b1+a1*b0)*x + b0*b1
+            remainder = r
+            #
+    else:
+        index =  0
+        while (abs(numCo1)>0 and abs(numCo2)>0 and abs(numCo3)>0 and abs(numCo4)>0):
+            a0 = ZZ.random_element(2, 6)
+            b0 = maybeMakeNegative(ZZ.random_element(2, 6))
+            a1 = ZZ.random_element(2, 6)
+            b1 = maybeMakeNegative(ZZ.random_element(2, 6))
+            z1 = maybeMakeNegative(ZZ.random_element(2, 6))
+            r = maybeMakeNegative(ZZ.random_element(2, 6))
+            #
+            numeratorPoly = (a0*a1*z0)*x**3 + (-a0*a1*z1 + a0*b1*z0 + a1*b0*z0)*x**2+ (-a0*b1*z1 - a1*b0*z1 + b0*b1*z0)*x + (-b0*b1*z1 + r)
+            numCo1 = a0*a1*z0
+            numCo2 = -a0*a1*z1 + a0*b1*z0 + a1*b0*z0
+            numCo3 = -a0*b1*z1 - a1*b0*z1 + b0*b1
+            numCo4 = -b0*b1*z1 + r
+            denominator = z0*x - z1
+            quotient = (a0*a1)*x**2 + (a0*b1+a1*b0)*x + b0*b1
+            remainder = r
+            index =  index + 1
+            #
+    return [numeratorPoly, denominator, quotient, remainder]
+#####
+polyNum1, polyDenom1, horAsy1 = horizontalAsymptote()
+polyNum2, polyDenom2, horAsy2 = horizontalAsymptote()
+#
+choices = ["missing", "notMissing"]
+polyNum3, polyDenom3, obliqueAsy3, deadRemainder3 = obliqueAsymptote(1, choices[ZZ.random_element(2)])
+polyNum4, polyDenom4, obliqueAsy4, deadRemainder4 = obliqueAsymptote(ZZ.random_element(2, 6), choices[ZZ.random_element(2)])
+\end{sagesilent}
+ 
+% Q1 - Top smaller or equal
+\begin{problem}
+Determine whether there is a horizontal or oblique asymptote of the rational function below. Then, write the equation of this asymptote.
+ 
+$ f(x) = \frac{\sage{polyNum1}}{\sage{polyDenom1}}$
+ 
+There is a $\answer[format=string]{horizontal}$ asymptote at $y = \answer{\sage{horAsy1}}$.
+\end{problem}
+ 
+% Q2 - Top smaller or equal
+\begin{problem}
+Determine whether there is a horizontal or oblique asymptote of the rational function below. Then, write the equation of this asymptote.
+ 
+$ f(x) = \frac{\sage{polyNum2}}{\sage{polyDenom2}}$
+ 
+There is a $\answer[format=string]{horizontal}$ asymptote at $y = \answer{\sage{horAsy2}}$.
+\end{problem}
+ 
+% Q3 - Top bigger
+\begin{problem}
+Determine whether there is a horizontal or oblique asymptote of the rational function below. Then, write the equation of this asymptote.
+ 
+$ f(x) = \frac{\sage{polyNum3}}{\sage{polyDenom3}}$
+ 
+There is a $\answer[format=string]{oblique}$ asymptote at $y = \answer{\sage{obliqueAsy3}}$.
+\end{problem}
+ 
+% Q4 - Top bigger
+\begin{problem}
+Determine whether there is a horizontal or oblique asymptote of the rational function below. Then, write the equation of this asymptote.
+ 
+$ f(x) = \frac{\sage{polyNum4}}{\sage{polyDenom4}}$
+ 
+There is a $\answer[format=string]{oblique}$ asymptote at $y = \answer{\sage{obliqueAsy4}}$.
+\end{problem}
+ 
+\textbf{Main takeaway:} There are three possibilities when looking at the end behavior of a rational function:
+ 
+\textit{For ease of notation, let $n$ be the degree of the numerator and $m$ be the degree of the denominator.}
+\begin{itemize}
+\item $n = m$ -- Horizontal asymptote $y = \frac{a_n}{b_m}$
+\item $n < m$ -- Horizontal asymptote $y = 0$
+\item $n > m$ -- Oblique asymptote $y = $ quotient \textit{after synthetic division}
+\end{itemize}
+
+\end{document}

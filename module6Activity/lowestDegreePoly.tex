@@ -1,0 +1,302 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+
+\input{../preamble} %% we can turn off input when making a master document
+
+\outcome{}
+\author{Darryl Chamberlain Jr.}
+
+\title{Objective 3 - Lowest-Degree Polynomial}
+
+\begin{document}
+\begin{abstract}
+Construct a lowest-degree polynomial given its zeros.
+\end{abstract}
+\maketitle
+
+\href{https://cnx.org/contents/mwjClAV_@8.1:G7V9LHif@17/Zeros-of-Polynomial-Functions}{Link to section in online textbook}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 3  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+First, watch \underline{\href{https://mediasite.video.ufl.edu/Mediasite/Play/11f054fdc9db465fba9fe468237d117f1d}{this video}} to learn how to construct a polynomial, given its zeros. Now practice constructing polynomials from zeros with the questions below.
+
+\begin{sagesilent}
+def maybeMakeNegative(natural):
+    integer = (-1)**ZZ.random_element(2) * natural
+    return integer
+
+def generateFactorEasy():
+    a = 1
+    b = maybeMakeNegative(ZZ.random_element(3, 6))
+    return [a, b]
+
+def generateFactorHard():
+    a = ZZ.random_element(1, 4)
+    b = maybeMakeNegative(ZZ.random_element(3, 6))
+    while gcd(a, b) > 1:
+        a = ZZ.random_element(1, 4)
+        b = maybeMakeNegative(ZZ.random_element(3, 6))
+    return [a, b]
+
+def generateAllFactorsEasy():
+    factor1 = generateFactorEasy()
+    factor2 = generateFactorEasy()
+    factor3 = generateFactorEasy()
+    return [factor1, factor2, factor3]
+
+def generateAllFactorsHard():
+    factor1 = generateFactorHard()
+    factor2 = generateFactorHard()
+    factor3 = generateFactorHard()
+    return [factor1, factor2, factor3]
+
+def generateZeros(factor1, factor2, factor3):
+    zero1 = factor1[1]/factor1[0]
+    zero2 = factor2[1]/factor2[0]
+    zero3 = factor3[1]/factor3[0]
+    return [zero1, zero2, zero3]
+
+def generatePolynomial(factor1, factor2, factor3):
+    f10, f11 = factor1
+    f20, f21 = factor2
+    f30, f31 = factor3
+    #
+    a = f10*f20*f30
+    b = -f11*f20*f30 - f10*f21*f30 - f10*f20*f31
+    c = f11*f20*f31 + f10*f21*f31 + f11*f21*f30
+    d = -f11*f21*f31
+    #
+    coefficients = [a, b, c, d]
+    return coefficients
+
+##### QUESTION 13 #####
+factor131, factor132, factor133 = generateAllFactorsEasy()
+zero131, zero132, zero133 = generateZeros(factor131, factor132, factor133)
+coefficients13 = generatePolynomial(factor131, factor132, factor133)
+
+##### QUESTION 14 #####
+factor141, factor142, factor143 = generateAllFactorsEasy()
+zero141, zero142, zero143 = generateZeros(factor141, factor142, factor143)
+coefficients14 = generatePolynomial(factor141, factor142, factor143)
+
+##### QUESTION 15 #####
+factor151, factor152, factor153 = generateAllFactorsHard()
+zero151, zero152, zero153 = generateZeros(factor151, factor152, factor153)
+coefficients15 = generatePolynomial(factor151, factor152, factor153)
+
+##### QUESTION 16 #####
+factor161, factor162, factor163 = generateAllFactorsHard()
+zero161, zero162, zero163 = generateZeros(factor161, factor162, factor163)
+coefficients16 = generatePolynomial(factor161, factor162, factor163)
+\end{sagesilent}
+
+%Q 13
+\begin{question}
+Construct the lowest-degree polynomial given the zeros below.
+
+$$ \sage{zero131}, \sage{zero132}, \sage{zero133} $$
+
+$f(x) = \answer{\sage{coefficients13[0]}} x^3 + \answer{\sage{coefficients13[1]}} x^2 + \answer{\sage{coefficients13[2]}} x + \answer{\sage{coefficients13[3]}}$
+
+\end{question}
+
+%Q 14
+\begin{question}
+Construct the lowest-degree polynomial given the zeros below.
+
+$$ \sage{zero141}, \sage{zero142}, \sage{zero143} $$
+
+$f(x) = \answer{\sage{coefficients14[0]}} x^3 + \answer{\sage{coefficients14[1]}} x^2 + \answer{\sage{coefficients14[2]}} x + \answer{\sage{coefficients14[3]}}$
+
+\end{question}
+
+%Q 15
+\begin{question}
+Construct the lowest-degree polynomial given the zeros below.
+
+$$ \sage{zero151}, \sage{zero152}, \sage{zero153} $$
+
+$f(x) = \answer{\sage{coefficients15[0]}} x^3 + \answer{\sage{coefficients15[1]}} x^2 + \answer{\sage{coefficients15[2]}} x + \answer{\sage{coefficients15[3]}}$
+
+\begin{hint}
+Remember back to what it meant to be in Standard Form for linear functions: we did not have any fractions as coefficients. How would we rewrite a factor that has a fraction in it, like $\left(x-\frac{3}{4}\right)$?
+\end{hint}
+
+\end{question}
+
+%Q 16
+\begin{question}
+Construct the lowest-degree polynomial given the zeros below.
+
+$$ \sage{zero161}, \sage{zero162}, \sage{zero163} $$
+
+$f(x) = \answer{\sage{coefficients16[0]}} x^3 + \answer{\sage{coefficients16[1]}} x^2 + \answer{\sage{coefficients16[2]}} x + \answer{\sage{coefficients16[3]}}$
+
+\begin{hint}
+Remember back to what it meant to be in Standard Form for linear functions: we did not have any fractions as coefficients. How would we rewrite a factor that has a fraction in it, like $\left(x-\frac{3}{4}\right)$?
+\end{hint}
+
+\end{question}
+
+We focused on building polynomials with integer and rational zeros. What would we do if we had other types of zeros, like irrational or complex?
+
+\begin{theorem}
+Complex and Irrational roots for polynomials come in ``\_\_\_\_\_\_\_\_\_" pairs. \\
+
+The Quadratic Formula
+
+$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+
+tells us something about the types of zeros a quadratic function may have:
+	\begin{itemize}
+		\item 2 different, rational zeros
+			\begin{itemize}
+				\item $\text{e.g., } \frac{1}{4} \text{ and } -3 \text{ for the polynomial } 4x^2+11x-3$
+			\end{itemize}
+		\item 2 copies of a rational zero
+			\begin{itemize}
+				\item $\text{e.g., } \frac{1}{3} \text{ and } \frac{1}{3} \text{ for the polynomial } 9x^2-2x+1$
+			\end{itemize}
+		\item 2 different, irrational zeros
+			\begin{itemize}
+				\item $\text{e.g., } \frac{1}{2} - \sqrt{2} \text{ and } \frac{1}{2} + \sqrt{2} \text{ for the polynomial } 4x^2-4x-7$
+			\end{itemize}
+		\item 2 different, complex zeros
+			\begin{itemize}
+				\item $\text{e.g., } \frac{1}{4}-3i \text{ and } \frac{1}{4}+3i \text{ for the polynomial } 16x^2-8x+145$
+			\end{itemize}
+	\end{itemize}
+
+Let's focus on the irrational and complex zeros. These occur when the number under the square root is either (1) not a perfect square or (2) negative. Let's look closer at the form these zeros take by looking at the subgroups the numbers belong to.
+
+Case 1: $b^2 - 4ac$ is positive and is \textbf{not} a perfect square.
+
+$$x = \frac{\text{integer}}{\text{integer}} \pm \frac{\text{irrational}}{\text{integer}}$$
+
+$$ x = \text{rational} \pm \text{irrational} $$
+
+Case 2: $b^2 - 4ac$ is negative.
+
+$$x = \frac{\text{integer}}{\text{integer}} \pm \frac{\text{complex}}{\text{integer}}$$
+
+$$ x = \text{rational} \pm \text{complex} $$
+\end{theorem}
+
+\begin{question}
+What word describes the relationship between the zeros $ x = \text{rational} - \text{complex} $ and $ x = \text{rational} + \text{complex}$?
+
+They are $\answer[format=string]{conjugate}$ pairs!
+
+\begin{hint}
+What are $3+4i$ and $3-4i$ to each other?
+\end{hint}
+
+\end{question}
+
+We use this theorem to construct polynomials with irrational and/or complex roots.
+
+\begin{sagesilent}
+def constructLowestDegreePolyIrrational(b):
+    a = ZZ.random_element(2, 8)
+    n = ZZ.random_element(-5, 5)
+    d = ZZ.random_element(2, 8)
+    while gcd(abs(n), d) > 1 or n == 0:
+        n = ZZ.random_element(-5, 5)
+        d = ZZ.random_element(2, 8)
+    coefficients = [d, -2*b*d-n, 2*b*n + b**2*d - a*d, -b**2*n+a*n]
+    zeros = [b, sqrt(a), n/d]
+    return [coefficients, zeros]
+
+def constructLowestDegreePolyComplex(a):
+    b = ZZ.random_element(2, 8)
+    n = ZZ.random_element(-5, 5)
+    d = ZZ.random_element(2, 8)
+    while gcd(abs(n), d) > 1 or n == 0:
+        n = ZZ.random_element(-5, 5)
+        d = ZZ.random_element(2, 8)
+    coefficients = [d, -n-2*a*d, 2*a*n+a**2*d+b**2*d, -a**2*n-b**2*n]
+    zeros = [a, b, n/d]
+    hintValues = [n, d]
+    return [coefficients, zeros, hintValues]
+#
+irrationalB = ZZ.random_element(2, 6)
+complexA = ZZ.random_element(2, 6)
+#
+# Q6 - Irrational Roots with b=0
+coefficientsQ6, zerosQ6 = constructLowestDegreePolyIrrational(0)
+# Q7 - Irrational Roots with b neq 0
+coefficientsQ7, zerosQ7 = constructLowestDegreePolyIrrational(irrationalB)
+# Q8 - Complex Roots with a=0
+coefficientsQ8, zerosQ8, hintValuesQ8 = constructLowestDegreePolyComplex(0)
+# Q9 - Complex Roots with a neq 0
+coefficientsQ9, zerosQ9, hintValuesQ9 = constructLowestDegreePolyComplex(complexA)
+\end{sagesilent}
+
+% Irrational roots - easy
+\begin{question}
+Construct the lowest-degree polynomial given the zeros below.
+
+$$\sage{zerosQ6[1]}, \sage{zerosQ6[2]}$$
+
+$f(x) = \answer{\sage{coefficientsQ6[0]}}x^3 + \answer{\sage{coefficientsQ6[1]}}x^2 + \answer{\sage{coefficientsQ6[2]}}x + \answer{\sage{coefficientsQ6[3]}}$
+
+\begin{hint}
+If $\sage{zerosQ6[1]}$ is a zero to the polynomial, then $-\sage{zerosQ6[1]}$ is also! Multiply $(x-\sage{zerosQ6[1]})(x+\sage{zerosQ6[1]})$ first, then use the third zero to finish building the polynomial.
+\end{hint}
+
+\end{question}
+
+% Irrational roots - hard
+\begin{question}
+Construct the lowest-degree polynomial given the zeros below.
+
+$$\sage{zerosQ7[0]}+\sage{zerosQ7[1]}, \sage{zerosQ7[2]}$$
+
+$f(x) = \answer{\sage{coefficientsQ7[0]}}x^3 + \answer{\sage{coefficientsQ7[1]}}x^2 + \answer{\sage{coefficientsQ7[2]}}x + \answer{\sage{coefficientsQ7[3]}}$
+
+\begin{hint}
+Be careful with how you set up this problem. Again, multiply the conjugate factors together first. If you did this right, there should be no radicals left!
+\end{hint}
+
+\end{question}
+
+% Complex roots - easy
+\begin{question}
+Construct the lowest-degree polynomial given the zeros below.
+
+$$\sage{zerosQ8[1]}i, \sage{zerosQ8[2]}$$
+
+$f(x) = \answer{\sage{coefficientsQ8[0]}}x^3 + \answer{\sage{coefficientsQ8[1]}}x^2 + \answer{\sage{coefficientsQ8[2]}}x + \answer{\sage{coefficientsQ8[3]}}$
+\end{question}
+
+% Complex roots - hard
+\begin{question}
+Construct the lowest-degree polynomial given the zeros below.
+
+$$\sage{zerosQ9[0]}+\sage{zerosQ9[1]}i, \sage{zerosQ9[2]}$$
+
+$f(x) = \answer{\sage{coefficientsQ9[0]}}x^3 + \answer{\sage{coefficientsQ9[1]}}x^2 + \answer{\sage{coefficientsQ9[2]}}x + \answer{\sage{coefficientsQ9[3]}}$
+
+\begin{hint}
+First, you want to set up the factors:
+
+$$(x - \, (\sage{zerosQ9[0]}+\sage{zerosQ9[1]}i) \, )(x - \, (\sage{zerosQ9[0]}-\sage{zerosQ9[1]}i) \,)(\sage{hintValuesQ9[1]} x - \sage{hintValuesQ9[0]})$$
+
+Now, we want to be careful how we multiply out.
+
+$$(x^2 - \, (\sage{zerosQ9[0]}+\sage{zerosQ9[1]}i) \, x - \, (\sage{zerosQ9[0]}-\sage{zerosQ9[1]}i)\, x + (\sage{zerosQ9[0]}+\sage{zerosQ9[1]}i) (\sage{zerosQ9[0]}-\sage{zerosQ9[1]}i) \, ) \, (\sage{hintValuesQ9[1]} x - \sage{hintValuesQ9[0]})$$
+
+$$(x^2 - \sage{2*zerosQ9[0]}x + (\sage{zerosQ9[0]}^2 + \sage{zerosQ9[1]}^2) \, )(\sage{hintValuesQ9[1]} x - \sage{hintValuesQ9[0]})$$
+
+Distribute this last part out carefully and you will have completed the problem.
+\end{hint}
+\end{question}
+
+\end{document}

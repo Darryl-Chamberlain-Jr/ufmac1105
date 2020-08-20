@@ -1,0 +1,134 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+ 
+\input{../preamble} %% we can turn off input when making a master document
+ 
+\outcome{}
+\author{Darryl Chamberlain Jr.}
+  
+\title{Objective 3 - Construct Direct and Indirect Variation Models}
+ 
+\begin{document}
+\begin{abstract}
+
+\end{abstract}
+
+\maketitle
+
+% Link to textbook
+Link to textbook: 
+\href{https://cnx.org/contents/mwjClAV_@8.12:yUH0hROr@12/Modeling-Using-Variation}{Direct and Indirect Variation.}
+
+\href{https://www.youtube.com/watch?v=WGqmAmzUODM}{Video on Direct Variation}
+
+\href{https://www.youtube.com/watch?v=awp2vxqd-l4}{Video on Inverse Variation}
+
+\href{https://www.youtube.com/watch?v=is07Wg_0DiY}{Video on Direct and Inverse Variation}
+
+\href{https://www.youtube.com/watch?v=dCjOPvlpIl8}{Video to provide examples from this homework.}
+
+Now that we've seen how to recognize whether when we would use direct and inverse variation equations, we'll practice creating the equations. \textbf{After you complete the questions in this objective, try to describe the general process to constructing direct and inverse variation equations.}
+
+% Question 1
+\begin{sagesilent}
+k = var('k')
+a = var('a')
+k1 = (4*pi**2) / (9.8)
+a1 = ZZ.random_element(3, 9)
+T1 = round(k1*sqrt(a1**3)*12, 2)
+\end{sagesilent}
+
+\begin{question}
+[Astronomy] Kepler's Third Law: The square of the time, $T$, required for a planet to orbit the Sun is directly proportional to the cube of the mean distance, $a$, that the planet is from the Sun. 
+
+\textbf{Part A.} Write the equation that describes time $T$ (years) in terms of the mean distance, $a$ (AUs). Use $k$ for your constant.
+
+$T(a) = \answer{\sage{k}}a^{\answer{3/2}}$
+
+\textbf{Part B.} Assume that Mars' mean distance from the Sun is $\sage{a1}$ AUs and it takes Mars about $\sage{T1}$ months to orbit the Sun. Write the equation that describes time $T$ (years) in terms of the mean distance, $a$ (AUs).
+
+$T(a) = \answer[tolerance=0.05]{\sage{k1}}a^{\answer{3/2}}$
+
+\begin{feedback}
+\textbf{Part A.} Remember: if you initially had $c$ as a constant and took it's square root, this is \textbf{still} a constant. So we can rebrand it as $k$.
+
+\textbf{Part B.} Check your units!
+\end{feedback}
+\end{question}
+
+% Question 2
+\begin{sagesilent}
+P = var('P')
+V = var('V')
+n = var('n')
+R = var('R')
+T = var('T')
+temp2 = ZZ.random_element(1, 6)*10
+volume2 = ZZ.random_element(5, 25)
+pressure2 = ZZ.random_element(1, 4)
+R2 = 8.31
+#
+moles2B = round((pressure2 * volume2) / (temp2 * R2), 3)
+coefficientB2 = R2*temp2/volume2
+#
+temp2C = ZZ.random_element(1, 6)*10
+while temp2 == temp2C:
+    temp2C = ZZ.random_element(1, 6)*10
+moles2C = round((pressure2 * volume2) / (temp2C * R2), 3)
+coefficientC2 = pressure2*volume2/R2
+\end{sagesilent}
+\begin{question}
+[Chemistry] Ideal Gas Law: The product of pressure, $P$ (atmospheres), and volume, $V$ (liters), of a gas is directly proportional to the product of the amount of substance, $n$ (moles), and temperature, $T$ (Celsius). 
+
+\textbf{Part A.} Write the equation that describes the Ideal Gas Law. Use $R$ for your constant.
+
+$\answer{\sage{P*V}} = \answer{\sage{n*R*T}}$
+
+\textbf{Part B.} Assume that the temperature, $\sage{temp2} C$, and volume of the gas, $\sage{volume2}$ liters, remain constant. At $\sage{pressure2}$ atmosphere of pressure, there are $\sage{moles2B}$ moles of the gas. Write an equation that describes the pressure on the gas in terms of the amount of the gas. 
+
+$P(n) = \answer[tolerance=0.5]{\sage{coefficientB2}} n^{\answer{1}}$
+
+\textbf{Part C.} Now assume that the pressure, $\sage{pressure2}$ atmospheres, and volume of the gas, $\sage{volume2}$ liters, remain constant. At $\sage{temp2C} C$, there are $\sage{moles2C}$ moles of the gas. Write an equation that describes the temperature of the gas in terms of the amount of the gas. 
+
+$T(n) = \answer[tolerance=0.05]{\sage{coefficientC2}} n^{\answer{-1}}$
+\end{question}
+
+% Question 3
+\begin{sagesilent}
+l3 = ZZ.random_element(2, 25)
+r3 = ZZ.random_element(200, 500)
+k3 = l3*r3/10
+\end{sagesilent}
+\begin{question}
+[Physics] The rate of vibration of a string under constant tension, $r$ cm/s, varies inversely with the length of the string, $l$ cm. When the string is $\sage{l3}$ mm long, the rate of vibration is $\sage{r3}$ cm/s. Write an equation that describes the rate of vibration of a string in terms of the length of the string. 
+
+$r(l) = \answer{\sage{k3}} l^{\answer{-1}}$
+
+\begin{hint}
+Check your units!
+\end{hint}
+\end{question}
+
+% Question 4
+\begin{sagesilent}
+tons4 = ZZ.random_element(1, 3)
+mph4 = ZZ.random_element(4, 16)
+energy4 = round(0.5 * (tons4 * 908) * (mph4*1609.34/3600)**2, 2)
+\end{sagesilent}
+\begin{question}
+[Physics] The kinetic energy $K$ (J) of a moving object varies jointly with its mass $m$ (kg) and the square of its velocity $v$ (m/s). A $\sage{tons4}$ ton car traveling at $\sage{mph4}$ miles per hour has about $\sage{energy4}$ Joules of kinetic energy. Write an equation that describes the amount of kinetic energy, $K$ in terms of mass $m$ and velocity $v$.
+
+$K = \answer[tolerance=0.05]{1/2} m^{\answer{1}} v^{\answer{2}}$
+
+\begin{feedback}
+On the exam, you would \textbf{not} be expected to know the conversions like tons to kg - these will be given on a problem-by-problem basis.
+\end{feedback}
+
+\end{question}
+
+\end{document}

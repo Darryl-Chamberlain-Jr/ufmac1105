@@ -1,0 +1,263 @@
+\documentclass{ximera}
+%\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+
+%\input{../preamble} %% we can turn off input when making a master document
+
+\outcome{Understand the different sets of numbers along with the properties of these sets.}
+\author{Darryl Chamberlain Jr.}
+
+\title{Subgroups of Complex Numbers}
+
+\begin{document}
+\begin{abstract}
+Identify the subgroup of Complex numbers a number belongs to.
+\end{abstract}
+\maketitle
+
+\href{https://cnx.org/contents/mwjClAV_@8.1:Sqk1HAGf@9/Complex-Numbers}{Link to section in textbook}
+
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 2  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+Now, watch \href{https://mediasite.video.ufl.edu/Mediasite/Play/8fae3825474042a297038c5d2385c4f51d}{this video} to review the different sets of Complex numbers. First, try to define the following subgroups of the Complex Numbers. You should include examples for each (you may even want to take a sneak peak at the problems at the bottom of the page and use some of these as examples!) and descriptions of how to tell what the smallest set the number belongs to.
+
+\begin{itemize}
+\item Nonreal Complex:
+\item Pure Imaginary:
+\item Not a Complex Number:
+\end{itemize}
+
+The Real Numbers are just a part of the Complex Numbers, so we still have the subgroups from Objective 1. Now we will look at how all of these subgroups are related. Like before, try to classify the following numbers based on these definitions.
+
+\begin{exercise}
+Choose all of the following numbers that are \textbf{Pure Imaginary} numbers.
+
+\begin{selectAll}
+  \choice {$-\frac{21}{7}+i$}
+  \choice {$-\frac{7}{21}$}
+  \choice {$\frac{21}{7}$}
+  \choice {$\frac{\pi}{4}$}
+  \choice[correct] {$\frac{4}{\pi}i$}
+  \choice {$\frac{0}{\pi}$}
+  \choice {$\frac{\pi}{0}i$}
+  \choice {$-\sqrt{4}$}
+  \choice[correct] {$\sqrt{-4}$}
+  \choice {$\sqrt{21}$}
+  \choice[correct] {$\sqrt{-21}$}
+\end{selectAll}
+
+\begin{hint}
+Think about what it could mean to be Pure Imaginary as opposed to Complex.
+\end{hint}
+
+\end{exercise}
+
+\begin{exercise}
+Choose all of the following numbers that are \textbf{Nonreal Complex} numbers.
+
+\begin{selectAll}
+  \choice[correct] {$-\frac{21}{7}+i$}
+  \choice {$-\frac{7}{21}$}
+  \choice {$\frac{21}{7}$}
+  \choice {$\frac{\pi}{4}$}
+  \choice[correct] {$\frac{4}{\pi}i$}
+  \choice {$\frac{0}{\pi}$}
+  \choice {$\frac{\pi}{0}i$}
+  \choice {$-\sqrt{4}$}
+  \choice[correct] {$\sqrt{-4}$}
+  \choice {$\sqrt{21}$}
+  \choice[correct] {$\sqrt{-21}$}
+\end{selectAll}
+
+\begin{hint}
+Think about what it could mean to be "nonreal" and still be Complex.
+\end{hint}
+
+\end{exercise}
+
+\begin{exercise}
+Choose all of the following numbers that are \textbf{Complex} numbers.
+
+\begin{selectAll}
+  \choice[correct] {$-\frac{21}{7}+i$}
+  \choice[correct] {$-\frac{7}{21}$}
+  \choice[correct] {$\frac{21}{7}$}
+  \choice[correct] {$\frac{\pi}{4}$}
+  \choice[correct] {$\frac{4}{\pi}i$}
+  \choice[correct] {$\frac{0}{\pi}$}
+  \choice {$\frac{\pi}{0}i$}
+  \choice[correct] {$-\sqrt{4}$}
+  \choice[correct] {$\sqrt{-4}$}
+  \choice[correct] {$\sqrt{21}$}
+  \choice[correct] {$\sqrt{-21}$}
+\end{selectAll}
+
+\begin{hint}
+What does it mean to be a Complex number? What numbers are \textbf{not} Complex?
+\end{hint}
+
+\end{exercise}
+
+\begin{exercise}
+Choose all of the following numbers that are \textbf{Not a Complex} numbers.
+
+\begin{selectAll}
+  \choice {$-\frac{21}{7}+i$}
+  \choice {$-\frac{7}{21}$}
+  \choice {$\frac{21}{7}$}
+  \choice {$\frac{\pi}{4}$}
+  \choice {$\frac{4}{\pi}i$}
+  \choice {$\frac{0}{\pi}$}
+  \choice[correct] {$\frac{\pi}{0}i$}
+  \choice {$-\sqrt{4}$}
+  \choice {$\sqrt{-4}$}
+  \choice {$\sqrt{21}$}
+  \choice {$\sqrt{-21}$}
+\end{selectAll}
+
+\begin{hint}
+What does it mean to be a Complex number? What numbers are \textbf{not} Complex?
+\end{hint}
+
+\end{exercise}
+
+\textbf{Like Objective 1, remember to reduce first, then decide the smallest subgroup the number belongs to!}
+
+\textbf{Note: This part of the homework will change each time you click ``Another". You can keep clicking ``Another" to practice seeing these more difficult numbers to classify.}
+
+\begin{sagesilent}
+# THIS code generates random Complex number. Options:
+    # Rational
+    # Irrational
+    # Nonreal Complex
+    # Pure Imaginary
+    # Not a Complex number
+
+def generateRational():
+    numerator = (ZZ.random_element(15)+2)*(-1)**(ZZ.random_element(2))
+    denominator = ZZ.random_element(15)+2
+    i = var('i')
+    complexPart = (ZZ.random_element(15)+2)*i**2
+    displayProblem = [numerator, denominator, complexPart]
+    return displayProblem
+
+def generateIrrational():
+    numerator = (ZZ.random_element(2, 15))*(-1)**(ZZ.random_element(2))
+    denominator = (ZZ.random_element(15)+2)*pi
+    i = var('i')
+    complexPart = (ZZ.random_element(15)+2)*i**2
+    displayProblem = [numerator, denominator, complexPart]
+    return displayProblem
+
+def generateNonRealComplex():
+    numerator = (ZZ.random_element(15)+2)*(-1)**(ZZ.random_element(2))
+    denominator = (ZZ.random_element(15)+2)*pi
+    i = var('i')
+    complexPart = (ZZ.random_element(15)+2)*i
+    displayProblem = [numerator, denominator, complexPart]
+    return displayProblem
+
+def generatePureImaginary():
+    numerator = 0
+    denominator = (ZZ.random_element(15)+2)*pi
+    i = var('i')
+    complexPart = (ZZ.random_element(15)+2)*i
+    displayProblem = [numerator, denominator, complexPart]
+    return displayProblem
+
+def generateNotComplex():
+    numerator = pi*(ZZ.random_element(15)+2)*(-1)**(ZZ.random_element(2))
+    denominator = 0
+    i = var('i')
+    complexPart = (ZZ.random_element(15)+2)*i
+    displayProblem = [numerator, denominator, complexPart]
+    return displayProblem
+
+def generateDisplay(answer):
+    if answer == 0:
+        numerator, denominator, complexPart = generateRational()
+    elif answer == 1:
+        numerator, denominator, complexPart = generateIrrational()
+    elif answer == 2:
+        numerator, denominator, complexPart = generateNonRealComplex()
+    elif answer == 3:
+        numerator, denominator, complexPart = generatePureImaginary()
+    else:
+        numerator, denominator, complexPart = generateNotComplex()
+    return [numerator, denominator, complexPart]
+
+############# END OF DEFINITIONS ###############
+
+listOptions = [0, 1, 2, 3, 4]
+
+########## QUESTION 4 #############
+answer4 = sample(listOptions, 1)[0]
+numerator4, denominator4, complexPart4 = generateDisplay(answer4)
+
+########## QUESTION 5 #############
+answer5 = sample(listOptions, 1)[0]
+numerator5, denominator5, complexPart5 = generateDisplay(answer5)
+
+########## QUESTION 6 #############
+answer6 = sample(listOptions, 1)[0]
+numerator6, denominator6, complexPart6 = generateDisplay(answer6)
+\end{sagesilent}
+
+\begin{exercise}
+Which of the following is the \textbf{smallest} set of Complex numbers that $\frac{\sage{numerator4}}{\sage{denominator4}} + \sage{complexPart4} $ belongs to?
+
+\textit{To work around current Xronos issues, input the corresponding number for the correct set. \\
+Rational - 0 \\
+Irrational - 1 \\
+Nonreal Complex - 2 \\
+Pure Imaginary - 3 \\
+Not a Complex Number - 4
+}
+
+$\answer{\sage{answer4}}$
+\begin{hint}
+Remember that the only way (we know) to not be Complex is to divide be 0. Otherwise, all other numbers are Complex.
+\end{hint}
+\end{exercise}
+
+\begin{exercise}
+Which of the following is the \textbf{smallest} set of Complex numbers that $\frac{\sage{numerator5}}{\sage{denominator5}} + \sage{complexPart5} $ belongs to?
+
+\textit{To work around current Xronos issues, input the corresponding number for the correct set. \\
+Rational - 0 \\
+Irrational - 1 \\
+Nonreal Complex - 2 \\
+Pure Imaginary - 3 \\
+Not a Complex Number - 4
+}
+
+$\answer{\sage{answer5}}$
+\begin{hint}
+Remember that the only way (we know) to not be Complex is to divide be 0. Otherwise, all other numbers are Complex.
+\end{hint}
+\end{exercise}
+
+\begin{exercise}
+Which of the following is the \textbf{smallest} set of Complex numbers that $\frac{\sage{numerator6}}{\sage{denominator6}} + \sage{complexPart6} $ belongs to?
+
+\textit{To work around current Xronos issues, input the corresponding number for the correct set. \\
+Rational - 0 \\
+Irrational - 1 \\
+Nonreal Complex - 2 \\
+Pure Imaginary - 3 \\
+Not a Complex Number - 4
+}
+
+$\answer{\sage{answer6}}$
+\begin{hint}
+Remember that the only way (we know) to not be Complex is to divide be 0. Otherwise, all other numbers are Complex. 
+\end{hint}
+\end{exercise}
+
+\end{document}

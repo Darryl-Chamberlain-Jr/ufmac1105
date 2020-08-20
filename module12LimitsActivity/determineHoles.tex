@@ -1,0 +1,217 @@
+\documentclass{ximera}
+\usepackage{sagetex}
+%% handout
+%% space
+%% newpage
+%% numbers
+%% nooutcomes
+ 
+\input{../preamble} %% we can turn off input when making a master document
+ 
+\outcome{}
+\author{Darryl Chamberlain Jr.}
+  
+\title{Objective 1 - Holes}
+ 
+\begin{document}
+\begin{abstract}
+
+\end{abstract}
+\maketitle
+ 
+\href{https://cnx.org/contents/mwjClAV_@8.21:KNTP2r7D@14/Rational-Functions}{Link to section in online textbook.}
+
+\href{https://mediasite.video.ufl.edu/Mediasite/Play/7c895945aa40406e93f9a39e2aa343561d}{Introduction video describing holes/vertical asymptotes \textit{without limits}.}
+ 
+%%%%%%%%%%%%%%%%%%%%%
+%%%  Objective 1  %%%
+%%%%%%%%%%%%%%%%%%%%%
+
+A \textit{hole} in a function occurs when the value of that function is $\frac{0}{0}$. For example, the function 
+
+$$f(x) = \frac{(x+2)(x-3)}{x-3}$$
+
+has a hole at $x=3$ because $f(3) = \frac{0}{0}$. If we want to describe this with limits, we would say $\lim_{x \rightarrow 3} f(x) = \frac{0}{0}$. Holes only affect the function \textit{exactly} at that point. Notice for our example that
+
+\begin{center} $f(x) = x+2$ when $x \neq 3$ and $f(x)$ is undefined at $x=3$. \end{center}
+
+That means the rational function actually looks like a line almost everywhere! Recognizing if a rational function has holes will be our first step in graphing these functions. 
+
+\begin{theorem}
+\textbf{Holes of a Rational Function: }
+
+A rational function $f(x)$ has a hole at $x=a$ if 
+
+$$\lim_{x \rightarrow a} f(x) = \frac{0}{0}.$$ 
+
+Thus, to determine if there are any holes in a rational function, we need to factor the denominator and check if that value is a zero of the numerator (using Synthetic Division, if necessary). 
+\end{theorem}
+
+Practice with the questions below. 
+
+\begin{sagesilent}
+R, x = QQ['x'].objgen()
+ 
+def maybeMakeNegative(natural):
+    integer = natural*(-1)**ZZ.random_element(2)
+    return integer
+ 
+def makeIntegerFactor():
+    zero = maybeMakeNegative(ZZ.random_element(1, 6))
+    integerFactor = x - zero
+    return [integerFactor, zero]
+ 
+def makeRationalFactor():
+    a = maybeMakeNegative(ZZ.random_element(1, 4))
+    b = maybeMakeNegative(ZZ.random_element(1, 6))
+    while gcd(abs(a), abs(b)) > 1:
+        a = maybeMakeNegative(ZZ.random_element(1, 4))
+        b = maybeMakeNegative(ZZ.random_element(1, 6))
+    rationalFactor = a*x + b
+    return [rationalFactor, -b/a]
+ 
+def makeIrrationalQuadratic():
+    a = maybeMakeNegative(ZZ.random_element(1, 6))
+    b = maybeMakeNegative(ZZ.random_element(1, 6))
+    c = maybeMakeNegative(ZZ.random_element(1, 6))
+    discrim = b**2 - 4*a*c
+    integerType = type(2)
+    while type(sqrt(discrim)) == integerType:
+        a = maybeMakeNegative(ZZ.random_element(1, 6))
+        b = maybeMakeNegative(ZZ.random_element(1, 6))
+        c = maybeMakeNegative(ZZ.random_element(1, 6))
+        discrim = b**2 - 4*a*c
+    solution0 = (-b + sqrt(discrim))/2*a
+    solution1 = (-b - sqrt(discrim))/2*a
+    smallerSolution, largerSolution = sorted([solution0, solution1])
+    quadratic = a*x**2 + b*x + c
+    return [quadratic, smallerSolution, largerSolution]
+ 
+def makeComplexQuadratic():
+    a0 = maybeMakeNegative(ZZ.random_element(1, 4))
+    b0 = maybeMakeNegative(ZZ.random_element(1, 6))
+    complex0 = a0 + b0*i
+    complex1 = a0 - b0*i
+    quadratic = x**2 + (a0**2 + b0**2)
+    return [quadratic, complex0, complex1]
+##########
+function1num, answer1 = makeIntegerFactor()
+function1denom = ZZ.random_element(2, 7) * function1num
+###
+function2num = maybeMakeNegative(ZZ.random_element(2, 7))
+function2denom, answer2 = makeIntegerFactor()
+###
+function3num = maybeMakeNegative(ZZ.random_element(2, 7))
+factor3denomA, answer3aTEMP = makeRationalFactor()
+factor3denomB, answer3bTEMP = makeRationalFactor()
+while answer3aTEMP == answer3bTEMP:
+    factor3denomA, answer3aTEMP = makeRationalFactor()
+    factor3denomB, answer3bTEMP = makeRationalFactor()
+function3denom = factor3denomA * factor3denomB
+answer3a, answer3b = sorted([answer3aTEMP, answer3bTEMP])
+###
+factor4numA, deadValue4A = makeRationalFactor()
+factor4numB, deadValue4B = makeRationalFactor()
+factor4denomA, answer4aTEMP = makeRationalFactor()
+factor4denomB, answer4bTEMP = makeRationalFactor()
+factor4denomC, answer4cTEMP = makeIntegerFactor()
+while answer4aTEMP == answer4bTEMP or answer4aTEMP == answer4bTEMP or answer4bTEMP == answer4cTEMP or deadValue4A == answer4aTEMP or deadValue4A == answer4bTEMP or deadValue4A == answer4cTEMP or deadValue4B == answer4aTEMP or deadValue4B == answer4bTEMP or deadValue4B == answer4cTEMP or deadValue4A == deadValue4B:
+    factor4numA, deadValue4A = makeRationalFactor()
+    factor4numB, deadValue4B = makeRationalFactor()
+    factor4denomA, answer4aTEMP = makeRationalFactor()
+    factor4denomB, answer4bTEMP = makeRationalFactor()
+    factor4denomC, answer4cTEMP = makeIntegerFactor()
+function4num = factor4numA * factor4numB
+function4denom = factor4denomA * factor4denomB * factor4denomC
+answer4a, answer4b, answer4c = sorted([answer4aTEMP, answer4bTEMP, answer4cTEMP])
+###
+factor5numA, deadValue5A = makeRationalFactor()
+factor5numB, deadValue5B = makeRationalFactor()
+factor5denomA = factor5numA
+answer5aTEMP = deadValue5A
+factor5denomB, answer5bTEMP = makeRationalFactor()
+factor5denomC, answer5cTEMP = makeIntegerFactor()
+while answer5aTEMP == answer5bTEMP or answer5aTEMP == answer5bTEMP or answer5bTEMP == answer5cTEMP or deadValue5A == answer5bTEMP or deadValue5A == answer5cTEMP or deadValue5B == answer5aTEMP or deadValue5B == answer5bTEMP or deadValue5B == answer5cTEMP or deadValue5A == deadValue5B:
+    factor5numA, deadValue5A = makeRationalFactor()
+    factor5numB, deadValue5B = makeRationalFactor()
+    factor5denomA = factor5numA
+    answer5aTEMP = deadValue5A
+    factor5denomB, answer5bTEMP = makeRationalFactor()
+    factor5denomC, answer5cTEMP = makeIntegerFactor()
+function5num = factor5numA * factor5numB
+function5denom = factor5denomA * factor5denomB * factor5denomC
+answer5a = answer5aTEMP
+answer5b, answer5c = sorted([answer5bTEMP, answer5cTEMP])
+###
+factor6numA, deadValue6A = makeIntegerFactor()
+factor6numB, deadValue6B = makeIntegerFactor()
+factor6denomA = factor6numA
+answer6 = deadValue6A
+complexQuadratic6, deadComplex6A, deadComplex6B = makeComplexQuadratic()
+function6num = factor6numA * factor6numB
+function6denom = factor6denomA * complexQuadratic6
+\end{sagesilent}
+ 
+% Q1 - No VA, f(x) = (x-a)/(x-a)
+\begin{question}
+Find all holes of the rational function below. If they do not exist, answer ``NA".
+ 
+$$ f(x) = \frac{\sage{function1num}}{\sage{function1denom}} $$
+ 
+Holes: \textit{at the $x$-value} $x = \answer[tolerance=0.05]{\sage{answer1}}$
+ 
+\end{question}
+ 
+% Q2 - Basic, f(x) = 1/(x-a)
+\begin{question}
+Find all holes of the rational function below. If they do not exist, answer ``NA".
+ 
+$$ f(x) = \frac{\sage{function2num}}{\sage{function2denom}} $$
+ 
+Holes: \textit{at the $x$-value} $x = \answer[format=string]{NA}$
+ 
+\end{question}
+ 
+% Q3 - Need to factor, no holes, f(x) = 1/(a_0 x - a_1)(b_0 x - b_1)
+\begin{question}
+Find all holes of the rational function below. If they do not exist, answer ``NA".
+ 
+$$ f(x) = \frac{\sage{function3num}}{\sage{function3denom}} $$
+ 
+Holes: \textit{at the $x$-value} $x = \answer[format=string]{NA}$
+ 
+% Remember to give tolerances when necessary
+\end{question}
+ 
+%Q4 - Need to factor cubic denominator, no holes, f(x) = (d_0 x - d_1)(e_0 x - e_1)/(x-a)(b_0 x - b_1)(c_0 x - c_1)
+\begin{question}
+Find all holes of the rational function below. If they do not exist, answer ``NA".
+ 
+$$ f(x) = \frac{\sage{function4num}}{\sage{function4denom}} $$
+ 
+Holes: \textit{at the $x$-value} $x = \answer[format=string]{NA}$
+ 
+\end{question}
+ 
+%Q5 - Need to factor cubic denominator, 1 holes, f(x) = (d_0 x - d_1)(b_0 x - b_1)/(x-a)(b_0 x - b_1)(c_0 x - c_1)
+\begin{question}
+Find all holes of the rational function below. If they do not exist, answer ``NA".
+ 
+$$ f(x) = \frac{\sage{function5num}}{\sage{function5denom}} $$
+ 
+Holes: \textit{at the $x$-value} $x = \answer[tolerance=0.05]{\sage{answer5a}}$
+ 
+\end{question}
+ 
+%Q6 - Need to factor cubic, complex denominator, f(x) = (x-a)(x-b)/(x-a)(x-bi)(x+bi)
+\begin{question}
+Find all holes of the rational function below. If they do not exist, answer ``NA".
+ 
+$$ f(x) = \frac{\sage{function6num}}{\sage{function6denom}} $$
+ 
+Holes: \textit{at the $x$-value} $x = \answer[tolerance=0.05]{\sage{answer6}}$
+ 
+\end{question}
+
+
+\end{document}
