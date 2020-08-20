@@ -1,0 +1,6 @@
+\newenvironment {prompt}{}{}
+\newcommand {\ungraded }[0]{}
+\newcommand {\npnoround }[0]{\nprounddigits {-1}}
+\newcommand {\npnoroundexp }[0]{\nproundexpdigits {-1}}
+\newcommand {\npunitcommand }[1]{\ensuremath {\mathrm {#1}}}
+\newcommand {\HyperFirstAtBeginDocument }[0]{\AtBeginDocument }

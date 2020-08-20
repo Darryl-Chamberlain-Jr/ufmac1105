@@ -1,0 +1,199 @@
+<!DOCTYPE html><html lang="en"><head> <title>Objective 1 - Identify Logarithmic Model</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<!-- charset=utf-8,-css,html,htex4ht,xhtml --> 
+<meta name="src" content="identifyLogNeed.tex"/> 
+<meta name="author" content="Darryl Chamberlain
+Jr."/> 
+<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"/> 
+<meta name="ximera" content="version 0.0.1"/> 
+<link href="https://ximera.osu.edu/public/stylesheets/standalone.css" rel="stylesheet" media="screen"/> 
+<script type="text/javascript" async="" src="https://ximera.osu.edu/public/javascripts/standalone.min.js"></script> 
+<meta name="learning-outcome" content=""/> 
+<meta name="dependency" content="5a065b29fce338e682cfd6f665ae2788d0db9195 preamble.tex"/><meta name="dependency" content="d3876591020fc8747239059026d494a1acd57256 module11ModelingActivity/identifyLogNeed.tex"/></head><body> 
+<div class="preamble"><script type="math/tex">\newenvironment {prompt}{}{}
+\newcommand {\ungraded }[0]{}
+\newcommand {\npnoround }[0]{\nprounddigits {-1}}
+\newcommand {\npnoroundexp }[0]{\nproundexpdigits {-1}}
+\newcommand {\npunitcommand }[1]{\ensuremath {\mathrm {#1}}}
+\newcommand {\HyperFirstAtBeginDocument }[0]{\AtBeginDocument }</script><script type="text/javascript"> 
+</script> 
+</div>
+<div class="abstract">
+</div>
+<div class="maketitle"></div>
+<!--l. 24--><p class="noindent">Link to textbook: <a href="https://cnx.org/contents/mwjClAV_@8.21:_tqWoaDz@17/Exponential-and-Logarithmic-Models">Identify when a real-world situation would require a logarithmic
+model.</a>
+</p><!--l. 27--><p class="noindent"><strong>Note: There is currently no video for this objective. This activity is built
+as an “interactive activity”, akin to what you would expect in a live
+lecture.</strong>
+</p>
+<div class="center">
+<!--l. 34--><p class="noindent">
+</p><!--l. 34--><p class="noindent"><strong>Introduction</strong></p></div>
+<!--l. 36--><p class="noindent">When we want to model one quantity rapidly decreasing compared to another
+quantity, we will use either a logarithmic or exponential. In a statistics course, you
+could learn how to determine whether a set of data would be more appropriately
+modeled by a logarithmic or exponential function. We will use the following
+heuristic:
+</p>
+<div class="theorem-like problem-environment theorem" id="problem1"><a id="x1-8r1"></a><strong>Need for a Logarithmic Model</strong>
+<!--l. 41--><p class="noindent">A logarithmic model is appropriate when the quantities change rapidly <strong>early</strong>, then
+change slowly later on.
+</p>
+<hr class="figure"/><div class="figure">
+                                                                  
+
+                                                                  
+<a id="x1-91"></a>
+                                                                  
+
+                                                                  
+<!--l. 44--><p class="noindent"><img src="logGrowth.png" alt="PIC" width="43" height="43"/>
+<br/> </p><div class="caption"><span class="id">Figure 1: </span><span class="content">Logarithmic growth, characterized by rapid growth initially, then a
+more “linear” growth later.</span></div><!--tex4ht:label?: x1-91 -->
+                                                                  
+
+                                                                  
+</div><hr class="endfigure"/>
+<hr class="figure"/><div class="figure">
+                                                                  
+
+                                                                  
+<a id="x1-102"></a>
+                                                                  
+
+                                                                  
+<!--l. 49--><p class="noindent"><img src="logDecay.png" alt="PIC" width="21" height="21"/>
+<br/> </p><div class="caption"><span class="id">Figure 2: </span><span class="content">Logarithmic decay, characterized by rapid decay initially, then a more
+“linear” decay later.</span></div><!--tex4ht:label?: x1-102 -->
+                                                                  
+
+                                                                  
+</div><hr class="endfigure"/>
+<!--l. 53--></div>
+
+<div class="center">
+<!--l. 55--><p class="noindent">
+</p><!--l. 55--><p class="noindent"><strong>Common Logarithmic Models</strong></p></div>
+     <ul class="itemize1">
+     <li class="itemize">Decibals: <script type="math/tex">d = 10 \log (P/P_0)</script>, where <script type="math/tex">P</script> is the intensity of the sound and <script type="math/tex">P_0</script> is the weakest sound
+     a human can hear.
+     </li>
+     <li class="itemize">Richter scale: <script type="math/tex">R = \log (A/A_0)</script>, where <script type="math/tex">A</script> is the measure of the amplitude of the earthquake
+     wave and <script type="math/tex">A_0</script> is the amplitude of the smallest detectable wave.
+     </li>
+     <li class="itemize">pH level: <script type="math/tex">ph = -\log ([H^+])</script>, where <script type="math/tex">[H^+]</script> is the concentration of Hydrogen.
+     </li>
+     <li class="itemize">Carbon dating: <script type="math/tex">t = -\frac {1}{0.000121} \ln (r)</script>, where <script type="math/tex">t</script> is time in years and <script type="math/tex">r</script> is the percentage of Carbon
+     in decimal form.</li></ul>
+<div class="center">
+<!--l. 64--><p class="noindent">
+</p><!--l. 64--><p class="noindent"><strong>Identifying Logarithmic Models</strong></p></div>
+<!--l. 66--><p class="noindent">For the following problems, determine if a logarithmic model would be appropriate.
+</p>
+<div role="article" class="problem-environment question" id="problem2"><a id="x1-11r2"></a> Carlos has taken an initial dose of a prescription medication orally. The medicine is
+absorbed rapidly by the large intestine and absorbed slowly as it is digested
+otherwise. Would a logarithmic model be appropriate to describe the amount of
+medication, <script type="math/tex">M(t)</script> (mg) in his bloodstream after <script type="math/tex">t</script> hours?
+<!--l. 73--><p class="noindent"><script type="math/tex">\answer [format=string]{No}</script>
+</p>
+<div class="feedback" data-feedback="attempt" id="feedback3">We see that the rate of absorption is changing as the dose makes its way through the
+body, so a <em>linear</em> model would not be appropriate. We also do not see any mention of
+a <em>direct/indirect</em> relationship between amount of medicine and time, so a
+<em>direct/indirect variation</em> model would not be appropriate. So we need to decide
+between logarithmic and exponential.
+                                                                  
+
+                                                                  
+<!--l. 78--><p class="noindent">If we think about the absorption as it goes through the body, we would say it looks
+like:
+</p><!--l. 80--><p class="noindent">slow <script type="math/tex">\rightarrow </script> slow <script type="math/tex">\rightarrow </script> slow <script type="math/tex">\rightarrow </script> rapid <em>(as it hits the large intestine)</em>
+</p><!--l. 82--><p class="noindent">Logarithmic models describe a rapid change <strong>early</strong>, then a slow change later.
+Therefore, this situation is not appropriate for a logarithmic model. </p></div>
+
+</div>
+<div role="article" class="problem-environment question" id="problem4"><a id="x1-12r3"></a> When discussing salary, we can talk about someone’s “<em>[blank]</em>-figure salary”. This is
+used as a rough estimate to compare salaries on a large scale. A four-figure salary
+would be someone making about <script type="math/tex">X,000</script> dollars a year, while a six-figure salary would be
+someone making about <script type="math/tex">X00,000</script> a year. Would be appropriate to use a logarithmic model to
+describe the number of figures, <script type="math/tex">n(S)</script>, of a person’s salary in terms of their actual salary,
+<script type="math/tex">S</script>?
+<!--l. 90--><p class="noindent"><script type="math/tex">\answer [format=string]{Yes}</script>
+</p>
+<div class="feedback" data-feedback="attempt" id="feedback5">Let’s think about what is happening early.
+<!--l. 95--><p class="noindent">$1 salary <script type="math/tex">\rightarrow </script> <script type="math/tex">1</script> figure $10 salary <script type="math/tex">\rightarrow </script> <script type="math/tex">2</script> figures $100 salary <script type="math/tex">\rightarrow </script> <script type="math/tex">3</script> figures $1,000 salary <script type="math/tex">\rightarrow </script> <script type="math/tex">4</script> figures
+$10,000 salary <script type="math/tex">\rightarrow </script> <script type="math/tex">5</script> figures
+</p><!--l. 101--><p class="noindent">Small changes in the salary early (less than $10 change in salary) move the figure by
+1. As the salary increases, we need a much larger amount of salary to change the
+figure (to go from 4 to 5 figures, we need a change of $9000 change in salary). In
+other words, we see a rapid change early, then a slower growth later, which describes
+a logarithmic model!
+</p><!--l. 103--><p class="noindent">In fact, this model is <script type="math/tex">n(S) = \log (S)+1</script>. If we shift our expectations for this model (since adults rarely
+make less than five-figure salaries), we can see that a change from <script type="math/tex">5</script> figures to <script type="math/tex">6</script> figures
+is a huge increase in standard of living! </p></div>
+
+</div>
+<div role="article" class="problem-environment question" id="problem6"><a id="x1-13r4"></a> <hr class="figure"/><div class="figure">
+                                                                  
+
+                                                                  
+                                                                  
+
+                                                                  
+<!--l. 111--><p class="noindent"><img src="Influenza-2009.png" alt="PIC"/>
+                                                                  
+
+                                                                  
+</p>
+</div><hr class="endfigure"/>
+<!--l. 114--><p class="noindent">Is it appropriate to model the number of Influenza A (<em>swine flu</em>) cases in 2009 using
+a logarithmic model?
+</p><!--l. 116--><p class="noindent"><script type="math/tex">\answer [format=string]{Yes}</script>
+</p>
+<div class="feedback" data-feedback="attempt" id="feedback7">Logarithmic functions are useful when describing highly infectious diseases! It
+only takes a small number of infected individually to rapidly infect huge
+numbers of people. This is especially true when dealing with infections that <strong>do
+not provide immunity or resistances after infection</strong> like Influenza. </div>
+</div>
+<div role="article" class="problem-environment question" id="problem8"><a id="x1-14r5"></a>
+<hr class="figure"/><div class="figure">
+                                                                  
+
+                                                                  
+<a id="x1-153"></a>
+                                                                  
+
+                                                                  
+<!--l. 127--><p class="noindent"><img src="logarithmicGrowth.png" alt="PIC"/>
+<br/> </p><div class="caption"><span class="id">Figure 3: </span><span class="content">A sigmodial curve.</span></div><!--tex4ht:label?: x1-153 -->
+                                                                  
+
+                                                                  
+</div><hr class="endfigure"/>
+<!--l. 131--><p class="noindent">Sigmoidal curves, like the one above, are used when dealing with population
+dynamics as there is normally some upper bound on the population (called the
+<em>carrying capacity</em>). Would it be appropriate to model a sigmodial curve using a
+logarithmic function?
+</p><!--l. 133--><p class="noindent"><script type="math/tex">\answer [format=string]{No}</script>
+</p>
+<div class="feedback" data-feedback="attempt" id="feedback9">You may feel tricked by this question. We see the rapid initial growth, and then a
+slow growth later. So why is it not appropriate to use a logarithmic function?
+<strong>Because logarithmic functions grow unbounded</strong> and this model has an upper
+bound. So, we’ll need to refine our criteria for using a logarithmic model. </div>
+</div>
+<div class="theorem-like problem-environment theorem" id="problem10"><a id="x1-16r6"></a><strong>Need for a Logarithmic Model - refined</strong>
+<!--l. 143--><p class="noindent">A logarithmic model is appropriate when the quantities change rapidly <strong>early</strong>, then
+change slowly later on <strong>without bound</strong>.
+</p></div>
+ 
+ 
+
+                                                                  
+
+                                                                  
+                                                                  
+
+
+</body></html>

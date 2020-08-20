@@ -1,0 +1,182 @@
+<!DOCTYPE html><html lang="en"><head> <title>Objective 3 - Solving Quadratics by Factoring</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<!-- charset=utf-8,-css,html,htex4ht,xhtml --> 
+<meta name="src" content="solvingZeroFactor.tex"/> 
+<meta name="author" content="Darryl Chamberlain
+Jr."/> 
+<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"/> 
+<meta name="ximera" content="version 0.0.1"/> 
+<link href="https://ximera.osu.edu/public/stylesheets/standalone.css" rel="stylesheet" media="screen"/> 
+<script type="text/javascript" async="" src="https://ximera.osu.edu/public/javascripts/standalone.min.js"></script> 
+<meta name="learning-outcome" content="Understand and solve quadratic equations."/> 
+<meta name="dependency" content="5a065b29fce338e682cfd6f665ae2788d0db9195 preamble.tex"/><meta name="dependency" content="b474fcfc091280f38c9cf50e167957507cca009a module4Activity/solvingZeroFactor.tex"/></head><body> 
+<div class="preamble"><script type="math/tex">\newenvironment {prompt}{}{}
+\newcommand {\ungraded }[0]{}
+\newcommand {\npnoround }[0]{\nprounddigits {-1}}
+\newcommand {\npnoroundexp }[0]{\nproundexpdigits {-1}}
+\newcommand {\npunitcommand }[1]{\ensuremath {\mathrm {#1}}}
+\newcommand {\HyperFirstAtBeginDocument }[0]{\AtBeginDocument }</script><script type="text/javascript"> 
+</script> 
+</div>
+<div class="abstract">
+<!--l. 19--><p class="noindent">Solving quadratic equations using the zero-factor principle.
+</p></div>   <div class="maketitle"></div>
+<a href="https://cnx.org/contents/mwjClAV_@8.1:-Sm9he1Q@17/Quadratic-Functions">Link to section in online textbook.</a>
+<!--l. 29--><p class="noindent">First, watch <span class="underline"><a href="https://mediasite.video.ufl.edu/Mediasite/Play/3b62004c61964849bdaa95a9cec047531d">this video</a></span> to learn how to solve quadratic equations through factoring. If
+you are having trouble factoring, look back at Module 2. Feel free to pause the video
+and fill out the notes as you go.
+</p><!--l. 31--><p class="noindent">Now practice solving quadratic equations by factoring.
+</p>
+<script type="text/sagemath">x = var("x")
+
+###########################
+def maybeMakeNegative(natural):
+    integer = natural*(-1)**ZZ.random_element(2)
+    return integer
+
+def generateFactors(minimumPrime, maximumPrime, numberOfFactors):
+    listPrimes = [p for p in range(minimumPrime, maximumPrime+1) if is_prime(p)]
+    aFactors = [listPrimes[ZZ.random_element(0, len(listPrimes))] for i in range(numberOfFactors)]
+    cFactors = [listPrimes[ZZ.random_element(0, len(listPrimes))] for i in range(numberOfFactors)]
+    return [aFactors, cFactors]
+
+def generateSolution(minimum, maximum, numberOfFactors):
+    factors = generateFactors(minimum, maximum, numberOfFactors)
+    aFactors = factors[0]
+    cFactors = factors[1]
+    a = prod(aFactors)
+    c = prod(cFactors)
+    b = maybeMakeNegative(ZZ.random_element(minimum, maximum+1))
+                                                                  
+
+                                                                  
+    d = maybeMakeNegative(ZZ.random_element(minimum, maximum+1))
+    #This will guarantee that we always generate solutions with b < d
+    if(b < d):
+        return [a, b, c, d]
+    else:
+        return [c, d, a, b]
+
+def generateZeros(a, b, c, d):
+    z0 = round(float(-b/a), 3)
+    z1 = round(float(-d/c), 3)
+    # Orders from small to large
+    if z0 < z1:
+        return [z0, z1]
+    else:
+        return [z1, z0]
+
+def generateProblem(solution):
+    a, b, c, d = solution
+    return [a*c, a*d + b*c, b*d]
+
+############ END OF DEFINITIONS ###############
+numberOfFactors567 = 1
+minimum = 2
+maximum = 7
+
+##### QUESTION 5 #####
+solution5 = generateSolution(minimum, maximum, numberOfFactors567)
+problem5 = generateProblem(solution5)
+generalForm5 = problem5[0] * x**2 + problem5[1] * x + problem5[2]
+zeros5 = generateZeros(solution5[0], solution5[1], solution5[2], solution5[3])
+
+##### QUESTION 6 #####
+                                                                  
+
+                                                                  
+solution6 = generateSolution(minimum, maximum, numberOfFactors567)
+problem6 = generateProblem(solution6)
+generalForm6 = problem6[0] * x**2 + problem6[1] * x + problem6[2]
+zeros6 = generateZeros(solution6[0], solution6[1], solution6[2], solution6[3])
+
+##### QUESTION 7 #####
+solution7 = generateSolution(minimum, maximum, numberOfFactors567)
+problem7 = generateProblem(solution7)
+generalForm7 = problem7[0] * x**2 + problem7[1] * x + problem7[2]
+zeros7 = generateZeros(solution7[0], solution7[1], solution7[2], solution7[3])
+
+####
+numberOfFactors8910 = 2
+
+##### Question 8 #####
+solution8 = generateSolution(minimum, maximum, numberOfFactors8910)
+problem8 = generateProblem(solution8)
+generalForm8 = problem8[0] * x**2 + problem8[1] * x + problem8[2]
+zeros8 = generateZeros(solution8[0], solution8[1], solution8[2], solution8[3])
+
+##### Question 9 #####
+solution9 = generateSolution(minimum, maximum, numberOfFactors8910)
+problem9 = generateProblem(solution9)
+generalForm9 = problem9[0] * x**2 + problem9[1] * x + problem9[2]
+zeros9 = generateZeros(solution9[0], solution9[1], solution9[2], solution9[3])
+
+##### Question 10 #####
+solution10 = generateSolution(minimum, maximum, numberOfFactors8910)
+problem10 = generateProblem(solution10)
+generalForm10 = problem10[0] * x**2 + problem10[1] * x + problem10[2]
+zeros10 = generateZeros(solution10[0], solution10[1], solution10[2], solution10[3])
+</script>
+                                                                  
+
+                                                                  
+<div role="article" class="problem-environment question" id="problem1"><a id="x1-8r1"></a> Solve the quadratic equation below.
+<!--l. 122--><p class="noindent">
+                                 <script type="math/tex; mode=display"> \sage {generalForm5} = 0 </script>
+</p><!--l. 124--><p class="noindent">Smaller solution: <script type="math/tex">x = \answer [tolerance=0.05]{\sage {zeros5[0]}}</script>
+</p><!--l. 126--><p class="noindent">Larger solution: <script type="math/tex">x = \answer [tolerance=0.05]{\sage {zeros5[1]}}</script>
+</p>
+</div>
+<div role="article" class="problem-environment question" id="problem2"><a id="x1-9r2"></a> Solve the quadratic equation below.
+<!--l. 133--><p class="noindent">
+                                 <script type="math/tex; mode=display"> \sage {generalForm6} = 0 </script>
+</p><!--l. 135--><p class="noindent">Smaller solution: <script type="math/tex">x = \answer [tolerance=0.05]{\sage {zeros6[0]}}</script>
+</p><!--l. 137--><p class="noindent">Larger solution: <script type="math/tex">x = \answer [tolerance=0.05]{\sage {zeros6[1]}}</script>
+</p>
+</div>
+<div role="article" class="problem-environment question" id="problem3"><a id="x1-10r3"></a> Solve the quadratic equation below.
+<!--l. 144--><p class="noindent">
+                                                                  
+
+                                                                  
+                                 <script type="math/tex; mode=display"> \sage {generalForm7} = 0 </script>
+</p><!--l. 146--><p class="noindent">Smaller solution: <script type="math/tex">x = \answer [tolerance=0.05]{\sage {zeros7[0]}}</script>
+</p><!--l. 148--><p class="noindent">Larger solution: <script type="math/tex">x = \answer [tolerance=0.05]{\sage {zeros7[1]}}</script>
+</p>
+</div>
+<div role="article" class="problem-environment question" id="problem4"><a id="x1-11r4"></a> Solve the quadratic equation below.
+<!--l. 156--><p class="noindent">
+                                 <script type="math/tex; mode=display"> \sage {generalForm8} = 0 </script>
+</p><!--l. 158--><p class="noindent">Smaller solution: <script type="math/tex">x = \answer [tolerance=0.05]{\sage {zeros8[0]}}</script>
+</p><!--l. 160--><p class="noindent">Larger solution: <script type="math/tex">x = \answer [tolerance=0.05]{\sage {zeros8[1]}}</script>
+</p>
+</div>
+<div role="article" class="problem-environment question" id="problem5"><a id="x1-12r5"></a> Solve the quadratic equation below.
+<!--l. 167--><p class="noindent">
+                                                                  
+
+                                                                  
+                                 <script type="math/tex; mode=display"> \sage {generalForm9} = 0 </script>
+</p><!--l. 169--><p class="noindent">Smaller solution: <script type="math/tex">x = \answer [tolerance=0.05]{\sage {zeros9[0]}}</script>
+</p><!--l. 171--><p class="noindent">Larger solution: <script type="math/tex">x = \answer [tolerance=0.05]{\sage {zeros9[1]}}</script>
+</p>
+</div>
+<div role="article" class="problem-environment question" id="problem6"><a id="x1-13r6"></a> Solve the quadratic equation below.
+<!--l. 178--><p class="noindent">
+                                 <script type="math/tex; mode=display"> \sage {generalForm10} = 0 </script>
+</p><!--l. 180--><p class="noindent">Smaller solution: <script type="math/tex">x = \answer [tolerance=0.05]{\sage {zeros10[0]}}</script>
+</p><!--l. 182--><p class="noindent">Larger solution: <script type="math/tex">x = \answer [tolerance=0.05]{\sage {zeros10[1]}}</script>
+</p>
+</div>
+ 
+ 
+
+                                                                  
+
+                                                                  
+                                                                  
+
+
+</body></html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html><html lang="en"><head> <title>Objective 3 - Completely Factor Polynomials</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<!-- charset=utf-8,-css,html,htex4ht,xhtml --> 
+<meta name="src" content="factoringPolynomials.tex"/> 
+<meta name="author" content="Darryl Chamberlain
+Jr."/> 
+<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"/> 
+<meta name="ximera" content="version 0.0.1"/> 
+<link href="https://ximera.osu.edu/public/stylesheets/standalone.css" rel="stylesheet" media="screen"/> 
+<script type="text/javascript" async="" src="https://ximera.osu.edu/public/javascripts/standalone.min.js"></script> 
+<meta name="learning-outcome" content=""/> 
+<meta name="dependency" content="5a065b29fce338e682cfd6f665ae2788d0db9195 preamble.tex"/><meta name="dependency" content="c0b867c1f0bbc78426208789940c79c6a553cc2a module10LimitsActivity/factoringPolynomials.tex"/></head><body> 
+<div class="preamble"><script type="math/tex">\newenvironment {prompt}{}{}
+\newcommand {\ungraded }[0]{}
+\newcommand {\npnoround }[0]{\nprounddigits {-1}}
+\newcommand {\npnoroundexp }[0]{\nproundexpdigits {-1}}
+\newcommand {\npunitcommand }[1]{\ensuremath {\mathrm {#1}}}
+\newcommand {\HyperFirstAtBeginDocument }[0]{\AtBeginDocument }</script><script type="text/javascript"> 
+</script> 
+</div>
+<div class="abstract">
+<!--l. 18--><p class="noindent">Use Synthetic Division to factor a polynomial completely.
+</p></div>   <div class="maketitle"></div>
+<a href="https://cnx.org/contents/mwjClAV_@8.1:G7V9LHif@17/Zeros-of-Polynomial-Functions">Link to section in online textbook.</a>
+<!--l. 28--><p class="noindent">First, watch <span class="underline"><a href="https://mediasite.video.ufl.edu/Mediasite/Play/1a497eb432a54ac38c2f6957859f4ea71d">this video</a></span> to learn how to use synthetic division and the Rational Root
+Theorem to completely factor any polynomial.
+</p>
+<script type="text/sagemath">R, x = QQ['x'].objgen()
+def maybeMakeNegative(natural):
+    integer = natural*(-1)**ZZ.random_element(2)
+    return integer
+
+def makeIntegerFactor():
+    zero = maybeMakeNegative(ZZ.random_element(1, 6))
+    integerFactor = x - zero
+    return [integerFactor, zero]
+
+def makeRationalFactor():
+    a = ZZ.random_element(1, 4)
+    b = maybeMakeNegative(ZZ.random_element(1, 6))
+    while gcd(abs(a), abs(b)) > 1:
+        a = ZZ.random_element(1, 4)
+        b = maybeMakeNegative(ZZ.random_element(1, 6))
+    rationalFactor = a*x + b
+    return [rationalFactor, -b/a]
+
+def makeIrrationalQuadratic():
+    a = ZZ.random_element(1, 6)
+                                                                  
+
+                                                                  
+    b = maybeMakeNegative(ZZ.random_element(1, 6))
+    c = maybeMakeNegative(ZZ.random_element(1, 6))
+    discrim = b**2 - 4*a*c
+    integerType = type(2)
+    while type(sqrt(discrim)) == integerType or discrim &lt; 0:
+        a = ZZ.random_element(1, 6)
+        b = maybeMakeNegative(ZZ.random_element(1, 6))
+        c = maybeMakeNegative(ZZ.random_element(1, 6))
+        discrim = b**2 - 4*a*c
+    solution0 = (-b + sqrt(discrim))/(2*a)
+    solution1 = (-b - sqrt(discrim))/(2*a)
+    smallerSolution, largerSolution = sorted([solution0, solution1])
+    quadratic = a*x**2 + b*x + c
+    return [quadratic, smallerSolution, largerSolution]
+
+def makeComplexQuadratic():
+    a0 = maybeMakeNegative(ZZ.random_element(1, 4))
+    b0 = maybeMakeNegative(ZZ.random_element(1, 6))
+    complex0 = a0 + b0*i
+    complex1 = a0 - b0*i
+    quadratic = x**2 -2*a0*x + (a0**2 + b0**2)
+    return [quadratic, complex0, complex1]
+######################
+factor1a, zeroTemp1a = makeIntegerFactor()
+factor1b, zeroTemp1b = makeIntegerFactor()
+factor1c, zeroTemp1c = makeIntegerFactor()
+polynomial1 = factor1a * factor1b * factor1c
+zero1a, zero1b, zero1c = sorted([zeroTemp1a, zeroTemp1b, zeroTemp1c])
+
+factor2a, zeroTemp2a = makeIntegerFactor()
+factor2b, zeroTemp2b = makeIntegerFactor()
+factor2c, zeroTemp2c = makeIntegerFactor()
+                                                                  
+
+                                                                  
+factor2d, zeroTemp2d = makeIntegerFactor()
+polynomial2 = factor2a * factor2b * factor2c * factor2d
+zero2a, zero2b, zero2c, zero2d = sorted([zeroTemp2a, zeroTemp2b, zeroTemp2c, zeroTemp2d])
+
+factor3a, zeroTemp3a = makeIntegerFactor()
+factor3b, zeroTemp3b = makeRationalFactor()
+factor3c, zeroTemp3c = makeRationalFactor()
+polynomial3 = factor3a * factor3b * factor3c
+zero3a, zero3b, zero3c = sorted([zeroTemp3a, zeroTemp3b, zeroTemp3c])
+
+factor4a, zeroTemp4a = makeRationalFactor()
+factor4b, zeroTemp4b = makeRationalFactor()
+factor4c, zeroTemp4c = makeRationalFactor()
+polynomial4 = factor4a * factor4b * factor4c
+zero4a, zero4b, zero4c = sorted([zeroTemp4a, zeroTemp4b, zeroTemp4c])
+
+factor5a, zeroTemp5a = makeIntegerFactor()
+factor5b, zeroTemp5b, zeroTemp5c = makeIrrationalQuadratic()
+zero5a, zero5b, zero5c = sorted([zeroTemp5a, zeroTemp5b, zeroTemp5c])
+polynomial5 = factor5a * factor5b
+
+factor6a, zero6a = makeIntegerFactor()
+factor6b, zero6b, zero6c = makeComplexQuadratic()
+polynomial6 = factor6a * factor6b
+</script>
+<div role="article" class="problem-environment question" id="problem1"><a id="x1-8r1"></a> Factor the polynomial below. Then, list all actual zeros for the polynomial.
+<!--l. 115--><p class="noindent">
+                                                                  
+
+                                                                  
+                                 <script type="math/tex; mode=display"> f(x) = \sage {polynomial1} </script>
+</p><!--l. 117--><p class="noindent">Factored Form: <script type="math/tex">(\answer {\sage {factor1a}})(\answer {\sage {factor1b}})(\answer {\sage {factor1c}})</script> </p><div class="feedback" data-feedback="attempt" id="feedback2">While there are some ways to order the factors, it seemed to be more
+work than it was worth. As you find zeros, try placing the factor in any of the open
+blocks. </div>
+<!--l. 122--><p class="noindent">Zeros <em>(smallest to largest)</em>: <script type="math/tex">\answer [tolerance=0.05]{\sage {zero1a}}, \answer [tolerance=0.05]{\sage {zero1b}}, \answer [tolerance=0.05]{\sage {zero1c}}</script>
+</p></div>
+<div role="article" class="problem-environment question" id="problem3"><a id="x1-9r2"></a> Factor the polynomial below. Then, list all actual zeros for the polynomial.
+<!--l. 129--><p class="noindent">
+                                 <script type="math/tex; mode=display"> f(x) = \sage {polynomial2} </script>
+</p><!--l. 131--><p class="noindent">Factored Form: <script type="math/tex">(\answer {\sage {factor2a}})(\answer {\sage {factor2b}})(\answer {\sage {factor2c}})(\answer {\sage {factor2d}})</script>
+</p>
+<div role="article" class="problem-environment hint" id="problem4"><a id="x1-10r3"></a> The final term in this polynomial can get vary large, leading to <strong>many</strong> possible
+rational roots. I made sure the zeros will be between -5 and 5, so you can ignore the
+rest.
+</div> <div class="feedback" data-feedback="attempt" id="feedback5">While there are some ways to order the factors, it seemed to be more work than it
+was worth. As you find zeros, try placing the factor in any of the open blocks. </div>
+<!--l. 140--><p class="noindent">Zeros <em>(smallest to largest)</em>: <script type="math/tex">\answer [tolerance=0.05]{\sage {zero2a}}, \answer [tolerance=0.05]{\sage {zero2b}}, \answer [tolerance=0.05]{\sage {zero2c}}, \answer [tolerance=0.05]{\sage {zero2d}}</script>
+</p></div>
+<div role="article" class="problem-environment question" id="problem6"><a id="x1-11r4"></a> Factor the polynomial below. Then, list all actual zeros for the polynomial.
+<!--l. 147--><p class="noindent">
+                                                                  
+
+                                                                  
+                                 <script type="math/tex; mode=display"> f(x) = \sage {polynomial3} </script>
+</p><!--l. 149--><p class="noindent">Factored Form: <script type="math/tex">(\answer {\sage {factor3a}})(\answer {\sage {factor3b}})(\answer {\sage {factor3c}})</script> </p><div class="feedback" data-feedback="attempt" id="feedback7">While there are some ways to order the factors, it seemed to be more
+work than it was worth. As you find zeros, try placing the factor in any of the open
+blocks. </div>
+<!--l. 154--><p class="noindent">Zeros <em>(smallest to largest)</em>: <script type="math/tex">\answer [tolerance=0.05]{\sage {zero3a}}, \answer [tolerance=0.05]{\sage {zero3b}}, \answer [tolerance=0.05]{\sage {zero3c}}</script>
+</p></div>
+<div role="article" class="problem-environment question" id="problem8"><a id="x1-12r5"></a> Factor the polynomial below. Then, list all actual zeros for the polynomial.
+<!--l. 161--><p class="noindent">
+                                 <script type="math/tex; mode=display"> f(x) = \sage {polynomial4} </script>
+</p><!--l. 163--><p class="noindent">Factored Form: <script type="math/tex">(\answer {\sage {factor4a}})(\answer {\sage {factor4b}})(\answer {\sage {factor4c}})</script> </p><div class="feedback" data-feedback="attempt" id="feedback9">While there are some ways to order the factors, it seemed to be more
+work than it was worth. As you find zeros, try placing the factor in any of the open
+blocks. </div>
+<!--l. 168--><p class="noindent">Zeros <em>(smallest to largest)</em>: <script type="math/tex">\answer [tolerance=0.05]{\sage {zero4a}}, \answer [tolerance=0.05]{\sage {zero4b}}, \answer [tolerance=0.05]{\sage {zero4c}}</script>
+</p></div>
+<div role="article" class="problem-environment question" id="problem10"><a id="x1-13r6"></a> Factor the polynomial below. Then, list all actual zeros for the polynomial.
+<!--l. 175--><p class="noindent">
+                                                                  
+
+                                                                  
+                                 <script type="math/tex; mode=display"> f(x) = \sage {polynomial5} </script>
+</p><!--l. 177--><p class="noindent">Factored Form: <script type="math/tex">(\answer {\sage {factor5a}})(\answer {\sage {factor5b}})</script> </p><div class="feedback" data-feedback="attempt" id="feedback11">There are only two blocks for you to input factors even though it is a
+cubic polynomial. This is not an error... </div>
+<!--l. 182--><p class="noindent">Zeros <em>(smallest to largest)</em>: <script type="math/tex">\answer [tolerance=0.05]{\sage {zero5a}}, \answer [tolerance=0.05]{\sage {zero5b}}, \answer [tolerance=0.05]{\sage {zero5c}}</script>
+</p></div>
+<div role="article" class="problem-environment question" id="problem12"><a id="x1-14r7"></a> Factor the polynomial below. Then, list all actual zeros for the polynomial.
+<!--l. 189--><p class="noindent">
+                                 <script type="math/tex; mode=display"> f(x) = \sage {polynomial6} </script>
+</p><!--l. 191--><p class="noindent">Factored Form: <script type="math/tex">(\answer {\sage {factor6a}})(\answer {\sage {factor6b}})</script> </p><div class="feedback" data-feedback="attempt" id="feedback13">There are only two blocks for you to input factors even though it is a
+cubic polynomial. This is not an error... </div>
+<!--l. 196--><p class="noindent">Zeros: <script type="math/tex">\answer [tolerance=0.05]{\sage {zero6a}}, \answer {\sage {zero6b}}, \answer {\sage {zero6c}}</script>
+</p></div>
+<!--l. 200--><p class="noindent"><strong>Main takeaway:</strong> Up until this point, we had some techniques to factor
+quadratics only. When we were looking to graph polynomial functions, we were
+given the factored forms of these polynomials. With what we’ve learned in
+this section, we can take the Standard Form of a polynomial and draw a
+sketch.
+                                                                  
+
+                                                                  
+</p><!--l. 202--><p class="noindent"><strong>Looking ahead:</strong> Our sketches focused on the end behavior and what was happening
+at the zeros. Calculus will help us sketch what is happening between the zeros, giving
+us more information on what the exact function looks like.
+ 
+ 
+
+                                                                  
+
+                                                                  
+                                                                  
+
+
+</p></body></html>

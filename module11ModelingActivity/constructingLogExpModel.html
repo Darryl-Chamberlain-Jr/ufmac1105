@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="en"><head> <title>Objective 3 - Construct Log/Exp Models</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<!-- charset=utf-8,-css,html,htex4ht,xhtml --> 
+<meta name="src" content="constructingLogExpModel.tex"/> 
+<meta name="author" content="Darryl Chamberlain
+Jr."/> 
+<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"/> 
+<meta name="ximera" content="version 0.0.1"/> 
+<link href="https://ximera.osu.edu/public/stylesheets/standalone.css" rel="stylesheet" media="screen"/> 
+<script type="text/javascript" async="" src="https://ximera.osu.edu/public/javascripts/standalone.min.js"></script> 
+<meta name="learning-outcome" content=""/> 
+<meta name="dependency" content="5a065b29fce338e682cfd6f665ae2788d0db9195 preamble.tex"/><meta name="dependency" content="79663651a1aa6acdd07b5cdb7cb7f452ed3dc837 module11ModelingActivity/constructingLogExpModel.tex"/></head><body> 
+<div class="preamble"><script type="math/tex">\newenvironment {prompt}{}{}
+\newcommand {\ungraded }[0]{}
+\newcommand {\npnoround }[0]{\nprounddigits {-1}}
+\newcommand {\npnoroundexp }[0]{\nproundexpdigits {-1}}
+\newcommand {\npunitcommand }[1]{\ensuremath {\mathrm {#1}}}
+\newcommand {\HyperFirstAtBeginDocument }[0]{\AtBeginDocument }</script><script type="text/javascript"> 
+</script> 
+</div>
+<div class="abstract">
+</div>
+<div class="maketitle"></div>
+<!--l. 24--><p class="noindent">Link to textbook: <a href="https://cnx.org/contents/mwjClAV_@8.21:_tqWoaDz@17/Exponential-and-Logarithmic-Models">Construct a model equation for the real-life situation.</a>
+</p><!--l. 27--><p class="noindent"><strong>Videos: </strong> </p>
+     <ul class="itemize1">
+     <li class="itemize"><a href="https://www.youtube.com/watch?v=8W2KbhC9mE0&amp;feature=youtu.be%2F">pH</a>
+     </li>
+     <li class="itemize"><a href="https://www.youtube.com/watch?v=HYHzK6kF0ts&amp;feature=youtu.be%2F">Age using Half-Life</a>
+     </li>
+     <li class="itemize"><a href="https://www.youtube.com/watch?v=eSOhLhSz9pk&amp;feature=youtu.be%2F">Doubling time growth pt. 1</a>
+     </li>
+     <li class="itemize"><a href="https://www.youtube.com/watch?v=YK7rERyFlOM&amp;feature=youtu.be%2F">Doubling time growth pt. 2</a>
+     </li>
+     <li class="itemize"><a href="http://www.larsonprecalculus.com/precalc10e/content/instructional-videos/chapter-3/section-1/radioactive-decay-and-law-of-cooling/">Radioactive Decay and Law of Cooling</a></li></ul>
+<script type="text/sagemath">t = var('t')
+rateList1 = ["doubles", "triples", "quadruples"]
+choose1 = ZZ.random_element(0, 3)
+rate1 = rateList1[choose1]
+initialBacteria1 = ZZ.random_element(1, 9)*100
+k1 = ln(choose1+2)
+bacteriaPopulation1 = initialBacteria1 * (choose1 + 2)**(t)
+</script>
+<div role="article" class="problem-environment question" id="problem1"><a id="x1-8r1"></a> A population of bacteria <script type="math/tex">\sage {rate1}</script> every hours. If the culture started with <script type="math/tex">\sage {initialBacteria1}</script>, write the
+equation that models the bacteria population after <script type="math/tex">t</script> hours.
+<!--l. 53--><p class="noindent"><script type="math/tex">P(t) = \answer {\sage {initialBacteria1}} \answer {\sage {choose1+2}}^{\answer {t}}</script>
+</p>
+</div>
+<script type="text/sagemath">t = var('t')
+                                                                  
+
+                                                                  
+halfLifeYears2 = ZZ.random_element(100, 1001)*ZZ.random_element(100, 1001)
+initialAmount2 = ZZ.random_element(100, 1000)
+k2 = -ln(2)/halfLifeYears2
+equation2 = initialAmount2*e**(k2*t)
+</script>
+<div role="article" class="problem-environment question" id="problem2"><a id="x1-9r2"></a> There is initially <script type="math/tex">\sage {initialAmount2}</script> grams of element <script type="math/tex">X</script>. The half-life of element <script type="math/tex">X</script> is <script type="math/tex">\sage {halfLifeYears2}</script> years. Describe the
+amount of element <script type="math/tex">X</script> remaining as a function of time, <script type="math/tex">t</script>, in years. Use <script type="math/tex">e</script> as the base of
+your exponential model and exact values.
+<!--l. 68--><p class="noindent"><script type="math/tex">X(t) = \answer {\sage {initialAmount2}} e^{\answer {\sage {k2}t} }</script>
+</p>
+<div role="article" class="problem-environment hint" id="problem3"><a id="x1-10r3"></a> The exponent’s coefficient is not <script type="math/tex">\frac {1}{\sage {halfLifeYears2}}</script> nor is it <script type="math/tex">\frac {-1}{\sage {halfLifeYears2}}</script>. To find the correct coefficient, take the
+base exponential equation <script type="math/tex">\text {current amount } = \text { initial amount } e^{ct}</script>, use what you know about the half-life time and amount,
+then solve the equation for <script type="math/tex">c</script>. If you are having trouble, refer back to the objective on
+”Solving exponential equations”. Do not use a calculator - use exact values to get a
+correct answer.
+</div>
+</div>
+<script type="text/sagemath">t = var('t')
+r = var('r')
+k3 = ln(0.5)/5730
+equation3A = e**(t*k3)
+equation3B = ln(r)/k3
+percent3 = ZZ.random_element(1, 101)
+old3 = round(equation3B(percent3*0.01), 0)
+</script>
+<div role="article" class="problem-environment question" id="problem4"><a id="x1-11r4"></a> The half-life of carbon-14 is 5,730 years.
+<!--l. 89--><p class="noindent"><strong>Part A.</strong> Describe the amount of carbon-14 remaining after <script type="math/tex">t</script> years. The initial
+amount of carbon-14, <script type="math/tex">C_0</script>, is already included below.
+</p><!--l. 91--><p class="noindent"><script type="math/tex">C = C_0 * \answer {e}^{\answer {\sage {k3}t} }</script>
+</p><!--l. 93--><p class="noindent"><strong>Part B.</strong> Solve the equation above for <script type="math/tex">t</script> written in terms of the ratio of carbon-14
+remaining, <script type="math/tex">r = \frac {C}{C_0}</script>.
+</p><!--l. 95--><p class="noindent"><script type="math/tex">t = \answer [tolerance=0.001]{\sage {1/k3}} \ln (\answer {r}) </script>
+</p><!--l. 97--><p class="noindent"><strong>Part C.</strong> The equation above is used to carbon-date objects. <em>To solidify this idea, use
+the model in Part B. to solve the following problem.</em>
+</p><!--l. 99--><p class="noindent">A bone fragment is found that contains <script type="math/tex">\sage {percent3}\%</script> of its original carbon-14. To the nearest year,
+how old is the bone?
+                                                                  
+
+                                                                  
+</p><!--l. 101--><p class="noindent"><script type="math/tex">\answer {\sage {old3}} \, \text { years old}</script>
+</p>
+<div role="article" class="problem-environment hint" id="problem5"><a id="x1-12r5"></a> <strong>Part A.</strong> The exponent’s coefficient is not <script type="math/tex">\frac {1}{5730}</script> nor is it <script type="math/tex">\frac {-1}{5730}</script>. To find the correct coefficient,
+take the base exponential equation <script type="math/tex">\text {current amount } = \text { initial amount } e^{ct}</script>, use what you know about the half-life time and
+amount, then solve the equation for <script type="math/tex">c</script>. If you are having trouble, refer back to the
+objective on ”Solving exponential equations”. Do not use a calculator - use exact
+values to get a correct answer.
+<!--l. 106--><p class="noindent"><strong>Part B.</strong> Now that you found the exponent’s coefficient, you have modeled the
+general equation as <script type="math/tex">C = C_0 e^{ct}</script>. Since it asks you to rewrite the equation in terms of <script type="math/tex">r = \frac {C}{C_0}</script>, start by
+converting the equation into one with <script type="math/tex">r</script> instead of <script type="math/tex">C</script> and <script type="math/tex">C_0</script>. Then, solve the equation for
+<script type="math/tex">t</script>.
+</p><!--l. 108--><p class="noindent"><strong>Part C.</strong> What does <script type="math/tex">r = \frac {C}{C_0}</script> represent? If we know this, then we could use the equation you
+built in Part B. to solve for the age of the bone.
+</p></div>
+</div>
+ 
+ 
+
+                                                                  
+
+                                                                  
+                                                                  
+
+
+</body></html>

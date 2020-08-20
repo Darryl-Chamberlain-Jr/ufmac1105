@@ -1,0 +1,131 @@
+<!DOCTYPE html><html lang="en"><head> <title>Operate on Complex Numbers</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<!-- charset=utf-8,-css,html,htex4ht,xhtml --> 
+<meta name="src" content="operateOnComplexNumbers.tex"/> 
+<meta name="author" content="Darryl Chamberlain
+Jr."/> 
+<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"/> 
+<meta name="ximera" content="version 0.0.1"/> 
+<link href="https://ximera.osu.edu/public/stylesheets/standalone.css" rel="stylesheet" media="screen"/> 
+<script type="text/javascript" async="" src="https://ximera.osu.edu/public/javascripts/standalone.min.js"></script> 
+<meta name="learning-outcome" content="Understand the different sets of numbers along with the properties of these sets."/> 
+<meta name="dependency" content="22a957b95043d001440c84fbc3049b520d5d3100 module1Activity/operateOnComplexNumbers.tex"/></head><body> 
+<div class="preamble"><script type="math/tex">\newenvironment {prompt}{}{}
+\newcommand {\ungraded }[0]{}
+\newcommand {\HyperFirstAtBeginDocument }[0]{\AtBeginDocument }</script><script type="text/javascript"> 
+</script> 
+</div>
+<div class="abstract">
+<!--l. 18--><p class="noindent">Add, Subtract, Multiply, or Divide Complex numbers.
+</p></div>   <div class="maketitle"></div>
+<a href="https://cnx.org/contents/mwjClAV_@8.1:Sqk1HAGf@9/Complex-Numbers">Link to section in textbook</a>
+<!--l. 28--><p class="noindent">We end this lesson by looking at properties of the Complex numbers. Watch <a href="https://mediasite.video.ufl.edu/Mediasite/Play/69538629caa6442981b77ebb679edc1e1d">this
+video</a> to review the properties of Complex numbers.
+</p><!--l. 30--><p class="noindent">Adding and subtracting Complex numbers requires you to add/subtract like terms.
+As students are proficient with combing like terms, the homework will focus on
+multiplying and dividing Complex numbers. For each, simplify the expression into
+the form <script type="math/tex">a+bi</script>.
+</p>
+<script type="text/sagemath">def maybeMakeNegative(rational):
+    maybeNegative = (-1)**ZZ.random_element(2)
+    rational = maybeNegative * rational
+    return rational
+
+def generateProblem():
+    listIntegers = range(2, 11)
+    c0, c1, c2, c3 = sample(listIntegers, 4)
+    constants = [Integer(maybeMakeNegative(c0)), Integer(c1), Integer(maybeMakeNegative(c2)), Integer(-c3)]
+    return constants
+
+def generateSolution(complex1, complex2):
+    product = complex1 * complex2
+    realPart = round(product.real(), 0)
+    imagPart = round(product.imag(), 0)
+    product = CC(realPart, imagPart)
+    return product
+
+############ END OF DEFINITIONS ##############
+
+                                                                  
+
+                                                                  
+######### QUESTION 10 ###########
+problem10 = generateProblem()
+a110, b110, a210, b210 = problem10
+complex10A = CC(a110, b110)
+complex10B = CC(a210, b210)
+answer10 = generateSolution(complex10A, complex10B)
+
+######### QUESTION 11 ###########
+problem11 = generateProblem()
+a111, b111, a211, b211 = problem11
+complex11A = CC(a111, b111)
+complex11B = CC(a211, b211)
+answer11 = generateSolution(complex11A, complex11B)
+</script>
+<div role="article" class="problem-environment exercise" id="problem1"><a id="x1-5r1"></a> <script type="math/tex">(\sage {a110}+\sage {b110}i)(\sage {a210}-\sage {-b210}i)</script>
+<!--l. 71--><p class="noindent"><script type="math/tex">\answer {\sage {answer10}}</script>
+</p>
+<div role="article" class="problem-environment hint" id="problem2"><a id="x1-6r2"></a> Make sure you distribute and reduce <script type="math/tex">i^2</script>.
+</div>
+</div>
+<div role="article" class="problem-environment exercise" id="problem3"><a id="x1-7r3"></a> <script type="math/tex">(\sage {a111}+\sage {b111}i)(\sage {a211}-\sage {-b211}i)</script>
+<!--l. 81--><p class="noindent"><script type="math/tex">\answer {\sage {answer11}}</script>
+</p></div>
+<script type="text/sagemath">def maybeMakeNegative(rational):
+    maybeNegative = (-1)**ZZ.random_element(2)
+    rational = maybeNegative * rational
+    return rational
+
+def generateProblem():
+    listIntegers = range(2, 11)
+    c0, c1, c2, c3 = sample(listIntegers, 4)
+    constants = [Integer(maybeMakeNegative(c0)), Integer(c1), Integer(maybeMakeNegative(c2)), Integer(-c3)]
+    return constants
+                                                                  
+
+                                                                  
+
+def generateSolution(complex1, complex2):
+    quotient = complex1/complex2
+    realPart = quotient.real()
+    imagPart = quotient.imag()
+    #quotient = CC(realPart, imagPart)
+    return [realPart, imagPart]
+
+######### END OF DEFINITIONS #############
+
+######## QUESTION 12 ###########
+a112, b112, a212, b212 = generateProblem()
+complex12A = CC(a112, b112)
+complex12B = CC(a212, b212)
+answer12A, answer12B = generateSolution(complex12A, complex12B)
+
+######## QUESTION 13 ###########
+a113, b113, a213, b213 = generateProblem()
+complex13A = CC(a113, b113)
+complex13B = CC(a213, b213)
+answer13A, answer13B = generateSolution(complex13A, complex13B)
+</script>
+<div role="article" class="problem-environment exercise" id="problem4"><a id="x1-8r4"></a> <script type="math/tex">\frac {\sage {a112}+\sage {b112}i}{\sage {a212}-\sage {-b212}i}</script>
+<div role="article" class="problem-environment hint" id="problem5"><a id="x1-9r5"></a> The goal when dividing by a Complex number is to remove the Complex number
+from the denominator. Is there a word for the number we can multiply by to remove
+the Complex part of a number?
+</div>
+<!--l. 125--><p class="noindent"><script type="math/tex">\answer [tolerance=0.01]{\sage {answer12A}}</script> <script type="math/tex">+ \answer [tolerance=0.01]{\sage {answer12B}}i</script>
+</p></div>
+<div role="article" class="problem-environment exercise" id="problem6"><a id="x1-10r6"></a> <script type="math/tex">\frac {\sage {a113}+\sage {b113}i}{\sage {a213}-\sage {-b213}i}</script>
+<!--l. 131--><p class="noindent"><script type="math/tex">\answer [tolerance=0.01]{\sage {answer13A}}</script> <script type="math/tex">+ \answer [tolerance=0.01]{\sage {answer13B}}i</script>
+</p></div>
+ 
+ 
+
+                                                                  
+
+                                                                  
+                                                                  
+
+
+</body></html>

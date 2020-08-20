@@ -1,0 +1,196 @@
+<!DOCTYPE html><html lang="en"><head> <title>Objective 1 - Construct a linear function from points</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<!-- charset=utf-8,-css,html,htex4ht,xhtml --> 
+<meta name="src" content="constructFromPoints.tex"/> 
+<meta name="author" content="Darryl Chamberlain
+Jr."/> 
+<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"/> 
+<meta name="ximera" content="version 0.0.1"/> 
+<link href="https://ximera.osu.edu/public/stylesheets/standalone.css" rel="stylesheet" media="screen"/> 
+<script type="text/javascript" async="" src="https://ximera.osu.edu/public/javascripts/standalone.min.js"></script> 
+<meta name="learning-outcome" content="Recognize and construct linear functions as well as solve linear equations."/> 
+<meta name="dependency" content="5a065b29fce338e682cfd6f665ae2788d0db9195 preamble.tex"/><meta name="dependency" content="094a51e1960f666df19f60b0916b8a5855ed2a44 module2Activity/constructFromPoints.tex"/></head><body> 
+<div class="preamble"><script type="math/tex">\newenvironment {prompt}{}{}
+\newcommand {\ungraded }[0]{}
+\newcommand {\npnoround }[0]{\nprounddigits {-1}}
+\newcommand {\npnoroundexp }[0]{\nproundexpdigits {-1}}
+\newcommand {\npunitcommand }[1]{\ensuremath {\mathrm {#1}}}
+\newcommand {\HyperFirstAtBeginDocument }[0]{\AtBeginDocument }</script><script type="text/javascript"> 
+</script> 
+</div>
+<div class="abstract">
+<!--l. 17--><p class="noindent">Use points to construct a linear function.
+</p></div>   <div class="maketitle"></div>
+<a href="https://cnx.org/contents/mwjClAV_@8.1:62_eXnY6@14/Linear-Equations-in-One-Variable">Link to section in online textbook.</a>
+<!--l. 27--><p class="noindent">First, watch <span class="underline"><a href="https://mediasite.video.ufl.edu/Mediasite/Play/ea9a27e045aa4cbeb9211f7d64e96cb31d">this video</a></span> to learn about what is necessary to construct a linear
+function.
+</p><!--l. 29--><p class="noindent">This objective will focus on constructing linear functions from a point and slope or
+from two points.
+</p>
+<script type="text/sagemath">x = var('x')
+
+#################
+def maybeMakeNegative(rational):
+    maybeNegative = (-1)**ZZ.random_element(2)
+    rational = maybeNegative * rational
+    return rational
+
+def generatePoints():
+    pointOne = [maybeMakeNegative(ZZ.random_element(2,9)), maybeMakeNegative(ZZ.random_element(2, 9))]
+    pointTwo = [maybeMakeNegative(ZZ.random_element(2, 9)), maybeMakeNegative(ZZ.random_element(2, 9))]
+    # Makes sure coordinates are distinct and not a vertical/horizontal line
+    while (pointOne[0]==pointTwo[0] or pointOne[1]==pointTwo[1]):
+        pointOne = [maybeMakeNegative(ZZ.random_element(2, 9)), maybeMakeNegative(ZZ.random_element(2, 9))]
+        pointTwo = [maybeMakeNegative(ZZ.random_element(2, 9)), maybeMakeNegative(ZZ.random_element(2, 9))]
+    return [pointOne, pointTwo]
+
+def generateSolution(problem):
+    pointOne, pointTwo = problem
+    numerator = pointTwo[1]-pointOne[1]
+                                                                  
+
+                                                                  
+    denominator = pointTwo[0]-pointOne[0]
+    slope = float(numerator/denominator)
+    yInt = float(pointTwo[1]-slope*pointTwo[0])
+    slope = slope
+    #print "Slope %s and y-Intercept %s" %(slope, yInt)
+    return [slope, yInt]
+
+######## END OF DEFINITIONS #########
+
+##### QUESTION 1 #####
+points1 = generatePoints()
+pointOne1, pointTwo1 = points1
+solution1 = generateSolution(points1)
+equation1 = solution1[0]*x + solution1[1]
+
+##### QUESTION 2 #####
+points2 = generatePoints()
+pointOne2, pointTwo2 = points2
+solution2 = generateSolution(points2)
+equation2 = solution2[0]*x + solution2[1]
+
+##### QUESTION 3 #####
+points3 = generatePoints()
+pointOne3, pointTwo3 = points3
+solution3 = generateSolution(points3)
+equation3 = solution3[0]*x + solution3[1]
+</script>
+<div role="article" class="problem-environment question" id="problem1"><a id="x1-8r1"></a> Find the equation of the line containing the two points below. Write the equation in
+slope-intercept form. <br class="newline"/><script type="math/tex">(\sage {pointOne1[0]}, \sage {pointOne1[1]}) \text { and } (\sage {pointTwo1[0]}, \sage {pointTwo1[1]})</script>
+<!--l. 84--><p class="noindent"><script type="math/tex">y = \answer [tolerance=0.05]{\sage {solution1[0]}}x</script> <script type="math/tex">+ \answer [tolerance=0.05]{\sage {solution1[1]}}</script>
+</p>
+                                                                  
+
+                                                                  
+<div role="article" class="problem-environment hint" id="problem2"><a id="x1-9r2"></a> To construct a linear function, we need its slope and a single point on the line. Can
+we figure out the slope from two points?
+</div>
+</div>
+<div role="article" class="problem-environment question" id="problem3"><a id="x1-10r3"></a> Find the equation of the line containing the two points below. Write the equation in
+slope-intercept form. <br class="newline"/><script type="math/tex">(\sage {pointOne2[0]}, \sage {pointOne2[1]}) \text { and } (\sage {pointTwo2[0]}, \sage {pointTwo2[1]})</script>
+<!--l. 95--><p class="noindent"><script type="math/tex">y = \answer [tolerance=0.05]{\sage {solution2[0]}}x</script> <script type="math/tex">+ \answer [tolerance=0.05]{\sage {solution2[1]}}</script>
+</p></div>
+<div role="article" class="problem-environment question" id="problem4"><a id="x1-11r4"></a> Find the equation of the line containing the two points below. Write the equation in
+slope-intercept form. <br class="newline"/><script type="math/tex">(\sage {pointOne3[0]}, \sage {pointOne3[1]}) \text { and } (\sage {pointTwo3[0]}, \sage {pointTwo3[1]})</script>
+<!--l. 102--><p class="noindent"><script type="math/tex">y = \answer [tolerance=0.05]{\sage {solution3[0]}}x</script> <script type="math/tex">+ \answer [tolerance=0.05]{\sage {solution3[1]}}</script>
+</p></div>
+<script type="text/sagemath">x, y = var('x, y')
+
+#################
+def maybeMakeNegative(rational):
+    maybeNegative = (-1)**ZZ.random_element(2)
+    rational = maybeNegative * rational
+    return rational
+
+def generateProblemAndSolution(lineType):
+    if lineType == 0:
+        point = [maybeMakeNegative(ZZ.random_element(2, 11)), maybeMakeNegative(ZZ.random_element(2, 11))]
+        aCoeff = ZZ.random_element(3, 10)
+        bCoeff = maybeMakeNegative(ZZ.random_element(3, 10))
+        cCoeff = ZZ.random_element(3, 16)
+        # Slope and y-intercept
+        slope = float(-aCoeff/bCoeff)
+        yInt = float(point[1]-slope*point[0])
+        return [[slope, yInt], point, [aCoeff, bCoeff, cCoeff]]
+    else:
+        point = [maybeMakeNegative(ZZ.random_element(2, 11)), maybeMakeNegative(ZZ.random_element(2, 11))]
+        aCoeff = ZZ.random_element(3, 10)
+                                                                  
+
+                                                                  
+        bCoeff = maybeMakeNegative(ZZ.random_element(3, 10))
+        cCoeff = ZZ.random_element(3, 16)
+        # Slope and y-intercept
+        slope = float(bCoeff/aCoeff)
+        yInt = float(point[1]-slope*point[0])
+        return [[slope, yInt], point, [aCoeff, bCoeff, cCoeff]]
+
+################# QUESTION 4 - Parallel #####################
+solution4, point4, coefficients4 = generateProblemAndSolution(0)
+aCoeff4, bCoeff4, cCoeff4 = coefficients4
+standardForm4 = aCoeff4 * x + bCoeff4 * y
+pointSlopeForm4 = solution4[0]*x + solution4[1]
+
+################# QUESTION 5 - Parallel #####################
+solution5, point5, coefficients5 = generateProblemAndSolution(0)
+aCoeff5, bCoeff5, cCoeff5 = coefficients5
+standardForm5 = aCoeff5 * x + bCoeff5 * y
+pointSlopeForm5 = solution5[0]*x + solution5[1]
+
+################# QUESTION 6 - Perpendicular #####################
+solution6, point6, coefficients6 = generateProblemAndSolution(1)
+aCoeff6, bCoeff6, cCoeff6 = coefficients6
+standardForm6 = aCoeff6 * x + bCoeff6 * y
+pointSlopeForm6 = solution6[0]*x + solution6[1]
+
+################# QUESTION 7 - Perpendicular #####################
+solution7, point7, coefficients7 = generateProblemAndSolution(1)
+aCoeff7, bCoeff7, cCoeff7 = coefficients7
+standardForm7 = aCoeff7 * x + bCoeff7 * y
+pointSlopeForm7 = solution7[0]*x + solution7[1]
+</script>
+<!--l. 161--><p class="noindent"><strong>For these problems, you’ll be given a description of the line and a point.
+                                                                  
+
+                                                                  
+Think about what information you should get from the line, then use the
+point to construct a new linear function.</strong>
+</p>
+<div role="article" class="problem-environment question" id="problem5"><a id="x1-12r5"></a> Find the equation of the line described below. Write the equation of the line in
+slope-intercept form. <br class="newline"/>
+<!--l. 166--><p class="noindent">Parallel to <script type="math/tex">\sage {standardForm4}=\sage {cCoeff4}</script> and passing through the point <script type="math/tex">(\sage {point4[0]}, \sage {point4[1]})</script>.
+</p><!--l. 168--><p class="noindent"><script type="math/tex">y = \answer [tolerance=0.05]{\sage {solution4[0]}}x</script> <script type="math/tex">+ \answer [tolerance=0.05]{\sage {solution4[1]}}</script>
+</p>
+<div role="article" class="problem-environment hint" id="problem6"><a id="x1-13r6"></a> If a line is parallel to another, what does that mean about its slope?
+</div>
+</div>
+<div role="article" class="problem-environment question" id="problem7"><a id="x1-14r7"></a> Find the equation of the line described below. Write the equation of the line in
+slope-intercept form. <br class="newline"/>
+<!--l. 178--><p class="noindent">Parallel to <script type="math/tex">\sage {standardForm5}=\sage {cCoeff5}</script> and passing through the point <script type="math/tex">(\sage {point5[0]}, \sage {point5[1]})</script>.
+</p><!--l. 180--><p class="noindent"><script type="math/tex">y = \answer [tolerance=0.05]{\sage {solution5[0]}}x</script> <script type="math/tex">+ \answer [tolerance=0.05]{\sage {solution5[1]}}</script>
+</p></div>
+<div role="article" class="problem-environment question" id="problem8"><a id="x1-15r8"></a> Find the equation of the line described below. Write the equation of the line in
+slope-intercept form. <br class="newline"/>
+<!--l. 186--><p class="noindent">Perpendicular to <script type="math/tex">\sage {standardForm6}=\sage {cCoeff6}</script> and passing through the point <script type="math/tex">(\sage {point6[0]}, \sage {point6[1]})</script>.
+</p><!--l. 188--><p class="noindent"><script type="math/tex">y = \answer [tolerance=0.05]{\sage {solution6[0]}}x</script> <script type="math/tex">+ \answer [tolerance=0.05]{\sage {solution6[1]}}</script> </p><div role="article" class="problem-environment hint" id="problem9"><a id="x1-16r9"></a> If a line is perpendicular to another, what does that mean about its slope?
+</div>
+</div>
+<div role="article" class="problem-environment question" id="problem10"><a id="x1-17r10"></a> Find the equation of the line described below. Write the equation of the line in
+slope-intercept form. <br class="newline"/>
+<!--l. 197--><p class="noindent">Perpendicular to <script type="math/tex">\sage {standardForm7}=\sage {cCoeff7}</script> and passing through the point <script type="math/tex">(\sage {point7[0]}, \sage {point7[1]})</script>.
+</p><!--l. 199--><p class="noindent"><script type="math/tex">y = \answer [tolerance=0.05]{\sage {solution7[0]}}x</script> <script type="math/tex">+ \answer [tolerance=0.05]{\sage {solution7[1]}}</script>
+</p></div>
+ 
+ 
+
+                                                                  
+
+                                                                  
+                                                                  
+
+
+</body></html>

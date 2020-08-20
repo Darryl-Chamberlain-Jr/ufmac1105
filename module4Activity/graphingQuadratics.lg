@@ -1,0 +1,23 @@
+htfcss: cmbx  font-weight: bold;
+htfcss: cmbxsl  font-weight: bold; font-style: oblique;
+htfcss: cmtt font-family: monospace,monospace;
+File: graphingQuadratics.html
+File: graphingQuadratics.tmp
+Font_Css("4"): .small-caps{font-variant: small-caps; }
+Font_Css("10"): .htf-cmbx {font-weight: bold; font-style:normal;}
+Font_Css("12"): .htf-calligraphy {font-family:cursive}
+Font_Css("14"): .htf-italic {font-style: italic;}
+Font_Css("16"): .htf-bold {font-weight: bold;}
+Font_Css("12"): .htf-calligraphy-bold {font-family:cursive ; font-weight: bold; }
+File: question1Astatic.png
+File: question1Bstatic.png
+File: question1Cstatic.png
+File: question2Astatic.png
+File: question2Bstatic.png
+File: question2Cstatic.png
+File: question2Dstatic.png
+File: question2Estatic.png
+--- characters ---
+Font("cmr","10","10","100")
+Font("cmtt","10","10","100")
+Font("cmbx","10","10","100")

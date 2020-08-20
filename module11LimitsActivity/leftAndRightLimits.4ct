@@ -1,0 +1,4 @@
+\expandafter\ifx\csname doTocEntry\endcsname\relax \expandafter\endinput\fi 
+\doTocEntry\toclof{1}{\csname a:TocLink\endcsname{1}{x1-131}{}{\ignorespaces \href  {https://cnx.org/contents/i4nRcikn@5.1:dKCfyV9u@5/The-Limit-of-a-Function#CNX_Calc_Figure_02_02_006}{Function with a hole at $x=-1$.}}}{figure}\relax 
+\doTocEntry\toclof{2}{\csname a:TocLink\endcsname{1}{x1-152}{}{\ignorespaces \href  {https://cnx.org/contents/i4nRcikn@5.1:dKCfyV9u@5/The-Limit-of-a-Function#CNX_Calc_Figure_02_02_015}{Piecewise function to evaluate.}}}{figure}\relax 
+\par 

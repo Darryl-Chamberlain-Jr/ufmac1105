@@ -1,0 +1,6 @@
+\expandafter\ifx\csname doTocEntry\endcsname\relax \expandafter\endinput\fi 
+\doTocEntry\toclof{1}{\csname a:TocLink\endcsname{1}{x1-151}{}{\ignorespaces \href  {https://cnx.org/contents/mwjClAV_@8.12:6dX4RGdg@12/Fitting-Linear-Models-to-Data}{A scatterplot of age and final exam score variables}}}{figure}\relax 
+\doTocEntry\toclof{2}{\csname a:TocLink\endcsname{1}{x1-172}{}{\ignorespaces \href  {https://cnx.org/contents/mwjClAV_@8.12:6dX4RGdg@12/Fitting-Linear-Models-to-Data}{Scatterplot}}}{figure}\relax 
+\doTocEntry\toclof{3}{\csname a:TocLink\endcsname{1}{x1-193}{}{\ignorespaces \href  {https://cnx.org/contents/mwjClAV_@8.12:6dX4RGdg@12/Fitting-Linear-Models-to-Data}{Temperature over time (s).}}}{figure}\relax 
+\doTocEntry\toclof{4}{\csname a:TocLink\endcsname{1}{x1-214}{}{\ignorespaces \href  {https://cnx.org/contents/mwjClAV_@8.12:6dX4RGdg@12/Fitting-Linear-Models-to-Data}{Table of a function.}}}{figure}\relax 
+\par 

@@ -1,0 +1,266 @@
+<!DOCTYPE html><html lang="en"><head> <title>Objective 4 - Oblique Asymptotes</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"/> 
+<!-- charset=utf-8,-css,html,htex4ht,xhtml --> 
+<meta name="src" content="determineObliqueAsymptotes.tex"/> 
+<meta name="author" content="Darryl Chamberlain
+Jr."/> 
+<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"/> 
+<meta name="ximera" content="version 0.0.1"/> 
+<link href="https://ximera.osu.edu/public/stylesheets/standalone.css" rel="stylesheet" media="screen"/> 
+<script type="text/javascript" async="" src="https://ximera.osu.edu/public/javascripts/standalone.min.js"></script> 
+<meta name="learning-outcome" content=""/> 
+<meta name="dependency" content="5a065b29fce338e682cfd6f665ae2788d0db9195 preamble.tex"/><meta name="dependency" content="46b86b6fa972c33667eb2d4e8fd0bba69438af3e module12LimitsActivity/determineObliqueAsymptotes.tex"/></head><body> 
+<div class="preamble"><script type="math/tex">\newenvironment {prompt}{}{}
+\newcommand {\ungraded }[0]{}
+\newcommand {\npnoround }[0]{\nprounddigits {-1}}
+\newcommand {\npnoroundexp }[0]{\nproundexpdigits {-1}}
+\newcommand {\npunitcommand }[1]{\ensuremath {\mathrm {#1}}}
+\newcommand {\HyperFirstAtBeginDocument }[0]{\AtBeginDocument }</script><script type="text/javascript"> 
+</script> 
+</div>
+<div class="abstract">
+</div>   <div class="maketitle"></div>
+<!--l. 22--><p class="noindent"><a href="https://cnx.org/contents/mwjClAV_@8.21:KNTP2r7D@14/Rational-Functions">Link to section in online textbook.</a>
+</p><!--l. 24--><p class="noindent"><a href="https://mediasite.video.ufl.edu/Mediasite/Play/0957426faa87413085c428f14dc054e71d">Video explanation of horizontal/oblique asymptotes <em>without using limits</em>.</a>
+</p><!--l. 30--><p class="noindent">Our last case, when the degree of the numerator is larger than the degree of the
+denominator, is much trickier. Since the numerator is larger, we can perform divide
+the polynomials to get some quotient (another, smaller polynomial) and then a
+remainder. In Calculus, you’ll learn how to evaluate these limits without needing to
+divide the polynomials. For our case, we will simplify the issue by making
+sure we can use synthetic division to perform the polynomial division. The
+quotient will result in an <em>oblique</em> asymptote, or an asymptote that is not
+horizontal/vertical.
+</p>
+<div class="theorem-like problem-environment theorem" id="problem1"><a id="x1-8r1"></a><strong>Oblique Asymptotes of a Rational Function</strong>
+<!--l. 35--><p class="noindent">
+                                 <script type="math/tex; mode=display"> f(x) = \frac {a_nx^n + a_{n-1}x^{n-1} + \cdots a_1 x + a_0}{b_mx^m + b_{m-1}x^{m-1} + \cdots b_1 x + b_0} </script>
+</p><!--l. 37--><p class="noindent">If <script type="math/tex">n > m</script>, then <script type="math/tex">\lim _{x \rightarrow \pm \infty } f(x) = q(x)</script>, where <script type="math/tex">q(x)</script> is the quotient after dividing the two polynomials. This gives us an
+oblique asymptote <script type="math/tex">y = q(x)</script>.
+</p></div>
+
+<div role="article" class="problem-environment question" id="problem2"><a id="x1-9r2"></a> Preform the division <script type="math/tex">\frac {x^2+4x+4}{x-1}</script> and find the quotient.
+<!--l. 45--><p class="noindent"><script type="math/tex; mode=display"> \graph [rectangular]{f(x) = (x^2+4x+4)/(x-1)} </script>
+</p><!--l. 47--><p class="noindent"><script type="math/tex">y = \answer {x+5}</script>
+                                                                  
+
+                                                                  
+</p>
+<div class="feedback" data-feedback="correct" id="feedback3"> Right! If we are thinking end behavior, the function will eventually behave like the
+line <script type="math/tex">y=x+5</script>. We can think of the quotient as the “main” part of the rational function as it
+determines the end behavior. We can summarize this as: <strong>When the degree of the
+numerator is one larger than the denominator, the function will
+have an oblique asymptote at <script type="math/tex">y = </script> quotient after synthetic division.</strong> </div>
+</div>
+<script type="text/sagemath">R, x = QQ['x'].objgen()
+
+def maybeMakeNegative(natural):
+    integer = natural*(-1)**ZZ.random_element(2)
+    return integer
+
+def makeIntegerFactor():
+    zero = maybeMakeNegative(ZZ.random_element(1, 6))
+    integerFactor = x - zero
+    return [integerFactor, zero]
+
+def makeRationalFactor():
+    a = maybeMakeNegative(ZZ.random_element(1, 4))
+    b = maybeMakeNegative(ZZ.random_element(1, 6))
+    while gcd(abs(a), abs(b)) > 1:
+        a = maybeMakeNegative(ZZ.random_element(1, 4))
+        b = maybeMakeNegative(ZZ.random_element(1, 6))
+    rationalFactor = a*x + b
+    return [rationalFactor, a]
+
+def makeIrrationalQuadratic():
+    a = maybeMakeNegative(ZZ.random_element(1, 6))
+    b = maybeMakeNegative(ZZ.random_element(1, 6))
+    c = maybeMakeNegative(ZZ.random_element(1, 6))
+    discrim = b**2 - 4*a*c
+                                                                  
+
+                                                                  
+    integerType = type(2)
+    while type(sqrt(discrim)) == integerType:
+        a = maybeMakeNegative(ZZ.random_element(1, 6))
+        b = maybeMakeNegative(ZZ.random_element(1, 6))
+        c = maybeMakeNegative(ZZ.random_element(1, 6))
+        discrim = b**2 - 4*a*c
+    solution0 = (-b + sqrt(discrim))/2*a
+    solution1 = (-b - sqrt(discrim))/2*a
+    smallerSolution, largerSolution = sorted([solution0, solution1])
+    quadratic = a*x**2 + b*x + c
+    return [quadratic, smallerSolution, largerSolution]
+
+def makeComplexQuadratic():
+    a0 = maybeMakeNegative(ZZ.random_element(1, 4))
+    b0 = maybeMakeNegative(ZZ.random_element(1, 6))
+    complex0 = a0 + b0*i
+    complex1 = a0 - b0*i
+    quadratic = x**2 - (a0**2 + b0**2)
+    return [quadratic, complex0, complex1]
+
+def createPolyDegree1to4(degree):
+    if degree == 1:
+        poly, deadZero1 = makeRationalFactor()
+        leadingCoefficient = derivative(poly, x)/factorial(degree)
+    elif degree == 2:
+        factor2a, deadZero2a = makeRationalFactor()
+        factor2b, deadZero2b = makeRationalFactor()
+        poly = factor2a * factor2b
+        leadingCoefficient = derivative(derivative(poly, x), x)/factorial(degree)
+    elif degree == 3:
+        factor3a, deadZero3a = makeRationalFactor()
+        factor3b, deadZero3b = makeRationalFactor()
+                                                                  
+
+                                                                  
+        factor3c, deadZero3c = makeRationalFactor()
+        poly = factor3a * factor3b * factor3c
+        leadingCoefficient = derivative(derivative(derivative(poly, x), x), x)/factorial(degree)
+    elif degree == 4:
+        factor4a, deadZero4a = makeRationalFactor()
+        factor4b, deadZero4b = makeRationalFactor()
+        factor4c, deadZero4c = makeRationalFactor()
+        factor4d, deadZero4d = makeRationalFactor()
+        poly = factor4a * factor4b * factor4c * factor4d
+        leadingCoefficient = derivative(derivative(derivative(derivative(poly, x), x), x), x)/factorial(degree)
+    else:
+        poly = 0
+        leadingCoefficient = 0
+    return [poly, leadingCoefficient]
+
+def horizontalAsymptote():
+    chooseType = ZZ.random_element(2)
+    if chooseType == 0:
+        degreeDenom = ZZ.random_element(2, 5)
+        degreeNum = ZZ.random_element(1, degreeDenom)
+        polyNumerator, coeffNumerator = createPolyDegree1to4(degreeNum)
+        polyDenominator, coeffDenominator = createPolyDegree1to4(degreeDenom)
+        horizontalAsymptote = 0
+    elif chooseType == 1:
+        degreeNumAndDenom = ZZ.random_element(1, 5)
+        polyNumerator, coeffNumerator = createPolyDegree1to4(degreeNumAndDenom)
+        polyDenominator, coeffDenominator = createPolyDegree1to4(degreeNumAndDenom)
+        horizontalAsymptote = coeffNumerator/coeffDenominator
+    else:
+        polyNumerator = 0
+        polyDenominator = 0
+        horizontalAsymptote = 0
+                                                                  
+
+                                                                  
+    return [polyNumerator, polyDenominator, horizontalAsymptote]
+
+def obliqueAsymptote(z0, missingOrNot):
+    a0 = ZZ.random_element(2, 6)
+    b0 = maybeMakeNegative(ZZ.random_element(2, 6))
+    a1 = ZZ.random_element(2, 6)
+    b1 = maybeMakeNegative(ZZ.random_element(2, 6))
+    z1 = maybeMakeNegative(ZZ.random_element(2, 6))
+    r = maybeMakeNegative(ZZ.random_element(2, 6))
+    #
+    numeratorPoly = (a0*a1*z0)*x**3 + (-a0*a1*z1 + a0*b1*z0 + a1*b0*z0)*x**2+ (-a0*b1*z1 - a1*b0*z1 + b0*b1*z0)*x + (-b0*b1*z1 + r)
+    numCo1 = a0*a1*z0
+    numCo2 = -a0*a1*z1 + a0*b1*z0 + a1*b0*z0
+    numCo3 = -a0*b1*z1 - a1*b0*z1 + b0*b1*z0
+    numCo4 = -b0*b1*z1 + r
+    #
+    denominator = z0 * x - z1
+    quotient = (a0*a1)*x**2 + (a0*b1+a1*b0)*x + b0*b1
+    remainder = r
+    #
+    if missingOrNot == "notMissing":
+        while (numCo1==0 or numCo2==0 or numCo3==0 or numCo4==0):
+            a0 = ZZ.random_element(2, 6)
+            b0 = maybeMakeNegative(ZZ.random_element(2, 6))
+            a1 = ZZ.random_element(2, 6)
+            b1 = maybeMakeNegative(ZZ.random_element(2, 6))
+            z1 = maybeMakeNegative(ZZ.random_element(2, 6))
+            r = maybeMakeNegative(ZZ.random_element(2, 6))
+            #
+            numeratorPoly = (a0*a1*z0)*x**3 + (-a0*a1*z1 + a0*b1*z0 + a1*b0*z0)*x**2+ (-a0*b1*z1 - a1*b0*z1 + b0*b1*z0)*x + (-b0*b1*z1 + r)
+            numCo1 = a0*a1*z0
+            numCo2 = -a0*a1*z1 + a0*b1*z0 + a1*b0*z0
+                                                                  
+
+                                                                  
+            numCo3 = -a0*b1*z1 - a1*b0*z1 + b0*b1
+            numCo4 = -b0*b1*z1 + r
+            denominator = z0*x - z1
+            quotient = (a0*a1)*x**2 + (a0*b1+a1*b0)*x + b0*b1
+            remainder = r
+            #
+    else:
+        index =  0
+        while (abs(numCo1)>0 and abs(numCo2)>0 and abs(numCo3)>0 and abs(numCo4)>0):
+            a0 = ZZ.random_element(2, 6)
+            b0 = maybeMakeNegative(ZZ.random_element(2, 6))
+            a1 = ZZ.random_element(2, 6)
+            b1 = maybeMakeNegative(ZZ.random_element(2, 6))
+            z1 = maybeMakeNegative(ZZ.random_element(2, 6))
+            r = maybeMakeNegative(ZZ.random_element(2, 6))
+            #
+            numeratorPoly = (a0*a1*z0)*x**3 + (-a0*a1*z1 + a0*b1*z0 + a1*b0*z0)*x**2+ (-a0*b1*z1 - a1*b0*z1 + b0*b1*z0)*x + (-b0*b1*z1 + r)
+            numCo1 = a0*a1*z0
+            numCo2 = -a0*a1*z1 + a0*b1*z0 + a1*b0*z0
+            numCo3 = -a0*b1*z1 - a1*b0*z1 + b0*b1
+            numCo4 = -b0*b1*z1 + r
+            denominator = z0*x - z1
+            quotient = (a0*a1)*x**2 + (a0*b1+a1*b0)*x + b0*b1
+            remainder = r
+            index =  index + 1
+            #
+    return [numeratorPoly, denominator, quotient, remainder]
+#####
+polyNum1, polyDenom1, horAsy1 = horizontalAsymptote()
+polyNum2, polyDenom2, horAsy2 = horizontalAsymptote()
+#
+choices = ["missing", "notMissing"]
+                                                                  
+
+                                                                  
+polyNum3, polyDenom3, obliqueAsy3, deadRemainder3 = obliqueAsymptote(1, choices[ZZ.random_element(2)])
+polyNum4, polyDenom4, obliqueAsy4, deadRemainder4 = obliqueAsymptote(ZZ.random_element(2, 6), choices[ZZ.random_element(2)])
+</script>
+<div role="article" class="problem-environment problem" id="problem4"><a id="x1-10r3"></a> Determine whether there is a horizontal or oblique asymptote of the rational
+function below. Then, write the equation of this asymptote.
+<!--l. 216--><p class="noindent"><script type="math/tex"> f(x) = \frac {\sage {polyNum1}}{\sage {polyDenom1}}</script>
+</p><!--l. 218--><p class="noindent">There is a <script type="math/tex">\answer [format=string]{horizontal}</script> asymptote at <script type="math/tex">y = \answer {\sage {horAsy1}}</script>.
+</p></div>
+<div role="article" class="problem-environment problem" id="problem5"><a id="x1-11r4"></a> Determine whether there is a horizontal or oblique asymptote of the rational
+function below. Then, write the equation of this asymptote.
+<!--l. 225--><p class="noindent"><script type="math/tex"> f(x) = \frac {\sage {polyNum2}}{\sage {polyDenom2}}</script>
+</p><!--l. 227--><p class="noindent">There is a <script type="math/tex">\answer [format=string]{horizontal}</script> asymptote at <script type="math/tex">y = \answer {\sage {horAsy2}}</script>.
+</p></div>
+<div role="article" class="problem-environment problem" id="problem6"><a id="x1-12r5"></a> Determine whether there is a horizontal or oblique asymptote of the rational
+function below. Then, write the equation of this asymptote.
+<!--l. 234--><p class="noindent"><script type="math/tex"> f(x) = \frac {\sage {polyNum3}}{\sage {polyDenom3}}</script>
+</p><!--l. 236--><p class="noindent">There is a <script type="math/tex">\answer [format=string]{oblique}</script> asymptote at <script type="math/tex">y = \answer {\sage {obliqueAsy3}}</script>.
+</p></div>
+<div role="article" class="problem-environment problem" id="problem7"><a id="x1-13r6"></a> Determine whether there is a horizontal or oblique asymptote of the rational
+function below. Then, write the equation of this asymptote.
+<!--l. 243--><p class="noindent"><script type="math/tex"> f(x) = \frac {\sage {polyNum4}}{\sage {polyDenom4}}</script>
+</p><!--l. 245--><p class="noindent">There is a <script type="math/tex">\answer [format=string]{oblique}</script> asymptote at <script type="math/tex">y = \answer {\sage {obliqueAsy4}}</script>.
+</p></div>
+<!--l. 248--><p class="noindent"><strong>Main takeaway:</strong> There are three possibilities when looking at the end behavior of a
+rational function:
+</p><!--l. 250--><p class="noindent"><em>For ease of notation, let <script type="math/tex">n</script> be the degree of the numerator and <script type="math/tex">m</script> be the degree of the
+denominator.</em> </p>
+     <ul class="itemize1">
+     <li class="itemize"><script type="math/tex">n = m</script> – Horizontal asymptote <script type="math/tex">y = \frac {a_n}{b_m}</script>
+     </li>
+     <li class="itemize"><script type="math/tex">n < m</script> – Horizontal asymptote <script type="math/tex">y = 0</script>
+     </li>
+     <li class="itemize"><script type="math/tex">n > m</script> – Oblique asymptote <script type="math/tex">y = </script> quotient <em>after synthetic division</em></li></ul>
+ 
+ 
+
+                                                                  
+
+                                                                  
+                                                                  
+
+
+</body></html>
