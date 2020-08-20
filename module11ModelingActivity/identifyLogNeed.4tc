@@ -1,4 +1,0 @@
-\expandafter\ifx\csname doTocEntry\endcsname\relax \expandafter\endinput\fi
-\doTocEntry\toclof{1}{\csname a:TocLink\endcsname{1}{x1-91}{}{\ignorespaces Logarithmic growth, characterized by rapid growth initially, then a more ``linear" growth later.}}{figure}\relax 
-\doTocEntry\toclof{2}{\csname a:TocLink\endcsname{1}{x1-102}{}{\ignorespaces Logarithmic decay, characterized by rapid decay initially, then a more ``linear" decay later.}}{figure}\relax 
-\doTocEntry\toclof{3}{\csname a:TocLink\endcsname{1}{x1-153}{}{\ignorespaces A sigmodial curve.}}{figure}\relax 

@@ -1,4 +1,0 @@
-\newenvironment {prompt}{}{}
-\newcommand {\ungraded }[0]{}
-\newcommand {\inputGif }[1]{The gif ``#1" would be inserted here when publishing online. }
-\newcommand {\HyperFirstAtBeginDocument }[0]{\AtBeginDocument }

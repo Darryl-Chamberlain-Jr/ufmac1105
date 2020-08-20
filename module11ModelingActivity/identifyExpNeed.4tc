@@ -1,5 +1,0 @@
-\expandafter\ifx\csname doTocEntry\endcsname\relax \expandafter\endinput\fi
-\doTocEntry\toclof{1}{\csname a:TocLink\endcsname{1}{x1-91}{}{\ignorespaces Exponential growth, characterized by a slow growth early, then a rapid growth later on.}}{figure}\relax 
-\doTocEntry\toclof{2}{\csname a:TocLink\endcsname{1}{x1-102}{}{\ignorespaces Exponential decay, characterized by rapid decay initially, then a slow decay later.}}{figure}\relax 
-\doTocEntry\toclof{3}{\csname a:TocLink\endcsname{1}{x1-113}{}{\ignorespaces Comparing $ae^{-x}$ (blue) and $-a\qopname  \relax o{log}(x)$ (green).}}{figure}\relax 
-\doTocEntry\toclof{4}{\csname a:TocLink\endcsname{1}{x1-164}{}{\ignorespaces Normal distribution curve.}}{figure}\relax 
