@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  20 AUG 2020 15:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  30 AUG 2020 10:47
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1575,33 +1575,33 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             See the microtype manual for details.
 )
 
-./operateOnComplexNumbers.tex:17: LaTeX Error: Environment abstract undefined.
+./operateOnComplexNumbers.tex:7: LaTeX Error: Environment abstract undefined.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.17 \begin{abstract}
-                     
+l.7 \begin{abstract}
+                    
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 
-./operateOnComplexNumbers.tex:19: LaTeX Error: \begin{document} ended by \end{a
-bstract}.
+./operateOnComplexNumbers.tex:9: LaTeX Error: \begin{document} ended by \end{ab
+stract}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.19 \end{abstract}
-                   
+l.9 \end{abstract}
+                  
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 30.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 22.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1609,7 +1609,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 30.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 22.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1621,24 +1621,30 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 
 ] [2]
 *********************************************************************
+
+Package sagetex Warning: there were undefined Sage formulas and/or plots.
+Run Sage on operateOnComplexNumbers.sagetex.sage, and then run LaTeX on operate
+OnComplexNumbers.tex again.
+
+*********************************************************************
 [3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 134.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 86.
  [4
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 134.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 86.
  (./operateOnComplexNumbers.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 134.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 134.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 134.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 86.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 86.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 86.
  ) 
 Here is how much of TeX's memory you used:
- 36468 strings out of 483184
- 798421 string characters out of 5966319
- 1297400 words of memory out of 5000000
- 50666 multiletter control sequences out of 15000+600000
+ 36469 strings out of 483184
+ 798427 string characters out of 5966319
+ 1298388 words of memory out of 5000000
+ 50667 multiletter control sequences out of 15000+600000
  534231 words of font info for 34 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 71i,6n,102p,1236b,759s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,6n,102p,1327b,759s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on operateOnComplexNumbers.dvi (4 pages, 10716 bytes).
+Output written on operateOnComplexNumbers.dvi (4 pages, 8984 bytes).

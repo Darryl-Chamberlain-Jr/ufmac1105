@@ -170,123 +170,114 @@ Choose all of the following numbers that are \textbf{Real} numbers.
 As you can see, there is a lot of overlap between these groups. You should also try to draw a picture like the video to represent how these subgroups interact. \textit{Since numbers belong to more than one group, the best way to describe these numbers is to identify the \textbf{smallest} subgroup they belong to.} The pictorial representation will help with this! \textbf{\Large Remember to reduce first, then decide the smallest subgroup the number belongs to!}
 
 \begin{sagesilent}
-	# THIS code generates a random Real Number. Options:
-	# Natural
-	# Whole
-	# Integer
-	# Rational
-	# Irrational
-	# Not a Real number
-	# Complex
-	# Dividing by zero
-	def generateNatural():
+def generateNatural():
 	denominator = ZZ.random_element(15)+1
 	numerator = denominator*(ZZ.random_element(15)+1)
 	negOrNo = ""
 	displayProblem = [numerator**2, denominator**2, negOrNo]
 	return displayProblem
-	def generateWhole():
+def generateWhole():
 	denomBefore = ZZ.random_element(15)+1
 	numerator = 0
 	negOrNo = ""
 	maybeComplexDisplayed = sample([1, 0], 1)
 	if maybeComplexDisplayed == 1:
-	denominator = latex(denomBefore*pi)
+        denominator = latex(denomBefore*pi)
 	else:
-	denominator = denomBefore
+        denominator = denomBefore
 	displayProblem = [numerator**2, denominator**2, negOrNo]
 	return displayProblem
-	def generateInteger():
-	denominator = ZZ.random_element(15)+1
+def generateInteger():
+    denominator = ZZ.random_element(15)+1
 	numerator = denominator*(ZZ.random_element(15)+1)
 	negOrNo = "-"
 	displayProblem = [numerator**2, denominator**2, negOrNo]
 	return displayProblem
-	def generateRational():
+def generateRational():
 	numeratorBefore = ZZ.random_element(15)+7
 	denominatorBefore = ZZ.random_element(15)+7
 	negative = ZZ.random_element(2)
 	if negative == 0:
-	negOrNo = ""
+	    negOrNo = ""
 	else:
-	negOrNo = "-"
+	    negOrNo = "-"
 	counter = 0
 	while gcd(numeratorBefore, denominatorBefore) >= min(numeratorBefore, denominatorBefore):
-	numerator = ZZ.random_element(15)+7
-	denominator = ZZ.random_element(15)+7
-	counter = counter + 1
+	    numerator = ZZ.random_element(15)+7
+	    denominator = ZZ.random_element(15)+7
+	    counter = counter + 1
 	numerator = numeratorBefore**2
 	denominator = denominatorBefore**2
 	displayProblem = [numerator, denominator, negOrNo]
 	return displayProblem
-	def generateIrrational():
+def generateIrrational():
 	numeratorBefore = ZZ.random_element(15)+1
 	denominatorBefore = ZZ.random_element(15)+1
 	negative = ZZ.random_element(2)
 	if negative == 0:
-	negOrNo = ""
+	    negOrNo = ""
 	else:
-	negOrNo = "-"
+	    negOrNo = "-"
 	integerType = type(sqrt(4))
 	while type(sqrt(numeratorBefore/denominatorBefore)) == integerType:
-	numeratorBefore = ZZ.random_element(15)+1
-	denominatorBefore = ZZ.random_element(15)+1
+	    numeratorBefore = ZZ.random_element(15)+1
+	    denominatorBefore = ZZ.random_element(15)+1
 	numerator = numeratorBefore
 	denominator = denominatorBefore
 	displayProblem = [numerator, denominator, negOrNo]
 	return displayProblem
-	def generateNotReal():
+def generateNotReal():
 	numeratorBefore = ZZ.random_element(15)+1
 	denominatorBefore = ZZ.random_element(15)+1
 	negative = ZZ.random_element(2)
 	if negative == 0:
-	negOrNo = ""
+	    negOrNo = ""
 	else:
-	negOrNo = "-"
+	    negOrNo = "-"
 	complexOrNotNumber = sample([0, 1, 2], 1)[0]
 	if complexOrNotNumber==0:
-	numerator = -numeratorBefore*pi
-	denominator = denominatorBefore
+	    numerator = -numeratorBefore*pi
+	    denominator = denominatorBefore
 	elif complexOrNotNumber==1:
-	numerator = -numeratorBefore
-	denominator = denominatorBefore*pi
+	    numerator = -numeratorBefore
+	    denominator = denominatorBefore*pi
 	else:
-	topOrBottom = ZZ.random_element(2)
-	if topOrBottom==0:
-	numerator = -numeratorBefore
-	denominator = 0
-	else:
-	numerator = -numeratorBefore * pi
-	denominator = 0
+	    topOrBottom = ZZ.random_element(2)
+	    if topOrBottom==0:
+	        numerator = -numeratorBefore
+	        denominator = 0
+	    else:
+	        numerator = -numeratorBefore * pi
+	        denominator = 0
 	displayProblem = [numerator, denominator, negOrNo]
 	return displayProblem
-	def generateDisplay(answer):
+def generateDisplay(answer):
 	if answer == 0:
-	numerator, denominator, negOrNo = generateNatural()
+	    numerator, denominator, negOrNo = generateNatural()
 	elif answer == 1:
-	numerator, denominator, negOrNo = generateWhole()
+	    numerator, denominator, negOrNo = generateWhole()
 	elif answer == 2:
-	numerator, denominator, negOrNo = generateInteger()
+	    numerator, denominator, negOrNo = generateInteger()
 	elif answer == 3:
-	numerator, denominator, negOrNo = generateRational()
+	    numerator, denominator, negOrNo = generateRational()
 	elif answer == 4:
-	numerator, denominator, negOrNo = generateIrrational()
+	    numerator, denominator, negOrNo = generateIrrational()
 	elif answer == 5:
-	numerator, denominator, negOrNo = generateNotReal()
+	    numerator, denominator, negOrNo = generateNotReal()
 	else:
-	numerator, denominator, negOrNo = [0, 0, 0]
+	    numerator, denominator, negOrNo = [0, 0, 0]
 	return [numerator, denominator, negOrNo]
-	############ END OF DEFINITIONS ###############
-	listOptions=[0, 1, 2, 3, 4, 5]
-	###### QUESTION 1 #########
-	answer1 = sample(listOptions, 1)[0]
-	numerator1, denominator1, negOrNo1 = generateDisplay(answer1)
-	###### QUESTION 2 #########
-	answer2 = sample(listOptions, 1)[0]
-	numerator2, denominator2, negOrNo2 = generateDisplay(answer2)
-	###### QUESTION 3 #########
-	answer3 = sample(listOptions, 1)[0]
-	numerator3, denominator3, negOrNo3 = generateDisplay(answer3)
+############ END OF DEFINITIONS ###############
+listOptions=[0, 1, 2, 3, 4, 5]
+###### QUESTION 1 #########
+answer1 = sample(listOptions, 1)[0]
+numerator1, denominator1, negOrNo1 = generateDisplay(answer1)
+###### QUESTION 2 #########
+answer2 = sample(listOptions, 1)[0]
+numerator2, denominator2, negOrNo2 = generateDisplay(answer2)
+###### QUESTION 3 #########
+answer3 = sample(listOptions, 1)[0]
+numerator3, denominator3, negOrNo3 = generateDisplay(answer3)
 \end{sagesilent}
 
 \textbf{Note: This part of the homework will change each time you click ``Another". You can keep clicking ``Another" to practice seeing these more difficult numbers to classify.}

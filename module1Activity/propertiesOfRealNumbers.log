@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  20 AUG 2020 15:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  30 AUG 2020 10:47
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1601,7 +1601,7 @@ Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 33.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 35.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1609,7 +1609,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 33.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 35.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1622,23 +1622,23 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ] [2] [3]
 *********************************************************************
 [4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 152.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 154.
  [5
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 152.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 154.
  (./propertiesOfRealNumbers.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 152.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 152.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 152.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 154.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 154.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 154.
  ) 
 Here is how much of TeX's memory you used:
- 36488 strings out of 483184
- 798728 string characters out of 5966319
+ 36490 strings out of 483184
+ 798732 string characters out of 5966319
  1298392 words of memory out of 5000000
- 50681 multiletter control sequences out of 15000+600000
+ 50683 multiletter control sequences out of 15000+600000
  535849 words of font info for 39 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  71i,6n,102p,1236b,759s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on propertiesOfRealNumbers.dvi (5 pages, 13992 bytes).
+Output written on propertiesOfRealNumbers.dvi (5 pages, 14188 bytes).

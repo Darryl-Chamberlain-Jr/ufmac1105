@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  20 AUG 2020 15:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  30 AUG 2020 10:47
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1602,7 +1602,7 @@ Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 42.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 46.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1610,7 +1610,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 42.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 46.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1624,15 +1624,15 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 [4]
 *********************************************************************
 [5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 263.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 267.
  [6
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 263.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 267.
  (./subgroupOfComplexNumbers.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 263.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 263.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 263.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 267.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 267.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 267.
  ) 
 Here is how much of TeX's memory you used:
  36500 strings out of 483184
@@ -1643,4 +1643,4 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 8191
  71i,6n,102p,1237b,758s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on subgroupOfComplexNumbers.dvi (6 pages, 23284 bytes).
+Output written on subgroupOfComplexNumbers.dvi (6 pages, 23556 bytes).
