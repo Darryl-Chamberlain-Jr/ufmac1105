@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  30 AUG 2020 10:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  31 AUG 2020 15:31
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -897,7 +897,7 @@ Package: tex4ht
 version 2019-12-19-14:27
 )
 (./sagetex.sty
-Package: sagetex 2019/01/09 v3.2 embedding Sage into LaTeX documents
+Package: sagetex 2019/11/14 v3.4 embedding Sage into LaTeX documents
  (/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2019/11/10 v1.5r LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks55
@@ -918,9 +918,10 @@ Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
 \c@ST@cmdline=\count351
 \sagetexindent=\skip67
 
-No file operateOnComplexNumbers.sagetex.sout.
+(./operateOnComplexNumbers.sagetex.sout)
 \sagecommandlineskip=\skip68
-)) (/home/dchamberlain31/texmf/tex/latex/ximeraLatex/ximera.cfg
+))
+(/home/dchamberlain31/texmf/tex/latex/ximeraLatex/ximera.cfg
 (/usr/share/texlive/texmf-dist/tex/generic/tex4ht/tex4ht.4ht
 version 2018-12-30-09:29
 --------------------------------------
@@ -1621,30 +1622,24 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 
 ] [2]
 *********************************************************************
-
-Package sagetex Warning: there were undefined Sage formulas and/or plots.
-Run Sage on operateOnComplexNumbers.sagetex.sage, and then run LaTeX on operate
-OnComplexNumbers.tex again.
-
-*********************************************************************
-[3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 86.
- [4
+[3] [4]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 126.
+ [5
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 86.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 126.
  (./operateOnComplexNumbers.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 86.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 86.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 86.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 126.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 126.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 126.
  ) 
 Here is how much of TeX's memory you used:
- 36469 strings out of 483184
- 798427 string characters out of 5966319
- 1298388 words of memory out of 5000000
- 50667 multiletter control sequences out of 15000+600000
+ 36496 strings out of 483184
+ 798931 string characters out of 5966319
+ 1298904 words of memory out of 5000000
+ 50692 multiletter control sequences out of 15000+600000
  534231 words of font info for 34 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  71i,6n,102p,1327b,759s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on operateOnComplexNumbers.dvi (4 pages, 8984 bytes).
+Output written on operateOnComplexNumbers.dvi (5 pages, 11084 bytes).
