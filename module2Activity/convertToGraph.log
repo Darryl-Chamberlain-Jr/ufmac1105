@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  20 AUG 2020 15:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  1 SEP 2020 14:12
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -896,9 +896,10 @@ Package: tex4ht
 (/usr/share/texlive/texmf-dist/tex/generic/tex4ht/usepackage.4ht
 version 2019-12-19-14:27
 )
-(./sagetex.sty
-Package: sagetex 2019/01/09 v3.2 embedding Sage into LaTeX documents
- (/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
+(/usr/share/texmf/tex/latex/sagetex/sagetex.sty
+Package: sagetex 2019/11/14 v3.4 embedding Sage into LaTeX documents
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2019/11/10 v1.5r LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks55
 \verbatim@line=\toks56
@@ -918,7 +919,7 @@ Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
 \c@ST@cmdline=\count351
 \sagetexindent=\skip67
 
-No file convertToGraph.sagetex.sout.
+(./convertToGraph.sagetex.sout)
 \sagecommandlineskip=\skip68
 )) (../preamble.tex
 (/usr/share/texlive/texmf-dist/tex/generic/tex4ht/usepackage.4ht
@@ -1907,11 +1908,11 @@ Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-l.34 --- TeX4ht warning --- File `"question1.xbb"' not found ---
-l.34 --- TeX4ht warning --- Cannot determine size of graphic in "question1.xbb"
+l.37 --- TeX4ht warning --- File `"question1.xbb"' not found ---
+l.37 --- TeX4ht warning --- Cannot determine size of graphic in "question1.xbb"
  (no BoundingBox) ---
-l. 34 --- needs --- question1.png ---
-LaTeX Font Info:    Trying to load font information for U+msa on input line 36.
+l. 37 --- needs --- question1.png ---
+LaTeX Font Info:    Trying to load font information for U+msa on input line 39.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1919,7 +1920,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 36.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 39.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1928,36 +1929,36 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-l.48 --- TeX4ht warning --- File `"question2.xbb"' not found ---
-l.48 --- TeX4ht warning --- Cannot determine size of graphic in "question2.xbb"
+l.51 --- TeX4ht warning --- File `"question2.xbb"' not found ---
+l.51 --- TeX4ht warning --- Cannot determine size of graphic in "question2.xbb"
  (no BoundingBox) ---
-l. 48 --- needs --- question2.png ---
-l.62 --- TeX4ht warning --- File `"question3.xbb"' not found ---
-l.62 --- TeX4ht warning --- Cannot determine size of graphic in "question3.xbb"
+l. 51 --- needs --- question2.png ---
+l.65 --- TeX4ht warning --- File `"question3.xbb"' not found ---
+l.65 --- TeX4ht warning --- Cannot determine size of graphic in "question3.xbb"
  (no BoundingBox) ---
-l. 62 --- needs --- question3.png ---
+l. 65 --- needs --- question3.png ---
 [1
 
 ]
 *********************************************************************
 [2]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 73.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 76.
  [3
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 73.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 76.
  (./convertToGraph.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 73.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 73.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 73.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 76.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 76.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 76.
  ) 
 Here is how much of TeX's memory you used:
- 42182 strings out of 483184
- 937398 string characters out of 5966319
- 1471145 words of memory out of 5000000
- 56114 multiletter control sequences out of 15000+600000
+ 42187 strings out of 483184
+ 937633 string characters out of 5966319
+ 1471203 words of memory out of 5000000
+ 56116 multiletter control sequences out of 15000+600000
  534231 words of font info for 34 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  71i,6n,102p,1247b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on convertToGraph.dvi (3 pages, 8360 bytes).
+Output written on convertToGraph.dvi (3 pages, 8732 bytes).

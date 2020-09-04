@@ -11,7 +11,7 @@ Jr."/>
 <link href="https://ximera.osu.edu/public/stylesheets/standalone.css" rel="stylesheet" media="screen"/> 
 <script type="text/javascript" async="" src="https://ximera.osu.edu/public/javascripts/standalone.min.js"></script> 
 <meta name="learning-outcome" content="Recognize and construct linear functions as well as solve linear equations."/> 
-<meta name="dependency" content="5a065b29fce338e682cfd6f665ae2788d0db9195 preamble.tex"/><meta name="dependency" content="dabca10bfd91b4d66f4507ebe5b9a6b43b35188e module2Activity/convertSlopeInterceptStandard.tex"/></head><body> 
+<meta name="dependency" content="5a065b29fce338e682cfd6f665ae2788d0db9195 preamble.tex"/><meta name="dependency" content="f58e7e5eb7e90bab5bc406f63c66279fc56a3a44 module2Activity/convertSlopeInterceptStandard.tex"/></head><body> 
 <div class="preamble"><script type="math/tex">\newenvironment {prompt}{}{}
 \newcommand {\ungraded }[0]{}
 \newcommand {\npnoround }[0]{\nprounddigits {-1}}
@@ -23,11 +23,13 @@ Jr."/>
 <div class="abstract">
 <!--l. 18--><p class="noindent">Converting between Slope-Intercept form and Standard form.
 </p></div>   <div class="maketitle"></div>
-<a href="https://cnx.org/contents/mwjClAV_@8.1:62_eXnY6@14/Linear-Equations-in-One-Variable">Link to section in online textbook.</a>
-<!--l. 28--><p class="noindent">First, watch <span class="underline"><a href="https://mediasite.video.ufl.edu/Mediasite/Play/49d31e3bbea64e158f4481960444eb791d">this video</a></span> to learn about the different forms we usually write linear
-functions in. This objective will focus on converting between Slope-Intercept form
-and Standard form.
+<a href="https://cnx.org/contents/mwjClAV_@8.1:62_eXnY6@14/Linear-Equations-in-One-Variable">Link to section in online textbook</a> and <a href="https://activecalculus.org/prelude/sec-changing-linear.html">link to section in Prelude to Active Calculus
+textbook</a>.
+<!--l. 29--><p class="noindent">First, watch the video below to learn about the different forms we usually write linear
+functions in. You can <a href="http://people.clas.ufl.edu/dchamberlain31/files/Objective-2-Converting-between-linear-forms.pdf">use the notes here</a> to follow along with the video and record
+your thoughts.
 </p>
+<div class="video youtube-player" data-youtube="5S3UulVooP0">_</div>
 <script type="text/sagemath">x = var('x')
 y = var('y')
 
@@ -47,11 +49,11 @@ def standardToSlopeInt():
         C = maybeMakeNegative(ZZ.random_element(2, 9))
     slope = float(-A/B)
     yInt = float(C/B)
+                                                                  
+
+                                                                  
     return [A, B, C, slope, yInt]
 
-                                                                  
-
-                                                                  
 def sloptIntToStandard():
     mNum = maybeMakeNegative(ZZ.random_element(2, 9))
     mDenom = ZZ.random_element(2, 9)
@@ -82,26 +84,26 @@ equationXY2 = A2*x + B2*y
 A3, B3, C3, slope3, yInt3 = sloptIntToStandard()
 equationSlopeInt3 = slope3*x + yInt3
 A4, B4, C4, slope4, yInt4 = sloptIntToStandard()
-equationSlopeInt4 = slope4*x + yInt4
-</script>
                                                                   
 
                                                                   
+equationSlopeInt4 = slope4*x + yInt4
+</script>
 <div role="article" class="problem-environment question" id="problem1"><a id="x1-8r1"></a> Convert the linear function below from Standard form to Slope-Intercept
 form.
-<!--l. 89--><p class="noindent">
+<!--l. 92--><p class="noindent">
                                  <script type="math/tex; mode=display"> \sage {equationXY1} = \sage {C1} </script>
-</p><!--l. 91--><p class="noindent"><script type="math/tex">y = \answer [tolerance=0.05]{\sage {slope1}}x + \answer [tolerance=0.05]{\sage {yInt1}}</script>
+</p><!--l. 94--><p class="noindent"><script type="math/tex">y = \answer [tolerance=0.05]{\sage {slope1}}x + \answer [tolerance=0.05]{\sage {yInt1}}</script>
 </p></div>
 <div role="article" class="problem-environment question" id="problem2"><a id="x1-9r2"></a> Convert the linear function below from Standard form to Slope-Intercept
 form.
-<!--l. 98--><p class="noindent">
+<!--l. 101--><p class="noindent">
                                  <script type="math/tex; mode=display"> \sage {equationXY2} = \sage {C2} </script>
-</p><!--l. 100--><p class="noindent"><script type="math/tex">y = \answer [tolerance=0.05]{\sage {slope2}}x + \answer [tolerance=0.5]{\sage {yInt2}}</script>
+</p><!--l. 103--><p class="noindent"><script type="math/tex">y = \answer [tolerance=0.05]{\sage {slope2}}x + \answer [tolerance=0.5]{\sage {yInt2}}</script>
 </p></div>
 <div role="article" class="problem-environment question" id="problem3"><a id="x1-10r3"></a> Convert the linear function below from Slope-Intercept form to Standard
 form.
-<!--l. 107--><p class="noindent">
+<!--l. 110--><p class="noindent">
                                                                   
 
                                                                   
@@ -110,17 +112,17 @@ form.
 <div role="article" class="problem-environment hint" id="problem4"><a id="x1-11r4"></a> What do we know about the coefficients in Standard Form? Is there anything special
 about the coefficient for <script type="math/tex">x</script>?
 </div>
-<!--l. 113--><p class="noindent"><script type="math/tex"> \answer {\sage {A3}}x + \answer {\sage {B3}}y = \answer {\sage {C3}} </script>
+<!--l. 116--><p class="noindent"><script type="math/tex"> \answer {\sage {A3}}x + \answer {\sage {B3}}y = \answer {\sage {C3}} </script>
 </p></div>
 <div role="article" class="problem-environment question" id="problem5"><a id="x1-12r5"></a> Convert the linear function below from Slope-Intercept form to Standard
 form.
-<!--l. 120--><p class="noindent">
+<!--l. 123--><p class="noindent">
                                  <script type="math/tex; mode=display"> y = \sage {equationSlopeInt4}</script>
 </p>
 <div role="article" class="problem-environment hint" id="problem6"><a id="x1-13r6"></a> What do we know about the coefficients in Standard Form? Is there anything special
 about the coefficient for <script type="math/tex">x</script>?
 </div>
-<!--l. 126--><p class="noindent"><script type="math/tex"> \answer {\sage {A4}}x + \answer {\sage {B4}}y = \answer {\sage {C4}} </script>
+<!--l. 129--><p class="noindent"><script type="math/tex"> \answer {\sage {A4}}x + \answer {\sage {B4}}y = \answer {\sage {C4}} </script>
 </p></div>
  
  
