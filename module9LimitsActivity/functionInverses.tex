@@ -53,7 +53,7 @@ def generateInverseSquareRoot():
     k = maybeMakeNegative(ZZ.random_element(2, 8))
     squareRoot = sqrt(h1*x + h2) + k
     pivot = -h2/h1
-    if (h1*(pivot - 1) + h2) &lt; 0:
+    if 0 > (h1*(pivot - 1) + h2):
         domain = [pivot, Infinity]
     else:
         domain = [-Infinity, pivot]
@@ -90,7 +90,6 @@ f4, f4Inverse, domain4 = generateInverseSquareRoot()
 while domain4[0] > -Infinity:
     f4, f4Inverse, domain4 = generateInverseSquareRoot()
 f5, f5Inverse = generateInverseCubeRoot()
- 
 \end{sagesilent}
  
 % Q1 - Inverse for cubic.

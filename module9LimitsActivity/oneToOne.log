@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  20 AUG 2020 15:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  4 SEP 2020 15:54
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -896,9 +896,10 @@ Package: tex4ht
 (/usr/share/texlive/texmf-dist/tex/generic/tex4ht/usepackage.4ht
 version 2019-12-19-14:27
 )
-(./sagetex.sty
-Package: sagetex 2015/08/26 v3.0-92d9f7a embedding Sage into LaTeX documents
- (/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
+(/usr/share/texmf/tex/latex/sagetex/sagetex.sty
+Package: sagetex 2019/11/14 v3.4 embedding Sage into LaTeX documents
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2019/11/10 v1.5r LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks55
 \verbatim@line=\toks56
@@ -918,7 +919,7 @@ Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
 \c@ST@cmdline=\count351
 \sagetexindent=\skip67
 
-No file oneToOne.sagetex.sout.
+(./oneToOne.sagetex.sout)
 \sagecommandlineskip=\skip68
 )) (../preamble.tex
 (/usr/share/texlive/texmf-dist/tex/generic/tex4ht/usepackage.4ht
@@ -1939,10 +1940,10 @@ Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 259.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 259.
  ) 
 Here is how much of TeX's memory you used:
- 42196 strings out of 483184
- 937436 string characters out of 5966319
- 1470085 words of memory out of 5000000
- 56131 multiletter control sequences out of 15000+600000
+ 42203 strings out of 483184
+ 937639 string characters out of 5966319
+ 1470118 words of memory out of 5000000
+ 56135 multiletter control sequences out of 15000+600000
  534885 words of font info for 36 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  71i,6n,102p,1241b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
