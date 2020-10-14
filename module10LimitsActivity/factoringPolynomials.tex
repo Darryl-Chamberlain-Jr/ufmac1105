@@ -54,7 +54,7 @@ def makeIrrationalQuadratic():
     c = maybeMakeNegative(ZZ.random_element(1, 6))
     discrim = b**2 - 4*a*c
     integerType = type(2)
-    while type(sqrt(discrim)) == integerType or discrim &lt; 0:
+    while type(sqrt(discrim)) == integerType or 0 > discrim:
         a = ZZ.random_element(1, 6)
         b = maybeMakeNegative(ZZ.random_element(1, 6))
         c = maybeMakeNegative(ZZ.random_element(1, 6))

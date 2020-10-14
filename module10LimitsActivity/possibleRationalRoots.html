@@ -11,7 +11,7 @@ Jr."/>
 <link href="https://ximera.osu.edu/public/stylesheets/standalone.css" rel="stylesheet" media="screen"/> 
 <script type="text/javascript" async="" src="https://ximera.osu.edu/public/javascripts/standalone.min.js"></script> 
 <meta name="learning-outcome" content=""/> 
-<meta name="dependency" content="fda9bd90b71fa8dddb0e44122fab7fc54aecf28a preamble.tex"/><meta name="dependency" content="98012aecd38c92385282e6e4472ab1c2b2c8b9a6 module10LimitsActivity/possibleRationalRoots.tex"/></head><body> 
+<meta name="dependency" content="fda9bd90b71fa8dddb0e44122fab7fc54aecf28a preamble.tex"/><meta name="dependency" content="e54e79b127d0db77eefd4e8248dd4f628241d1f3 module10LimitsActivity/possibleRationalRoots.tex"/></head><body> 
 <div class="preamble"><script type="math/tex">\newenvironment {prompt}{}{}
 \newcommand {\ungraded }[0]{}
 \newcommand {\npnoround }[0]{\nprounddigits {-1}}
@@ -58,7 +58,7 @@ below.</strong>
 <script type="text/sagemath">listSomePrimes = [2, 3, 5, 7, 11]
 divisor0, divisor1 = sample(listSomePrimes, 2)
 notPerfectSquare = divisor0 * divisor1
-if divisor0 < divisor1:
+if divisor1 > divisor0:
     smallerDivisor = divisor0
     largerDivisor = divisor1
 else:

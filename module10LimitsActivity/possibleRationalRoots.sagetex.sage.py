@@ -13,7 +13,7 @@ try:
  listSomePrimes = [_sage_const_2 , _sage_const_3 , _sage_const_5 , _sage_const_7 , _sage_const_11 ]
  divisor0, divisor1 = sample(listSomePrimes, _sage_const_2 )
  notPerfectSquare = divisor0 * divisor1
- if divisor0 < divisor1:
+ if divisor1 > divisor0:
      smallerDivisor = divisor0
      largerDivisor = divisor1
  else:
