@@ -11,7 +11,7 @@ Jr."/>
 <link href="https://ximera.osu.edu/public/stylesheets/standalone.css" rel="stylesheet" media="screen"/> 
 <script type="text/javascript" async="" src="https://ximera.osu.edu/public/javascripts/standalone.min.js"></script> 
 <meta name="learning-outcome" content=""/> 
-<meta name="dependency" content="fda9bd90b71fa8dddb0e44122fab7fc54aecf28a preamble.tex"/><meta name="dependency" content="d6bffd7ab4799c9ccb4bd34149fccc188975ffc0 module9LimitsActivity/functionInverses.tex"/></head><body> 
+<meta name="dependency" content="fda9bd90b71fa8dddb0e44122fab7fc54aecf28a preamble.tex"/><meta name="dependency" content="1bd75e3bad9d14d4eb50c76851482bf176a0015f module9LimitsActivity/functionInverses.tex"/></head><body> 
 <div class="preamble"><script type="math/tex">\newenvironment {prompt}{}{}
 \newcommand {\ungraded }[0]{}
 \newcommand {\npnoround }[0]{\nprounddigits {-1}}
@@ -47,7 +47,7 @@ def generateInverseSquareRoot():
     k = maybeMakeNegative(ZZ.random_element(2, 8))
     squareRoot = sqrt(h1*x + h2) + k
     pivot = -h2/h1
-    if (h1*(pivot - 1) + h2) &lt; 0:
+    if 0 > (h1*(pivot - 1) + h2):
         domain = [pivot, Infinity]
                                                                   
 
@@ -90,59 +90,58 @@ f4, f4Inverse, domain4 = generateInverseSquareRoot()
 while domain4[0] > -Infinity:
     f4, f4Inverse, domain4 = generateInverseSquareRoot()
 f5, f5Inverse = generateInverseCubeRoot()
-
 </script>
 <div role="article" class="problem-environment question" id="problem1"><a id="x1-8r1"></a> Determine whether the function below is 1-1.
-<!--l. 100--><p class="noindent">
+<!--l. 99--><p class="noindent">
                                  <script type="math/tex; mode=display"> f(x) = \sage {f1} </script>
-</p><!--l. 102--><p class="noindent">If <script type="math/tex">f(x)</script> is 1-1, find the inverse function. If <script type="math/tex">f(x)</script> is not 1-1, put “NA”.
-</p><!--l. 104--><p class="noindent">
+</p><!--l. 101--><p class="noindent">If <script type="math/tex">f(x)</script> is 1-1, find the inverse function. If <script type="math/tex">f(x)</script> is not 1-1, put “NA”.
+</p><!--l. 103--><p class="noindent">
                                  <script type="math/tex; mode=display"> f^{-1}(x) = \answer {\sage {f1Inverse}} </script>
 </p>
 <div class="feedback" data-feedback="attempt" id="feedback2">To find the inverse of a function, switch <script type="math/tex">x</script> and <script type="math/tex">y</script>, then solve for <script type="math/tex">y</script>. Don’t round. </div>
 </div>
+<div role="article" class="problem-environment question" id="problem3"><a id="x1-9r2"></a>
                                                                   
 
                                                                   
-<div role="article" class="problem-environment question" id="problem3"><a id="x1-9r2"></a>
-<!--l. 115--><p class="noindent">Determine whether the function below is 1-1.
-</p><!--l. 117--><p class="noindent">
+<!--l. 114--><p class="noindent">Determine whether the function below is 1-1.
+</p><!--l. 116--><p class="noindent">
                                  <script type="math/tex; mode=display"> f(x) = \sage {f2} </script>
-</p><!--l. 119--><p class="noindent">If <script type="math/tex">f(x)</script> is 1-1, find the inverse function. If <script type="math/tex">f(x)</script> is not 1-1, put “NA”.
-</p><!--l. 121--><p class="noindent">
+</p><!--l. 118--><p class="noindent">If <script type="math/tex">f(x)</script> is 1-1, find the inverse function. If <script type="math/tex">f(x)</script> is not 1-1, put “NA”.
+</p><!--l. 120--><p class="noindent">
                                  <script type="math/tex; mode=display"> f^{-1}(x) = \answer [format=string]{NA} </script>
 </p>
 <div class="feedback" data-feedback="attempt" id="feedback4">To find the inverse of a function, switch <script type="math/tex">x</script> and <script type="math/tex">y</script>, then solve for <script type="math/tex">y</script>. Don’t round. </div>
 </div>
 <div role="article" class="problem-environment question" id="problem5"><a id="x1-10r3"></a> Determine whether the function below is 1-1.
-<!--l. 133--><p class="noindent">
+<!--l. 132--><p class="noindent">
                                                                   
 
                                                                   
                                  <script type="math/tex; mode=display"> f(x) = \sage {f3} </script>
-</p><!--l. 135--><p class="noindent">If <script type="math/tex">f(x)</script> is 1-1, find the inverse function. If <script type="math/tex">f(x)</script> is not 1-1, put “NA”.
-</p><!--l. 137--><p class="noindent">
+</p><!--l. 134--><p class="noindent">If <script type="math/tex">f(x)</script> is 1-1, find the inverse function. If <script type="math/tex">f(x)</script> is not 1-1, put “NA”.
+</p><!--l. 136--><p class="noindent">
                                  <script type="math/tex; mode=display"> f^{-1}(x) = \answer {\sage {f3Inverse}} </script>
 </p>
 <div class="feedback" data-feedback="attempt" id="feedback6">To find the inverse of a function, switch <script type="math/tex">x</script> and <script type="math/tex">y</script>, then solve for <script type="math/tex">y</script>. Don’t round. </div>
 </div>
 <div role="article" class="problem-environment question" id="problem7"><a id="x1-11r4"></a> Determine whether the function below is 1-1.
-<!--l. 149--><p class="noindent">
+<!--l. 148--><p class="noindent">
+                                 <script type="math/tex; mode=display"> f(x) = \sage {f4} </script>
+</p><!--l. 150--><p class="noindent">If <script type="math/tex">f(x)</script> is 1-1, find the inverse function. If <script type="math/tex">f(x)</script> is not 1-1, put “NA”.
+</p><!--l. 152--><p class="noindent">
                                                                   
 
                                                                   
-                                 <script type="math/tex; mode=display"> f(x) = \sage {f4} </script>
-</p><!--l. 151--><p class="noindent">If <script type="math/tex">f(x)</script> is 1-1, find the inverse function. If <script type="math/tex">f(x)</script> is not 1-1, put “NA”.
-</p><!--l. 153--><p class="noindent">
                                  <script type="math/tex; mode=display"> f^{-1}(x) = \answer {\sage {f4Inverse}} </script>
 </p>
 <div class="feedback" data-feedback="attempt" id="feedback8">To find the inverse of a function, switch <script type="math/tex">x</script> and <script type="math/tex">y</script>, then solve for <script type="math/tex">y</script>. Don’t round. </div>
 </div>
 <div role="article" class="problem-environment question" id="problem9"><a id="x1-12r5"></a> Determine whether the function below is 1-1.
-<!--l. 165--><p class="noindent">
+<!--l. 164--><p class="noindent">
                                  <script type="math/tex; mode=display"> f(x) = \sage {f5} </script>
-</p><!--l. 167--><p class="noindent">If <script type="math/tex">f(x)</script> is 1-1, find the inverse function. If <script type="math/tex">f(x)</script> is not 1-1, put “NA”.
-</p><!--l. 169--><p class="noindent">
+</p><!--l. 166--><p class="noindent">If <script type="math/tex">f(x)</script> is 1-1, find the inverse function. If <script type="math/tex">f(x)</script> is not 1-1, put “NA”.
+</p><!--l. 168--><p class="noindent">
                                                                   
 
                                                                   
