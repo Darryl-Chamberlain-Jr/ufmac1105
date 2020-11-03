@@ -11,7 +11,7 @@ Jr."/>
 <link href="https://ximera.osu.edu/public/stylesheets/standalone.css" rel="stylesheet" media="screen"/> 
 <script type="text/javascript" async="" src="https://ximera.osu.edu/public/javascripts/standalone.min.js"></script> 
 <meta name="learning-outcome" content=""/> 
-<meta name="dependency" content="fda9bd90b71fa8dddb0e44122fab7fc54aecf28a preamble.tex"/><meta name="dependency" content="c0b867c1f0bbc78426208789940c79c6a553cc2a module10LimitsActivity/factoringPolynomials.tex"/></head><body> 
+<meta name="dependency" content="fda9bd90b71fa8dddb0e44122fab7fc54aecf28a preamble.tex"/><meta name="dependency" content="4dc7735df2f180ec5e06133c1ceb178daaa61529 module10LimitsActivity/factoringPolynomials.tex"/></head><body> 
 <div class="preamble"><script type="math/tex">\newenvironment {prompt}{}{}
 \newcommand {\ungraded }[0]{}
 \newcommand {\npnoround }[0]{\nprounddigits {-1}}
@@ -55,7 +55,7 @@ def makeIrrationalQuadratic():
     c = maybeMakeNegative(ZZ.random_element(1, 6))
     discrim = b**2 - 4*a*c
     integerType = type(2)
-    while type(sqrt(discrim)) == integerType or discrim &lt; 0:
+    while type(sqrt(discrim)) == integerType or 0 > discrim:
         a = ZZ.random_element(1, 6)
         b = maybeMakeNegative(ZZ.random_element(1, 6))
         c = maybeMakeNegative(ZZ.random_element(1, 6))

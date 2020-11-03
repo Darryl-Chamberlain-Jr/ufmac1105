@@ -35,7 +35,7 @@ try:
      c = maybeMakeNegative(ZZ.random_element(_sage_const_1 , _sage_const_6 ))
      discrim = b**_sage_const_2  - _sage_const_4 *a*c
      integerType = type(_sage_const_2 )
-     while type(sqrt(discrim)) == integerType or discrim &lt; _sage_const_0 :
+     while type(sqrt(discrim)) == integerType or _sage_const_0  > discrim:
          a = ZZ.random_element(_sage_const_1 , _sage_const_6 )
          b = maybeMakeNegative(ZZ.random_element(_sage_const_1 , _sage_const_6 ))
          c = maybeMakeNegative(ZZ.random_element(_sage_const_1 , _sage_const_6 ))
