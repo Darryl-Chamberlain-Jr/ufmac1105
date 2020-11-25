@@ -11,7 +11,7 @@ Jr."/>
 <link href="https://ximera.osu.edu/public/stylesheets/standalone.css" rel="stylesheet" media="screen"/> 
 <script type="text/javascript" async="" src="https://ximera.osu.edu/public/javascripts/standalone.min.js"></script> 
 <meta name="learning-outcome" content=""/> 
-<meta name="dependency" content="fda9bd90b71fa8dddb0e44122fab7fc54aecf28a preamble.tex"/><meta name="dependency" content="b219f1ebe7d3d1f07d6d4b5844de04cdcec08e9c module8Activity/convertLogExp.tex"/></head><body> 
+<meta name="dependency" content="fda9bd90b71fa8dddb0e44122fab7fc54aecf28a preamble.tex"/><meta name="dependency" content="dacce25a58a002e1dcc0537b8cae7145c5185c75 module8Activity/convertLogExp.tex"/></head><body> 
 <div class="preamble"><script type="math/tex">\newenvironment {prompt}{}{}
 \newcommand {\ungraded }[0]{}
 \newcommand {\npnoround }[0]{\nprounddigits {-1}}
@@ -24,12 +24,15 @@ Jr."/>
 <!--l. 18--><p class="noindent">Convert between logarithmic and exponential forms of a function.
 </p></div>   <div class="maketitle"></div>
 <a href="https://cnx.org/contents/mwjClAV_@8.1:dGtL5139@10/Logarithmic-Functions">Link to section in online textbook.</a>
-<!--l. 28--><p class="noindent">First, watch <span class="underline"><a href="https://www.youtube.com/watch?v=t0zDL8c6ZHs">this video</a></span> on converting between logarithmic and exponential functions
-and <span class="underline"><a href="https://mediasite.video.ufl.edu/Mediasite/Play/09f642efc33c49e1be49f7d6a6e51d311d">this video</a></span> learn how to use these conversions to solve an equation. We use the
-conversion:
-</p><!--l. 31--><p class="noindent">
+<!--l. 28--><p class="noindent">First, watch the video below to learn how to convert between logarithmic and
+exponential functions. You can print out <a href="http://people.clas.ufl.edu/dchamberlain31/files/Objective-2-Converting-Between-Forms.pdf">these notes</a> to follow along and keep notes
+to organize your thoughts.
+</p>
+<div class="video youtube-player" data-youtube="nTEYaZcVVVs">_</div>
+<!--l. 32--><p class="noindent">We use the conversion:
+</p><!--l. 34--><p class="noindent">
                                  <script type="math/tex; mode=display"> y = \log _b{(x)} \leftrightarrow x = b^y</script>
-</p><!--l. 33--><p class="noindent">This portion of the homework is short so that if you know it, you can keep moving
+</p><!--l. 36--><p class="noindent">This portion of the homework is short so that if you know it, you can keep moving
 forward. If you don’t, use the ”Another” button to keep reloading new questions until
 you feel comfortable.
 </p>
@@ -38,12 +41,12 @@ y = var("y")
 
 def createVariables():
     listWholes = ZZ.range(9)
-    uniqueList = Subsets([listWholes[i] + 2 for i in range(9)], 3)
-    base, horShift, vertShift = uniqueList.random_element()
-    vertShift = (-1)**ZZ.random_element(2)
                                                                   
 
                                                                   
+    uniqueList = Subsets([listWholes[i] + 2 for i in range(9)], 3)
+    base, horShift, vertShift = uniqueList.random_element()
+    vertShift = (-1)**ZZ.random_element(2)
     return [base, horShift, vertShift]
 
 def convertToExpFunction(base, horShift, vertShift, var):
@@ -63,24 +66,24 @@ expFunction6 = convertToExpFunction(base6, vertShift6, horShift6, x)
 answerVert6 = y - vertShift6
 </script>
 <div role="article" class="problem-environment question" id="problem1"><a id="x1-8r1"></a> Convert the function below to exponential form.
-<!--l. 70--><p class="noindent">
+<!--l. 72--><p class="noindent">
                                  <script type="math/tex; mode=display"> y = \log _{\sage {base5}}(\sage {logFunction5}) + \sage {vertShift5} </script>
-</p><!--l. 72--><p class="noindent"><script type="math/tex"> x = \answer {\sage {answer5}}</script>
-</p>
                                                                   
 
                                                                   
+</p><!--l. 74--><p class="noindent"><script type="math/tex"> x = \answer {\sage {answer5}}</script>
+</p>
 <div role="article" class="problem-environment hint" id="problem2"><a id="x1-9r2"></a> Do you have it in the form <script type="math/tex">\text {something} = \log _b{\text {something}}</script>? It may help to color-code where things are moving in
 the conversion formula and in the question.
 </div>
 </div>
 <div role="article" class="problem-environment question" id="problem3"><a id="x1-10r3"></a> Convert the function below to logarithmic form.
-<!--l. 84--><p class="noindent">
+<!--l. 86--><p class="noindent">
                                  <script type="math/tex; mode=display"> y = \sage {expFunction6} </script>
-</p><!--l. 86--><p class="noindent"><script type="math/tex"> x = \log _{\answer {\sage {base6}}}</script><script type="math/tex">(\answer {\sage {answerVert6}})</script> <script type="math/tex">+ \answer {\sage {horShift6}}</script>
+</p><!--l. 88--><p class="noindent"><script type="math/tex"> x = \log _{\answer {\sage {base6}}}</script><script type="math/tex">(\answer {\sage {answerVert6}})</script> <script type="math/tex">+ \answer {\sage {horShift6}}</script>
 </p>
 </div>
-<!--l. 90--><p class="noindent">One of the more common reasons to change forms is to solve Logarithmic equations.
+<!--l. 92--><p class="noindent">One of the more common reasons to change forms is to solve Logarithmic equations.
 Remember: you want to get it in the form <script type="math/tex">\text {something} = \log _b{\text {something}}</script> <em>before</em> trying to convert. Try solving a few
 logarithmic equations below.
 </p>
@@ -93,12 +96,12 @@ def maybeMakeNegative(natural):
     integer = natural*(-1)**ZZ.random_element(2)
     return integer
 def generateEquationAndSolutionEasy():
-    f1 = maybeMakeNegative(ZZ.random_element(3, 7))
-    f2 = 0
-    displayFactor = f1 * x
                                                                   
 
                                                                   
+    f1 = maybeMakeNegative(ZZ.random_element(3, 7))
+    f2 = 0
+    displayFactor = f1 * x
     base = ZZ.random_element(2, 5)
     k = 0
     n1 = ZZ.random_element(3, 10)
@@ -128,40 +131,40 @@ displayFactor1, base1, rightHandSide1, answer1 = generateEquationAndSolutionEasy
 # Question 2 - Easy #
 displayFactor2, base2, rightHandSide2, answer2 = generateEquationAndSolutionEasy()
 
+                                                                  
+
+                                                                  
 # Question 3 - Hard #
 displayFactor3, base3, k3, rightHandSide3, answer3 = generateEquationAndSolutionHard()
 
-                                                                  
-
-                                                                  
 # Question 4 - Hard #
 displayFactor4, base4, k4, rightHandSide4, answer4 = generateEquationAndSolutionHard()
 </script>
 <div role="article" class="problem-environment question" id="problem4"><a id="x1-11r4"></a> Solve the logarithmic equation below.
-<!--l. 147--><p class="noindent">
+<!--l. 149--><p class="noindent">
                                  <script type="math/tex; mode=display"> \log _{\sage {base1}}{(\sage {displayFactor1})} = \sage {rightHandSide1}</script>
-</p><!--l. 149--><p class="noindent"><script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer1}}</script>
+</p><!--l. 151--><p class="noindent"><script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer1}}</script>
 </p>
 </div>
 <div role="article" class="problem-environment question" id="problem5"><a id="x1-12r5"></a> Solve the logarithmic equation below.
-<!--l. 159--><p class="noindent">
+<!--l. 161--><p class="noindent">
                                  <script type="math/tex; mode=display"> \log _{\sage {base2}}{(\sage {displayFactor2})} = \sage {rightHandSide2}</script>
-</p><!--l. 161--><p class="noindent"><script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer2}}</script>
-</p>
-</div>
-<div role="article" class="problem-environment question" id="problem6"><a id="x1-13r6"></a> Solve the logarithmic equation below.
+</p><!--l. 163--><p class="noindent"><script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer2}}</script>
                                                                   
 
                                                                   
-<!--l. 171--><p class="noindent">
+</p>
+</div>
+<div role="article" class="problem-environment question" id="problem6"><a id="x1-13r6"></a> Solve the logarithmic equation below.
+<!--l. 173--><p class="noindent">
                                  <script type="math/tex; mode=display"> \log _{\sage {base3}}{(\sage {displayFactor3})} + \sage {k3} = \sage {rightHandSide3}</script>
-</p><!--l. 173--><p class="noindent"><script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer3}}</script>
+</p><!--l. 175--><p class="noindent"><script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer3}}</script>
 </p>
 </div>
 <div role="article" class="problem-environment question" id="problem7"><a id="x1-14r7"></a> Solve the logarithmic equation below.
-<!--l. 181--><p class="noindent">
+<!--l. 183--><p class="noindent">
                                  <script type="math/tex; mode=display"> \log _{\sage {base4}}{(\sage {displayFactor4})} + \sage {k4} = \sage {rightHandSide4}</script>
-</p><!--l. 183--><p class="noindent"><script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer4}}</script>
+</p><!--l. 185--><p class="noindent"><script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer4}}</script>
 </p>
 </div>
 <div role="article" class="problem-environment question" id="problem8"><a id="x1-15r8"></a> <strong>Main takeaway:</strong> Before looking, you should work through the previous problems.

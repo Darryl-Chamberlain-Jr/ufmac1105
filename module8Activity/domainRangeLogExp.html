@@ -11,7 +11,7 @@ Jr."/>
 <link href="https://ximera.osu.edu/public/stylesheets/standalone.css" rel="stylesheet" media="screen"/> 
 <script type="text/javascript" async="" src="https://ximera.osu.edu/public/javascripts/standalone.min.js"></script> 
 <meta name="learning-outcome" content=""/> 
-<meta name="dependency" content="fda9bd90b71fa8dddb0e44122fab7fc54aecf28a preamble.tex"/><meta name="dependency" content="8312d051af0ffa5d6c633bda72b5ad43046f5264 module8Activity/domainRangeLogExp.tex"/></head><body> 
+<meta name="dependency" content="fda9bd90b71fa8dddb0e44122fab7fc54aecf28a preamble.tex"/><meta name="dependency" content="3f69ba8634ff4b9abb0b000a4d1958b5c398eaff module8Activity/domainRangeLogExp.tex"/></head><body> 
 <div class="preamble"><script type="math/tex">\newenvironment {prompt}{}{}
 \newcommand {\ungraded }[0]{}
 \newcommand {\npnoround }[0]{\nprounddigits {-1}}
@@ -25,21 +25,27 @@ Jr."/>
 </p></div>   <div class="maketitle"></div>
 <a href="https://cnx.org/contents/mwjClAV_@8.1:REGENe1G@20/Graphs-of-Logarithmic-Functions">Link to LOGARITHMIC FUNCTION section of online textbook.</a>
 <!--l. 24--><p class="noindent"><a href="https://cnx.org/contents/mwjClAV_@8.1:c8aEyW2u@19/Graphs-of-Exponential-Functions">Link to EXPONENTIAL FUNCTION section of online textbook.</a>
-</p><!--l. 30--><p class="noindent">First, watch <span class="underline"><a href="https://mediasite.video.ufl.edu/Mediasite/Play/6054fd6bde6e40d8b4ba241855c1a3651d">this video</a></span> to learn about the domain and range of logarithmic and
-exponential functions. These functions are highly related, which is why they are
-presented together. Here are their basic forms:
-</p><!--l. 34--><p class="noindent">
-                                 <script type="math/tex; mode=display"> f(x) = a\log {(x-h)} + k </script>
-</p><!--l. 38--><p class="noindent"><script type="math/tex; mode=display"> \graph [rectangular]{f(x)= a log_b{(x-h)} + k, a=1, b=2, h=0, k=0} </script>
+</p><!--l. 30--><p class="noindent">First, watch the video below to learn about the domain and range of exponential
+functions. You can print out <a href="http://people.clas.ufl.edu/dchamberlain31/files/Objective-1A-Domain-and-Range-Exp.pdf">these notes</a> to follow along and keep notes to organize
+your thoughts.
+</p>
+<div class="video youtube-player" data-youtube="l4nmmLjWGds">_</div>
+<!--l. 34--><p class="noindent">Next, watch the video below to learn about the domain and range of logarithmic
+functions. You can print out <a href="http://people.clas.ufl.edu/dchamberlain31/files/Objective-1B-Domain-and-Range-Log.pdf">these notes</a> to follow along and keep notes to organize
+your thoughts.
+</p>
+<div class="video youtube-player" data-youtube="D3jBvMl161k">_</div>
+<!--l. 38--><p class="noindent"><strong>These functions are highly related, which is why they are presented
+together.</strong> Here are their basic forms:
 </p><!--l. 40--><p class="noindent">
+                                 <script type="math/tex; mode=display"> f(x) = a\log {(x-h)} + k </script>
+</p><!--l. 44--><p class="noindent"><script type="math/tex; mode=display"> \graph [rectangular]{f(x)= a log_b{(x-h)} + k, a=1, b=2, h=0, k=0} </script>
+</p><!--l. 46--><p class="noindent">
                                                                   
 
                                                                   
                                  <script type="math/tex; mode=display"> g(x) = a b^{x-h} + k </script>
-</p><!--l. 44--><p class="noindent"><script type="math/tex; mode=display"> \graph [rectangular]{g(x) = a b^{x-h} + k, a=1, b=2, h=0, k=0} </script>
-</p><!--l. 46--><p class="noindent">Alternative videos:
-</p><!--l. 48--><p class="noindent"><a href="http://www.larsonprecalculus.com/precalc10e/content/instructional-videos/chapter-3/section-1/graph-exponential-functions/">Graph Exponential functions.</a>
-</p><!--l. 50--><p class="noindent"><a href="http://www.larsonprecalculus.com/precalc10e/content/instructional-videos/chapter-3/section-2/graphing-logarithmic-functions/">Graph Logarithmic functions.</a>
+</p><!--l. 50--><p class="noindent"><script type="math/tex; mode=display"> \graph [rectangular]{g(x) = a b^{x-h} + k, a=1, b=2, h=0, k=0} </script>
 </p><!--l. 52--><p class="noindent">Like rational functions, the point <script type="math/tex">(h, k)</script> is not on <strong>either</strong> logarithmic or exponential
 functions! Try changing some of the constants and see how it affects the graphs.
 You’ll want to figure out what the ”shifting point” is and how to describe the
@@ -65,10 +71,10 @@ def constructFunction(type, direction, domainOrRange):
         valueToReturn = vertShift
     elif domainOrRange == "Range" and type == "Log":
         leadingSign = (-1)**ZZ.random_element(2)
-        function = leadingSign * log(x-horShift) + vertShift
                                                                   
 
                                                                   
+        function = leadingSign * log(x-horShift) + vertShift
         valueToReturn = "NA"
     elif direction == "Left" and domainOrRange == "Domain" and type == "Log":
         function = - log(x-horShift) + vertShift
@@ -94,10 +100,10 @@ function4, answer4 = constructFunction("Log", leftOrRight, "Range")
 <div role="article" class="problem-environment question" id="problem1"><a id="x1-8r1"></a>
 <!--l. 103--><p class="noindent">Determine the <strong>domain</strong> of the exponential function below.
 </p><!--l. 105--><p class="noindent">
-                                 <script type="math/tex; mode=display"> f(x) = \sage {function1} </script>
                                                                   
 
                                                                   
+                                 <script type="math/tex; mode=display"> f(x) = \sage {function1} </script>
 </p><!--l. 107--><p class="noindent"><script type="math/tex">\answer [format=string]{(} \answer {\sage {-Infinity}}, \answer {\sage {Infinity}} \answer [format=string]{)}</script>
 </p>
 <div role="article" class="problem-environment hint" id="problem2"><a id="x1-9r2"></a> Are there any values of <script type="math/tex">x</script> we <strong>cannot</strong> put into the exponential function shown?
@@ -140,14 +146,14 @@ this interval is shifting the function by <script type="math/tex">h</script>, wh
 <div role="article" class="problem-environment question" id="problem9"><a id="x1-16r9"></a> <strong>Main takeaway:</strong> Before looking, you should work through the previous problems.
 <em>Have you finished working through the examples?</em> <script type="math/tex">\answer [format=string]{Yes}</script> <div class="feedback" data-feedback="correct" id="feedback10"> We summarize the domain, range,
 and shifting point <em>(“vertex”)</em> here.
+                                                                  
+
+                                                                  
 <!--l. 165--><p class="noindent">Logarithmic Function: </p>
      <ul class="itemize1">
      <li class="itemize">Domain depends on the inside of the <script type="math/tex">\log </script> function. <strong>We cannot take the log
      of a negative number nor of 0, so we find the domain by setting
      what is inside the log <script type="math/tex">> 0</script> and solving.</strong>
-                                                                  
-
-                                                                  
      </li>
      <li class="itemize">Range is <script type="math/tex">(-\infty , \infty )</script>.
      </li>
