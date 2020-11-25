@@ -11,7 +11,7 @@ Jr."/>
 <link href="https://ximera.osu.edu/public/stylesheets/standalone.css" rel="stylesheet" media="screen"/> 
 <script type="text/javascript" async="" src="https://ximera.osu.edu/public/javascripts/standalone.min.js"></script> 
 <meta name="learning-outcome" content=""/> 
-<meta name="dependency" content="fda9bd90b71fa8dddb0e44122fab7fc54aecf28a preamble.tex"/><meta name="dependency" content="712c0416e209cc8134c1c0f4ff1271282e1ff9d7 module7Activity/domainRationalFunctions.tex"/></head><body> 
+<meta name="dependency" content="fda9bd90b71fa8dddb0e44122fab7fc54aecf28a preamble.tex"/><meta name="dependency" content="f9554cad8aec822348b0033d8fb12cbfc428ef1e module7Activity/domainRationalFunctions.tex"/></head><body> 
 <div class="preamble"><script type="math/tex">\newenvironment {prompt}{}{}
 \newcommand {\ungraded }[0]{}
 \newcommand {\npnoround }[0]{\nprounddigits {-1}}
@@ -26,11 +26,13 @@ Jr."/>
 <a href="https://cnx.org/contents/mwjClAV_@8.1:KNTP2r7D@13/Rational-Functions">Link to section in online textbook.</a>
 <!--l. 28--><p class="noindent">As we discussed in Module 1, we cannot divide by 0. This gives us “something” that
 is not a Real <em>(nor a Complex)</em> number. When considering the domain of a rational
-function, we need to exclude these values. The questions below will consider different
-rational functions to give you an idea of what our domain can look like.
-<a href="https://www.youtube.com/watch?v=jCqSSp449UI">Try working through the following questions BEFORE watching the video
-here!</a>
+function, we need to exclude these values. The questions below will consider
+different rational functions to give you an idea of what our domain can look
+like.
+</p><!--l. 30--><p class="noindent">You can print out <a href="http://people.clas.ufl.edu/dchamberlain31/files/M7-Objective-1-Domain-of-Rational-Functions.pdf">these notes</a> to follow along with the video below and keep notes to
+organize your thoughts.
 </p>
+<div class="video youtube-player" data-youtube="jCqSSp449UI">_</div>
 <script type="text/sagemath">R, x = QQ['x'].objgen()
 
 def maybeMakeNegative(natural):
@@ -48,11 +50,11 @@ def makeRationalFactor():
     while gcd(abs(a), abs(b)) > 1:
         a = maybeMakeNegative(ZZ.random_element(1, 4))
         b = maybeMakeNegative(ZZ.random_element(1, 6))
-    rationalFactor = a*x + b
-    return [rationalFactor, -b/a]
                                                                   
 
                                                                   
+    rationalFactor = a*x + b
+    return [rationalFactor, -b/a]
 
 def makeIrrationalQuadratic():
     a = maybeMakeNegative(ZZ.random_element(1, 6))
@@ -83,11 +85,11 @@ function1, answer1 = makeIntegerFactor()
 ###
 function2, answer2 = makeRationalFactor()
 ###
-factor3a, answer3aTEMP = makeRationalFactor()
-factor3b, answer3bTEMP = makeRationalFactor()
                                                                   
 
                                                                   
+factor3a, answer3aTEMP = makeRationalFactor()
+factor3b, answer3bTEMP = makeRationalFactor()
 while answer3aTEMP == answer3bTEMP:
     factor3a, answer3aTEMP = makeRationalFactor()
     factor3b, answer3bTEMP = makeRationalFactor()
@@ -118,21 +120,21 @@ while answer6aTEMP == answer6bTEMP:
 function6 = factor6a * factor6b * x
 answer6a, answer6b, answer6c = sorted([answer6aTEMP, answer6bTEMP, 0])
 ###
-#factor7a, answer7 = makeIntegerFactor()
-answer7 = 0
                                                                   
 
                                                                   
+#factor7a, answer7 = makeIntegerFactor()
+answer7 = 0
 factor7b, answer7complexA, answer7complexB = makeComplexQuadratic()
 function7 = x * factor7b
 </script>
-<!--l. 118--><p class="noindent"><em>First, we start with a bare-bones example.</em>
+<!--l. 122--><p class="noindent"><em>First, we start with a bare-bones example.</em>
 </p>
 <div role="article" class="problem-environment question" id="problem1"><a id="x1-8r1"></a> Solve for when the denominator is equal to zero.
-<!--l. 124--><p class="noindent"><script type="math/tex"> f(x) = \frac {1}{\sage {function1}} </script>
-</p><!--l. 126--><p class="noindent">The denominator is zero when <script type="math/tex">x = \answer {\sage {answer1}}</script>.
-</p><!--l. 128--><p class="noindent">That means the domain of the rational function is
-</p><!--l. 130--><p class="noindent">
+<!--l. 128--><p class="noindent"><script type="math/tex"> f(x) = \frac {1}{\sage {function1}} </script>
+</p><!--l. 130--><p class="noindent">The denominator is zero when <script type="math/tex">x = \answer {\sage {answer1}}</script>.
+</p><!--l. 132--><p class="noindent">That means the domain of the rational function is
+</p><!--l. 134--><p class="noindent">
                                  <script type="math/tex; mode=display"> \answer [format=string]{(} \answer {\sage {-Infinity}}, \answer {\sage {answer1}} \answer [format=string]{)} </script>
                                  <script type="math/tex; mode=display">\cup </script>
                                                                   
@@ -141,15 +143,15 @@ function7 = x * factor7b
                                  <script type="math/tex; mode=display">\answer [format=string]{(} \answer {\sage {answer1}}, \answer {\sage {Infinity}} \answer [format=string]{)} </script>
 </p>
 </div>
-<!--l. 136--><p class="noindent"><em>Does it matter that our first example had an Integer that was removed from the
+<!--l. 140--><p class="noindent"><em>Does it matter that our first example had an Integer that was removed from the
 domain? Let’s try to do the same thing when a Rational number makes the
 denominator zero. </em>
 </p>
 <div role="article" class="problem-environment question" id="problem2"><a id="x1-9r2"></a> Solve for when the denominator is equal to zero.
-<!--l. 142--><p class="noindent"><script type="math/tex"> f(x) = \frac {1}{\sage {function2}} </script>
-</p><!--l. 144--><p class="noindent">The denominator is zero when <script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer2}}</script>.
-</p><!--l. 146--><p class="noindent">That means the domain of the rational function is
-</p><!--l. 148--><p class="noindent">
+<!--l. 146--><p class="noindent"><script type="math/tex"> f(x) = \frac {1}{\sage {function2}} </script>
+</p><!--l. 148--><p class="noindent">The denominator is zero when <script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer2}}</script>.
+</p><!--l. 150--><p class="noindent">That means the domain of the rational function is
+</p><!--l. 152--><p class="noindent">
                                  <script type="math/tex; mode=display"> \answer [format=string]{(} \answer {\sage {-Infinity}}, \answer [tolerance=0.05]{\sage {answer2}} \answer [format=string]{)}</script>
                                                                   
 
@@ -158,7 +160,7 @@ denominator zero. </em>
                                  <script type="math/tex; mode=display">\answer [format=string]{(} \answer [tolerance=0.05]{\sage {answer2}}, \answer {\sage {Infinity}} \answer [format=string]{)} </script>
 </p>
 </div>
-<!--l. 156--><p class="noindent"><em>So we’ve seen that it doesn’t matter what type of Real number makes the denominator
+<!--l. 160--><p class="noindent"><em>So we’ve seen that it doesn’t matter what type of Real number makes the denominator
 zero. What happens when we have two or more fractions in the same function? The
 domain is the intersection of the domains of each function separately <strong>(we’ll dig into
 this idea in a later Module)</strong>. Since we are just working with rational functions, an
@@ -167,10 +169,10 @@ zero from the domain of the function. Practice this with the following function.
 </em>
 </p>
 <div role="article" class="problem-environment question" id="problem3"><a id="x1-10r3"></a> Solve for when the denominator is equal to zero.
-<!--l. 162--><p class="noindent"><script type="math/tex"> f(x) = \frac {1}{\sage {factor3a}} - \frac {1}{\sage {factor3b}} </script>
-</p><!--l. 164--><p class="noindent">The denominator is zero when <script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer3a}}</script> and <script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer3b}}</script>.
-</p><!--l. 166--><p class="noindent">That means the domain of the rational function is
-</p><!--l. 168--><p class="noindent">
+<!--l. 166--><p class="noindent"><script type="math/tex"> f(x) = \frac {1}{\sage {factor3a}} - \frac {1}{\sage {factor3b}} </script>
+</p><!--l. 168--><p class="noindent">The denominator is zero when <script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer3a}}</script> and <script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer3b}}</script>.
+</p><!--l. 170--><p class="noindent">That means the domain of the rational function is
+</p><!--l. 172--><p class="noindent">
                                                                   
 
                                                                   
@@ -184,14 +186,14 @@ zero from the domain of the function. Practice this with the following function.
                                  <script type="math/tex; mode=display">\answer [format=string]{(} \answer [tolerance=0.05]{\sage {answer3b}}, \answer {\sage {Infinity}} \answer [format=string]{)} </script>
 </p>
 </div>
-<!--l. 178--><p class="noindent"><em>What happens if we have a polynomial that is larger than degree 1 in the
+<!--l. 182--><p class="noindent"><em>What happens if we have a polynomial that is larger than degree 1 in the
 denominator? We will need to factor it somehow!</em>
 </p>
 <div role="article" class="problem-environment question" id="problem4"><a id="x1-11r4"></a> Solve for when the denominator is equal to zero.
-<!--l. 184--><p class="noindent"><script type="math/tex"> f(x) = \frac {1}{\sage {function4}} </script>
-</p><!--l. 186--><p class="noindent">The denominator is zero when <script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer4a}}</script> and <script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer4b}}</script>.
-</p><!--l. 188--><p class="noindent">That means the domain of the rational function is
-</p><!--l. 190--><p class="noindent">
+<!--l. 188--><p class="noindent"><script type="math/tex"> f(x) = \frac {1}{\sage {function4}} </script>
+</p><!--l. 190--><p class="noindent">The denominator is zero when <script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer4a}}</script> and <script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer4b}}</script>.
+</p><!--l. 192--><p class="noindent">That means the domain of the rational function is
+</p><!--l. 194--><p class="noindent">
                                  <script type="math/tex; mode=display"> \answer [format=string]{(} \answer {\sage {-Infinity}}, \answer [tolerance=0.05]{\sage {answer4a}} \answer [format=string]{)} </script>
                                                                   
 
@@ -204,14 +206,14 @@ denominator? We will need to factor it somehow!</em>
                                                                   
 
                                                                   
-<!--l. 199--><p class="noindent"><em>We are slowly ramping up the difficulty in factoring the denominator. Practice again
+<!--l. 203--><p class="noindent"><em>We are slowly ramping up the difficulty in factoring the denominator. Practice again
 when the two zeros are Rational numbers.</em>
 </p>
 <div role="article" class="problem-environment question" id="problem5"><a id="x1-12r5"></a> Solve for when the denominator is equal to zero.
-<!--l. 205--><p class="noindent"><script type="math/tex"> f(x) = \frac {1}{\sage {function5}} </script>
-</p><!--l. 207--><p class="noindent">The denominator is zero when <script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer5a}}</script> and <script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer5b}}</script>.
-</p><!--l. 209--><p class="noindent">That means the domain of the rational function is
-</p><!--l. 211--><p class="noindent">
+<!--l. 209--><p class="noindent"><script type="math/tex"> f(x) = \frac {1}{\sage {function5}} </script>
+</p><!--l. 211--><p class="noindent">The denominator is zero when <script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer5a}}</script> and <script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer5b}}</script>.
+</p><!--l. 213--><p class="noindent">That means the domain of the rational function is
+</p><!--l. 215--><p class="noindent">
                                  <script type="math/tex; mode=display"> \answer [format=string]{(} \answer {\sage {-Infinity}}, \answer [tolerance=0.05]{\sage {answer5a}} \answer [format=string]{)} </script>
                                  <script type="math/tex; mode=display"> \cup </script>
                                                                   
@@ -222,13 +224,13 @@ when the two zeros are Rational numbers.</em>
                                  <script type="math/tex; mode=display"> \answer [format=string]{(} \answer [tolerance=0.05]{\sage {answer5b}}, \answer {\sage {Infinity}} \answer [format=string]{)}</script>
 </p>
 </div>
-<!--l. 220--><p class="noindent"><em>Practice again when there are three Rational zeros.</em>
+<!--l. 224--><p class="noindent"><em>Practice again when there are three Rational zeros.</em>
 </p>
 <div role="article" class="problem-environment question" id="problem6"><a id="x1-13r6"></a> Solve for when the denominator is equal to zero.
-<!--l. 226--><p class="noindent"><script type="math/tex"> f(x) = \frac {1}{\sage {function6}} </script>
-</p><!--l. 228--><p class="noindent">The denominator is zero when <script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer6a}}</script>, <script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer6b}}</script>, and <script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer6c}}</script>.
-</p><!--l. 230--><p class="noindent">That means the domain of the rational function is
-</p><!--l. 232--><p class="noindent">
+<!--l. 230--><p class="noindent"><script type="math/tex"> f(x) = \frac {1}{\sage {function6}} </script>
+</p><!--l. 232--><p class="noindent">The denominator is zero when <script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer6a}}</script>, <script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer6b}}</script>, and <script type="math/tex">x = \answer [tolerance=0.05]{\sage {answer6c}}</script>.
+</p><!--l. 234--><p class="noindent">That means the domain of the rational function is
+</p><!--l. 236--><p class="noindent">
                                                                   
 
                                                                   
@@ -246,7 +248,7 @@ when the two zeros are Rational numbers.</em>
                                                                   
 
                                                                   
-<!--l. 241--><p class="noindent"><em>Up to this point, I’ve made sure there were as many <script type="math/tex">x</script>-values removed from the
+<!--l. 245--><p class="noindent"><em>Up to this point, I’ve made sure there were as many <script type="math/tex">x</script>-values removed from the
 domain as the degree in the denominator. But this doesn’t have to be the case!
 If we have copies, like for the function <script type="math/tex">f(x)=\frac {1}{(x-1)^2}</script>, we would only remove <script type="math/tex">x=1</script> from the
 domain. But there is one other case where the degree of the polynomial in the
@@ -254,13 +256,13 @@ denominator would not match the number of <script type="math/tex">x</script>-val
 domain...</em>
 </p>
 <div role="article" class="problem-environment question" id="problem7"><a id="x1-14r7"></a> Solve for when the denominator is equal to zero.
-<!--l. 247--><p class="noindent"><script type="math/tex"> f(x) = \frac {1}{\sage {function7}} </script>
-</p><!--l. 249--><p class="noindent">The denominator is zero when <script type="math/tex">x = \answer {\sage {answer7}}</script>. </p><div class="feedback" data-feedback="attempt" id="feedback8">There is only one REAL value that makes the
+<!--l. 251--><p class="noindent"><script type="math/tex"> f(x) = \frac {1}{\sage {function7}} </script>
+</p><!--l. 253--><p class="noindent">The denominator is zero when <script type="math/tex">x = \answer {\sage {answer7}}</script>. </p><div class="feedback" data-feedback="attempt" id="feedback8">There is only one REAL value that makes the
 denominator equal to zero - the others are complex. As we have been doing in this
 course, we are only looking at functions graphed on the Real plane. It is a far
 more difficult question to consider these functions on the Complex plane. </div>
-<!--l. 254--><p class="noindent">That means the domain of the rational function is
-</p><!--l. 256--><p class="noindent">
+<!--l. 258--><p class="noindent">That means the domain of the rational function is
+</p><!--l. 260--><p class="noindent">
                                  <script type="math/tex; mode=display"> \answer [format=string]{(} \answer {\sage {-Infinity}}, \answer {\sage {answer7}} \answer [format=string]{)} </script>
                                  <script type="math/tex; mode=display"> \cup </script>
                                                                   

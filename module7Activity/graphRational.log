@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  4 SEP 2020 15:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  25 NOV 2020 14:12
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1907,7 +1907,7 @@ Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 30.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 31.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1915,7 +1915,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 30.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 31.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1926,51 +1926,51 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ) [1
 
 ]
-l.53 --- TeX4ht warning --- File `"graphRationalQ1.xbb"' not found ---
-l.53 --- TeX4ht warning --- Cannot determine size of graphic in "graphRationalQ
+l.54 --- TeX4ht warning --- File `"graphRationalQ1.xbb"' not found ---
+l.54 --- TeX4ht warning --- Cannot determine size of graphic in "graphRationalQ
 1.xbb" (no BoundingBox) ---
-l. 53 --- needs --- graphRationalQ1.png ---
-l.68 --- TeX4ht warning --- File `"graphRationalQ2.xbb"' not found ---
-l.68 --- TeX4ht warning --- Cannot determine size of graphic in "graphRationalQ
+l. 54 --- needs --- graphRationalQ1.png ---
+l.69 --- TeX4ht warning --- File `"graphRationalQ2.xbb"' not found ---
+l.69 --- TeX4ht warning --- Cannot determine size of graphic in "graphRationalQ
 2.xbb" (no BoundingBox) ---
-l. 68 --- needs --- graphRationalQ2.png ---
-l.79 --- TeX4ht warning --- File `"graphRationalQ3.xbb"' not found ---
-l.79 --- TeX4ht warning --- Cannot determine size of graphic in "graphRationalQ
+l. 69 --- needs --- graphRationalQ2.png ---
+l.80 --- TeX4ht warning --- File `"graphRationalQ3.xbb"' not found ---
+l.80 --- TeX4ht warning --- Cannot determine size of graphic in "graphRationalQ
 3.xbb" (no BoundingBox) ---
-l. 79 --- needs --- graphRationalQ3.png ---
+l. 80 --- needs --- graphRationalQ3.png ---
 [2]
-l.90 --- TeX4ht warning --- File `"graphRationalQ4.xbb"' not found ---
-l.90 --- TeX4ht warning --- Cannot determine size of graphic in "graphRationalQ
+l.91 --- TeX4ht warning --- File `"graphRationalQ4.xbb"' not found ---
+l.91 --- TeX4ht warning --- Cannot determine size of graphic in "graphRationalQ
 4.xbb" (no BoundingBox) ---
-l. 90 --- needs --- graphRationalQ4.png ---
-l.101 --- TeX4ht warning --- File `"graphRationalQ5.xbb"' not found ---
-l.101 --- TeX4ht warning --- Cannot determine size of graphic in "graphRational
+l. 91 --- needs --- graphRationalQ4.png ---
+l.102 --- TeX4ht warning --- File `"graphRationalQ5.xbb"' not found ---
+l.102 --- TeX4ht warning --- Cannot determine size of graphic in "graphRational
 Q5.xbb" (no BoundingBox) ---
-l. 101 --- needs --- graphRationalQ5.png ---
-l.112 --- TeX4ht warning --- File `"graphRationalQ6.xbb"' not found ---
-l.112 --- TeX4ht warning --- Cannot determine size of graphic in "graphRational
+l. 102 --- needs --- graphRationalQ5.png ---
+l.113 --- TeX4ht warning --- File `"graphRationalQ6.xbb"' not found ---
+l.113 --- TeX4ht warning --- Cannot determine size of graphic in "graphRational
 Q6.xbb" (no BoundingBox) ---
-l. 112 --- needs --- graphRationalQ6.png ---
+l. 113 --- needs --- graphRationalQ6.png ---
 [3]
 *********************************************************************
 [4]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 131.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 132.
  [5
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 131.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 132.
  (./graphRational.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 131.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 131.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 131.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 132.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 132.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 132.
  ) 
 Here is how much of TeX's memory you used:
  42223 strings out of 483184
  938249 string characters out of 5966319
- 1470150 words of memory out of 5000000
+ 1471150 words of memory out of 5000000
  56146 multiletter control sequences out of 15000+600000
  535220 words of font info for 37 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  71i,6n,102p,1246b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on graphRational.dvi (5 pages, 13288 bytes).
+Output written on graphRational.dvi (5 pages, 13472 bytes).
