@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  4 SEP 2020 15:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  25 NOV 2020 12:05
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1913,10 +1913,10 @@ or  <return>  to continue without it.
 ] [2
 
 ]
-l.43 --- TeX4ht warning --- File `"expGrowth.xbb"' not found ---
-l.43 --- TeX4ht warning --- Cannot determine size of graphic in "expGrowth.xbb"
+l.45 --- TeX4ht warning --- File `"expGrowth.xbb"' not found ---
+l.45 --- TeX4ht warning --- Cannot determine size of graphic in "expGrowth.xbb"
  (no BoundingBox) ---
-l. 43 --- needs --- expGrowth.png ---
+l. 45 --- needs --- expGrowth.png ---
 [3
 
 ] [4
@@ -1924,14 +1924,14 @@ l. 43 --- needs --- expGrowth.png ---
 ] [5
 
 ]
-l.48 --- TeX4ht warning --- File `"expDecay.xbb"' not found ---
-l.48 --- TeX4ht warning --- Cannot determine size of graphic in "expDecay.xbb" 
+l.50 --- TeX4ht warning --- File `"expDecay.xbb"' not found ---
+l.50 --- TeX4ht warning --- Cannot determine size of graphic in "expDecay.xbb" 
 (no BoundingBox) ---
-l. 48 --- needs --- expDecay.png ---
+l. 50 --- needs --- expDecay.png ---
 [6
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 54.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 56.
 
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1939,7 +1939,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 54.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 56.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1952,10 +1952,10 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ] [8
 
 ]
-l.57 --- TeX4ht warning --- File `"comparison.xbb"' not found ---
-l.57 --- TeX4ht warning --- Cannot determine size of graphic in "comparison.xbb
+l.59 --- TeX4ht warning --- File `"comparison.xbb"' not found ---
+l.59 --- TeX4ht warning --- Cannot determine size of graphic in "comparison.xbb
 " (no BoundingBox) ---
-l. 57 --- needs --- comparison.png ---
+l. 59 --- needs --- comparison.png ---
 [9
 
 ] [10
@@ -1963,10 +1963,10 @@ l. 57 --- needs --- comparison.png ---
 ] [11] [12
 
 ]
-l.102 --- TeX4ht warning --- File `"expSquared.xbb"' not found ---
-l.102 --- TeX4ht warning --- Cannot determine size of graphic in "expSquared.xb
+l.104 --- TeX4ht warning --- File `"expSquared.xbb"' not found ---
+l.104 --- TeX4ht warning --- Cannot determine size of graphic in "expSquared.xb
 b" (no BoundingBox) ---
-l. 102 --- needs --- expSquared.png ---
+l. 104 --- needs --- expSquared.png ---
 [13
 
 ]
@@ -1974,23 +1974,23 @@ l. 102 --- needs --- expSquared.png ---
 [14
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 116.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 118.
  [15
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 116.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 118.
  (./identifyExpNeed.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 116.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 116.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 116.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 118.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 118.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 118.
  ) 
 Here is how much of TeX's memory you used:
  42225 strings out of 483184
  938158 string characters out of 5966319
- 1471210 words of memory out of 5000000
+ 1472210 words of memory out of 5000000
  56150 multiletter control sequences out of 15000+600000
  535181 words of font info for 37 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  71i,5n,102p,1248b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on identifyExpNeed.dvi (15 pages, 18848 bytes).
+Output written on identifyExpNeed.dvi (15 pages, 18984 bytes).

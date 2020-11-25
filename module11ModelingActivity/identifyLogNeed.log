@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  4 SEP 2020 15:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  25 NOV 2020 12:04
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1913,10 +1913,10 @@ or  <return>  to continue without it.
 ] [2
 
 ]
-l.44 --- TeX4ht warning --- File `"logGrowth.xbb"' not found ---
-l.44 --- TeX4ht warning --- Cannot determine size of graphic in "logGrowth.xbb"
+l.45 --- TeX4ht warning --- File `"logGrowth.xbb"' not found ---
+l.45 --- TeX4ht warning --- Cannot determine size of graphic in "logGrowth.xbb"
  (no BoundingBox) ---
-l. 44 --- needs --- logGrowth.png ---
+l. 45 --- needs --- logGrowth.png ---
 [3
 
 ] [4
@@ -1924,14 +1924,14 @@ l. 44 --- needs --- logGrowth.png ---
 ] [5
 
 ]
-l.49 --- TeX4ht warning --- File `"logDecay.xbb"' not found ---
-l.49 --- TeX4ht warning --- Cannot determine size of graphic in "logDecay.xbb" 
+l.50 --- TeX4ht warning --- File `"logDecay.xbb"' not found ---
+l.50 --- TeX4ht warning --- Cannot determine size of graphic in "logDecay.xbb" 
 (no BoundingBox) ---
-l. 49 --- needs --- logDecay.png ---
+l. 50 --- needs --- logDecay.png ---
 [6
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 58.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 59.
 
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1939,7 +1939,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 58.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 59.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1952,10 +1952,10 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ] [8] [9
 
 ]
-l.111 --- TeX4ht warning --- File `"Influenza-2009.xbb"' not found ---
-l.111 --- TeX4ht warning --- Cannot determine size of graphic in "Influenza-200
+l.112 --- TeX4ht warning --- File `"Influenza-2009.xbb"' not found ---
+l.112 --- TeX4ht warning --- Cannot determine size of graphic in "Influenza-200
 9.xbb" (no BoundingBox) ---
-l. 111 --- needs --- Influenza-2009.png ---
+l. 112 --- needs --- Influenza-2009.png ---
 [10
 
 ] [11
@@ -1963,10 +1963,10 @@ l. 111 --- needs --- Influenza-2009.png ---
 ] [12
 
 ]
-l.127 --- TeX4ht warning --- File `"logarithmicGrowth.xbb"' not found ---
-l.127 --- TeX4ht warning --- Cannot determine size of graphic in "logarithmicGr
+l.128 --- TeX4ht warning --- File `"logarithmicGrowth.xbb"' not found ---
+l.128 --- TeX4ht warning --- Cannot determine size of graphic in "logarithmicGr
 owth.xbb" (no BoundingBox) ---
-l. 127 --- needs --- logarithmicGrowth.png ---
+l. 128 --- needs --- logarithmicGrowth.png ---
 [13
 
 ]
@@ -1974,15 +1974,15 @@ l. 127 --- needs --- logarithmicGrowth.png ---
 [14
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 146.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 147.
  [15
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 146.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 147.
  (./identifyLogNeed.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 146.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 146.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 146.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 147.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 147.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 147.
  ) 
 Here is how much of TeX's memory you used:
  42228 strings out of 483184
@@ -1993,4 +1993,4 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 8191
  71i,6n,102p,1248b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on identifyLogNeed.dvi (15 pages, 20204 bytes).
+Output written on identifyLogNeed.dvi (15 pages, 20340 bytes).

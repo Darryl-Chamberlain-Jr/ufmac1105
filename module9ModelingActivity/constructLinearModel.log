@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  4 SEP 2020 15:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  25 NOV 2020 12:04
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1908,18 +1908,15 @@ Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-[1
+LaTeX Font Info:    Trying to load font information for U+msa on input line 55.
 
-]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 60.
-
- (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 60.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 55.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1927,14 +1924,16 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-) [2] [3] [4]
-[5
+) [1
+
+] [2] [3]
+[4] [5
 
 ]
-l.156 --- TeX4ht warning --- File `"pathHW.xbb"' not found ---
-l.156 --- TeX4ht warning --- Cannot determine size of graphic in "pathHW.xbb" (
+l.151 --- TeX4ht warning --- File `"pathHW.xbb"' not found ---
+l.151 --- TeX4ht warning --- Cannot determine size of graphic in "pathHW.xbb" (
 no BoundingBox) ---
-l. 156 --- needs --- pathHW.png ---
+l. 151 --- needs --- pathHW.png ---
 [6
 
 ] [7
@@ -1942,23 +1941,23 @@ l. 156 --- needs --- pathHW.png ---
 ] [8]
 *********************************************************************
 [9]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 268.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 263.
  [10
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 268.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 263.
  (./constructLinearModel.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 268.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 268.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 268.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 263.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 263.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 263.
  ) 
 Here is how much of TeX's memory you used:
- 42276 strings out of 483184
- 939141 string characters out of 5966319
- 1473355 words of memory out of 5000000
- 56202 multiletter control sequences out of 15000+600000
+ 42275 strings out of 483184
+ 939127 string characters out of 5966319
+ 1473352 words of memory out of 5000000
+ 56201 multiletter control sequences out of 15000+600000
  535886 words of font info for 39 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 71i,6n,102p,1253b,759s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,6n,102p,1253b,758s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on constructLinearModel.dvi (10 pages, 29932 bytes).
+Output written on constructLinearModel.dvi (10 pages, 29152 bytes).

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  4 SEP 2020 15:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  25 NOV 2020 12:04
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1908,7 +1908,7 @@ Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 47.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 51.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1916,7 +1916,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 47.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 51.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1930,10 +1930,10 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 [4
 
 ]
-l.107 --- TeX4ht warning --- File `"finalExamVsAge.xbb"' not found ---
-l.107 --- TeX4ht warning --- Cannot determine size of graphic in "finalExamVsAg
+l.111 --- TeX4ht warning --- File `"finalExamVsAge.xbb"' not found ---
+l.111 --- TeX4ht warning --- Cannot determine size of graphic in "finalExamVsAg
 e.xbb" (no BoundingBox) ---
-l. 107 --- needs --- finalExamVsAge.png ---
+l. 111 --- needs --- finalExamVsAge.png ---
 [5
 
 ] [6
@@ -1941,10 +1941,10 @@ l. 107 --- needs --- finalExamVsAge.png ---
 ] [7
 
 ]
-l.115 --- TeX4ht warning --- File `"positiveR.xbb"' not found ---
-l.115 --- TeX4ht warning --- Cannot determine size of graphic in "positiveR.xbb
+l.119 --- TeX4ht warning --- File `"positiveR.xbb"' not found ---
+l.119 --- TeX4ht warning --- Cannot determine size of graphic in "positiveR.xbb
 " (no BoundingBox) ---
-l. 115 --- needs --- positiveR.png ---
+l. 119 --- needs --- positiveR.png ---
 [8
 
 ] [9
@@ -1952,10 +1952,10 @@ l. 115 --- needs --- positiveR.png ---
 ] [10
 
 ]
-l.123 --- TeX4ht warning --- File `"temperature.xbb"' not found ---
-l.123 --- TeX4ht warning --- Cannot determine size of graphic in "temperature.x
+l.127 --- TeX4ht warning --- File `"temperature.xbb"' not found ---
+l.127 --- TeX4ht warning --- Cannot determine size of graphic in "temperature.x
 bb" (no BoundingBox) ---
-l. 123 --- needs --- temperature.png ---
+l. 127 --- needs --- temperature.png ---
 [11
 
 ] [12
@@ -1963,10 +1963,10 @@ l. 123 --- needs --- temperature.png ---
 ] [13
 
 ]
-l.131 --- TeX4ht warning --- File `"tableFunction.xbb"' not found ---
-l.131 --- TeX4ht warning --- Cannot determine size of graphic in "tableFunction
+l.135 --- TeX4ht warning --- File `"tableFunction.xbb"' not found ---
+l.135 --- TeX4ht warning --- Cannot determine size of graphic in "tableFunction
 .xbb" (no BoundingBox) ---
-l. 131 --- needs --- tableFunction.png ---
+l. 135 --- needs --- tableFunction.png ---
 [14
 
 ]
@@ -1974,15 +1974,15 @@ l. 131 --- needs --- tableFunction.png ---
 [15
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 137.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 141.
  [16
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 137.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 141.
  (./identifyLinearNeed.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 137.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 137.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 137.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 141.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 141.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 141.
  ) 
 Here is how much of TeX's memory you used:
  42228 strings out of 483184
@@ -1993,4 +1993,4 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 8191
  71i,5n,102p,1251b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on identifyLinearNeed.dvi (16 pages, 18936 bytes).
+Output written on identifyLinearNeed.dvi (16 pages, 19168 bytes).

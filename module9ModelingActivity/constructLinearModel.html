@@ -11,7 +11,7 @@ Jr."/>
 <link href="https://ximera.osu.edu/public/stylesheets/standalone.css" rel="stylesheet" media="screen"/> 
 <script type="text/javascript" async="" src="https://ximera.osu.edu/public/javascripts/standalone.min.js"></script> 
 <meta name="learning-outcome" content=""/> 
-<meta name="dependency" content="fda9bd90b71fa8dddb0e44122fab7fc54aecf28a preamble.tex"/><meta name="dependency" content="141269e9f193a8703900be697ea3c04eced154ee module9ModelingActivity/constructLinearModel.tex"/></head><body> 
+<meta name="dependency" content="fda9bd90b71fa8dddb0e44122fab7fc54aecf28a preamble.tex"/><meta name="dependency" content="30676c2a2cf27dbffb21ae48577848ed419eb8ee module9ModelingActivity/constructLinearModel.tex"/></head><body> 
 <div class="preamble"><script type="math/tex">\newenvironment {prompt}{}{}
 \newcommand {\ungraded }[0]{}
 \newcommand {\npnoround }[0]{\nprounddigits {-1}}
@@ -34,24 +34,13 @@ Jr."/>
      <li class="itemize">Mixing two different concentrations of solutions;
      </li>
      <li class="itemize">Line of best fit.</li></ul>
-<!--l. 38--><p class="noindent"><strong>After you complete each of the questions below, see if you can
-put together a “general form” for the linear model you built.</strong> Here
-are some videos to help you think about solving linear word problems. <a href="https://www.youtube.com/watch?v=ylp6rx1N4P0&amp;list=PLsCqF7qYpC5ZynJm-TTnZ6OsnKOwU7hs_&amp;index=3">A
-video to help with some specific problems for this homework can be found
-here.</a>
+<!--l. 38--><p class="noindent"><strong>After you complete each of the questions below, see if you can put
+together a “general form” for the linear model you built.</strong> You can print out
+<a href="http://people.clas.ufl.edu/dchamberlain31/files/M9M-Objective-3-Construct-Linear-Model.pdf">these notes</a> to follow along with the video below and keep notes to organize your
+thoughts.
 </p>
-     <ul class="itemize1">
-     <li class="itemize"><a href="http://openstax.org/l/lineqprobsolve">Problem solving using linear equations</a>
-     </li>
-     <li class="itemize"><a href="http://openstax.org/l/equationprsolve">Problem solving using equations</a>
-     </li>
-     <li class="itemize"><a href="http://openstax.org/l/ratetimesolve">Distance between two cities</a>
-     </li>
-     <li class="itemize"><a href="http://openstax.org/l/lineqappl">Cost equation word problem</a></li></ul>
+<div class="video youtube-player" data-youtube="ylp6rx1N4P0">_</div>
 <script type="text/sagemath">x = var("x")
-                                                                  
-
-                                                                  
 fixedCost1 = ZZ.random_element(10, 26)*1000
 productionCost1 = round(ZZ.random_element(1, 4)*0.05, 2)
 sellingPoint1 = round(productionCost1*ZZ.random_element(1, 4), 2)
@@ -59,18 +48,21 @@ costs1 = productionCost1*x + fixedCost1
 profits1 = sellingPoint1*x
 revenue1 = profits1 - costs1
 </script>
+                                                                  
+
+                                                                  
 <div role="article" class="problem-environment exercise" id="problem1"><a id="x1-8r1"></a> A company sells doughnuts. They incur a fixed cost of $<script type="math/tex">\sage {fixedCost1}</script> for rent, insurance, and
 other expenses. It costs $<script type="math/tex">\sage {productionCost1}</script> to produce each doughnut. The company sells each
 doughnut for $<script type="math/tex">\sage {sellingPoint1}</script>.
-<!--l. 62--><p class="noindent"><strong>Part A.</strong> Construct a linear model that describes their total costs, <script type="math/tex">C</script>, as a function of
+<!--l. 57--><p class="noindent"><strong>Part A.</strong> Construct a linear model that describes their total costs, <script type="math/tex">C</script>, as a function of
 the number of doughnuts, <script type="math/tex">x</script>, they produce.
-</p><!--l. 64--><p class="noindent"><script type="math/tex">C(x) = \answer {\sage {costs1}}</script>
-</p><!--l. 66--><p class="noindent"><strong>Part B.</strong> Construct a linear model that describes their total profits, <script type="math/tex">P</script>, as a function of
+</p><!--l. 59--><p class="noindent"><script type="math/tex">C(x) = \answer {\sage {costs1}}</script>
+</p><!--l. 61--><p class="noindent"><strong>Part B.</strong> Construct a linear model that describes their total profits, <script type="math/tex">P</script>, as a function of
 the number of doughnuts, <script type="math/tex">x</script>, they produce.
-</p><!--l. 68--><p class="noindent"><script type="math/tex">P(x) = \answer {\sage {profits1}}</script>
-</p><!--l. 70--><p class="noindent"><strong>Part C.</strong> Construct a linear model that describes their total revenue, <script type="math/tex">R</script>, as a function
+</p><!--l. 63--><p class="noindent"><script type="math/tex">P(x) = \answer {\sage {profits1}}</script>
+</p><!--l. 65--><p class="noindent"><strong>Part C.</strong> Construct a linear model that describes their total revenue, <script type="math/tex">R</script>, as a function
 of the number of doughnuts, <script type="math/tex">x</script>, they produce.
-</p><!--l. 72--><p class="noindent"><script type="math/tex">R(x) = \answer {\sage {revenue1}}</script>
+</p><!--l. 67--><p class="noindent"><script type="math/tex">R(x) = \answer {\sage {revenue1}}</script>
 </p>
 </div>
 <script type="text/sagemath">x = var('x')
@@ -86,21 +78,21 @@ revenue2 = profits2 - costs2
 Bright Futures, which covers her tuition plus a $300 educational expense each
 Fall and Spring semester. Before college, Aubrey saved up <script type="math/tex">\$\sage {savings2}</script>. She knows she
 will need to pay <script type="math/tex">\$\sage {rent2}</script> in rent a month, <script type="math/tex">\$\sage {food2}</script> for food a week, and <script type="math/tex">\$\sage {misc2}</script> in other weekly
+expenses.
+<!--l. 85--><p class="noindent"><strong>Part A.</strong> Construct a linear model that describes her total costs, <script type="math/tex">C</script> as a function of the
+number of months, <script type="math/tex">x</script>, she is at UF <strong>during Fall semester</strong>.
+</p><!--l. 87--><p class="noindent"><script type="math/tex">C(x) = \answer {\sage {costs2}}</script>
+</p><!--l. 89--><p class="noindent"><strong>Part B.</strong> Construct a linear model that describes her total income, <script type="math/tex">I</script>, as a function of
+the number of months, <script type="math/tex">x</script>, she is at UF <strong>during Fall semester</strong>.
+</p><!--l. 91--><p class="noindent"><script type="math/tex">I(x) = \answer {\sage {profits2}}</script>
+</p><!--l. 93--><p class="noindent"><strong>Part C.</strong> Construct a linear model that describes their total budget, <script type="math/tex">B</script>, as a function of
                                                                   
 
                                                                   
-expenses.
-<!--l. 90--><p class="noindent"><strong>Part A.</strong> Construct a linear model that describes her total costs, <script type="math/tex">C</script> as a function of the
-number of months, <script type="math/tex">x</script>, she is at UF <strong>during Fall semester</strong>.
-</p><!--l. 92--><p class="noindent"><script type="math/tex">C(x) = \answer {\sage {costs2}}</script>
-</p><!--l. 94--><p class="noindent"><strong>Part B.</strong> Construct a linear model that describes her total income, <script type="math/tex">I</script>, as a function of
 the number of months, <script type="math/tex">x</script>, she is at UF <strong>during Fall semester</strong>.
-</p><!--l. 96--><p class="noindent"><script type="math/tex">I(x) = \answer {\sage {profits2}}</script>
-</p><!--l. 98--><p class="noindent"><strong>Part C.</strong> Construct a linear model that describes their total budget, <script type="math/tex">B</script>, as a function of
-the number of months, <script type="math/tex">x</script>, she is at UF <strong>during Fall semester</strong>.
-</p><!--l. 100--><p class="noindent"><script type="math/tex">B(x) = \answer {\sage {revenue2}}</script>
+</p><!--l. 95--><p class="noindent"><script type="math/tex">B(x) = \answer {\sage {revenue2}}</script>
 </p></div>
-<!--l. 103--><p class="noindent"><strong>Try to write down notes on how to solve the first
+<!--l. 98--><p class="noindent"><strong>Try to write down notes on how to solve the first
 two questions <em>in general</em>.</strong>
 </p>
 <script type="text/sagemath">m = var('m')
@@ -113,29 +105,29 @@ partC3 = sqrt((officerAspeed3/60)**2 + (officerBspeed3/60)**2)*m
 <div role="article" class="problem-environment exercise" id="problem3"><a id="x1-10r3"></a> Two UFPD are patrolling the campus on foot. To cover more ground, they split up
 and begin walking in different directions. Office A is walking at <script type="math/tex">\sage {officerAspeed3}</script> mph while Office B
 is walking at <script type="math/tex">\sage {officerBspeed3}</script> mph.
-<!--l. 119--><p class="noindent"><strong>Part A.</strong> Construct a linear model that describes Officer A’s distance from their
+<!--l. 114--><p class="noindent"><strong>Part A.</strong> Construct a linear model that describes Officer A’s distance from their
 starting point, <script type="math/tex">D</script>, as a function of minutes, <script type="math/tex">m</script>, that have passed.
-</p><!--l. 121--><p class="noindent"><script type="math/tex">D(m) = \answer {\sage {partA3}}</script>
+</p><!--l. 116--><p class="noindent"><script type="math/tex">D(m) = \answer {\sage {partA3}}</script>
 </p>
 <div role="article" class="problem-environment hint" id="problem4"><a id="x1-11r4"></a> <script type="math/tex">\text {Speed} = \frac {\text {distance}}{\text {time}}</script>
-<!--l. 126--><p class="noindent">Can you re-solve this for distance?
+<!--l. 121--><p class="noindent">Can you re-solve this for distance?
 </p></div>
-<!--l. 129--><p class="noindent"><strong>Part B.</strong> Construct a linear model that describes their total distance from each other,
+<!--l. 124--><p class="noindent"><strong>Part B.</strong> Construct a linear model that describes their total distance from each other,
 <script type="math/tex">T_1</script>, as a function of minutes, <script type="math/tex">m</script>, that have passed <em>if they were walking in exactly opposite
 directions</em> (e.g., North/South).
-</p><!--l. 131--><p class="noindent"><script type="math/tex">T_1(m) = \answer {\sage {partB3}}</script>
-                                                                  
-
-                                                                  
-</p><!--l. 133--><p class="noindent"><strong>Part C.</strong> Construct a linear model that describes their total distance from each other,
+</p><!--l. 126--><p class="noindent"><script type="math/tex">T_1(m) = \answer {\sage {partB3}}</script>
+</p><!--l. 128--><p class="noindent"><strong>Part C.</strong> Construct a linear model that describes their total distance from each other,
 <script type="math/tex">T_2</script>, as a function of minutes, <script type="math/tex">m</script>, that have passed <em>if they were walking in exactly 90
 degrees from each other</em> (e.g., North/East).
-</p><!--l. 135--><p class="noindent"><script type="math/tex">T_2(m) = \answer {\sage {partC3}}</script>
-</p><!--l. 137--><p class="noindent"><em>Exact value needed for the coefficient! DO NOT ROUND.</em>
+</p><!--l. 130--><p class="noindent"><script type="math/tex">T_2(m) = \answer {\sage {partC3}}</script>
+</p><!--l. 132--><p class="noindent"><em>Exact value needed for the coefficient! DO NOT ROUND.</em>
 </p>
 <div role="article" class="problem-environment hint" id="problem5"><a id="x1-12r5"></a> For Part C, draw a picture and think about how the Pythagorean Theorem could be
 used. Remember: these are all linear models! So if your model has a non-linear
 <strong>variable</strong>, is there a reason we would ignore part of the domain?
+                                                                  
+
+                                                                  
 </div>
 </div>
 <script type="text/sagemath">t, D = var('t', 'D')
@@ -153,39 +145,39 @@ partD4 = D*(1/speedUp4 + 1/speedDown4 + 1/speedFlat4)
                                                                   
 
                                                                   
-<!--l. 156--><p class="noindent"><img src="pathHW.png" alt="PIC" width="36" height="36"/>
+<!--l. 151--><p class="noindent"><img src="pathHW.png" alt="PIC" width="36" height="36"/>
 <br/> </p><div class="caption"><span class="id">Figure 1: </span><span class="content">Training path.</span></div><!--tex4ht:label?: x1-141 -->
                                                                   
 
                                                                   
 </div><hr class="endfigure"/>
-<!--l. 159--><p class="noindent">A bicyclist is training for a race on a hilly path. Their bike keeps track of their speed
+<!--l. 154--><p class="noindent">A bicyclist is training for a race on a hilly path. Their bike keeps track of their speed
 at any time, but not the distance traveled. Their speed traveling up a hill is
 <script type="math/tex">\sage {speedUp4}</script>mph, <script type="math/tex">\sage {speedDown4}</script>mph when traveling down a hill, and <script type="math/tex">\sage {speedFlat4}</script>mph when traveling along a flat
 portion.
 </p>
 <div role="article" class="problem-environment hint" id="problem7"><a id="x1-15r7"></a> Distance is equal to rate times time.
 </div>
-<!--l. 165--><p class="noindent"><strong>Part A.</strong> Construct linear models that describe their distance, <script type="math/tex">D</script> in miles, on a
+<!--l. 160--><p class="noindent"><strong>Part A.</strong> Construct linear models that describe their distance, <script type="math/tex">D</script> in miles, on a
 particular portion of the path in terms of the time, <script type="math/tex">t</script> in hours, spent on that part of
 the path.
-</p><!--l. 167--><p class="noindent"><script type="math/tex">D_{\text {up}}(t) = \answer {\sage {speedUp4*t}}</script>
-</p><!--l. 169--><p class="noindent"><script type="math/tex">D_{\text {down}}(t) = \answer {\sage {speedDown4*t}}</script>
-</p><!--l. 171--><p class="noindent"><script type="math/tex">D_{\text {flat}}(t) = \answer {\sage {speedFlat4*t}}</script>
-</p><!--l. 173--><p class="noindent"><strong>Part B.</strong> Construct linear models that describe their time, <script type="math/tex">t</script> in hours, on a particular
+</p><!--l. 162--><p class="noindent"><script type="math/tex">D_{\text {up}}(t) = \answer {\sage {speedUp4*t}}</script>
+</p><!--l. 164--><p class="noindent"><script type="math/tex">D_{\text {down}}(t) = \answer {\sage {speedDown4*t}}</script>
+</p><!--l. 166--><p class="noindent"><script type="math/tex">D_{\text {flat}}(t) = \answer {\sage {speedFlat4*t}}</script>
+</p><!--l. 168--><p class="noindent"><strong>Part B.</strong> Construct linear models that describe their time, <script type="math/tex">t</script> in hours, on a particular
 portion of the path in terms of the length, <script type="math/tex">D</script> in miles, of that part of the
 path.
-</p><!--l. 175--><p class="noindent"><script type="math/tex">t_{\text {up}}(D) = \answer {\sage {D/speedUp4}}</script>
-</p><!--l. 177--><p class="noindent"><script type="math/tex">t_{\text {down}}(D) = \answer {\sage {D/speedDown4}}</script>
-</p><!--l. 179--><p class="noindent"><script type="math/tex">t_{\text {flat}}(D) = \answer {\sage {D/speedFlat4}}</script>
-</p><!--l. 181--><p class="noindent"><strong>Part C.</strong> Construct a linear model that describes the total distance of the path, <script type="math/tex">D</script>, in
+</p><!--l. 170--><p class="noindent"><script type="math/tex">t_{\text {up}}(D) = \answer {\sage {D/speedUp4}}</script>
+</p><!--l. 172--><p class="noindent"><script type="math/tex">t_{\text {down}}(D) = \answer {\sage {D/speedDown4}}</script>
+</p><!--l. 174--><p class="noindent"><script type="math/tex">t_{\text {flat}}(D) = \answer {\sage {D/speedFlat4}}</script>
+</p><!--l. 176--><p class="noindent"><strong>Part C.</strong> Construct a linear model that describes the total distance of the path, <script type="math/tex">D</script>, in
 terms of the time spent on a particular path <em>if we knew that the time spent on each
 path was equal</em>.
-</p><!--l. 183--><p class="noindent"><script type="math/tex">D(t) = \answer {\sage {partC4}}</script>
-</p><!--l. 185--><p class="noindent"><strong>Part D.</strong> Construct a linear model that describes the total time <script type="math/tex">T</script> spent on the path in
+</p><!--l. 178--><p class="noindent"><script type="math/tex">D(t) = \answer {\sage {partC4}}</script>
+</p><!--l. 180--><p class="noindent"><strong>Part D.</strong> Construct a linear model that describes the total time <script type="math/tex">T</script> spent on the path in
 terms of the distance of a particular part of the path <em>if we knew that all parts of the
 path are equal length</em>.
-</p><!--l. 187--><p class="noindent"><script type="math/tex">T(D) = \answer {\sage {partD4}}</script>
+</p><!--l. 182--><p class="noindent"><script type="math/tex">T(D) = \answer {\sage {partD4}}</script>
 </p>
 </div>
 <script type="text/sagemath">x = var('x')
@@ -206,22 +198,22 @@ eqPartC5 = eqPartB5 + teenTicketPrice * x
 prevention of child abuse. Adult (18+) tickets are <script type="math/tex">\$ \sage {adultTicketPrice}</script> and teen (10-17) tickets are <script type="math/tex">\$\sage {teenTicketPrice} </script>.
 Children under 10 are let in without a ticket. The ticket-sellers only kept track of the
 total number of tickets sold, <script type="math/tex">\sage {totalTickets}</script>, and total revenue, <script type="math/tex">\$ \sage {totalRevenue}</script>.
-<!--l. 209--><p class="noindent"><strong>Part A.</strong> Construct a linear model that describes the total number of adult tickets, <script type="math/tex">y</script>,
+<!--l. 204--><p class="noindent"><strong>Part A.</strong> Construct a linear model that describes the total number of adult tickets, <script type="math/tex">y</script>,
 sold in terms of the number of teen tickets, <script type="math/tex">x</script>, sold.
-</p><!--l. 211--><p class="noindent"><script type="math/tex">y = \answer {\sage {eqPartA5}}</script>
-</p><!--l. 213--><p class="noindent"><strong>Part B.</strong> Construct a linear model that describes the revenue made from selling many
+</p><!--l. 206--><p class="noindent"><script type="math/tex">y = \answer {\sage {eqPartA5}}</script>
+</p><!--l. 208--><p class="noindent"><strong>Part B.</strong> Construct a linear model that describes the revenue made from selling many
 adult tickets, <script type="math/tex">R_a</script>, in terms of the number of teen tickets, <script type="math/tex">x</script>, sold.
-</p><!--l. 215--><p class="noindent"><script type="math/tex">R_a = \answer {\sage {eqPartB5}}</script>
-</p><!--l. 217--><p class="noindent"><strong>Part C.</strong> Construct a linear model that describes the total revenue made, <script type="math/tex">R_T</script>, in terms
+</p><!--l. 210--><p class="noindent"><script type="math/tex">R_a = \answer {\sage {eqPartB5}}</script>
+</p><!--l. 212--><p class="noindent"><strong>Part C.</strong> Construct a linear model that describes the total revenue made, <script type="math/tex">R_T</script>, in terms
 of the number of teen tickets, <script type="math/tex">x</script>, sold.
-</p><!--l. 219--><p class="noindent"><script type="math/tex">R_T = \answer {\sage {eqPartC5}}</script>
+</p><!--l. 214--><p class="noindent"><script type="math/tex">R_T = \answer {\sage {eqPartC5}}</script>
 </p>
 <div role="article" class="problem-environment hint" id="problem9"><a id="x1-17r9"></a> Part A: Is there way to build an equation that relates adult tickets, teen tickets, and
 total tickets? Solving this equation for adult tickets would give you the linear
 model.
-<!--l. 224--><p class="noindent">Part B: It may be easier to first build this model in terms of <script type="math/tex">y</script>, then use your answer
+<!--l. 219--><p class="noindent">Part B: It may be easier to first build this model in terms of <script type="math/tex">y</script>, then use your answer
 from part A.
-</p><!--l. 226--><p class="noindent">Part C: Think about how to model total revenue, then use your answer in Part B to
+</p><!--l. 221--><p class="noindent">Part C: Think about how to model total revenue, then use your answer in Part B to
 make part of the model.
 </p></div>
 </div>
@@ -243,18 +235,18 @@ eqPartD6 = eqPartB6 + eqPartC6
 <div role="article" class="problem-environment exercise" id="problem10"><a id="x1-18r10"></a> Chemists commonly create a solution by mixing two products of differing
 concentrations together. For example, a chemist could have large amounts of a <script type="math/tex">\sage {concA}\%</script> acid
 solution and a <script type="math/tex">\sage {concB}\%</script> acid solution, but need a <script type="math/tex">\sage {totalVolume}</script> liter <script type="math/tex">\sage {concTotal}</script>% solution.
-<!--l. 246--><p class="noindent"><strong>Part A.</strong> Construct a linear model that describes the volume of the <script type="math/tex">\sage {concB}\%</script> acid solution, <script type="math/tex">v_{\sage {concB}}</script>,
+<!--l. 241--><p class="noindent"><strong>Part A.</strong> Construct a linear model that describes the volume of the <script type="math/tex">\sage {concB}\%</script> acid solution, <script type="math/tex">v_{\sage {concB}}</script>,
 in terms of the volume of the <script type="math/tex">\sage {concA}\%</script> acid solution, <script type="math/tex">v</script>.
-</p><!--l. 248--><p class="noindent"><script type="math/tex">v_{\sage {concB}} = \answer {\sage {eqPartA6}}</script>
-</p><!--l. 250--><p class="noindent"><strong>Part B.</strong> Construct a linear model that describes the amount of acid in a <script type="math/tex">\sage {concA}\%</script> acid
+</p><!--l. 243--><p class="noindent"><script type="math/tex">v_{\sage {concB}} = \answer {\sage {eqPartA6}}</script>
+</p><!--l. 245--><p class="noindent"><strong>Part B.</strong> Construct a linear model that describes the amount of acid in a <script type="math/tex">\sage {concA}\%</script> acid
 solution, <script type="math/tex">A_{\sage {concA}}</script>, in terms of the volume of the <script type="math/tex">\sage {concA}\%</script> acid solution, <script type="math/tex">v</script>.
-</p><!--l. 252--><p class="noindent"><script type="math/tex">A_{\sage {concA}} = \answer {\sage {eqPartB6}} </script>
-</p><!--l. 254--><p class="noindent"><strong>Part C.</strong> Construct a linear model that describes the amount of acid in a <script type="math/tex">\sage {concB}\%</script> acid
+</p><!--l. 247--><p class="noindent"><script type="math/tex">A_{\sage {concA}} = \answer {\sage {eqPartB6}} </script>
+</p><!--l. 249--><p class="noindent"><strong>Part C.</strong> Construct a linear model that describes the amount of acid in a <script type="math/tex">\sage {concB}\%</script> acid
 solution, <script type="math/tex">A_{\sage {concB}}</script>, in terms of the volume of the <script type="math/tex">\sage {concA}\%</script> acid solution, <script type="math/tex">v</script>.
-</p><!--l. 256--><p class="noindent"><script type="math/tex">A_{\sage {concB}} = \answer {\sage {eqPartC6}} </script>
-</p><!--l. 258--><p class="noindent"><strong>Part D.</strong> Construct a linear model that describes the amount of acid in a <script type="math/tex">\sage {concTotal}\%</script> acid
+</p><!--l. 251--><p class="noindent"><script type="math/tex">A_{\sage {concB}} = \answer {\sage {eqPartC6}} </script>
+</p><!--l. 253--><p class="noindent"><strong>Part D.</strong> Construct a linear model that describes the amount of acid in a <script type="math/tex">\sage {concTotal}\%</script> acid
 solution, <script type="math/tex">A_{\sage {concTotal}}</script>, in terms of the volume of the <script type="math/tex">\sage {concA}\%</script> acid solution, <script type="math/tex">v</script>.
-</p><!--l. 260--><p class="noindent"><script type="math/tex">A_{\sage {concTotal}} = \answer {\sage {eqPartD6}}</script>
+</p><!--l. 255--><p class="noindent"><script type="math/tex">A_{\sage {concTotal}} = \answer {\sage {eqPartD6}}</script>
 </p>
 <div role="article" class="problem-environment hint" id="problem11"><a id="x1-19r11"></a> Parts A-D: Think about what you did in the last problem. How can we use that
 same structure in this new setting?
