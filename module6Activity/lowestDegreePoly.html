@@ -11,7 +11,7 @@ Jr."/>
 <link href="https://ximera.osu.edu/public/stylesheets/standalone.css" rel="stylesheet" media="screen"/> 
 <script type="text/javascript" async="" src="https://ximera.osu.edu/public/javascripts/standalone.min.js"></script> 
 <meta name="learning-outcome" content=""/> 
-<meta name="dependency" content="fda9bd90b71fa8dddb0e44122fab7fc54aecf28a preamble.tex"/><meta name="dependency" content="4ae90f6a2b48d90d56fcc3b4d76ceee16f0876de module6Activity/lowestDegreePoly.tex"/></head><body> 
+<meta name="dependency" content="fda9bd90b71fa8dddb0e44122fab7fc54aecf28a preamble.tex"/><meta name="dependency" content="7d603ecaf35fe15aea766dc8e5193a344b41b56f module6Activity/lowestDegreePoly.tex"/></head><body> 
 <div class="preamble"><script type="math/tex">\newenvironment {prompt}{}{}
 \newcommand {\ungraded }[0]{}
 \newcommand {\npnoround }[0]{\nprounddigits {-1}}
@@ -24,9 +24,11 @@ Jr."/>
 <!--l. 18--><p class="noindent">Construct a lowest-degree polynomial given its zeros.
 </p></div>   <div class="maketitle"></div>
 <a href="https://cnx.org/contents/mwjClAV_@8.1:G7V9LHif@17/Zeros-of-Polynomial-Functions">Link to section in online textbook</a>
-<!--l. 28--><p class="noindent">First, watch <span class="underline"><a href="https://mediasite.video.ufl.edu/Mediasite/Play/11f054fdc9db465fba9fe468237d117f1d">this video</a></span> to learn how to construct a polynomial, given its
-zeros. Now practice constructing polynomials from zeros with the questions
-below.
+<!--l. 28--><p class="noindent">You can print out <a href="http://people.clas.ufl.edu/dchamberlain31/files/M6-Objective-3-Construct-Polynomials.pdf">these notes</a> to follow along with the video below and keep notes to
+organize your thoughts.
+</p>
+<div class="video youtube-player" data-youtube="g3cpbm3fQjw">_</div>
+<!--l. 32--><p class="noindent">Now practice constructing polynomials from zeros with the questions below.
 </p>
 <script type="text/sagemath">def maybeMakeNegative(natural):
     integer = (-1)**ZZ.random_element(2) * natural
@@ -47,11 +49,11 @@ def generateFactorHard():
 
 def generateAllFactorsEasy():
     factor1 = generateFactorEasy()
-    factor2 = generateFactorEasy()
-    factor3 = generateFactorEasy()
                                                                   
 
                                                                   
+    factor2 = generateFactorEasy()
+    factor3 = generateFactorEasy()
     return [factor1, factor2, factor3]
 
 def generateAllFactorsHard():
@@ -82,11 +84,11 @@ def generatePolynomial(factor1, factor2, factor3):
 ##### QUESTION 13 #####
 factor131, factor132, factor133 = generateAllFactorsEasy()
 zero131, zero132, zero133 = generateZeros(factor131, factor132, factor133)
+                                                                  
+
+                                                                  
 coefficients13 = generatePolynomial(factor131, factor132, factor133)
 
-                                                                  
-
-                                                                  
 ##### QUESTION 14 #####
 factor141, factor142, factor143 = generateAllFactorsEasy()
 zero141, zero142, zero143 = generateZeros(factor141, factor142, factor143)
@@ -103,24 +105,24 @@ zero161, zero162, zero163 = generateZeros(factor161, factor162, factor163)
 coefficients16 = generatePolynomial(factor161, factor162, factor163)
 </script>
 <div role="article" class="problem-environment question" id="problem1"><a id="x1-8r1"></a> Construct the lowest-degree polynomial given the zeros below.
-<!--l. 104--><p class="noindent">
+<!--l. 108--><p class="noindent">
                                  <script type="math/tex; mode=display"> \sage {zero131}, \sage {zero132}, \sage {zero133} </script>
-</p><!--l. 106--><p class="noindent"><script type="math/tex">f(x) = \answer {\sage {coefficients13[0]}} x^3 + \answer {\sage {coefficients13[1]}} x^2 + \answer {\sage {coefficients13[2]}} x + \answer {\sage {coefficients13[3]}}</script>
+</p><!--l. 110--><p class="noindent"><script type="math/tex">f(x) = \answer {\sage {coefficients13[0]}} x^3 + \answer {\sage {coefficients13[1]}} x^2 + \answer {\sage {coefficients13[2]}} x + \answer {\sage {coefficients13[3]}}</script>
 </p>
 </div>
 <div role="article" class="problem-environment question" id="problem2"><a id="x1-9r2"></a> Construct the lowest-degree polynomial given the zeros below.
-<!--l. 114--><p class="noindent">
                                                                   
 
                                                                   
+<!--l. 118--><p class="noindent">
                                  <script type="math/tex; mode=display"> \sage {zero141}, \sage {zero142}, \sage {zero143} </script>
-</p><!--l. 116--><p class="noindent"><script type="math/tex">f(x) = \answer {\sage {coefficients14[0]}} x^3 + \answer {\sage {coefficients14[1]}} x^2 + \answer {\sage {coefficients14[2]}} x + \answer {\sage {coefficients14[3]}}</script>
+</p><!--l. 120--><p class="noindent"><script type="math/tex">f(x) = \answer {\sage {coefficients14[0]}} x^3 + \answer {\sage {coefficients14[1]}} x^2 + \answer {\sage {coefficients14[2]}} x + \answer {\sage {coefficients14[3]}}</script>
 </p>
 </div>
 <div role="article" class="problem-environment question" id="problem3"><a id="x1-10r3"></a> Construct the lowest-degree polynomial given the zeros below.
-<!--l. 124--><p class="noindent">
+<!--l. 128--><p class="noindent">
                                  <script type="math/tex; mode=display"> \sage {zero151}, \sage {zero152}, \sage {zero153} </script>
-</p><!--l. 126--><p class="noindent"><script type="math/tex">f(x) = \answer {\sage {coefficients15[0]}} x^3 + \answer {\sage {coefficients15[1]}} x^2 + \answer {\sage {coefficients15[2]}} x + \answer {\sage {coefficients15[3]}}</script>
+</p><!--l. 130--><p class="noindent"><script type="math/tex">f(x) = \answer {\sage {coefficients15[0]}} x^3 + \answer {\sage {coefficients15[1]}} x^2 + \answer {\sage {coefficients15[2]}} x + \answer {\sage {coefficients15[3]}}</script>
 </p>
 <div role="article" class="problem-environment hint" id="problem4"><a id="x1-11r4"></a> Remember back to what it meant to be in Standard Form for linear functions: we
 did not have any fractions as coefficients. How would we rewrite a factor that has a
@@ -128,27 +130,27 @@ fraction in it, like <script type="math/tex">\left (x-\frac {3}{4}\right )</scri
 </div>
 </div>
 <div role="article" class="problem-environment question" id="problem5"><a id="x1-12r5"></a> Construct the lowest-degree polynomial given the zeros below.
-<!--l. 138--><p class="noindent">
+<!--l. 142--><p class="noindent">
                                                                   
 
                                                                   
                                  <script type="math/tex; mode=display"> \sage {zero161}, \sage {zero162}, \sage {zero163} </script>
-</p><!--l. 140--><p class="noindent"><script type="math/tex">f(x) = \answer {\sage {coefficients16[0]}} x^3 + \answer {\sage {coefficients16[1]}} x^2 + \answer {\sage {coefficients16[2]}} x + \answer {\sage {coefficients16[3]}}</script>
+</p><!--l. 144--><p class="noindent"><script type="math/tex">f(x) = \answer {\sage {coefficients16[0]}} x^3 + \answer {\sage {coefficients16[1]}} x^2 + \answer {\sage {coefficients16[2]}} x + \answer {\sage {coefficients16[3]}}</script>
 </p>
 <div role="article" class="problem-environment hint" id="problem6"><a id="x1-13r6"></a> Remember back to what it meant to be in Standard Form for linear functions: we
 did not have any fractions as coefficients. How would we rewrite a factor that has a
 fraction in it, like <script type="math/tex">\left (x-\frac {3}{4}\right )</script>?
 </div>
 </div>
-<!--l. 148--><p class="noindent">We focused on building polynomials with integer and rational zeros. What would we
+<!--l. 152--><p class="noindent">We focused on building polynomials with integer and rational zeros. What would we
 do if we had other types of zeros, like irrational or complex?
 </p>
 <div class="theorem-like problem-environment theorem" id="problem7"><a id="x1-14r7"></a>Complex and Irrational roots for polynomials come in “_________” pairs.
 <br class="newline"/>
-<!--l. 153--><p class="noindent">The Quadratic Formula
-</p><!--l. 155--><p class="noindent">
+<!--l. 157--><p class="noindent">The Quadratic Formula
+</p><!--l. 159--><p class="noindent">
                                  <script type="math/tex; mode=display">x = \frac {-b \pm \sqrt {b^2 - 4ac}}{2a}</script>
-</p><!--l. 157--><p class="noindent">tells us something about the types of zeros a quadratic function may have:
+</p><!--l. 161--><p class="noindent">tells us something about the types of zeros a quadratic function may have:
 </p>
                                                                   
 
@@ -170,27 +172,27 @@ do if we had other types of zeros, like irrational or complex?
          <ul class="itemize2">
          <li class="itemize"><script type="math/tex">\text {e.g., } \frac {1}{4}-3i \text { and } \frac {1}{4}+3i \text { for the polynomial } 16x^2-8x+145</script></li></ul>
      </li></ul>
-<!--l. 177--><p class="noindent">Let’s focus on the irrational and complex zeros. These occur when the number under
+<!--l. 181--><p class="noindent">Let’s focus on the irrational and complex zeros. These occur when the number under
 the square root is either (1) not a perfect square or (2) negative. Let’s look closer at
 the form these zeros take by looking at the subgroups the numbers belong
 to.
-</p><!--l. 179--><p class="noindent">Case 1: <script type="math/tex">b^2 - 4ac</script> is positive and is <strong>not</strong> a perfect square.
-</p><!--l. 181--><p class="noindent">
+</p><!--l. 183--><p class="noindent">Case 1: <script type="math/tex">b^2 - 4ac</script> is positive and is <strong>not</strong> a perfect square.
+</p><!--l. 185--><p class="noindent">
                                  <script type="math/tex; mode=display">x = \frac {\text {integer}}{\text {integer}} \pm \frac {\text {irrational}}{\text {integer}}</script>
-</p><!--l. 183--><p class="noindent">
+</p><!--l. 187--><p class="noindent">
                                                                   
 
                                                                   
                                  <script type="math/tex; mode=display"> x = \text {rational} \pm \text {irrational} </script>
-</p><!--l. 185--><p class="noindent">Case 2: <script type="math/tex">b^2 - 4ac</script> is negative.
-</p><!--l. 187--><p class="noindent">
+</p><!--l. 189--><p class="noindent">Case 2: <script type="math/tex">b^2 - 4ac</script> is negative.
+</p><!--l. 191--><p class="noindent">
                                  <script type="math/tex; mode=display">x = \frac {\text {integer}}{\text {integer}} \pm \frac {\text {complex}}{\text {integer}}</script>
-</p><!--l. 189--><p class="noindent">
+</p><!--l. 193--><p class="noindent">
                                  <script type="math/tex; mode=display"> x = \text {rational} \pm \text {complex} </script>
 </p></div>
 
 <div role="article" class="problem-environment question" id="problem8"><a id="x1-15r8"></a> What word describes the relationship between the zeros <script type="math/tex"> x = \text {rational} - \text {complex} </script> and <script type="math/tex"> x = \text {rational} + \text {complex}</script>?
-<!--l. 195--><p class="noindent">They are <script type="math/tex">\answer [format=string]{conjugate}</script> pairs!
+<!--l. 199--><p class="noindent">They are <script type="math/tex">\answer [format=string]{conjugate}</script> pairs!
                                                                   
 
                                                                   
@@ -198,7 +200,7 @@ to.
 <div role="article" class="problem-environment hint" id="problem9"><a id="x1-16r9"></a> What are <script type="math/tex">3+4i</script> and <script type="math/tex">3-4i</script> to each other?
 </div>
 </div>
-<!--l. 203--><p class="noindent">We use this theorem to construct polynomials with irrational and/or complex
+<!--l. 207--><p class="noindent">We use this theorem to construct polynomials with irrational and/or complex
 roots.
 </p>
 <script type="text/sagemath">def constructLowestDegreePolyIrrational(b):
@@ -240,51 +242,51 @@ coefficientsQ8, zerosQ8, hintValuesQ8 = constructLowestDegreePolyComplex(0)
 coefficientsQ9, zerosQ9, hintValuesQ9 = constructLowestDegreePolyComplex(complexA)
 </script>
 <div role="article" class="problem-environment question" id="problem10"><a id="x1-17r10"></a> Construct the lowest-degree polynomial given the zeros below.
-<!--l. 246--><p class="noindent">
+<!--l. 250--><p class="noindent">
                                  <script type="math/tex; mode=display">\sage {zerosQ6[1]}, \sage {zerosQ6[2]}</script>
-</p><!--l. 248--><p class="noindent"><script type="math/tex">f(x) = \answer {\sage {coefficientsQ6[0]}}x^3 + \answer {\sage {coefficientsQ6[1]}}x^2 + \answer {\sage {coefficientsQ6[2]}}x + \answer {\sage {coefficientsQ6[3]}}</script>
+</p><!--l. 252--><p class="noindent"><script type="math/tex">f(x) = \answer {\sage {coefficientsQ6[0]}}x^3 + \answer {\sage {coefficientsQ6[1]}}x^2 + \answer {\sage {coefficientsQ6[2]}}x + \answer {\sage {coefficientsQ6[3]}}</script>
 </p>
 <div role="article" class="problem-environment hint" id="problem11"><a id="x1-18r11"></a> If <script type="math/tex">\sage {zerosQ6[1]}</script> is a zero to the polynomial, then <script type="math/tex">-\sage {zerosQ6[1]}</script> is also! Multiply <script type="math/tex">(x-\sage {zerosQ6[1]})(x+\sage {zerosQ6[1]})</script> first, then use the third zero
 to finish building the polynomial.
 </div>
 </div>
 <div role="article" class="problem-environment question" id="problem12"><a id="x1-19r12"></a> Construct the lowest-degree polynomial given the zeros below.
-<!--l. 260--><p class="noindent">
+<!--l. 264--><p class="noindent">
                                                                   
 
                                                                   
                                  <script type="math/tex; mode=display">\sage {zerosQ7[0]}+\sage {zerosQ7[1]}, \sage {zerosQ7[2]}</script>
-</p><!--l. 262--><p class="noindent"><script type="math/tex">f(x) = \answer {\sage {coefficientsQ7[0]}}x^3 + \answer {\sage {coefficientsQ7[1]}}x^2 + \answer {\sage {coefficientsQ7[2]}}x + \answer {\sage {coefficientsQ7[3]}}</script>
+</p><!--l. 266--><p class="noindent"><script type="math/tex">f(x) = \answer {\sage {coefficientsQ7[0]}}x^3 + \answer {\sage {coefficientsQ7[1]}}x^2 + \answer {\sage {coefficientsQ7[2]}}x + \answer {\sage {coefficientsQ7[3]}}</script>
 </p>
 <div role="article" class="problem-environment hint" id="problem13"><a id="x1-20r13"></a> Be careful with how you set up this problem. Again, multiply the conjugate factors
 together first. If you did this right, there should be no radicals left!
 </div>
 </div>
 <div role="article" class="problem-environment question" id="problem14"><a id="x1-21r14"></a> Construct the lowest-degree polynomial given the zeros below.
-<!--l. 274--><p class="noindent">
+<!--l. 278--><p class="noindent">
                                  <script type="math/tex; mode=display">\sage {zerosQ8[1]}i, \sage {zerosQ8[2]}</script>
-</p><!--l. 276--><p class="noindent"><script type="math/tex">f(x) = \answer {\sage {coefficientsQ8[0]}}x^3 + \answer {\sage {coefficientsQ8[1]}}x^2 + \answer {\sage {coefficientsQ8[2]}}x + \answer {\sage {coefficientsQ8[3]}}</script>
+</p><!--l. 280--><p class="noindent"><script type="math/tex">f(x) = \answer {\sage {coefficientsQ8[0]}}x^3 + \answer {\sage {coefficientsQ8[1]}}x^2 + \answer {\sage {coefficientsQ8[2]}}x + \answer {\sage {coefficientsQ8[3]}}</script>
 </p></div>
 <div role="article" class="problem-environment question" id="problem15"><a id="x1-22r15"></a> Construct the lowest-degree polynomial given the zeros below.
-<!--l. 283--><p class="noindent">
+<!--l. 287--><p class="noindent">
                                  <script type="math/tex; mode=display">\sage {zerosQ9[0]}+\sage {zerosQ9[1]}i, \sage {zerosQ9[2]}</script>
                                                                   
 
                                                                   
-</p><!--l. 285--><p class="noindent"><script type="math/tex">f(x) = \answer {\sage {coefficientsQ9[0]}}x^3 + \answer {\sage {coefficientsQ9[1]}}x^2 + \answer {\sage {coefficientsQ9[2]}}x + \answer {\sage {coefficientsQ9[3]}}</script>
+</p><!--l. 289--><p class="noindent"><script type="math/tex">f(x) = \answer {\sage {coefficientsQ9[0]}}x^3 + \answer {\sage {coefficientsQ9[1]}}x^2 + \answer {\sage {coefficientsQ9[2]}}x + \answer {\sage {coefficientsQ9[3]}}</script>
 </p>
 <div role="article" class="problem-environment hint" id="problem16"><a id="x1-23r16"></a> First, you want to set up the factors:
-<!--l. 290--><p class="noindent">
+<!--l. 294--><p class="noindent">
                                  <script type="math/tex; mode=display">(x - \, (\sage {zerosQ9[0]}+\sage {zerosQ9[1]}i) \, )(x - \, (\sage {zerosQ9[0]}-\sage {zerosQ9[1]}i) \,)(\sage {hintValuesQ9[1]} x - \sage {hintValuesQ9[0]})</script>
-</p><!--l. 292--><p class="noindent">Now, we want to be careful how we multiply out.
-</p><!--l. 294--><p class="noindent">
+</p><!--l. 296--><p class="noindent">Now, we want to be careful how we multiply out.
+</p><!--l. 298--><p class="noindent">
                                  <script type="math/tex; mode=display">(x^2 - \, (\sage {zerosQ9[0]}+\sage {zerosQ9[1]}i) \, x - \, (\sage {zerosQ9[0]}-\sage {zerosQ9[1]}i)\, x + (\sage {zerosQ9[0]}+\sage {zerosQ9[1]}i) (\sage {zerosQ9[0]}-\sage {zerosQ9[1]}i) \, ) \, (\sage {hintValuesQ9[1]} x - \sage {hintValuesQ9[0]})</script>
-</p><!--l. 296--><p class="noindent">
+</p><!--l. 300--><p class="noindent">
                                                                   
 
                                                                   
                                  <script type="math/tex; mode=display">(x^2 - \sage {2*zerosQ9[0]}x + (\sage {zerosQ9[0]}^2 + \sage {zerosQ9[1]}^2) \, )(\sage {hintValuesQ9[1]} x - \sage {hintValuesQ9[0]})</script>
-</p><!--l. 298--><p class="noindent">Distribute this last part out carefully and you will have completed the problem.
+</p><!--l. 302--><p class="noindent">Distribute this last part out carefully and you will have completed the problem.
 </p></div>
 </div>
  

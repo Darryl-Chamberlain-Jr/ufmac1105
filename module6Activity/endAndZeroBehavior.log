@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  4 SEP 2020 15:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  25 NOV 2020 16:43
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1911,7 +1911,7 @@ or  <return>  to continue without it.
 [1
 
 ] [2] [3] [4] [5]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 200
+LaTeX Font Info:    Trying to load font information for U+msa on input line 204
 .
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1919,7 +1919,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 200
+LaTeX Font Info:    Trying to load font information for U+msb on input line 204
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1927,63 +1927,63 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-)
-l.203 --- TeX4ht warning --- File `"endBehaviorOptions.xbb"' not found ---
-l.203 --- TeX4ht warning --- Cannot determine size of graphic in "endBehaviorOp
+) [6]
+l.207 --- TeX4ht warning --- File `"endBehaviorOptions.xbb"' not found ---
+l.207 --- TeX4ht warning --- Cannot determine size of graphic in "endBehaviorOp
 tions.xbb" (no BoundingBox) ---
-l. 203 --- needs --- endBehaviorOptions.png ---
-[6]
-l.222 --- TeX4ht warning --- File `"endBehaviorOptions.xbb"' not found ---
-l.222 --- TeX4ht warning --- Cannot determine size of graphic in "endBehaviorOp
+l. 207 --- needs --- endBehaviorOptions.png ---
+l.226 --- TeX4ht warning --- File `"endBehaviorOptions.xbb"' not found ---
+l.226 --- TeX4ht warning --- Cannot determine size of graphic in "endBehaviorOp
 tions.xbb" (no BoundingBox) ---
-l. 222 --- needs --- endBehaviorOptions.png ---
+l. 226 --- needs --- endBehaviorOptions.png ---
 [7]
-l.241 --- TeX4ht warning --- File `"endBehaviorOptions.xbb"' not found ---
-l.241 --- TeX4ht warning --- Cannot determine size of graphic in "endBehaviorOp
+l.245 --- TeX4ht warning --- File `"endBehaviorOptions.xbb"' not found ---
+l.245 --- TeX4ht warning --- Cannot determine size of graphic in "endBehaviorOp
 tions.xbb" (no BoundingBox) ---
-l. 241 --- needs --- endBehaviorOptions.png ---
-l.260 --- TeX4ht warning --- File `"endBehaviorOptions.xbb"' not found ---
-l.260 --- TeX4ht warning --- Cannot determine size of graphic in "endBehaviorOp
+l. 245 --- needs --- endBehaviorOptions.png ---
+l.264 --- TeX4ht warning --- File `"endBehaviorOptions.xbb"' not found ---
+l.264 --- TeX4ht warning --- Cannot determine size of graphic in "endBehaviorOp
 tions.xbb" (no BoundingBox) ---
-l. 260 --- needs --- endBehaviorOptions.png ---
+l. 264 --- needs --- endBehaviorOptions.png ---
 [8]
-l.279 --- TeX4ht warning --- File `"zeroBehaviorOptions.xbb"' not found ---
-l.279 --- TeX4ht warning --- Cannot determine size of graphic in "zeroBehaviorO
+l.283 --- TeX4ht warning --- File `"zeroBehaviorOptions.xbb"' not found ---
+l.283 --- TeX4ht warning --- Cannot determine size of graphic in "zeroBehaviorO
 ptions.xbb" (no BoundingBox) ---
-l. 279 --- needs --- zeroBehaviorOptions.png ---
+l. 283 --- needs --- zeroBehaviorOptions.png ---
 [9]
-l.302 --- TeX4ht warning --- File `"zeroBehaviorOptions.xbb"' not found ---
-l.302 --- TeX4ht warning --- Cannot determine size of graphic in "zeroBehaviorO
+l.306 --- TeX4ht warning --- File `"zeroBehaviorOptions.xbb"' not found ---
+l.306 --- TeX4ht warning --- Cannot determine size of graphic in "zeroBehaviorO
 ptions.xbb" (no BoundingBox) ---
-l. 302 --- needs --- zeroBehaviorOptions.png ---
-l.321 --- TeX4ht warning --- File `"zeroBehaviorOptions.xbb"' not found ---
-l.321 --- TeX4ht warning --- Cannot determine size of graphic in "zeroBehaviorO
-ptions.xbb" (no BoundingBox) ---
-l. 321 --- needs --- zeroBehaviorOptions.png ---
+l. 306 --- needs --- zeroBehaviorOptions.png ---
 [10]
-l.340 --- TeX4ht warning --- File `"zeroBehaviorOptions.xbb"' not found ---
-l.340 --- TeX4ht warning --- Cannot determine size of graphic in "zeroBehaviorO
+l.325 --- TeX4ht warning --- File `"zeroBehaviorOptions.xbb"' not found ---
+l.325 --- TeX4ht warning --- Cannot determine size of graphic in "zeroBehaviorO
 ptions.xbb" (no BoundingBox) ---
-l. 340 --- needs --- zeroBehaviorOptions.png ---
-*********************************************************************
+l. 325 --- needs --- zeroBehaviorOptions.png ---
+l.344 --- TeX4ht warning --- File `"zeroBehaviorOptions.xbb"' not found ---
+l.344 --- TeX4ht warning --- Cannot determine size of graphic in "zeroBehaviorO
+ptions.xbb" (no BoundingBox) ---
+l. 344 --- needs --- zeroBehaviorOptions.png ---
 [11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 352.
- [12
+*********************************************************************
+[12]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 356.
+ [13
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 352.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 356.
  (./endAndZeroBehavior.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 352.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 352.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 352.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 356.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 356.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 356.
  ) 
 Here is how much of TeX's memory you used:
  42208 strings out of 483184
  938142 string characters out of 5966319
- 1473831 words of memory out of 5000000
+ 1473842 words of memory out of 5000000
  56137 multiletter control sequences out of 15000+600000
  534539 words of font info for 35 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  71i,6n,102p,1251b,759s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on endAndZeroBehavior.dvi (12 pages, 27664 bytes).
+Output written on endAndZeroBehavior.dvi (13 pages, 27916 bytes).

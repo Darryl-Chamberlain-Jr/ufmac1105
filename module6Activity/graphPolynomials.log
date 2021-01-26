@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  4 SEP 2020 15:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=latex 2020.8.4)  25 NOV 2020 16:43
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1908,11 +1908,11 @@ Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-l.48 --- TeX4ht warning --- File `"graphPolyQ1.xbb"' not found ---
-l.48 --- TeX4ht warning --- Cannot determine size of graphic in "graphPolyQ1.xb
+l.50 --- TeX4ht warning --- File `"graphPolyQ1.xbb"' not found ---
+l.50 --- TeX4ht warning --- Cannot determine size of graphic in "graphPolyQ1.xb
 b" (no BoundingBox) ---
-l. 48 --- needs --- graphPolyQ1.png ---
-LaTeX Font Info:    Trying to load font information for U+msa on input line 51.
+l. 50 --- needs --- graphPolyQ1.png ---
+LaTeX Font Info:    Trying to load font information for U+msa on input line 53.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1920,7 +1920,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 51.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 53.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -1931,29 +1931,29 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 ) [1
 
 ]
-l.60 --- TeX4ht warning --- File `"graphPolyQ2.xbb"' not found ---
-l.60 --- TeX4ht warning --- Cannot determine size of graphic in "graphPolyQ2.xb
+l.62 --- TeX4ht warning --- File `"graphPolyQ2.xbb"' not found ---
+l.62 --- TeX4ht warning --- Cannot determine size of graphic in "graphPolyQ2.xb
 b" (no BoundingBox) ---
-l. 60 --- needs --- graphPolyQ2.png ---
-l.73 --- TeX4ht warning --- File `"graphPolyQ3.xbb"' not found ---
-l.73 --- TeX4ht warning --- Cannot determine size of graphic in "graphPolyQ3.xb
+l. 62 --- needs --- graphPolyQ2.png ---
+l.75 --- TeX4ht warning --- File `"graphPolyQ3.xbb"' not found ---
+l.75 --- TeX4ht warning --- Cannot determine size of graphic in "graphPolyQ3.xb
 b" (no BoundingBox) ---
-l. 73 --- needs --- graphPolyQ3.png ---
-l.85 --- TeX4ht warning --- File `"graphPolyQ4.xbb"' not found ---
-l.85 --- TeX4ht warning --- Cannot determine size of graphic in "graphPolyQ4.xb
+l. 75 --- needs --- graphPolyQ3.png ---
+l.87 --- TeX4ht warning --- File `"graphPolyQ4.xbb"' not found ---
+l.87 --- TeX4ht warning --- Cannot determine size of graphic in "graphPolyQ4.xb
 b" (no BoundingBox) ---
-l. 85 --- needs --- graphPolyQ4.png ---
+l. 87 --- needs --- graphPolyQ4.png ---
 *********************************************************************
 [2]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 92.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 94.
  [3
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 92.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 94.
  (./graphPolynomials.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 92.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 92.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 92.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 94.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 94.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 94.
  ) 
 Here is how much of TeX's memory you used:
  42217 strings out of 483184
@@ -1964,4 +1964,4 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 8191
  71i,5n,102p,1249b,609s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on graphPolynomials.dvi (3 pages, 10364 bytes).
+Output written on graphPolynomials.dvi (3 pages, 10460 bytes).
